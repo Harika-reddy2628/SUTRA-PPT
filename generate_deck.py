@@ -248,15 +248,14 @@ def build_slide_02_problem(prs):
              "“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”",
              FONT_BODY, 9.5, COLOR_GRAY, italic=True)
 
-    # Verification Footer
-    add_text(slide, Inches(8.45), Inches(4.6), Inches(2.2), Inches(0.3), "Ref: NDMA Field Review", FONT_MONO, 8.0, COLOR_MUTED)
-    add_text(slide, Inches(10.65), Inches(4.6), Inches(1.6), Inches(0.3), "✓ VERIFIED RECORD", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
+    # Citation Reference (Clean without badge)
+    add_text(slide, Inches(8.45), Inches(4.7), Inches(3.8), Inches(0.3), "Ref: National Disaster Management Authority (NDMA)", FONT_MONO, 8.0, COLOR_MUTED)
 
-    # Carousel Dots
+    # Continuous Carousel Progress
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(5.6), Inches(0.6), Inches(0.08), COLOR_BLACK)
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.6), Inches(0.12), Inches(0.08), COLOR_BORDER)
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.1), Inches(5.6), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_text(slide, Inches(10.0), Inches(5.52), Inches(2.5), Inches(0.25), "SMOOTH PARALLAX 3.5S", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
+    add_text(slide, Inches(10.0), Inches(5.52), Inches(2.5), Inches(0.25), "CONTINUOUS LOOP", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
     # 5. Footer (Page 2 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
@@ -273,7 +272,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with Schematics)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem - Clean Continuous)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 

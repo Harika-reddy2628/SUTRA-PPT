@@ -6,7 +6,6 @@ interface AuditSource {
   headline: string;
   quote: string;
   ref: string;
-  status: string;
   badgeBg: string;
 }
 
@@ -16,8 +15,7 @@ const AUDIT_SOURCES: AuditSource[] = [
     category: 'NDMA REPORT',
     headline: '70% of single drones failed in mountain rescue operations.',
     quote: '“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”',
-    ref: 'Ref: NDMA Field Review',
-    status: '✓ VERIFIED RECORD',
+    ref: 'Ref: National Disaster Management Authority (NDMA)',
     badgeBg: 'bg-[#0A1628]',
   },
   {
@@ -25,8 +23,7 @@ const AUDIT_SOURCES: AuditSource[] = [
     category: 'IEEE TCCN JOURNAL',
     headline: 'Standard drone video feeds drop completely in weak signals.',
     quote: '“Traditional digital video (H.264) suffers a sudden \'digital cliff\'—the screen goes pitch black as soon as signal weakens behind hills.”',
-    ref: 'Ref: Bourtsoulatze et al.',
-    status: '✓ DOI: 10.1109/TCCN',
+    ref: 'Ref: IEEE Trans. Cognitive Comms (Bourtsoulatze et al.)',
     badgeBg: 'bg-slate-900',
   },
   {
@@ -34,23 +31,20 @@ const AUDIT_SOURCES: AuditSource[] = [
     category: 'CAG AUDIT',
     headline: 'Military-grade drones cost $50,000 to $250,000 each.',
     quote: '“High airframe costs prevent deploying swarms, while single ground-station links cause entire missions to shut down if disconnected.”',
-    ref: 'Ref: CAG Defense Audit',
-    status: '✓ OFFICIAL RTI',
+    ref: 'Ref: CAG Defense Audit & Public RTI Records',
     badgeBg: 'bg-emerald-700',
   },
 ];
 
 export const Slide02Problem: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % AUDIT_SOURCES.length);
-    }, 3500);
+    }, 3000);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   return (
     <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-10 lg:p-14 select-none overflow-hidden border border-slate-200">
@@ -179,12 +173,8 @@ export const Slide02Problem: React.FC = () => {
 
           </div>
 
-          {/* Right Column (5 Cols): Smooth Parallax Stacked Dossier Cards */}
-          <div 
-            className="lg:col-span-5 relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
+          {/* Right Column (5 Cols): Smooth Continuous Parallax Stacked Dossier Cards */}
+          <div className="lg:col-span-5 relative">
             
             {/* Dossier Header */}
             <div className="flex items-center justify-between pb-2 font-mono">
@@ -263,13 +253,12 @@ export const Slide02Problem: React.FC = () => {
                       {source.headline}
                     </div>
 
-                    <p className="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
+                    <p className="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3.5 rounded-xl border border-slate-100 italic">
                       {source.quote}
                     </p>
 
-                    <div className="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
-                      <span>{source.ref}</span>
-                      <span className="text-emerald-700 font-bold">{source.status}</span>
+                    <div className="pt-1 text-[11px] font-mono text-slate-500">
+                      {source.ref}
                     </div>
                   </div>
                 );
@@ -277,7 +266,7 @@ export const Slide02Problem: React.FC = () => {
 
             </div>
 
-            {/* Carousel Indicator Dots + Pause Status */}
+            {/* Continuous Indicator Dots */}
             <div className="flex items-center justify-between mt-8 font-mono">
               <div className="flex items-center gap-2">
                 {AUDIT_SOURCES.map((_, idx) => (
@@ -292,7 +281,7 @@ export const Slide02Problem: React.FC = () => {
                 ))}
               </div>
               <div className="text-[10px] text-slate-400 uppercase tracking-wider">
-                {isPaused ? 'PAUSED ON HOVER' : 'SMOOTH PARALLAX 3.5S'}
+                CONTINUOUS LOOP
               </div>
             </div>
 
