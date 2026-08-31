@@ -50,7 +50,7 @@
   </script>
 
   <style>
-    /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · genre: technical-editorial · macro: 4-pillar-problem-voids · tokens: locked */
+    /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · genre: technical-editorial · macro: 4-pillar-problem-voids-carousel · tokens: locked */
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -71,7 +71,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 44px 72px 32px 72px;
+      padding: 40px 72px 28px 72px;
       position: relative;
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
@@ -97,6 +97,10 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
+    .carousel-image {
+      transition: opacity 0.8s ease-in-out;
+    }
   </style>
 </head>
 <body>
@@ -107,7 +111,7 @@
     <div class="content-layer">
       
       <!-- Top Navigation & Category Bar -->
-      <header class="flex justify-between items-center pb-3.5 border-b border-hairline">
+      <header class="flex justify-between items-center pb-3 border-b border-hairline">
         <div class="flex items-center gap-3.5">
           <div class="w-1.5 h-6 bg-crimson-600 rounded-sm"></div>
           <div class="font-mono text-xs font-bold uppercase tracking-[0.25em] text-ink">
@@ -118,77 +122,95 @@
         <div class="flex items-center gap-3">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-crimson-200 bg-crimson-50 text-[10.5px] font-bold uppercase tracking-[0.18em] text-crimson-800 font-mono">
             <span class="w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
-            <span>FIELD BOTTLENECKS</span>
+            <span>FIELD DISASTER AUDIT</span>
           </div>
         </div>
       </header>
 
       <!-- Headline & Key Problem Metrics -->
-      <div class="flex items-end justify-between pt-2">
+      <div class="flex items-end justify-between pt-1">
         <div class="max-w-4xl">
-          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-ink tracking-tight leading-tight">
-            Traditional Search &amp; Rescue Fails Across <span class="text-crimson-600">4 Critical Voids</span>
+          <h2 class="font-heading text-3xl sm:text-[34px] font-bold text-ink tracking-tight leading-tight">
+            Traditional Search &amp; Rescue Collapses Across <span class="text-crimson-600">4 Critical Voids</span>
           </h2>
         </div>
         
-        <div class="flex items-center gap-2 font-mono text-[11px] text-slate-700">
-          <span class="px-3 py-1 rounded-md bg-crimson-50 border border-crimson-200 text-crimson-800 font-bold">70% CANOPY CRASHES</span>
-          <span class="px-3 py-1 rounded-md bg-subtle border border-hairline">15-30m GEO ERROR</span>
-          <span class="px-3 py-1 rounded-md bg-subtle border border-hairline">2-3 HOURS DELAY</span>
-          <span class="px-3 py-1 rounded-md bg-crimson-50 border border-crimson-200 text-crimson-800 font-bold">₹40L+ MILITARY AIRFRAMES</span>
+        <div class="flex items-center gap-2 font-mono text-[10.5px] text-slate-700">
+          <span class="px-2.5 py-1 rounded-md bg-crimson-50 border border-crimson-200 text-crimson-800 font-bold">70% CANOPY CRASHES</span>
+          <span class="px-2.5 py-1 rounded-md bg-subtle border border-hairline">15-30m GEO ERROR</span>
+          <span class="px-2.5 py-1 rounded-md bg-subtle border border-hairline">2-3 HOURS DELAY</span>
+          <span class="px-2.5 py-1 rounded-md bg-crimson-50 border border-crimson-200 text-crimson-800 font-bold">₹40L+ AIRFRAMES</span>
         </div>
       </div>
 
-      <!-- 4-Column Subsystem Problem Void Grid -->
-      <main class="grid grid-cols-4 gap-5 items-stretch my-auto">
+      <!-- 4-Column Subsystem Problem Void Grid with Respective Image Carousels -->
+      <main class="grid grid-cols-4 gap-4 lg:gap-5 items-stretch my-auto">
         
         <!-- Column 1: Subsystem A Void (GNC & Navigation) -->
-        <div class="flex flex-col justify-between p-5 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-4">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center pb-2.5 border-b border-hairline">
-              <div class="w-10 h-10 rounded-xl bg-crimson-50 border border-crimson-200 flex items-center justify-center text-crimson-700">
-                <span class="material-symbols-outlined text-[22px]">gps_off</span>
-              </div>
-              <span class="font-mono text-[10px] font-bold text-crimson-800 bg-crimson-50 border border-crimson-200 px-2 py-0.5 rounded">
-                GPS MULTI-PATH
-              </span>
-            </div>
+        <div class="flex flex-col justify-between p-4 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-2.5">
+          <div class="space-y-2">
             
+            <!-- Respective Image Carousel Frame -->
+            <div class="relative h-28 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group/img">
+              <img id="img-subsys-a" src="assets/illustrations/gps_canopy_shadow.jpg" alt="Canopy GPS Failure" class="w-full h-full object-cover carousel-image" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
+                <span class="text-[8px] font-mono font-bold text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
+                  EVIDENCE 01
+                </span>
+                <span class="text-[8px] font-mono font-bold text-crimson-300 bg-black/60 px-1.5 py-0.5 rounded">
+                  GPS MULTI-PATH
+                </span>
+              </div>
+
+              <div class="absolute bottom-1.5 left-2 right-2 z-10 text-white flex justify-between items-end">
+                <div>
+                  <div class="text-[10px] font-bold font-heading leading-tight">Wayanad Canopy Crash</div>
+                  <div class="text-[7.5px] font-mono text-slate-300">NDMA Official Review</div>
+                </div>
+                <div class="flex gap-1">
+                  <span class="w-3.5 h-1 bg-crimson-500 rounded-full"></span>
+                  <span class="w-1.5 h-1 bg-white/40 rounded-full"></span>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM A // GNC</span>
-              <h3 class="text-lg font-bold text-ink font-heading leading-snug mt-0.5">
+              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM A // GNC</span>
+              <h3 class="text-base font-bold text-ink font-heading leading-snug mt-0.5">
                 Canopy GPS Drift &amp; Crashes
               </h3>
             </div>
 
             <!-- Problem Mechanism Box -->
-            <div class="p-2 rounded-lg bg-red-50 border border-red-200">
-              <div class="text-[8.5px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
-              <div class="text-[11px] font-semibold text-slate-900 leading-tight mt-0.5">Dense foliage blocks satellite GNSS signals</div>
+            <div class="p-1.5 rounded-lg bg-red-50 border border-red-200">
+              <div class="text-[8px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
+              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">Dense foliage blocks satellite GNSS signals</div>
             </div>
 
             <!-- Failure Impact -->
-            <div class="p-2.5 rounded-lg bg-subtle border border-hairline space-y-1">
-              <div class="text-[9px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
-              <p class="text-xs text-slate-600 font-mono leading-relaxed">
-                Commercial flight controllers lose position lock, drifting into tree canopies and causing catastrophic rotor loss.
+            <div class="p-2 rounded-lg bg-subtle border border-hairline space-y-0.5">
+              <div class="text-[8.5px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
+              <p class="text-[11px] text-slate-600 font-mono leading-relaxed">
+                Commercial drones lose position lock, drifting into tree canopies and causing rotor loss.
               </p>
             </div>
 
             <!-- Empirical Failure Spec -->
             <div class="grid grid-cols-2 gap-1.5 text-center font-mono">
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-crimson-700">70% Loss</div>
-                <div class="text-[8px] text-slate-500">Canopy Sorties</div>
+                <div class="text-[7.5px] text-slate-500">Canopy Sorties</div>
               </div>
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-slate-900">0 Hold</div>
-                <div class="text-[8px] text-slate-500">Non-GPS Stability</div>
+                <div class="text-[7.5px] text-slate-500">Non-GPS Stability</div>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-hairline flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div class="pt-2 border-t border-hairline flex items-center justify-between text-[9px] font-mono text-slate-400">
             <span>TARGET: PX4 &amp; 3D ORCA</span>
             <span class="text-crimson-700 font-bold">LEAD: NIKHIL</span>
           </div>
@@ -196,52 +218,70 @@
         </div>
 
         <!-- Column 2: Subsystem B Void (Wireless Communications) -->
-        <div class="flex flex-col justify-between p-5 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-4">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center pb-2.5 border-b border-hairline">
-              <div class="w-10 h-10 rounded-xl bg-crimson-50 border border-crimson-200 flex items-center justify-center text-crimson-700">
-                <span class="material-symbols-outlined text-[22px]">portable_wifi_off</span>
-              </div>
-              <span class="font-mono text-[10px] font-bold text-crimson-800 bg-crimson-50 border border-crimson-200 px-2 py-0.5 rounded">
-                DIGITAL CLIFF
-              </span>
-            </div>
+        <div class="flex flex-col justify-between p-4 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-2.5">
+          <div class="space-y-2">
             
+            <!-- Respective Image Carousel Frame -->
+            <div class="relative h-28 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group/img">
+              <img id="img-subsys-b" src="assets/illustrations/rf_mountain_shadow.jpg" alt="Mountain RF Shadow" class="w-full h-full object-cover carousel-image" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
+                <span class="text-[8px] font-mono font-bold text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
+                  EVIDENCE 02
+                </span>
+                <span class="text-[8px] font-mono font-bold text-crimson-300 bg-black/60 px-1.5 py-0.5 rounded">
+                  DIGITAL CLIFF
+                </span>
+              </div>
+
+              <div class="absolute bottom-1.5 left-2 right-2 z-10 text-white flex justify-between items-end">
+                <div>
+                  <div class="text-[10px] font-bold font-heading leading-tight">Chamoli Gorge RF Cut</div>
+                  <div class="text-[7.5px] font-mono text-slate-300">NDRF Field Incident Report</div>
+                </div>
+                <div class="flex gap-1">
+                  <span class="w-3.5 h-1 bg-crimson-500 rounded-full"></span>
+                  <span class="w-1.5 h-1 bg-white/40 rounded-full"></span>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM B // COMMS</span>
-              <h3 class="text-lg font-bold text-ink font-heading leading-snug mt-0.5">
+              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM B // COMMS</span>
+              <h3 class="text-base font-bold text-ink font-heading leading-snug mt-0.5">
                 Mountain Ravine RF Blackout
               </h3>
             </div>
 
             <!-- Problem Mechanism Box -->
-            <div class="p-2 rounded-lg bg-red-50 border border-red-200">
-              <div class="text-[8.5px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
-              <div class="text-[11px] font-semibold text-slate-900 leading-tight mt-0.5">Ridgelines sever direct line-of-sight RF</div>
+            <div class="p-1.5 rounded-lg bg-red-50 border border-red-200">
+              <div class="text-[8px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
+              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">Ridgelines sever direct line-of-sight RF</div>
             </div>
 
             <!-- Failure Impact -->
-            <div class="p-2.5 rounded-lg bg-subtle border border-hairline space-y-1">
-              <div class="text-[9px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
-              <p class="text-xs text-slate-600 font-mono leading-relaxed">
-                Conventional H.264 digital video completely cuts out below 5dB SNR, plunging base operators into total blindness.
+            <div class="p-2 rounded-lg bg-subtle border border-hairline space-y-0.5">
+              <div class="text-[8.5px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
+              <p class="text-[11px] text-slate-600 font-mono leading-relaxed">
+                Conventional H.264 digital video completely cuts out below 5dB SNR, causing total blindness.
               </p>
             </div>
 
             <!-- Empirical Failure Spec -->
             <div class="grid grid-cols-2 gap-1.5 text-center font-mono">
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-crimson-700">&lt;5dB SNR</div>
-                <div class="text-[8px] text-slate-500">Video Blackout</div>
+                <div class="text-[7.5px] text-slate-500">Video Blackout</div>
               </div>
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-slate-900">0 Relay</div>
-                <div class="text-[8px] text-slate-500">Single-Drone Link</div>
+                <div class="text-[7.5px] text-slate-500">Single-Drone Link</div>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-hairline flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div class="pt-2 border-t border-hairline flex items-center justify-between text-[9px] font-mono text-slate-400">
             <span>TARGET: DEEP JSCC MESH</span>
             <span class="text-crimson-700 font-bold">LEAD: NIKHIL</span>
           </div>
@@ -249,52 +289,70 @@
         </div>
 
         <!-- Column 3: Subsystem C Void (AI Perception & Geolocation) -->
-        <div class="flex flex-col justify-between p-5 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-4">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center pb-2.5 border-b border-hairline">
-              <div class="w-10 h-10 rounded-xl bg-crimson-50 border border-crimson-200 flex items-center justify-center text-crimson-700">
-                <span class="material-symbols-outlined text-[22px]">wrong_location</span>
-              </div>
-              <span class="font-mono text-[10px] font-bold text-crimson-800 bg-crimson-50 border border-crimson-200 px-2 py-0.5 rounded">
-                35% FALSE ALARMS
-              </span>
-            </div>
+        <div class="flex flex-col justify-between p-4 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-2.5">
+          <div class="space-y-2">
             
+            <!-- Respective Image Carousel Frame -->
+            <div class="relative h-28 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group/img">
+              <img id="img-subsys-c" src="assets/disaster/disaster_rescue_2.jpg" alt="Steep Slope Geo Error" class="w-full h-full object-cover carousel-image" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
+                <span class="text-[8px] font-mono font-bold text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
+                  EVIDENCE 03
+                </span>
+                <span class="text-[8px] font-mono font-bold text-crimson-300 bg-black/60 px-1.5 py-0.5 rounded">
+                  35% FALSE ALARM
+                </span>
+              </div>
+
+              <div class="absolute bottom-1.5 left-2 right-2 z-10 text-white flex justify-between items-end">
+                <div>
+                  <div class="text-[10px] font-bold font-heading leading-tight">Sikkim Slope Geo Error</div>
+                  <div class="text-[7.5px] font-mono text-slate-300">CAG Disaster Management Audit</div>
+                </div>
+                <div class="flex gap-1">
+                  <span class="w-3.5 h-1 bg-crimson-500 rounded-full"></span>
+                  <span class="w-1.5 h-1 bg-white/40 rounded-full"></span>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM C // VISION</span>
-              <h3 class="text-lg font-bold text-ink font-heading leading-snug mt-0.5">
+              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM C // VISION</span>
+              <h3 class="text-base font-bold text-ink font-heading leading-snug mt-0.5">
                 Flat-Earth Elevation Drift
               </h3>
             </div>
 
             <!-- Problem Mechanism Box -->
-            <div class="p-2 rounded-lg bg-red-50 border border-red-200">
-              <div class="text-[8.5px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
-              <div class="text-[11px] font-semibold text-slate-900 leading-tight mt-0.5">2D raycasts assume flat zero-elevation ground</div>
+            <div class="p-1.5 rounded-lg bg-red-50 border border-red-200">
+              <div class="text-[8px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
+              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">2D raycasts assume flat zero-elevation ground</div>
             </div>
 
             <!-- Failure Impact -->
-            <div class="p-2.5 rounded-lg bg-subtle border border-hairline space-y-1">
-              <div class="text-[9px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
-              <p class="text-xs text-slate-600 font-mono leading-relaxed">
-                Sloping terrains produce 15–30m calculated coordinate errors, routing emergency ground teams to empty ravines.
+            <div class="p-2 rounded-lg bg-subtle border border-hairline space-y-0.5">
+              <div class="text-[8.5px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
+              <p class="text-[11px] text-slate-600 font-mono leading-relaxed">
+                Sloping terrains produce 15–30m coordinate errors, routing ground teams to empty ravines.
               </p>
             </div>
 
             <!-- Empirical Failure Spec -->
             <div class="grid grid-cols-2 gap-1.5 text-center font-mono">
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-crimson-700">15–30m</div>
-                <div class="text-[8px] text-slate-500">Location Drift</div>
+                <div class="text-[7.5px] text-slate-500">Location Drift</div>
               </div>
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-slate-900">35%</div>
-                <div class="text-[8px] text-slate-500">False Alarm Rate</div>
+                <div class="text-[7.5px] text-slate-500">False Alarm Rate</div>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-hairline flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div class="pt-2 border-t border-hairline flex items-center justify-between text-[9px] font-mono text-slate-400">
             <span>TARGET: 3D DEM RAYCAST</span>
             <span class="text-crimson-700 font-bold">LEAD: VEDANTH</span>
           </div>
@@ -302,52 +360,70 @@
         </div>
 
         <!-- Column 4: Subsystem D Void (Tactical C2 & Operations) -->
-        <div class="flex flex-col justify-between p-5 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-4">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center pb-2.5 border-b border-hairline">
-              <div class="w-10 h-10 rounded-xl bg-crimson-50 border border-crimson-200 flex items-center justify-center text-crimson-700">
-                <span class="material-symbols-outlined text-[22px]">group_off</span>
-              </div>
-              <span class="font-mono text-[10px] font-bold text-crimson-800 bg-crimson-50 border border-crimson-200 px-2 py-0.5 rounded">
-                15-25 CREW LOAD
-              </span>
-            </div>
+        <div class="flex flex-col justify-between p-4 rounded-2xl border border-hairline bg-white hover:border-crimson-400 hover:shadow-md transition-all group relative overflow-hidden space-y-2.5">
+          <div class="space-y-2">
             
+            <!-- Respective Image Carousel Frame -->
+            <div class="relative h-28 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group/img">
+              <img id="img-subsys-d" src="assets/illustrations/single_link_loss.jpg" alt="Ground Station Link Loss" class="w-full h-full object-cover carousel-image" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <div class="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
+                <span class="text-[8px] font-mono font-bold text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
+                  EVIDENCE 04
+                </span>
+                <span class="text-[8px] font-mono font-bold text-crimson-300 bg-black/60 px-1.5 py-0.5 rounded">
+                  15-25 CREW LOAD
+                </span>
+              </div>
+
+              <div class="absolute bottom-1.5 left-2 right-2 z-10 text-white flex justify-between items-end">
+                <div>
+                  <div class="text-[10px] font-bold font-heading leading-tight">Central Link Abort</div>
+                  <div class="text-[7.5px] font-mono text-slate-300">Field Operational Bottleneck</div>
+                </div>
+                <div class="flex gap-1">
+                  <span class="w-3.5 h-1 bg-crimson-500 rounded-full"></span>
+                  <span class="w-1.5 h-1 bg-white/40 rounded-full"></span>
+                </div>
+              </div>
+            </div>
+
             <div>
-              <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM D // C2 GCS</span>
-              <h3 class="text-lg font-bold text-ink font-heading leading-snug mt-0.5">
+              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM D // C2 GCS</span>
+              <h3 class="text-base font-bold text-ink font-heading leading-snug mt-0.5">
                 Central Pilot Bottleneck
               </h3>
             </div>
 
             <!-- Problem Mechanism Box -->
-            <div class="p-2 rounded-lg bg-red-50 border border-red-200">
-              <div class="text-[8.5px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
-              <div class="text-[11px] font-semibold text-slate-900 leading-tight mt-0.5">1-pilot-per-drone manual radio control</div>
+            <div class="p-1.5 rounded-lg bg-red-50 border border-red-200">
+              <div class="text-[8px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
+              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">1-pilot-per-drone manual radio control</div>
             </div>
 
             <!-- Failure Impact -->
-            <div class="p-2.5 rounded-lg bg-subtle border border-hairline space-y-1">
-              <div class="text-[9px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
-              <p class="text-xs text-slate-600 font-mono leading-relaxed">
-                Requires 15–25 field personnel and 45–90 min setup; sortie collapses immediately if the single pilot link drops.
+            <div class="p-2 rounded-lg bg-subtle border border-hairline space-y-0.5">
+              <div class="text-[8.5px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
+              <p class="text-[11px] text-slate-600 font-mono leading-relaxed">
+                Requires 15–25 personnel and 45–90 min setup; sortie aborts if the single pilot link drops.
               </p>
             </div>
 
             <!-- Empirical Failure Spec -->
             <div class="grid grid-cols-2 gap-1.5 text-center font-mono">
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-crimson-700">2–3 Hrs</div>
-                <div class="text-[8px] text-slate-500">Search Time / mi²</div>
+                <div class="text-[7.5px] text-slate-500">Search Time / mi²</div>
               </div>
-              <div class="p-1.5 rounded bg-subtle border border-hairline">
+              <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-slate-900">₹12.5L</div>
-                <div class="text-[8px] text-slate-500">Cost / Deployment</div>
+                <div class="text-[7.5px] text-slate-500">Cost / Deployment</div>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-hairline flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div class="pt-2 border-t border-hairline flex items-center justify-between text-[9px] font-mono text-slate-400">
             <span>TARGET: WEBGPU ATAK GCS</span>
             <span class="text-crimson-700 font-bold">LEAD: SIVA</span>
           </div>
@@ -357,22 +433,22 @@
       </main>
 
       <!-- Disaster Field Audit & Verification Citations (Bottom Row) -->
-      <footer class="pt-3 border-t border-hairline flex flex-col gap-2.5">
-        <div class="grid grid-cols-4 gap-3.5 font-mono">
-          <div class="p-2.5 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
-            <span class="text-[9.5px] text-slate-500 uppercase">FIELD EVIDENCE</span>
+      <footer class="pt-2.5 border-t border-hairline flex flex-col gap-2">
+        <div class="grid grid-cols-4 gap-3 font-mono">
+          <div class="p-2 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
+            <span class="text-[9px] text-slate-500 uppercase">FIELD EVIDENCE</span>
             <span class="text-xs font-bold text-ink">Wayanad Landslide Audit</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
-            <span class="text-[9.5px] text-slate-500 uppercase">AUDIT FINDING</span>
+          <div class="p-2 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
+            <span class="text-[9px] text-slate-500 uppercase">AUDIT FINDING</span>
             <span class="text-xs font-bold text-crimson-700">70% RF/GPS Disconnect</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
-            <span class="text-[9.5px] text-slate-500 uppercase">COST PENALTY</span>
+          <div class="p-2 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
+            <span class="text-[9px] text-slate-500 uppercase">COST PENALTY</span>
             <span class="text-xs font-bold text-ink">₹40L Military Airframes</span>
           </div>
-          <div class="p-2.5 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
-            <span class="text-[9.5px] text-slate-500 uppercase">SURVIVOR RISK</span>
+          <div class="p-2 rounded-xl bg-subtle border border-hairline flex justify-between items-center">
+            <span class="text-[9px] text-slate-500 uppercase">SURVIVOR RISK</span>
             <span class="text-xs font-bold text-crimson-700">412% Disaster Surge</span>
           </div>
         </div>
@@ -385,6 +461,31 @@
 
     </div>
   </div>
+
+  <script>
+    // Smooth carousel cycler for respective evidence photos & diagrams
+    const carouselData = [
+      { id: 'img-subsys-a', images: ['assets/illustrations/gps_canopy_shadow.jpg', 'assets/disaster/wayanad_rescue.jpg'] },
+      { id: 'img-subsys-b', images: ['assets/illustrations/rf_mountain_shadow.jpg', 'assets/disaster/disaster_rescue_1.jpg'] },
+      { id: 'img-subsys-c', images: ['assets/disaster/disaster_rescue_2.jpg', 'assets/disaster/disaster_rescue_3.jpg'] },
+      { id: 'img-subsys-d', images: ['assets/illustrations/single_link_loss.jpg', 'assets/disaster/disaster_rescue_5.jpg'] }
+    ];
+
+    let currentIndex = 0;
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % 2;
+      carouselData.forEach(item => {
+        const el = document.getElementById(item.id);
+        if (el) {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.src = item.images[currentIndex];
+            el.style.opacity = '1';
+          }, 300);
+        }
+      });
+    }, 3500);
+  </script>
 
 </body>
 </html>

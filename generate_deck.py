@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills, Stitch Tactical Monolith & Hallmark Anti-Slop Discipline:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (4-Column Subsystem Failure Voids Grid: A, B, C, D)
+- Slide 02: The Problem (4-Column Subsystem Failure Voids with Respective Visual Evidence)
 - Slide 03: The Solution (4-Column Subsystem Moats Architecture Grid: A, B, C, D)
 """
 
@@ -178,11 +178,11 @@ def build_slide_02_problem(prs):
 
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.48), Inches(2.7), Inches(0.30), RGBColor(0xFF, 0xF1, 0xF2), RGBColor(0xFE, 0xCD, 0xD3))
     add_shape(slide, MSO_SHAPE.OVAL, Inches(9.95), Inches(0.58), Inches(0.08), Inches(0.08), COLOR_RED)
-    add_text(slide, Inches(10.1), Inches(0.52), Inches(2.3), Inches(0.22), "FIELD BOTTLENECKS", FONT_MONO, 7.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
+    add_text(slide, Inches(10.1), Inches(0.52), Inches(2.3), Inches(0.22), "FIELD DISASTER AUDIT", FONT_MONO, 7.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
 
     # 3. Compact Headline & Quick Highlights
     add_text(slide, Inches(0.8), Inches(0.95), Inches(7.5), Inches(0.65),
-             "Traditional Search & Rescue Fails Across 4 Critical Voids",
+             "Traditional Search & Rescue Collapses Across 4 Critical Voids",
              FONT_HEADING, 21, COLOR_BLACK, bold=True)
 
     quick_badges = ["70% CANOPY CRASHES", "15-30m GEO ERROR", "2-3 HOURS DELAY", "₹40L+ AIRFRAMES"]
@@ -194,32 +194,36 @@ def build_slide_02_problem(prs):
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, bx, Inches(1.05), Inches(1.05), Inches(0.3), bg_col, COLOR_BORDER)
         add_text(slide, bx, Inches(1.10), Inches(1.05), Inches(0.2), b_text, FONT_MONO, 6.0, txt_col, bold=True, align=PP_ALIGN.CENTER)
 
-    # 4. 4-Column Subsystem Problem Void Grid
+    # 4. 4-Column Subsystem Problem Void Grid with Respective Images
     problem_voids = [
         ("SUBSYSTEM A // GNC", "Canopy GPS Drift & Crashes", "GPS MULTI-PATH",
+         "assets/illustrations/gps_canopy_shadow.jpg", "Wayanad Canopy Crash",
          "Dense foliage blocks satellite GNSS signals",
-         "Commercial flight controllers lose position lock, drifting into tree canopies and causing catastrophic rotor loss.",
+         "Commercial drones lose position lock, drifting into tree canopies and causing rotor loss.",
          "70% Loss", "Canopy Sorties", "0 Hold", "Non-GPS Stability", "TARGET: PX4 & 3D ORCA", "LEAD: NIKHIL", COLOR_RED),
 
         ("SUBSYSTEM B // COMMS", "Mountain Ravine RF Blackout", "DIGITAL CLIFF",
+         "assets/illustrations/rf_mountain_shadow.jpg", "Chamoli Gorge RF Cut",
          "Ridgelines sever direct line-of-sight RF",
-         "Conventional H.264 digital video completely cuts out below 5dB SNR, plunging base operators into total blindness.",
+         "Conventional H.264 digital video completely cuts out below 5dB SNR, causing total blindness.",
          "<5dB SNR", "Video Blackout", "0 Relay", "Single-Drone Link", "TARGET: DEEP JSCC MESH", "LEAD: NIKHIL", COLOR_RED),
 
-        ("SUBSYSTEM C // VISION", "Flat-Earth Elevation Drift", "35% FALSE ALARMS",
+        ("SUBSYSTEM C // VISION", "Flat-Earth Elevation Drift", "35% FALSE ALARM",
+         "assets/disaster/disaster_rescue_2.jpg", "Sikkim Slope Geo Error",
          "2D raycasts assume flat zero-elevation ground",
-         "Sloping terrains produce 15–30m calculated coordinate errors, routing emergency ground teams to empty ravines.",
+         "Sloping terrains produce 15–30m coordinate errors, routing ground teams to empty ravines.",
          "15–30m", "Location Drift", "35%", "False Alarm Rate", "TARGET: 3D DEM RAYCAST", "LEAD: VEDANTH", COLOR_RED),
 
         ("SUBSYSTEM D // C2 GCS", "Central Pilot Bottleneck", "15-25 CREW LOAD",
+         "assets/illustrations/single_link_loss.jpg", "Central Link Abort",
          "1-pilot-per-drone manual radio control",
-         "Requires 15–25 field personnel and 45–90 min setup; sortie collapses immediately if the single pilot link drops.",
+         "Requires 15–25 personnel and 45–90 min setup; sortie aborts if the single pilot link drops.",
          "2–3 Hrs", "Search Time / mi²", "₹12.5L", "Cost / Deployment", "TARGET: WEBGPU ATAK GCS", "LEAD: SIVA", COLOR_RED),
     ]
 
     card_w = Inches(2.78)
     card_gap = Inches(0.2)
-    for i, (sub_tag, sub_title, sub_badge, void_mech, void_impact, s1_val, s1_lbl, s2_val, s2_lbl, f1, f2, b_col) in enumerate(problem_voids):
+    for i, (sub_tag, sub_title, sub_badge, img_file, field_case, void_mech, void_impact, s1_val, s1_lbl, s2_val, s2_lbl, f1, f2, b_col) in enumerate(problem_voids):
         cx = Inches(0.8) + i * (card_w + card_gap)
         cy = Inches(1.68)
         card_h = Inches(4.35)
@@ -227,36 +231,43 @@ def build_slide_02_problem(prs):
         # Card Box
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx, cy, card_w, card_h, COLOR_BG, COLOR_BORDER)
 
-        # Top Badge & Tag
-        add_text(slide, cx + Inches(0.12), cy + Inches(0.12), Inches(1.3), Inches(0.2), sub_tag, FONT_MONO, 7.0, COLOR_DIM, bold=True)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.45), cy + Inches(0.10), Inches(1.2), Inches(0.22), RGBColor(0xFF, 0xF1, 0xF2), RGBColor(0xFE, 0xCD, 0xD3))
-        add_text(slide, cx + Inches(1.45), cy + Inches(0.12), Inches(1.2), Inches(0.2), sub_badge, FONT_MONO, 6.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
+        # Respective Image Frame
+        if Path(img_file).exists():
+            slide.shapes.add_picture(img_file, cx + Inches(0.08), cy + Inches(0.08), card_w - Inches(0.16), Inches(0.95))
+            # Overlay bar for image label
+            add_shape(slide, MSO_SHAPE.RECTANGLE, cx + Inches(0.08), cy + Inches(0.80), card_w - Inches(0.16), Inches(0.23), RGBColor(0x09, 0x09, 0x0B))
+            add_text(slide, cx + Inches(0.12), cy + Inches(0.82), card_w - Inches(0.24), Inches(0.18), field_case, FONT_MONO, 5.8, COLOR_BG, bold=True)
+
+        # Tag & Badge
+        add_text(slide, cx + Inches(0.12), cy + Inches(1.10), Inches(1.3), Inches(0.18), sub_tag, FONT_MONO, 6.2, COLOR_DIM, bold=True)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.45), cy + Inches(1.08), Inches(1.2), Inches(0.20), RGBColor(0xFF, 0xF1, 0xF2), RGBColor(0xFE, 0xCD, 0xD3))
+        add_text(slide, cx + Inches(1.45), cy + Inches(1.10), Inches(1.2), Inches(0.18), sub_badge, FONT_MONO, 5.8, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
 
         # Title
-        add_text(slide, cx + Inches(0.12), cy + Inches(0.38), card_w - Inches(0.24), Inches(0.45), sub_title, FONT_HEADING, 11, COLOR_BLACK, bold=True)
+        add_text(slide, cx + Inches(0.12), cy + Inches(1.32), card_w - Inches(0.24), Inches(0.40), sub_title, FONT_HEADING, 9.5, COLOR_BLACK, bold=True)
 
         # Mechanism Box
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(0.90), card_w - Inches(0.24), Inches(0.65), RGBColor(0xFE, 0xF2, 0xF2), RGBColor(0xFE, 0xCD, 0xCD))
-        add_text(slide, cx + Inches(0.18), cy + Inches(0.94), card_w - Inches(0.36), Inches(0.18), "CORE FAILURE MECHANISM:", FONT_MONO, 6.0, COLOR_RED, bold=True)
-        add_text(slide, cx + Inches(0.18), cy + Inches(1.12), card_w - Inches(0.36), Inches(0.4), void_mech, FONT_BODY, 7.5, COLOR_BLACK, bold=True)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.10), cy + Inches(1.75), card_w - Inches(0.20), Inches(0.60), RGBColor(0xFE, 0xF2, 0xF2), RGBColor(0xFE, 0xCD, 0xCD))
+        add_text(slide, cx + Inches(0.14), cy + Inches(1.78), card_w - Inches(0.28), Inches(0.15), "CORE FAILURE MECHANISM:", FONT_MONO, 5.5, COLOR_RED, bold=True)
+        add_text(slide, cx + Inches(0.14), cy + Inches(1.94), card_w - Inches(0.28), Inches(0.38), void_mech, FONT_BODY, 6.8, COLOR_BLACK, bold=True)
 
         # Impact Box
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(1.65), card_w - Inches(0.24), Inches(1.45), COLOR_CARD_BG, COLOR_BORDER)
-        add_text(slide, cx + Inches(0.18), cy + Inches(1.70), card_w - Inches(0.36), Inches(0.18), "OPERATIONAL IMPACT:", FONT_MONO, 6.5, COLOR_BLACK, bold=True)
-        add_text(slide, cx + Inches(0.18), cy + Inches(1.92), card_w - Inches(0.36), Inches(1.1), void_impact, FONT_MONO, 7.2, COLOR_SLATE)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.10), cy + Inches(2.40), card_w - Inches(0.20), Inches(0.95), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(0.14), cy + Inches(2.44), card_w - Inches(0.28), Inches(0.15), "OPERATIONAL IMPACT:", FONT_MONO, 5.8, COLOR_BLACK, bold=True)
+        add_text(slide, cx + Inches(0.14), cy + Inches(2.62), card_w - Inches(0.28), Inches(0.70), void_impact, FONT_MONO, 6.5, COLOR_SLATE)
 
         # Specs Grid
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(3.20), Inches(1.22), Inches(0.55), COLOR_CARD_BG, COLOR_BORDER)
-        add_text(slide, cx + Inches(0.12), cy + Inches(3.24), Inches(1.22), Inches(0.25), s1_val, FONT_MONO, 9.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
-        add_text(slide, cx + Inches(0.12), cy + Inches(3.52), Inches(1.22), Inches(0.2), s1_lbl, FONT_MONO, 6.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.10), cy + Inches(3.42), Inches(1.25), Inches(0.48), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(0.10), cy + Inches(3.45), Inches(1.25), Inches(0.22), s1_val, FONT_MONO, 8.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, cx + Inches(0.10), cy + Inches(3.68), Inches(1.25), Inches(0.18), s1_lbl, FONT_MONO, 5.5, COLOR_MUTED, align=PP_ALIGN.CENTER)
 
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.44), cy + Inches(3.20), Inches(1.22), Inches(0.55), COLOR_CARD_BG, COLOR_BORDER)
-        add_text(slide, cx + Inches(1.44), cy + Inches(3.24), Inches(1.22), Inches(0.25), s2_val, FONT_MONO, 9.5, COLOR_BLACK, bold=True, align=PP_ALIGN.CENTER)
-        add_text(slide, cx + Inches(1.44), cy + Inches(3.52), Inches(1.22), Inches(0.2), s2_lbl, FONT_MONO, 6.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.43), cy + Inches(3.42), Inches(1.25), Inches(0.48), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(1.43), cy + Inches(3.45), Inches(1.25), Inches(0.22), s2_val, FONT_MONO, 8.5, COLOR_BLACK, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, cx + Inches(1.43), cy + Inches(3.68), Inches(1.25), Inches(0.18), s2_lbl, FONT_MONO, 5.5, COLOR_MUTED, align=PP_ALIGN.CENTER)
 
         # Bottom Subsystem Strip
-        add_text(slide, cx + Inches(0.12), cy + Inches(3.90), Inches(1.3), Inches(0.2), f1, FONT_MONO, 6.0, COLOR_MUTED)
-        add_text(slide, cx + Inches(1.35), cy + Inches(3.90), Inches(1.3), Inches(0.2), f2, FONT_MONO, 6.0, COLOR_RED, bold=True, align=PP_ALIGN.RIGHT)
+        add_text(slide, cx + Inches(0.10), cy + Inches(3.96), Inches(1.3), Inches(0.18), f1, FONT_MONO, 5.5, COLOR_MUTED)
+        add_text(slide, cx + Inches(1.35), cy + Inches(3.96), Inches(1.3), Inches(0.18), f2, FONT_MONO, 5.5, COLOR_RED, bold=True, align=PP_ALIGN.RIGHT)
 
         # Accent Bar at Bottom
         add_shape(slide, MSO_SHAPE.RECTANGLE, cx, cy + card_h - Inches(0.04), card_w, Inches(0.04), b_col)
