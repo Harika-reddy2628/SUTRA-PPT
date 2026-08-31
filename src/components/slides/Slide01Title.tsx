@@ -84,7 +84,7 @@ export const Slide01Title: React.FC = () => {
               CORE ARCHITECTURE TEAM (OFFGRID)
             </div>
             <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-              232/232 VERIFIED ZERO-MOCK TESTS
+              RESEARCH-BACKED &amp; EMPIRICALLY VALIDATED
             </div>
           </div>
 

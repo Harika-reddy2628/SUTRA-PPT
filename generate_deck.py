@@ -129,8 +129,8 @@ def build_title_slide(prs):
 
     add_text(slide, Inches(0.8), Inches(5.72), Inches(6.0), Inches(0.2),
              "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_HEADING, 8.0, COLOR_DIM, bold=True)
-    add_text(slide, Inches(8.0), Inches(5.72), Inches(4.533), Inches(0.2),
-             "232/232 VERIFIED ZERO-MOCK TESTS", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, italic=False, align=PP_ALIGN.RIGHT)
+    add_text(slide, Inches(7.5), Inches(5.72), Inches(5.033), Inches(0.2),
+             "RESEARCH-BACKED & EMPIRICALLY VALIDATED", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, italic=False, align=PP_ALIGN.RIGHT)
 
     members = [
         ("Nikhil", "Tech Lead · Subsys A & B", "GNC & JSCC", True),
