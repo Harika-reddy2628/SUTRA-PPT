@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Title Slide (Web Aura Architecture + Metric Hooks)</title>
+  <title>PROJECT SUTRA — Title Slide (Web Aura Architecture + Punchy Metric Cards)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 85px 120px;
+      padding: 80px 120px 70px 120px;
       position: relative;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(10, 22, 40, 0.08);
@@ -177,50 +177,89 @@
       <main class="max-w-5xl my-auto py-2">
         
         <!-- 1. Serif Hook Quote -->
-        <blockquote class="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-6">
+        <blockquote class="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-5">
           “When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”
         </blockquote>
 
         <!-- 2. Monumental Headline with L-Bracket Corner Frame -->
-        <div class="relative inline-block my-2">
+        <div class="relative inline-block my-1">
           <div class="corner-bracket-tl"></div>
           <div class="corner-bracket-br"></div>
 
-          <h1 class="text-[96px] sm:text-[112px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
+          <h1 class="text-[92px] sm:text-[108px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
             PROJECT<br/>
             <span class="italic font-light opacity-80">SUTRA.</span>
           </h1>
         </div>
 
         <!-- 3. Subtitle / One-Liner Description -->
-        <p class="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-6">
+        <p class="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-5">
           Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.
         </p>
 
-        <!-- 4. Three Empirical Capability Hooks (Web Aura Pill Modules) -->
-        <div class="grid grid-cols-3 gap-4 max-w-3xl mt-6">
+        <!-- 4. PUNCHY Web Aura Metric Cards (Hero Numeric Callouts with Watermarks) -->
+        <div class="grid grid-cols-3 gap-5 max-w-3xl mt-6">
           
-          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
-            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">01</div>
-            <div>
-              <div class="text-xs font-black text-black tracking-tight">0% GPS Reliance</div>
-              <div class="text-[10px] text-slate-500 font-medium">VIO + Optical Flow EKF2</div>
+          <!-- Punchy Tab 1 -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 p-4 shadow-sm transition-all hover:border-black hover:shadow-md">
+            <span class="pointer-events-none absolute -right-1 -top-2 font-mono text-[52px] font-black leading-none text-slate-100 select-none">
+              01
+            </span>
+            <div class="relative z-10 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8px] font-black uppercase tracking-wider">
+                  GPS-DENIED
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1.5 pt-1">
+                <span class="text-3xl font-black text-black tracking-tight leading-none">0%</span>
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wide">Reliance</span>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium leading-snug pt-0.5">
+                VIO + Optical Flow EKF2 Offboard
+              </p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
-            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">02</div>
-            <div>
-              <div class="text-xs font-black text-black tracking-tight">0.0 dB Cliff Free</div>
-              <div class="text-[10px] text-slate-500 font-medium">Deep JSCC Neural Wireless</div>
+          <!-- Punchy Tab 2 -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 p-4 shadow-sm transition-all hover:border-black hover:shadow-md">
+            <span class="pointer-events-none absolute -right-1 -top-2 font-mono text-[52px] font-black leading-none text-slate-100 select-none">
+              02
+            </span>
+            <div class="relative z-10 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2 py-0.5 rounded-full bg-slate-900 text-white text-[8px] font-black uppercase tracking-wider">
+                  ZERO-CLIFF
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1.5 pt-1">
+                <span class="text-3xl font-black text-black tracking-tight leading-none">0.0 dB</span>
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wide">Cliff Free</span>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium leading-snug pt-0.5">
+                Deep JSCC Neural Analog Wireless
+              </p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
-            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">03</div>
-            <div>
-              <div class="text-xs font-black text-black tracking-tight">3.59cm Precision</div>
-              <div class="text-[10px] text-slate-500 font-medium">DEM Raycast Geolocation</div>
+          <!-- Punchy Tab 3 -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 p-4 shadow-sm transition-all hover:border-black hover:shadow-md">
+            <span class="pointer-events-none absolute -right-1 -top-2 font-mono text-[52px] font-black leading-none text-slate-100 select-none">
+              03
+            </span>
+            <div class="relative z-10 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[8px] font-black uppercase tracking-wider">
+                  SUB-DECIMETER
+                </span>
+              </div>
+              <div class="flex items-baseline gap-1.5 pt-1">
+                <span class="text-3xl font-black text-black tracking-tight leading-none">3.59<span class="text-xl">cm</span></span>
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wide">Geo-Fix</span>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium leading-snug pt-0.5">
+                WGS84 3D DEM Terrain Raycasting
+              </p>
             </div>
           </div>
 

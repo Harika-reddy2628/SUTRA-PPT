@@ -5,7 +5,7 @@ Web Aura India Architectural Design System:
 - Pure White Background (#FFFFFF) with micro-grid pattern
 - Serif quotation quote
 - Monumental headline with L-bracket alignment framing
-- 3 Empirical Capability Metric Hooks
+- Punchy Hero Metric Callout Cards with Watermarks
 - Complete Team Offgrid Subsystem Card row
 """
 
@@ -25,6 +25,7 @@ COLOR_MUTED = RGBColor(0x64, 0x74, 0x8B)     # Muted Text (#64748B)
 COLOR_DIM = RGBColor(0x94, 0xA3, 0xB8)       # Dim Label (#94A3B8)
 COLOR_BORDER = RGBColor(0xE2, 0xE8, 0xF0)    # Light Border (#E2E8F0)
 COLOR_CARD_BG = RGBColor(0xF8, 0xFA, 0xFC)   # Slate Surface (#F8FAFC)
+COLOR_WATERMARK = RGBColor(0xF1, 0xF5, 0xF9) # Faint Watermark Number (#F1F5F9)
 COLOR_EMERALD = RGBColor(0x05, 0x96, 0x69)   # Emerald Status Pill
 
 FONT_HEADING = "Plus Jakarta Sans"
@@ -99,7 +100,7 @@ def build_title_slide(prs):
 
     # 3. Center Hero: Web Aura Peak Craft Formula
     # [3a. Serif Quotation Hook]
-    add_text(slide, Inches(0.8), Inches(1.6), Inches(11.0), Inches(0.4),
+    add_text(slide, Inches(0.8), Inches(1.55), Inches(11.0), Inches(0.4),
              "“When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”",
              FONT_SERIF, 18, COLOR_BLACK, bold=False, italic=True)
 
@@ -107,45 +108,57 @@ def build_title_slide(prs):
     bracket_len = Inches(0.35)
     bracket_thick = Inches(0.02)
     # Top-Left L-bracket
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.15), bracket_len, bracket_thick, COLOR_BLACK)
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.15), bracket_thick, bracket_len, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.05), bracket_len, bracket_thick, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.05), bracket_thick, bracket_len, COLOR_BLACK)
     # Bottom-Right L-bracket
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.0), Inches(3.95), bracket_len, bracket_thick, COLOR_BLACK)
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.33), Inches(3.62), bracket_thick, bracket_len, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.0), Inches(3.75), bracket_len, bracket_thick, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.33), Inches(3.42), bracket_thick, bracket_len, COLOR_BLACK)
 
     # [3c. Monumental Headline: PROJECT SUTRA]
-    add_text(slide, Inches(0.8), Inches(2.15), Inches(8.0), Inches(0.8),
-             "PROJECT", FONT_HEADING, 54, COLOR_BLACK, bold=True)
-    add_text(slide, Inches(0.8), Inches(2.95), Inches(8.0), Inches(0.8),
-             "SUTRA.", FONT_HEADING, 54, COLOR_SLATE, bold=False, italic=True)
+    add_text(slide, Inches(0.8), Inches(2.05), Inches(8.0), Inches(0.8),
+             "PROJECT", FONT_HEADING, 52, COLOR_BLACK, bold=True)
+    add_text(slide, Inches(0.8), Inches(2.8), Inches(8.0), Inches(0.8),
+             "SUTRA.", FONT_HEADING, 52, COLOR_SLATE, bold=False, italic=True)
 
     # [3d. Description]
-    add_text(slide, Inches(0.8), Inches(3.9), Inches(10.0), Inches(0.5),
+    add_text(slide, Inches(0.8), Inches(3.68), Inches(10.0), Inches(0.45),
              "Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.",
-             FONT_BODY, 12.5, COLOR_SLATE, bold=False)
+             FONT_BODY, 12.0, COLOR_SLATE, bold=False)
 
-    # [3e. 3 Capability Metric Hooks]
-    hooks = [
-        ("01", "0% GPS Reliance", "VIO + Optical Flow EKF2"),
-        ("02", "0.0 dB Cliff Free", "Deep JSCC Neural Wireless"),
-        ("03", "3.59cm Precision", "DEM Raycast Geolocation"),
+    # [3e. Punchy Hero Metric Callout Cards with Watermarks]
+    punchy_tabs = [
+        ("01", "GPS-DENIED", "0%", "Reliance", "VIO + Optical Flow EKF2", COLOR_BLACK),
+        ("02", "ZERO-CLIFF", "0.0 dB", "Cliff Free", "Deep JSCC Neural Wireless", COLOR_NAVY),
+        ("03", "SUB-DECIMETER", "3.59cm", "Geo-Fix", "3D DEM Terrain Raycast", COLOR_EMERALD),
     ]
-    hook_w = Inches(2.5)
-    hook_gap = Inches(0.2)
-    for i, (num, h_title, h_sub) in enumerate(hooks):
-        h_left = Inches(0.8) + i * (hook_w + hook_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, h_left, Inches(4.55), hook_w, Inches(0.65), COLOR_CARD_BG, COLOR_BORDER)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, h_left + Inches(0.1), Inches(4.65), Inches(0.28), Inches(0.28), COLOR_BLACK)
-        add_text(slide, h_left + Inches(0.1), Inches(4.68), Inches(0.28), Inches(0.22), num, FONT_MONO, 8, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
-        add_text(slide, h_left + Inches(0.45), Inches(4.62), Inches(1.9), Inches(0.25), h_title, FONT_HEADING, 9.5, COLOR_BLACK, bold=True)
-        add_text(slide, h_left + Inches(0.45), Inches(4.88), Inches(1.9), Inches(0.22), h_sub, FONT_BODY, 7.5, COLOR_SLATE, bold=False)
+    card_w = Inches(2.7)
+    card_h = Inches(1.15)
+    card_gap = Inches(0.2)
+    for i, (num, tag, val, label, sub, tag_color) in enumerate(punchy_tabs):
+        c_left = Inches(0.8) + i * (card_w + card_gap)
+        # Card Container
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, c_left, Inches(4.3), card_w, card_h, COLOR_CARD_BG, COLOR_BORDER)
+        
+        # Watermark Number in top right
+        add_text(slide, c_left + Inches(1.8), Inches(4.25), Inches(0.8), Inches(0.6), num, FONT_MONO, 28, COLOR_WATERMARK, bold=True, align=PP_ALIGN.RIGHT)
+        
+        # Tag Badge
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, c_left + Inches(0.12), Inches(4.4), Inches(1.1), Inches(0.2), tag_color)
+        add_text(slide, c_left + Inches(0.12), Inches(4.42), Inches(1.1), Inches(0.18), tag, FONT_HEADING, 6.5, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
+        
+        # Giant Hero Value
+        add_text(slide, c_left + Inches(0.12), Inches(4.65), Inches(1.4), Inches(0.4), val, FONT_HEADING, 20, COLOR_BLACK, bold=True)
+        add_text(slide, c_left + Inches(1.3), Inches(4.72), Inches(1.2), Inches(0.3), label, FONT_HEADING, 9, COLOR_SLATE, bold=True)
+        
+        # Subtext
+        add_text(slide, c_left + Inches(0.12), Inches(5.1), Inches(2.45), Inches(0.25), sub, FONT_BODY, 7.5, COLOR_MUTED, bold=False)
 
     # 4. Bottom Bar: Web Aura Card Row Style (5 Team Subsystems)
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(5.6), Inches(11.733), Inches(0.015), COLOR_BORDER)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(5.65), Inches(11.733), Inches(0.015), COLOR_BORDER)
 
-    add_text(slide, Inches(0.8), Inches(5.72), Inches(6.0), Inches(0.2),
+    add_text(slide, Inches(0.8), Inches(5.75), Inches(6.0), Inches(0.2),
              "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_HEADING, 8.0, COLOR_DIM, bold=True)
-    add_text(slide, Inches(7.5), Inches(5.72), Inches(5.033), Inches(0.2),
+    add_text(slide, Inches(7.5), Inches(5.75), Inches(5.033), Inches(0.2),
              "RESEARCH-BACKED & EMPIRICALLY VALIDATED", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, italic=False, align=PP_ALIGN.RIGHT)
 
     members = [
@@ -160,14 +173,17 @@ def build_title_slide(prs):
     gap = Inches(0.18)
     for i, (name, role, badge, is_lead) in enumerate(members):
         left_pos = Inches(0.8) + i * (col_w + gap)
+        # Card Background
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left_pos, Inches(6.0), col_w, Inches(1.15),
                   COLOR_CARD_BG, COLOR_BORDER)
         
+        # Name & Role
         add_text(slide, left_pos + Inches(0.12), Inches(6.08), col_w - Inches(0.24), Inches(0.25),
                  name, FONT_HEADING, 10.5, COLOR_BLACK, bold=True)
         add_text(slide, left_pos + Inches(0.12), Inches(6.32), col_w - Inches(0.24), Inches(0.22),
                  role, FONT_BODY, 8.0, COLOR_SLATE, bold=False)
         
+        # Badge Pill
         badge_bg = COLOR_BLACK if is_lead else COLOR_BORDER
         badge_txt_color = COLOR_BG if is_lead else COLOR_NAVY
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left_pos + Inches(0.12), Inches(6.65), Inches(1.2), Inches(0.22),
@@ -183,7 +199,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA — Title Slide (Web Aura Architecture)"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Web Aura Architectural Title Slide with Metric Hooks (.pptx)...")
+    print("Building Web Aura Architectural Title Slide with Punchy Tabs (.pptx)...")
     build_title_slide(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")
