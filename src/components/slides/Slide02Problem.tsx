@@ -68,17 +68,17 @@ export const Slide02Problem: React.FC = () => {
 
       <div className="relative z-10 h-full flex flex-col justify-between">
         
-        {/* Top Header: Left Accent Bar + Category Tag */}
+        {/* Top Header: Left Accent Bar + Increased Size Slide Title */}
         <header className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-1.5 h-6 bg-[#0A1628] rounded-full"></div>
-            <div className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#0A1628]">
+          <div className="flex items-center gap-3.5">
+            <div className="w-2 h-7 bg-[#0A1628] rounded-full"></div>
+            <div className="font-mono text-sm sm:text-base font-bold uppercase tracking-[0.25em] text-[#0A1628]">
               THE PROBLEM
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.18em] text-slate-600 font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-[11px] font-black uppercase tracking-[0.18em] text-slate-600 font-mono">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
             <span>RESCUE DRONE FAILURE MODES</span>
           </div>
         </header>
@@ -126,7 +126,7 @@ export const Slide02Problem: React.FC = () => {
 
             {/* Technical Vector Schematic Illustration Strip */}
             <div className="pt-2">
-              <div className="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5">
+              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5">
                 TACTICAL FAILURE SCHEMATICS
               </div>
               
@@ -186,10 +186,10 @@ export const Slide02Problem: React.FC = () => {
             
             {/* Dossier Header */}
             <div className="flex items-center justify-between pb-2.5 font-mono">
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
+              <span className="text-[10.5px] font-black uppercase tracking-[0.25em] text-slate-400">
                 REAL DISASTER FIELD EVIDENCE
               </span>
-              <span className="text-[10px] font-bold text-slate-500">
+              <span className="text-[10.5px] font-bold text-slate-500">
                 SOURCE 0{currentIndex + 1} / 0{AUDIT_CARDS.length}
               </span>
             </div>
@@ -247,7 +247,7 @@ export const Slide02Problem: React.FC = () => {
                           <polyline points="2 12 12 17 22 12" />
                         </svg>
                       </div>
-                      <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-wider font-mono">
+                      <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[9.5px] font-black uppercase tracking-wider font-mono">
                         {card.badge}
                       </span>
                     </div>

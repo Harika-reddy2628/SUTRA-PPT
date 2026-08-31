@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Big Full-Bleed Photo Card)
+- Slide 02: The Problem (Prominent Slide Title, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Big Full-Bleed Photo Card)
 """
 
 from pathlib import Path
@@ -170,14 +170,15 @@ def build_slide_02_problem(prs):
         y = y_step * grid_spacing
         add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(y), SLIDE_WIDTH, Inches(0.008), COLOR_BORDER)
 
-    # 2. Top Section: Left Accent Bar + Category Tag
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.65), Inches(0.08), Inches(0.3), COLOR_NAVY)
-    add_text(slide, Inches(1.0), Inches(0.67), Inches(4.0), Inches(0.3),
-             "THE PROBLEM", FONT_MONO, 10, COLOR_NAVY, bold=True)
+    # 2. Top Section: Left Accent Bar + Increased Size Slide Title
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.62), Inches(0.1), Inches(0.36), COLOR_NAVY)
+    add_text(slide, Inches(1.05), Inches(0.65), Inches(4.5), Inches(0.35),
+             "THE PROBLEM", FONT_MONO, 13, COLOR_NAVY, bold=True)
     
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.62), Inches(2.7), Inches(0.3), COLOR_CARD_BG, COLOR_BORDER)
-    add_text(slide, Inches(9.8), Inches(0.67), Inches(2.7), Inches(0.2),
-             "RESCUE DRONE FAILURE MODES", FONT_MONO, 7.5, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.6), Inches(0.60), Inches(2.9), Inches(0.36), COLOR_CARD_BG, COLOR_BORDER)
+    add_shape(slide, MSO_SHAPE.OVAL, Inches(9.8), Inches(0.72), Inches(0.1), Inches(0.1), COLOR_RED)
+    add_text(slide, Inches(9.95), Inches(0.66), Inches(2.5), Inches(0.25),
+             "RESCUE DRONE FAILURE MODES", FONT_MONO, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
 
     # 3. Left Column: Simple Conclusion Headline + 6x6 Simple Bullets
     add_text(slide, Inches(0.8), Inches(1.35), Inches(7.0), Inches(1.1),
@@ -215,7 +216,7 @@ def build_slide_02_problem(prs):
         sx = Inches(0.8) + i * (sch_w + sch_gap)
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, sx, Inches(5.3), sch_w, Inches(0.9), COLOR_CARD_BG, COLOR_BORDER)
         add_text(slide, sx + Inches(0.12), Inches(5.38), sch_w - Inches(0.24), Inches(0.25), sch_title, FONT_HEADING, 8.5, COLOR_BLACK, bold=True)
-        add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_mono_sub, FONT_MONO, 7.0, COLOR_MUTED) if 'sch_mono_sub' in locals() else add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_sub, FONT_MONO, 7.0, COLOR_MUTED)
+        add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_sub, FONT_MONO, 7.0, COLOR_MUTED)
 
     # 4. Right Column: Reference-Matching Big Full-Bleed Image Card Carousel
     add_text(slide, Inches(8.0), Inches(1.35), Inches(4.5), Inches(0.25),
@@ -276,7 +277,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with Full-Bleed Photo Card)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Larger Title)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 
