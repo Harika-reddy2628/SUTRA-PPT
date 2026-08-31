@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 generate_deck.py - Generates the SUTRA Title Slide (.pptx)
-With complete Team Offgrid roster from Project SUTRA directory.
+With radial dot pattern background and complete Team Offgrid roster.
 """
 
 from pathlib import Path
@@ -18,6 +18,7 @@ COLOR_MUTED = RGBColor(0x5A, 0x6B, 0x63)     # Sandstone Muted Green
 COLOR_TERRACOTTA = RGBColor(0x9E, 0x4D, 0x34) # Warm Terracotta Clay
 COLOR_SAGE = RGBColor(0x4A, 0x7A, 0x58)       # Vedic Sage Green
 COLOR_BORDER = RGBColor(0xED, 0xE4, 0xD6)    # Sandstone Border
+COLOR_DOT = RGBColor(0xDC, 0xD3, 0xC4)       # Subtle Sandstone Dot Matrix
 
 FONT_HEADING = "Plus Jakarta Sans"
 FONT_BODY = "Plus Jakarta Sans"
@@ -61,8 +62,22 @@ def build_title_slide(prs):
     blank_layout = prs.slide_layouts[6]
     slide = prs.slides.add_slide(blank_layout)
 
-    # 1. Background (>50% Whitespace)
+    # 1. Background
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), SLIDE_WIDTH, SLIDE_HEIGHT, COLOR_BG)
+
+    # 1b. Subtle Dot Grid Matrix (Center Faded)
+    grid_spacing = 0.5  # Inches
+    for x_step in range(3, 24):
+        x = x_step * grid_spacing
+        for y_step in range(2, 13):
+            y = y_step * grid_spacing
+            # Distance from center for radial falloff
+            dx = (x - 6.666) / 5.5
+            dy = (y - 3.75) / 3.0
+            dist_sq = dx * dx + dy * dy
+            if dist_sq < 1.0:
+                dot_size = Inches(0.025)
+                add_shape(slide, MSO_SHAPE.OVAL, Inches(x), Inches(y), dot_size, dot_size, COLOR_DOT)
 
     # 2. Top Header: Team Offgrid Tag & Date
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.6), Inches(0.35), Inches(0.35),
@@ -123,7 +138,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA — Title Slide (Team Offgrid)"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building strict PPT Artisan Title Slide with full Team Offgrid details...")
+    print("Building strict PPT Artisan Title Slide with dot grid pattern & full Team Offgrid details...")
     build_title_slide(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")
