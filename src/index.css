@@ -24,14 +24,21 @@
   --text-faint: #7A8C83;
 }
 
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: var(--bg-canvas);
   color: var(--text-main);
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
-  user-select: none;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Presentation Canvas Aspect Ratio Lock */
@@ -73,7 +80,7 @@ body {
   z-index: 1;
 }
 
-/* Elegant Soft Line */
+/* Ambient Glow Bar */
 .ambient-glow {
   position: absolute;
   top: 0;
@@ -84,4 +91,19 @@ body {
   opacity: 0.85;
   z-index: 2;
   pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4ECE1;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CEBE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B68637;
 }
