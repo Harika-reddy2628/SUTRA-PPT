@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { DroneMeshCanvasBackground } from './components/landing/DroneMeshCanvasBackground';
-import { Navbar } from './components/landing/Navbar';
 import { HeroSection } from './components/landing/HeroSection';
 import { ProblemSection } from './components/landing/ProblemSection';
 import { FsdSection } from './components/landing/FsdSection';
@@ -11,7 +10,7 @@ import { ScorecardSection } from './components/landing/ScorecardSection';
 import { TeamSection } from './components/landing/TeamSection';
 import { Footer } from './components/landing/Footer';
 import { PresentationDeck } from './components/PresentationDeck';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Presentation } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [isPresentationMode, setIsPresentationMode] = useState<boolean>(false);
@@ -24,7 +23,7 @@ export const App: React.FC = () => {
           {/* Back to Landing Page floating button */}
           <button
             onClick={() => setIsPresentationMode(false)}
-            className="fixed top-4 left-4 z-50 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-sandstone-border font-mono text-xs font-bold text-earth-forest hover:bg-canvas-raised shadow-card-hover transition-all opacity-40 hover:opacity-100"
+            className="fixed top-6 left-6 z-50 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-sandstone-border font-mono text-xs font-bold text-earth-forest hover:bg-canvas-raised shadow-card-hover transition-all opacity-60 hover:opacity-100 backdrop-blur-md"
             title="Return to Landing Page"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -38,13 +37,17 @@ export const App: React.FC = () => {
           {/* Animated Canvas Mesh Background */}
           <DroneMeshCanvasBackground />
 
-          {/* Sticky Navigation Header */}
-          <Navbar
-            isPresentationMode={isPresentationMode}
-            onTogglePresentationMode={() => setIsPresentationMode(true)}
-          />
+          {/* Discreet Floating Deck Mode Switcher (Bottom-Right) */}
+          <button
+            onClick={() => setIsPresentationMode(true)}
+            className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-md border border-sandstone-border font-mono text-xs font-bold text-earth-forest hover:bg-earth-forest hover:text-white shadow-card-hover transition-all group"
+            title="Switch to 16:9 Presentation Slides"
+          >
+            <Presentation className="w-4 h-4 text-earth-terracotta group-hover:text-white transition-colors" />
+            <span>Presentation Deck</span>
+          </button>
 
-          {/* Main Landing Page Sections */}
+          {/* Main Landing Page Sections - Open & Spacious */}
           <main>
             <HeroSection />
             <ProblemSection />
