@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Title Slide (Web Aura Architecture)</title>
+  <title>PROJECT SUTRA — Title Slide (Web Aura Architecture + Metric Hooks)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,7 +149,7 @@
         <!-- Left: Status & Category -->
         <div class="flex items-center gap-3.5">
           <div class="w-8 h-8 rounded-xl bg-black flex items-center justify-center text-white font-mono font-bold text-xs shadow-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <polygon points="12 2 2 7 12 12 22 7 12 2" />
               <polyline points="2 17 12 22 22 17" />
               <polyline points="2 12 12 17 22 12" />
@@ -174,10 +174,10 @@
       </header>
 
       <!-- Center Hero Section: Web Aura Peak Craft Formula -->
-      <main class="max-w-5xl my-auto py-6">
+      <main class="max-w-5xl my-auto py-2">
         
         <!-- 1. Serif Hook Quote -->
-        <blockquote class="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-8">
+        <blockquote class="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-6">
           “When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”
         </blockquote>
 
@@ -186,22 +186,51 @@
           <div class="corner-bracket-tl"></div>
           <div class="corner-bracket-br"></div>
 
-          <h1 class="text-[100px] sm:text-[120px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
+          <h1 class="text-[96px] sm:text-[112px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
             PROJECT<br/>
             <span class="italic font-light opacity-80">SUTRA.</span>
           </h1>
         </div>
 
         <!-- 3. Subtitle / One-Liner Description -->
-        <p class="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-8">
+        <p class="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-6">
           Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.
         </p>
+
+        <!-- 4. Three Empirical Capability Hooks (Web Aura Pill Modules) -->
+        <div class="grid grid-cols-3 gap-4 max-w-3xl mt-6">
+          
+          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">01</div>
+            <div>
+              <div class="text-xs font-black text-black tracking-tight">0% GPS Reliance</div>
+              <div class="text-[10px] text-slate-500 font-medium">VIO + Optical Flow EKF2</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">02</div>
+            <div>
+              <div class="text-xs font-black text-black tracking-tight">0.0 dB Cliff Free</div>
+              <div class="text-[10px] text-slate-500 font-medium">Deep JSCC Neural Wireless</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+            <div class="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">03</div>
+            <div>
+              <div class="text-xs font-black text-black tracking-tight">3.59cm Precision</div>
+              <div class="text-[10px] text-slate-500 font-medium">DEM Raycast Geolocation</div>
+            </div>
+          </div>
+
+        </div>
 
       </main>
 
       <!-- Bottom Bar: Complete Team Offgrid Subsystem Roster (Web Aura Card Row Style) -->
-      <footer class="pt-6 border-t border-slate-200">
-        <div class="flex justify-between items-center mb-4">
+      <footer class="pt-5 border-t border-slate-200">
+        <div class="flex justify-between items-center mb-3">
           <div class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
             CORE ARCHITECTURE TEAM (OFFGRID)
           </div>
@@ -210,44 +239,44 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-5 gap-5">
+        <div class="grid grid-cols-5 gap-4">
           
-          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+          <div class="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
             <div class="font-black text-black text-sm">Nikhil</div>
             <div class="text-[11px] text-slate-600 font-semibold">Tech Lead · Subsys A &amp; B</div>
-            <div class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8.5px] font-black tracking-wider uppercase mt-1">
+            <div class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8.5px] font-black tracking-wider uppercase mt-0.5">
               GNC &amp; JSCC
             </div>
           </div>
 
-          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+          <div class="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
             <div class="font-black text-black text-sm">Vedanth Sai Ram</div>
             <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem C</div>
-            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
               AI PERCEPTION
             </div>
           </div>
 
-          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+          <div class="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
             <div class="font-black text-black text-sm">Siva Kesava</div>
             <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem D</div>
-            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
               3D GIS GCS
             </div>
           </div>
 
-          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+          <div class="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
             <div class="font-black text-black text-sm">Harika</div>
             <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem E</div>
-            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
               VERIFICATION QA
             </div>
           </div>
 
-          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+          <div class="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
             <div class="font-black text-black text-sm">Rohith Kumar</div>
             <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem F</div>
-            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
               NDMA CONOPS
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Layers } from 'lucide-react';
 
 export const Slide01Title: React.FC = () => {
   return (
-    <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-12 lg:p-20 select-none overflow-hidden border border-slate-200">
+    <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-10 lg:p-16 select-none overflow-hidden border border-slate-200">
       
       {/* Web Aura Background Grid & Orbital Rings */}
       <div 
@@ -50,10 +50,10 @@ export const Slide01Title: React.FC = () => {
         </header>
 
         {/* Center Hero Section: Web Aura Peak Craft Formula */}
-        <main className="max-w-5xl my-auto py-6">
+        <main className="max-w-5xl my-auto py-2">
           
           {/* 1. Serif Hook Quote */}
-          <blockquote className="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-8">
+          <blockquote className="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-6">
             “When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”
           </blockquote>
 
@@ -64,22 +64,51 @@ export const Slide01Title: React.FC = () => {
             {/* Bottom-Right Corner Bracket */}
             <div className="absolute -bottom-6 -right-6 w-8 h-8 border-b-2 border-r-2 border-black"></div>
 
-            <h1 className="text-8xl sm:text-9xl lg:text-[116px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
+            <h1 className="text-8xl sm:text-9xl lg:text-[112px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
               PROJECT<br/>
               <span className="italic font-light opacity-80">SUTRA.</span>
             </h1>
           </div>
 
           {/* 3. Subtitle / One-Liner Description */}
-          <p className="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-8">
+          <p className="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-6">
             Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.
           </p>
+
+          {/* 4. Three Capability Metric Hooks */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mt-6">
+            
+            <div className="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+              <div className="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">01</div>
+              <div>
+                <div className="text-xs font-black text-black tracking-tight">0% GPS Reliance</div>
+                <div className="text-[10px] text-slate-500 font-medium">VIO + Optical Flow EKF2</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+              <div className="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">02</div>
+              <div>
+                <div className="text-xs font-black text-black tracking-tight">0.0 dB Cliff Free</div>
+                <div className="text-[10px] text-slate-500 font-medium">Deep JSCC Neural Wireless</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-3 rounded-2xl border border-slate-200/90 bg-slate-50/70">
+              <div className="w-7 h-7 rounded-lg bg-black text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">03</div>
+              <div>
+                <div className="text-xs font-black text-black tracking-tight">3.59cm Precision</div>
+                <div className="text-[10px] text-slate-500 font-medium">DEM Raycast Geolocation</div>
+              </div>
+            </div>
+
+          </div>
 
         </main>
 
         {/* Bottom Bar: Complete Team Offgrid Subsystem Roster (Web Aura Card Row Style) */}
-        <footer className="pt-6 border-t border-slate-200">
-          <div className="flex justify-between items-center mb-4 font-mono">
+        <footer className="pt-5 border-t border-slate-200">
+          <div className="flex justify-between items-center mb-3 font-mono">
             <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
               CORE ARCHITECTURE TEAM (OFFGRID)
             </div>
@@ -88,44 +117,44 @@ export const Slide01Title: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
             
-            <div className="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
               <div className="font-black text-black text-sm">Nikhil</div>
               <div className="text-[11px] text-slate-600 font-semibold">Tech Lead · Subsys A &amp; B</div>
-              <div className="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8.5px] font-black tracking-wider uppercase mt-1">
+              <div className="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8.5px] font-black tracking-wider uppercase mt-0.5">
                 GNC &amp; JSCC
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
               <div className="font-black text-black text-sm">Vedanth Sai Ram</div>
               <div className="text-[11px] text-slate-600 font-semibold">Lead · Subsystem C</div>
-              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
                 AI PERCEPTION
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
               <div className="font-black text-black text-sm">Siva Kesava</div>
               <div className="text-[11px] text-slate-600 font-semibold">Lead · Subsystem D</div>
-              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
                 3D GIS GCS
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
               <div className="font-black text-black text-sm">Harika</div>
               <div className="text-[11px] text-slate-600 font-semibold">Lead · Subsystem E</div>
-              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
                 VERIFICATION QA
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div className="p-3 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
               <div className="font-black text-black text-sm">Rohith Kumar</div>
               <div className="text-[11px] text-slate-600 font-semibold">Lead · Subsystem F</div>
-              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              <div className="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-0.5">
                 NDMA CONOPS
               </div>
             </div>
