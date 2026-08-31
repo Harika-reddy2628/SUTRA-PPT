@@ -117,7 +117,7 @@ def build_slide_01_title(prs):
     grounded_tabs = [
         ("01", "DECENTRALIZED GNC", "50Hz", "Offboard Rate", "PX4 MicroXRCE + VIO EKF2", COLOR_BLACK),
         ("02", "SEMANTIC WIRELESS", "-5dB", "Jam Resilience", "Deep JSCC Zero-Cliff Video", COLOR_NAVY),
-        ("03", "TERRAIN GEOLOCATION", "3.59cm", "Geo-Accuracy", "WGS84 3D DEM Raycasting", COLOR_EMERALD),
+        ("03", "AI VISION & GEO", "3.59cm", "Slope Precision", "Thermal AI + 3D Terrain Raycast", COLOR_EMERALD),
     ]
     card_w = Inches(2.7)
     card_h = Inches(1.15)
@@ -208,11 +208,11 @@ def build_slide_02_problem(prs):
          "Conventional H.264 digital video completely cuts out below 5dB SNR, causing total blindness.",
          "<5dB SNR", "Video Blackout", "0 Relay", "Single-Drone Link", "TARGET: DEEP JSCC MESH", "LEAD: NIKHIL", COLOR_RED),
 
-        ("SUBSYSTEM C // VISION", "Single-Sensor & Slope Drift", "35% FALSE ALARM",
+        ("SUBSYSTEM C // VISION", "Smoke Blindspots & Slope Drift", "35% FALSE ALARM",
          "assets/disaster/disaster_rescue_2.jpg", "Sikkim Slope Geo Error",
-         "2D cameras assume flat ground; blind to smoke",
-         "Smoke/darkness blind single RGB sensors; steep slopes produce 15–30m GPS coordinate errors.",
-         "15–30m", "Slope Geo Drift", "35%", "False Alarm Rate", "TARGET: TRI-MODAL & 3D DEM", "LEAD: VEDANTH", COLOR_RED),
+         "2D cameras miss survivors in smoke and assume flat terrain",
+         "Smoke & mud blind optical cameras; 45° slopes cause 15–30m GPS coordinate errors.",
+         "15–30m", "Slope Geo Error", "35%", "False Alarm Rate", "TARGET: THERMAL + 3D DEM", "LEAD: VEDANTH", COLOR_RED),
 
         ("SUBSYSTEM D // C2 GCS", "Central Pilot Bottleneck", "15-25 CREW LOAD",
          "assets/illustrations/single_link_loss.jpg", "Central Link Abort",
@@ -344,9 +344,9 @@ def build_slide_03_4subsystems(prs):
          "Differentiable joint source-channel coding yielding zero digital cliff and graceful video degradation down to -5dB.",
          "-5dB", "SNR Thresh", "0 Cliff", "Degradation", "SEMANTIC COMMS", "EDGE TPU", COLOR_BLACK),
 
-        ("SUBSYSTEM C // VISION", "Tri-Modal AI & 3D Geolocation", "3.59cm RESIDUAL",
+        ("SUBSYSTEM C // VISION", "Thermal & 3D AI Geolocation", "3.59cm RESIDUAL",
          "Smoke Blindspots & 15-30m Slope Drift",
-         "Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin, eliminating slope error down to 3.59cm precision.",
+         "Fuses thermal body heat + optical AI with 3D elevation raycasting on Jetson Orin (<15ms), giving rescue teams exact coordinates on steep slopes.",
          "<15ms", "Inference", "3.59cm", "Raycast Error", "SLOPE CORRECTED", "JETSON ORIN", COLOR_EMERALD),
 
         ("SUBSYSTEM D // C2 GCS", "Pegasus 3D WebGPU GCS", "1-2 OPERATORS",
