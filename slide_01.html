@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Title Slide (Nothing OS Aesthetic)</title>
+  <title>PROJECT SUTRA — Title Slide (Nothing Light Theme)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,12 @@
           },
           colors: {
             nothing: {
-              black: '#000000',
-              surface: '#0A0A0A',
+              dark: '#191516',
+              bg: '#FFFFFF',
+              surface: '#F8F6F4',
               red: '#D71920',
-              white: '#FFFFFF',
-              gray: '#888888',
-              dim: '#444444',
-              border: '#1A1A1A',
+              muted: '#7A7576',
+              border: '#E8E3DF',
             }
           }
         }
@@ -40,7 +39,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #000000;
+      background-color: #EFECE9;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -52,21 +51,22 @@
     .slide-canvas {
       width: 1920px;
       height: 1080px;
-      background-color: #000000;
+      background-color: #FFFFFF;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 95px 120px;
       position: relative;
       overflow: hidden;
-      border: 1px solid #141414;
+      box-shadow: 0 25px 60px rgba(25, 21, 22, 0.06);
+      border: 1px solid #EAE5E1;
     }
 
-    /* Nothing OS Subtle Dot Grid */
+    /* Nothing OS Subtle Light Dot Grid */
     .nothing-dot-grid {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+      background-image: radial-gradient(rgba(25, 21, 22, 0.12) 1.4px, transparent 1.4px);
       background-size: 32px 32px;
       mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
       -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
@@ -86,26 +86,26 @@
 </head>
 <body>
 
-  <div class="slide-canvas text-white">
+  <div class="slide-canvas text-[#191516]">
     
-    <!-- Nothing OS Dot Grid Texture -->
+    <!-- Nothing Light Dot Grid Texture -->
     <div class="nothing-dot-grid"></div>
 
     <div class="content-layer">
       
-      <!-- Top Header: Nothing OS Status Bar Style -->
+      <!-- Top Header: Nothing OS Light Status Bar Style -->
       <header class="flex justify-between items-center">
         <div class="flex items-center gap-3.5">
           <!-- Iconic Nothing Red Dot -->
           <div class="w-3 h-3 rounded-full bg-[#D71920] shadow-[0_0_8px_#D71920] animate-pulse"></div>
           
-          <div class="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
-            (TEAM OFFGRID) <span class="mx-2 text-neutral-600">/</span> DEFENSE &amp; DISASTER ROBOTICS
+          <div class="font-mono text-xs font-bold tracking-widest uppercase text-[#7A7576]">
+            (TEAM OFFGRID) <span class="mx-2 text-[#CCC6C2]">/</span> DEFENSE &amp; DISASTER ROBOTICS
           </div>
         </div>
 
-        <div class="font-mono text-xs font-semibold tracking-wider text-neutral-400">
-          AUG 2026 <span class="mx-2 text-neutral-600">•</span> REV 1.0
+        <div class="font-mono text-xs font-semibold tracking-wider text-[#7A7576]">
+          AUG 2026 <span class="mx-2 text-[#CCC6C2]">•</span> REV 1.0
         </div>
       </header>
 
@@ -113,31 +113,31 @@
       <main class="max-w-4xl space-y-7 my-auto">
         
         <!-- 1. Context Tagline -->
-        <div class="font-mono text-xs lg:text-sm font-semibold tracking-widest uppercase text-neutral-400">
+        <div class="font-mono text-xs lg:text-sm font-semibold tracking-widest uppercase text-[#7A7576]">
           [ AUTONOMOUS MULTI-UAV SWARM ARCHITECTURE ]
         </div>
 
         <!-- 2. Nothing Minimalist Accent Separator -->
         <div class="flex items-center gap-2">
           <div class="w-16 h-[2px] bg-[#D71920]"></div>
-          <div class="w-2 h-2 rounded-full bg-white"></div>
-          <div class="w-8 h-[2px] bg-neutral-700"></div>
+          <div class="w-2 h-2 rounded-full bg-[#191516]"></div>
+          <div class="w-8 h-[2px] bg-[#D0CAC5]"></div>
         </div>
 
-        <!-- 3. Main Title in Nothing NDot Font -->
-        <h1 class="font-ndot text-7xl sm:text-8xl lg:text-9xl font-black tracking-tight text-white uppercase leading-none">
+        <!-- 3. Main Title in Nothing NDot Font (Color #191516) -->
+        <h1 class="font-ndot text-7xl sm:text-8xl lg:text-9xl font-black tracking-tight text-[#191516] uppercase leading-none">
           PROJECT SUTRA
         </h1>
 
         <!-- 4. Subtitle in Space Grotesk -->
-        <p class="text-xl sm:text-2xl text-neutral-400 font-normal max-w-3xl leading-relaxed">
+        <p class="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed">
           Swarm Unified Tactical Reconnaissance Architecture for GPS-Denied and Jammed Mountain Environments.
         </p>
 
       </main>
 
-      <!-- Bottom Bar: Nothing Minimalist Subsystem Roster -->
-      <footer class="pt-6 border-t border-neutral-800">
+      <!-- Bottom Bar: Nothing Light Minimalist Subsystem Roster -->
+      <footer class="pt-6 border-t border-[#E8E3DF]">
         <div class="font-mono text-[11px] font-bold text-[#D71920] uppercase tracking-widest mb-3">
           CORE ARCHITECTURE TEAM (OFFGRID)
         </div>
@@ -145,33 +145,33 @@
         <div class="grid grid-cols-5 gap-6 font-mono text-xs">
           
           <div class="space-y-1">
-            <div class="font-bold text-white text-base">Nikhil</div>
-            <div class="text-xs text-neutral-400">Tech Lead · Subsys A &amp; B</div>
-            <div class="text-[11px] text-neutral-500 font-medium">GNC, FSD &amp; Deep JSCC</div>
+            <div class="font-bold text-[#191516] text-base">Nikhil</div>
+            <div class="text-xs text-[#7A7576]">Tech Lead · Subsys A &amp; B</div>
+            <div class="text-[11px] text-[#A09A97] font-medium">GNC, FSD &amp; Deep JSCC</div>
           </div>
 
           <div class="space-y-1">
-            <div class="font-bold text-white text-base">Vedanth Sai Ram</div>
-            <div class="text-xs text-neutral-400">Lead · Subsystem C</div>
-            <div class="text-[11px] text-neutral-500 font-medium">Tri-Modal AI &amp; DEM</div>
+            <div class="font-bold text-[#191516] text-base">Vedanth Sai Ram</div>
+            <div class="text-xs text-[#7A7576]">Lead · Subsystem C</div>
+            <div class="text-[11px] text-[#A09A97] font-medium">Tri-Modal AI &amp; DEM</div>
           </div>
 
           <div class="space-y-1">
-            <div class="font-bold text-white text-base">Siva Kesava</div>
-            <div class="text-xs text-neutral-400">Lead · Subsystem D</div>
-            <div class="text-[11px] text-neutral-500 font-medium">3D GIS GCS &amp; WebGPU</div>
+            <div class="font-bold text-[#191516] text-base">Siva Kesava</div>
+            <div class="text-xs text-[#7A7576]">Lead · Subsystem D</div>
+            <div class="text-[11px] text-[#A09A97] font-medium">3D GIS GCS &amp; WebGPU</div>
           </div>
 
           <div class="space-y-1">
-            <div class="font-bold text-white text-base">Harika</div>
-            <div class="text-xs text-neutral-400">Lead · Subsystem E</div>
-            <div class="text-[11px] text-neutral-500 font-medium">Verification &amp; Pitch QA</div>
+            <div class="font-bold text-[#191516] text-base">Harika</div>
+            <div class="text-xs text-[#7A7576]">Lead · Subsystem E</div>
+            <div class="text-[11px] text-[#A09A97] font-medium">Verification &amp; Pitch QA</div>
           </div>
 
           <div class="space-y-1">
-            <div class="font-bold text-white text-base">Rohith Kumar</div>
-            <div class="text-xs text-neutral-400">Lead · Subsystem F</div>
-            <div class="text-[11px] text-neutral-500 font-medium">NDMA CONOPS &amp; Ops</div>
+            <div class="font-bold text-[#191516] text-base">Rohith Kumar</div>
+            <div class="text-xs text-[#7A7576]">Lead · Subsystem F</div>
+            <div class="text-[11px] text-[#A09A97] font-medium">NDMA CONOPS &amp; Ops</div>
           </div>
 
         </div>

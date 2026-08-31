@@ -115,14 +115,14 @@ export const PresentationDeck: React.FC = () => {
   }, [nextSlide, prevSlide]);
 
   return (
-    <div className="w-screen h-screen bg-[#000000] text-white flex flex-col justify-between overflow-hidden relative select-none">
+    <div className="w-screen h-screen bg-[#F4F1ED] text-[#191516] flex flex-col justify-between overflow-hidden relative select-none">
       
       {/* Top HUD Bar */}
-      <div className="h-12 border-b border-neutral-900 bg-[#000000] px-6 flex items-center justify-between z-30">
+      <div className="h-12 border-b border-[#E6E0DA] bg-[#FFFFFF] px-6 flex items-center justify-between z-30">
         <div className="flex items-center gap-3">
           <div className="w-2.5 h-2.5 rounded-full bg-[#D71920] shadow-[0_0_6px_#D71920]"></div>
-          <span className="font-mono text-xs font-bold tracking-widest text-neutral-300">
-            PROJECT SUTRA <span className="text-neutral-700">/</span> {slides[currentSlide].title.toUpperCase()}
+          <span className="font-mono text-xs font-bold tracking-widest text-[#191516]">
+            PROJECT SUTRA <span className="text-[#A09A97]">/</span> {slides[currentSlide].title.toUpperCase()}
           </span>
         </div>
 
@@ -130,7 +130,7 @@ export const PresentationDeck: React.FC = () => {
           {/* Slide List Drawer Toggle */}
           <button
             onClick={() => setShowDrawer((prev) => !prev)}
-            className="p-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg bg-[#FAF8F5] border border-[#E6E0DA] text-[#7A7576] hover:text-[#191516] transition-colors"
             title="Slide Index"
           >
             <Layers className="w-3.5 h-3.5" />
@@ -139,7 +139,7 @@ export const PresentationDeck: React.FC = () => {
           {/* Fullscreen Toggle */}
           <button
             onClick={toggleFullscreen}
-            className="p-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg bg-[#FAF8F5] border border-[#E6E0DA] text-[#7A7576] hover:text-[#191516] transition-colors"
             title="Toggle Fullscreen"
           >
             {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
@@ -149,21 +149,21 @@ export const PresentationDeck: React.FC = () => {
 
       {/* Main 16:9 Presentation Stage */}
       <div className="flex-1 flex items-center justify-center p-4 lg:p-6 relative">
-        <div className="w-full max-w-[1600px] aspect-[16/9] max-h-[88vh] bg-[#000000] rounded-2xl border border-neutral-900 shadow-2xl overflow-hidden relative flex flex-col">
+        <div className="w-full max-w-[1600px] aspect-[16/9] max-h-[88vh] bg-[#FFFFFF] rounded-2xl border border-[#E6E0DA] shadow-xl overflow-hidden relative flex flex-col">
           {slides[currentSlide].component}
         </div>
       </div>
 
       {/* Bottom Minimal Navigation Bar */}
-      <div className="h-14 border-t border-neutral-900 bg-[#000000] px-6 flex items-center justify-between z-30 font-mono text-xs">
+      <div className="h-14 border-t border-[#E6E0DA] bg-[#FFFFFF] px-6 flex items-center justify-between z-30 font-mono text-xs">
         
         {/* Slide Counter */}
         <div className="flex items-center gap-3">
-          <span className="text-neutral-500">SLIDE</span>
-          <span className="font-bold text-white tracking-widest">
-            0{currentSlide + 1} <span className="text-neutral-700">/</span> 0{totalSlides}
+          <span className="text-[#7A7576]">SLIDE</span>
+          <span className="font-bold text-[#191516] tracking-widest">
+            0{currentSlide + 1} <span className="text-[#CCC6C2]">/</span> 0{totalSlides}
           </span>
-          <span className="hidden sm:inline text-neutral-600">({slides[currentSlide].category})</span>
+          <span className="hidden sm:inline text-[#7A7576]">({slides[currentSlide].category})</span>
         </div>
 
         {/* Navigation Arrows */}
@@ -171,7 +171,7 @@ export const PresentationDeck: React.FC = () => {
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600 disabled:opacity-30 disabled:pointer-events-none transition-all"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FAF8F5] border border-[#E6E0DA] text-[#7A7576] hover:text-[#191516] hover:border-[#CCC6C2] disabled:opacity-30 disabled:pointer-events-none transition-all"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">PREV</span>
@@ -180,7 +180,7 @@ export const PresentationDeck: React.FC = () => {
           <button
             onClick={nextSlide}
             disabled={currentSlide === totalSlides - 1}
-            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-white text-black font-bold hover:bg-neutral-200 disabled:opacity-30 disabled:pointer-events-none transition-all"
+            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-[#191516] text-white font-bold hover:bg-[#333333] disabled:opacity-30 disabled:pointer-events-none transition-all"
           >
             <span className="hidden sm:inline">NEXT</span>
             <ChevronRight className="w-4 h-4" />
@@ -188,12 +188,12 @@ export const PresentationDeck: React.FC = () => {
         </div>
 
         {/* Quick Help / Downloads */}
-        <div className="hidden md:flex items-center gap-4 text-neutral-500">
-          <a href="/sutra_pitch_deck.pptx" download className="hover:text-white transition-colors flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-4 text-[#7A7576]">
+          <a href="/sutra_pitch_deck.pptx" download className="hover:text-[#191516] transition-colors flex items-center gap-1">
             <FileText className="w-3.5 h-3.5" />
             <span>.PPTX</span>
           </a>
-          <span className="text-neutral-700">|</span>
+          <span className="text-[#CCC6C2]">|</span>
           <span className="flex items-center gap-1">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Use ← / → Keys</span>
