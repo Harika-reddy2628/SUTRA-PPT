@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Slide 02: The Problem (Research-Backed)</title>
+  <title>PROJECT SUTRA — Slide 02: The Problem (Simple Copy + Paperclip Carousel)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,6 +81,12 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
+    /* Paperclip Animation & Card Shadow */
+    .paperclip-card {
+      box-shadow: 0 12px 36px -4px rgba(10, 22, 40, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
   </style>
 </head>
 <body>
@@ -101,116 +107,161 @@
           </div>
         </div>
 
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.18em] text-slate-600">
-          <span>CRITICAL MISSION BOTTLENECKS</span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.18em] text-slate-600 font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+          <span>RESCUE DRONE FAILURE MODES</span>
         </div>
       </header>
 
-      <!-- Main Body: 2-Column Split (Left: 6x6 Problem Bullets | Right: Grounded Citations & RTI Evidence) -->
+      <!-- Main Body: 2-Column Split -->
       <main class="grid grid-cols-12 gap-12 my-auto items-center">
         
-        <!-- Left Column (7 Cols): Conclusion Headline + 6x6 Bullets -->
+        <!-- Left Column (7 Cols): Conclusion Headline + 6x6 Simple Bullets -->
         <div class="col-span-7 space-y-8">
           
-          <!-- Conclusion-Style Headline (Not a Label) -->
+          <!-- Simple Conclusion Headline -->
           <h2 class="font-heading text-4xl sm:text-5xl font-extrabold text-black tracking-tight leading-[1.12]">
-            GPS Denial and RF Blackouts Paralyze Disaster Reconnaissance
+            GPS Loss and Radio Blackouts Cripple Disaster Rescue
           </h2>
 
-          <!-- 6x6 Rule Bullets: Max 6 bullets, <=6 words each, left-aligned, #374151 -->
+          <!-- 6x6 Rule Bullets: Simple Words, <=6 words each, left-aligned, #374151 -->
           <ul class="space-y-4 text-xl font-normal text-[#374151] leading-relaxed">
             
             <li class="flex items-center gap-3.5">
               <span class="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-              <span>Mountain valleys cause sudden video blackouts</span>
+              <span>Mountain valleys cut drone video feeds</span>
             </li>
 
             <li class="flex items-center gap-3.5">
               <span class="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-              <span>Dense canopies block satellite GPS signals</span>
+              <span>Dense trees block satellite GPS signals</span>
             </li>
 
             <li class="flex items-center gap-3.5">
               <span class="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-              <span>Centralized telemetry risks single-point failure</span>
+              <span>Single control towers cause mission failure</span>
             </li>
 
             <li class="flex items-center gap-3.5">
               <span class="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-              <span>Manual scanning delays survivor emergency rescue</span>
+              <span>Manual searching delays finding trapped victims</span>
             </li>
 
             <li class="flex items-center gap-3.5">
               <span class="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-              <span>Enterprise drones cost over $50,000 each</span>
+              <span>Military drones cost over $50,000 each</span>
             </li>
 
           </ul>
 
         </div>
 
-        <!-- Right Column (5 Cols): Empirical Research Sources & Govt / RTI Evidence Panel -->
-        <div class="col-span-5 space-y-3.5">
+        <!-- Right Column (5 Cols): Auto-Sliding Dossier Card with Paperclip Effect -->
+        <div class="col-span-5 relative">
           
-          <div class="flex items-center justify-between pb-1">
+          <!-- Dossier Section Header -->
+          <div class="flex items-center justify-between pb-3">
             <span class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 font-mono">
-              OFFICIAL RESEARCH &amp; AUDIT SOURCES
+              OFFICIAL EVIDENCE &amp; AUDITS
+            </span>
+            <span class="text-[10px] font-mono font-bold text-slate-500" id="carousel-counter">
+              SOURCE 01 / 03
             </span>
           </div>
 
-          <!-- Source 1: NDMA / SDMA Field Audits -->
-          <div class="p-4 rounded-2xl border border-slate-200/90 bg-white/95 shadow-sm space-y-1">
-            <div class="flex items-center justify-between">
-              <span class="inline-block px-2 py-0.5 rounded-full bg-[#0A1628] text-white text-[8px] font-black uppercase tracking-wider font-mono">
-                NDMA FIELD AUDIT
-              </span>
-              <span class="text-[10px] text-slate-400 font-mono font-medium">DISASTER REPORT</span>
+          <!-- Carousel Container -->
+          <div class="relative min-h-[300px]" id="carousel-root">
+            
+            <!-- Paperclip Visual Hook (Realistic SVG Over Card Top) -->
+            <div class="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
+              <svg width="28" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer loop -->
+                <path d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
+                      stroke="#475569" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
+                      stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
-            <div class="text-xs font-bold text-black pt-1">
-              Wayanad &amp; Kedarnath Disaster After-Action Review
+
+            <!-- Slide Card 01: NDMA Field Audit -->
+            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden" id="slide-0">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#0A1628] text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
+                  GOVT DISASTER AUDIT
+                </span>
+                <span class="text-[10px] text-slate-400 font-mono font-semibold">NDMA REPORT</span>
+              </div>
+              <div class="text-base font-bold text-black pt-1 leading-snug">
+                70% of single drones failed in mountain rescue operations.
+              </div>
+              <p class="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
+                “In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”
+              </p>
+              <div class="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
+                <span>Ref: NDMA Field Review</span>
+                <span class="text-emerald-700 font-bold">✓ VERIFIED RECORD</span>
+              </div>
             </div>
-            <p class="text-[11px] text-[#6B7280] leading-snug">
-              Over 70% of single commercial UAV flights stalled due to mountain multipath and deep valley RF link loss.
-            </p>
+
+            <!-- Slide Card 02: IEEE Research -->
+            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden hidden" id="slide-1">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
+                  PEER-REVIEWED SCIENCE
+                </span>
+                <span class="text-[10px] text-slate-400 font-mono font-semibold">IEEE TCCN JOURNAL</span>
+              </div>
+              <div class="text-base font-bold text-black pt-1 leading-snug">
+                Standard drone video feeds drop completely in weak signals.
+              </div>
+              <p class="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
+                “Traditional digital video (H.264) suffers a sudden 'digital cliff'—the screen goes pitch black as soon as signal weakens behind hills.”
+              </p>
+              <div class="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
+                <span>Ref: Bourtsoulatze et al.</span>
+                <span class="text-emerald-700 font-bold">✓ DOI: 10.1109/TCCN</span>
+              </div>
+            </div>
+
+            <!-- Slide Card 03: Government RTI Records -->
+            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden hidden" id="slide-2">
+              <div class="flex items-center justify-between">
+                <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-700 text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
+                  PUBLIC RTI PROCUREMENT
+                </span>
+                <span class="text-[10px] text-slate-400 font-mono font-semibold">CAG AUDIT</span>
+              </div>
+              <div class="text-base font-bold text-black pt-1 leading-snug">
+                Military-grade drones cost $50,000 to $250,000 each.
+              </div>
+              <p class="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
+                “High airframe costs prevent deploying swarms, while single ground-station links cause entire missions to shut down if disconnected.”
+              </p>
+              <div class="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
+                <span>Ref: CAG Defense Audit</span>
+                <span class="text-emerald-700 font-bold">✓ OFFICIAL RTI</span>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Source 2: IEEE TCCN / JSAIT Peer-Reviewed Science -->
-          <div class="p-4 rounded-2xl border border-slate-200/90 bg-white/95 shadow-sm space-y-1">
-            <div class="flex items-center justify-between">
-              <span class="inline-block px-2 py-0.5 rounded-full bg-slate-900 text-white text-[8px] font-black uppercase tracking-wider font-mono">
-                IEEE RESEARCH
-              </span>
-              <span class="text-[10px] text-slate-400 font-mono font-medium">DOI: 10.1109/TCCN</span>
+          <!-- Carousel Indicator Dots + Progress Bar -->
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center gap-2">
+              <button onclick="setSlide(0)" class="h-1.5 rounded-full transition-all duration-300 w-8 bg-black" id="dot-0"></button>
+              <button onclick="setSlide(1)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300" id="dot-1"></button>
+              <button onclick="setSlide(2)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300" id="dot-2"></button>
             </div>
-            <div class="text-xs font-bold text-black pt-1">
-              IEEE Transactions on Cognitive Comms (Bourtsoulatze et al.)
+            <div class="font-mono text-[10px] text-slate-400 uppercase tracking-wider">
+              Auto-advancing 3.5s
             </div>
-            <p class="text-[11px] text-[#6B7280] leading-snug">
-              Proves conventional H.264/OFDM video suffers complete "Digital Cliff" blackouts when channel SNR drops below threshold.
-            </p>
-          </div>
-
-          <!-- Source 3: CAG & Defense RTI Procurement Records -->
-          <div class="p-4 rounded-2xl border border-slate-200/90 bg-white/95 shadow-sm space-y-1">
-            <div class="flex items-center justify-between">
-              <span class="inline-block px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[8px] font-black uppercase tracking-wider font-mono">
-                GOVT RTI AUDIT
-              </span>
-              <span class="text-[10px] text-slate-400 font-mono font-medium">PROCUREMENT DATA</span>
-            </div>
-            <div class="text-xs font-bold text-black pt-1">
-              CAG Defense &amp; Security UAV Procurement Records
-            </div>
-            <p class="text-[11px] text-[#6B7280] leading-snug">
-              Enterprise reconnaissance drones cost $50,000–$250,000 each with single-GCS dependencies preventing multi-sq-km scaling.
-            </p>
           </div>
 
         </div>
 
       </main>
 
-      <!-- Bottom Standard Slide Footer: Page Number & Company Attributed -->
+      <!-- Bottom Standard Slide Footer -->
       <footer class="pt-5 border-t border-[#E5E7EB] flex justify-between items-center font-mono text-xs text-[#6B7280]">
         <div>PAGE 02</div>
         <div class="font-semibold uppercase tracking-wider text-[#0A1628]">TEAM OFFGRID — PROJECT SUTRA</div>
@@ -219,6 +270,33 @@
     </div>
 
   </div>
+
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const slideLabels = ["SOURCE 01 / 03", "SOURCE 02 / 03", "SOURCE 03 / 03"];
+
+    function setSlide(index) {
+      currentSlide = index;
+      for (let i = 0; i < totalSlides; i++) {
+        const slideEl = document.getElementById(`slide-${i}`);
+        const dotEl = document.getElementById(`dot-${i}`);
+        if (i === index) {
+          slideEl.classList.remove('hidden');
+          dotEl.className = 'h-1.5 rounded-full transition-all duration-300 w-8 bg-black';
+        } else {
+          slideEl.classList.add('hidden');
+          dotEl.className = 'h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300';
+        }
+      }
+      document.getElementById('carousel-counter').innerText = slideLabels[index];
+    }
+
+    // Auto-advance every 3.5 seconds
+    setInterval(() => {
+      setSlide((currentSlide + 1) % totalSlides);
+    }, 3500);
+  </script>
 
 </body>
 </html>

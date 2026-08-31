@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Conclusion-style headline, Left Accent Bar, 6x6 Bullets, Research & RTI Citations)
+- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Paperclip Dossier Audit Card)
 """
 
 from pathlib import Path
@@ -175,19 +175,19 @@ def build_slide_02_problem(prs):
     
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.62), Inches(2.7), Inches(0.3), COLOR_CARD_BG, COLOR_BORDER)
     add_text(slide, Inches(9.8), Inches(0.67), Inches(2.7), Inches(0.2),
-             "CRITICAL MISSION BOTTLENECKS", FONT_MONO, 7.5, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
+             "RESCUE DRONE FAILURE MODES", FONT_MONO, 7.5, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
 
-    # 3. Left Column: Conclusion Headline + 6x6 Bullets
+    # 3. Left Column: Simple Conclusion Headline + 6x6 Simple Bullets
     add_text(slide, Inches(0.8), Inches(1.5), Inches(7.0), Inches(1.3),
-             "GPS Denial and RF Blackouts Paralyze Disaster Reconnaissance",
-             FONT_HEADING, 30, COLOR_BLACK, bold=True)
+             "GPS Loss and Radio Blackouts Cripple Disaster Rescue",
+             FONT_HEADING, 32, COLOR_BLACK, bold=True)
 
     bullets = [
-        "Mountain valleys cause sudden video blackouts",
-        "Dense canopies block satellite GPS signals",
-        "Centralized telemetry risks single-point failure",
-        "Manual scanning delays survivor emergency rescue",
-        "Enterprise drones cost over $50,000 each",
+        "Mountain valleys cut drone video feeds",
+        "Dense trees block satellite GPS signals",
+        "Single control towers cause mission failure",
+        "Manual searching delays finding trapped victims",
+        "Military drones cost over $50,000 each",
     ]
 
     bullet_start_y = Inches(3.0)
@@ -196,36 +196,45 @@ def build_slide_02_problem(prs):
         curr_y = bullet_start_y + i * bullet_gap
         add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.08), Inches(0.1), Inches(0.1), COLOR_NAVY)
         add_text(slide, Inches(1.05), curr_y, Inches(6.8), Inches(0.45),
-                 b_text, FONT_BODY, 16.5, COLOR_GRAY, bold=False)
+                 b_text, FONT_BODY, 17, COLOR_GRAY, bold=False)
 
-    # 4. Right Column: Empirical Research Sources & Govt/RTI Panel
+    # 4. Right Column: Dossier Evidence Card with Paperclip
     add_text(slide, Inches(8.2), Inches(1.5), Inches(4.3), Inches(0.25),
-             "OFFICIAL RESEARCH & AUDIT SOURCES", FONT_MONO, 8.5, COLOR_DIM, bold=True)
+             "OFFICIAL EVIDENCE & AUDITS", FONT_MONO, 8.5, COLOR_DIM, bold=True)
+    add_text(slide, Inches(10.8), Inches(1.5), Inches(1.7), Inches(0.25),
+             "SOURCE 01 / 03", FONT_MONO, 8.5, COLOR_MUTED, bold=True, align=PP_ALIGN.RIGHT)
 
-    sources = [
-        ("NDMA FIELD AUDIT", "DISASTER REPORT", "Wayanad & Kedarnath Disaster Review",
-         "Over 70% of single commercial UAV flights stalled due to mountain multipath and deep valley RF link loss.", COLOR_NAVY),
-        ("IEEE RESEARCH", "DOI: 10.1109/TCCN", "IEEE Trans. on Cognitive Comms (Bourtsoulatze)",
-         "Proves conventional H.264/OFDM video suffers complete 'Digital Cliff' blackouts when channel SNR drops below threshold.", COLOR_BLACK),
-        ("GOVT RTI AUDIT", "PROCUREMENT DATA", "CAG Defense & Security UAV Records",
-         "Enterprise reconnaissance drones cost $50,000–$250,000 each with single-GCS dependencies preventing multi-sq-km scaling.", COLOR_EMERALD),
-    ]
+    # Dossier Card Container
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.85), Inches(4.3), Inches(3.8), COLOR_CARD_BG, COLOR_BORDER)
+    
+    # Paperclip Graphic on Top Right
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.8), Inches(1.68), Inches(0.25), Inches(0.55), COLOR_SLATE)
+    
+    # Badge Pill
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(2.1), Inches(1.8), Inches(0.24), COLOR_NAVY)
+    add_text(slide, Inches(8.45), Inches(2.12), Inches(1.8), Inches(0.22), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
+    add_text(slide, Inches(10.4), Inches(2.12), Inches(1.9), Inches(0.22), "NDMA REPORT", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
-    src_start_y = Inches(1.85)
-    src_h = Inches(1.28)
-    src_gap = Inches(0.18)
-    for i, (badge, tag, title, desc, b_color) in enumerate(sources):
-        sy = src_start_y + i * (src_h + src_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), sy, Inches(4.3), src_h, COLOR_CARD_BG, COLOR_BORDER)
-        
-        # Badge
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.35), sy + Inches(0.1), Inches(1.4), Inches(0.2), b_color)
-        add_text(slide, Inches(8.35), sy + Inches(0.11), Inches(1.4), Inches(0.18), badge, FONT_MONO, 6.5, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
-        add_text(slide, Inches(10.0), sy + Inches(0.11), Inches(2.4), Inches(0.18), tag, FONT_MONO, 7.0, COLOR_DIM, align=PP_ALIGN.RIGHT)
-        
-        # Title & Desc
-        add_text(slide, Inches(8.35), sy + Inches(0.35), Inches(4.0), Inches(0.25), title, FONT_HEADING, 9.5, COLOR_BLACK, bold=True)
-        add_text(slide, Inches(8.35), sy + Inches(0.62), Inches(4.0), Inches(0.6), desc, FONT_BODY, 8.0, COLOR_MUTED)
+    # Headline
+    add_text(slide, Inches(8.45), Inches(2.45), Inches(3.8), Inches(0.55),
+             "70% of single drones failed in mountain rescue operations.",
+             FONT_HEADING, 12.0, COLOR_BLACK, bold=True)
+
+    # Quote Box
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.1), Inches(3.8), Inches(1.5), COLOR_BG, COLOR_BORDER)
+    add_text(slide, Inches(8.6), Inches(3.2), Inches(3.5), Inches(1.3),
+             "“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”",
+             FONT_BODY, 9.5, COLOR_GRAY, italic=True)
+
+    # Verification Footer
+    add_text(slide, Inches(8.45), Inches(4.8), Inches(2.2), Inches(0.3), "Ref: NDMA Field Review", FONT_MONO, 8.0, COLOR_MUTED)
+    add_text(slide, Inches(10.65), Inches(4.8), Inches(1.6), Inches(0.3), "✓ VERIFIED RECORD", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
+
+    # Carousel Dots
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(5.8), Inches(0.6), Inches(0.08), COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.8), Inches(0.12), Inches(0.08), COLOR_BORDER)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.1), Inches(5.8), Inches(0.12), Inches(0.08), COLOR_BORDER)
+    add_text(slide, Inches(10.0), Inches(5.72), Inches(2.5), Inches(0.25), "AUTO-ADVANCING 3.5S", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
     # 5. Footer (Page 2 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
@@ -242,7 +251,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with Research Sources)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Paperclip Carousel)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 
