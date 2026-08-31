@@ -344,10 +344,10 @@ def build_slide_03_4subsystems(prs):
          "Differentiable joint source-channel coding yielding zero digital cliff and graceful video degradation down to -5dB.",
          "-5dB", "SNR Thresh", "0 Cliff", "Degradation", "SEMANTIC COMMS", "EDGE TPU", COLOR_BLACK),
 
-        ("SUBSYSTEM C // VISION", "Tri-Modal AI & 3D Geolocation", "3.59cm ACCURACY",
+        ("SUBSYSTEM C // VISION", "Tri-Modal AI & 3D Geolocation", "3.59cm RESIDUAL",
          "Smoke Blindspots & 15-30m Slope Drift",
-         "Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin for 3.59cm GPS accuracy.",
-         "<15ms", "Inference", "3.59cm", "Geo Error", "TRI-MODAL FUSED", "JETSON ORIN", COLOR_EMERALD),
+         "Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin, eliminating slope error down to 3.59cm precision.",
+         "<15ms", "Inference", "3.59cm", "Raycast Error", "SLOPE CORRECTED", "JETSON ORIN", COLOR_EMERALD),
 
         ("SUBSYSTEM D // C2 GCS", "Pegasus 3D WebGPU GCS", "1-2 OPERATORS",
          "15-25 Ground Crew Cognitive Overload",

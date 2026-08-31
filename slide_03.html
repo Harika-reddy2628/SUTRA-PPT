@@ -254,7 +254,7 @@
                 <span class="material-symbols-outlined text-[22px]">terrain</span>
               </div>
               <span class="font-mono text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
-                3.59cm ACCURACY
+                3.59cm RESIDUAL
               </span>
             </div>
             
@@ -275,7 +275,7 @@
             <div class="p-2.5 rounded-lg bg-subtle border border-hairline space-y-1">
               <div class="text-[9px] font-mono font-bold text-emerald-800 uppercase">SOLUTIONAL MOAT:</div>
               <p class="text-xs text-slate-600 font-mono leading-relaxed">
-                Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin for 3.59cm GPS accuracy.
+                Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin, eliminating slope error down to 3.59cm precision.
               </p>
             </div>
 
@@ -287,13 +287,13 @@
               </div>
               <div class="p-1.5 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-emerald-700">3.59cm</div>
-                <div class="text-[8px] text-slate-500">Geo Error</div>
+                <div class="text-[8px] text-slate-500">Raycast Error</div>
               </div>
             </div>
           </div>
 
           <div class="pt-3 border-t border-hairline flex items-center justify-between text-[10px] font-mono text-slate-400">
-            <span>TRI-MODAL FUSED</span>
+            <span>SLOPE CORRECTED</span>
             <span class="text-emerald-700 font-bold">JETSON ORIN</span>
           </div>
           <div class="h-1 w-full bg-emerald-500 absolute bottom-0 left-0"></div>
