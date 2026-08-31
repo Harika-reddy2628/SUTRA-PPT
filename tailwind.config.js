@@ -47,11 +47,12 @@ export default {
         }
       },
       fontFamily: {
+        bebas: ['"Bebas Neue"', 'sans-serif'],
         ndot: ['"Doto"', 'monospace'],
         space: ['"Space Grotesk"', 'sans-serif'],
         sans: ['"Space Grotesk"', '"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
         serif: ['"Lora"', 'Georgia', 'serif'],
-        heading: ['"Doto"', '"Space Grotesk"', 'sans-serif'],
+        heading: ['"Bebas Neue"', '"Space Grotesk"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {

@@ -31,8 +31,8 @@ export const Slide01Title: React.FC = () => {
           </div>
         </header>
 
-        {/* Center Formula: [Context] -> [Accent Line] -> [Main Title in NDot] -> [Subtitle] */}
-        <main className="max-w-4xl space-y-7 my-auto">
+        {/* Center Formula: [Context] -> [Accent Line] -> [Main Title in Bebas Neue] -> [Subtitle] */}
+        <main className="max-w-4xl space-y-5 my-auto">
           
           {/* 1. Context Tagline */}
           <div className="font-mono text-xs lg:text-sm font-semibold tracking-widest uppercase text-[#7A7576]">
@@ -46,13 +46,13 @@ export const Slide01Title: React.FC = () => {
             <div className="w-8 h-[2px] bg-[#D0CAC5]"></div>
           </div>
 
-          {/* 3. Main Title in Nothing NDot Font (#191516) */}
-          <h1 className="font-ndot text-7xl sm:text-8xl lg:text-9xl font-black tracking-tight text-[#191516] uppercase leading-none">
+          {/* 3. Main Title in Bebas Neue Font (#191516) */}
+          <h1 className="font-bebas text-8xl sm:text-9xl lg:text-[136px] tracking-wide text-[#191516] uppercase leading-[0.9]">
             PROJECT SUTRA
           </h1>
 
           {/* 4. Subtitle in Space Grotesk */}
-          <p className="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed">
+          <p className="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed pt-2">
             Swarm Unified Tactical Reconnaissance Architecture for GPS-Denied and Jammed Mountain Environments.
           </p>
 
