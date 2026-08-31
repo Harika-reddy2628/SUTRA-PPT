@@ -1,119 +1,75 @@
 import React from 'react';
-import { AlertOctagon, WifiOff, MapPinOff, DollarSign } from 'lucide-react';
 
 export const Slide02Problem: React.FC = () => {
   return (
-    <div className="relative z-10 h-full flex flex-col justify-between p-12 lg:p-14 text-earth-forest">
+    <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-12 lg:p-20 select-none overflow-hidden border border-slate-200">
       
-      {/* Header */}
-      <header className="flex justify-between items-center pb-4 border-b border-sandstone-border/80">
-        <div className="flex items-center gap-3">
-          <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-earth-terracottaSoft border border-earth-terracotta/25 text-earth-terracotta">
-            TACTICAL BOTTLENECKS
-          </span>
-          <span className="font-mono text-xs text-sandstone-muted font-medium">
-            CRITICAL FAILURE MODES IN MOUNTAINOUS SEARCH &amp; RESCUE
-          </span>
-        </div>
-        <div className="font-mono text-xs text-sandstone-faint font-semibold">SECTION 01 / 07</div>
-      </header>
+      {/* Background Architectural Grid */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
 
-      {/* Main Content */}
-      <main className="my-auto">
-        <div className="max-w-3xl mb-8">
-          <div className="font-mono text-xs font-bold tracking-widest text-earth-terracotta uppercase mb-2">
-            The Operational Reality
+      <div className="relative z-10 h-full flex flex-col justify-between">
+        
+        {/* Top Section: Left Accent Bar + Category */}
+        <header className="flex items-center gap-3">
+          <div className="w-1.5 h-6 bg-[#0A1628] rounded-full"></div>
+          <div className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#0A1628]">
+            THE PROBLEM
           </div>
-          <h2 className="font-heading text-4xl lg:text-5xl font-extrabold text-earth-forest tracking-tight uppercase">
-            Why Conventional Drones Fail in Disaster Zones
-          </h2>
-          <p className="text-sandstone-muted text-base mt-2">
-            Catastrophic terrain like Kedarnath flash floods and Wayanad landslides impose three fatal physical barriers that cripple single-drone commercial autopilots.
-          </p>
-        </div>
+        </header>
 
-        {/* 3 Bottlenecks Grid */}
-        <div className="grid grid-cols-3 gap-6">
+        {/* Main Body: Conclusion Headline + 6x6 Bullets */}
+        <main className="max-w-4xl space-y-10 my-auto">
           
-          {/* Card 1 */}
-          <div className="relative p-7 rounded-2xl bg-white/95 border border-sandstone-border shadow-card-light hover:shadow-card-hover transition-all flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-earth-terracotta"></div>
-            <div>
-              <div className="w-11 h-11 rounded-xl bg-earth-terracottaSoft border border-earth-terracotta/20 flex items-center justify-center text-earth-terracotta mb-4">
-                <WifiOff className="w-5 h-5" />
-              </div>
-              <div className="font-mono text-xs font-bold text-earth-terracotta uppercase tracking-wider mb-1">
-                Bottleneck 01
-              </div>
-              <h3 className="font-heading text-xl font-bold text-earth-forest mb-2">
-                The Digital Cliff &amp; RF Blackout
-              </h3>
-              <p className="text-sandstone-muted text-xs leading-relaxed">
-                Standard digital video streams (H.264/H.265 over Wi-Fi/OFDM) fail completely when packet loss exceeds <strong className="text-earth-forest">5%</strong> due to mountain ridges and multi-path fading, freezing operator feeds instantly.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-sandstone-border/80 font-mono text-[11px] font-semibold text-earth-terracotta">
-              Impact: Total loss of situational awareness
-            </div>
-          </div>
+          {/* Conclusion-Style Headline (Not a Label) */}
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight leading-[1.1]">
+            GPS Denial and RF Blackouts Paralyze Disaster Reconnaissance
+          </h2>
 
-          {/* Card 2 */}
-          <div className="relative p-7 rounded-2xl bg-white/95 border border-sandstone-border shadow-card-light hover:shadow-card-hover transition-all flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-earth-ochre"></div>
-            <div>
-              <div className="w-11 h-11 rounded-xl bg-earth-ochreSoft border border-earth-ochre/25 flex items-center justify-center text-earth-ochre mb-4">
-                <MapPinOff className="w-5 h-5" />
-              </div>
-              <div className="font-mono text-xs font-bold text-earth-ochre uppercase tracking-wider mb-1">
-                Bottleneck 02
-              </div>
-              <h3 className="font-heading text-xl font-bold text-earth-forest mb-2">
-                GPS Denial &amp; Canopy Occlusion
-              </h3>
-              <p className="text-sandstone-muted text-xs leading-relaxed">
-                Deep river gorges block satellite GNSS reception, while dense forest canopies cause severe multi-pathing. Standard waypoint navigation drifts exponentially, resulting in blind tree collisions.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-sandstone-border/80 font-mono text-[11px] font-semibold text-earth-ochre">
-              Impact: Catastrophic drone loss in blind valleys
-            </div>
-          </div>
+          {/* 6x6 Rule Bullets: <=6 words per bullet, left-aligned, #374151 */}
+          <ul className="space-y-5 text-lg sm:text-xl lg:text-2xl font-normal text-[#374151] leading-relaxed">
+            
+            <li className="flex items-center gap-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0A1628] shrink-0"></span>
+              <span>Mountain valleys cause sudden video blackouts</span>
+            </li>
 
-          {/* Card 3 */}
-          <div className="relative p-7 rounded-2xl bg-white/95 border border-sandstone-border shadow-card-light hover:shadow-card-hover transition-all flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-earth-sage"></div>
-            <div>
-              <div className="w-11 h-11 rounded-xl bg-earth-sageSoft border border-earth-sage/25 flex items-center justify-center text-earth-sage mb-4">
-                <DollarSign className="w-5 h-5" />
-              </div>
-              <div className="font-mono text-xs font-bold text-earth-sage uppercase tracking-wider mb-1">
-                Bottleneck 03
-              </div>
-              <h3 className="font-heading text-xl font-bold text-earth-forest mb-2">
-                $100K+ Cost &amp; Central Failure
-              </h3>
-              <p className="text-sandstone-muted text-xs leading-relaxed">
-                Military-grade reconnaissance drones cost upwards of <strong className="text-earth-forest">$50,000–$250,000</strong> per airframe and rely on centralized command hubs. A single link drop aborts the entire mission.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-sandstone-border/80 font-mono text-[11px] font-semibold text-earth-sage">
-              Impact: Cannot scale to multi-sq-km mass searches
-            </div>
-          </div>
+            <li className="flex items-center gap-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0A1628] shrink-0"></span>
+              <span>Dense canopies block satellite GPS signals</span>
+            </li>
 
-        </div>
-      </main>
+            <li className="flex items-center gap-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0A1628] shrink-0"></span>
+              <span>Centralized telemetry risks single-point failure</span>
+            </li>
 
-      {/* Footer Banner */}
-      <footer className="p-4 rounded-xl bg-white/95 border border-sandstone-border shadow-card-light flex justify-between items-center font-mono text-xs">
-        <div className="flex items-center gap-2 text-earth-forest font-bold">
-          <AlertOctagon className="w-4 h-4 text-earth-terracotta" />
-          <span>SUTRA THESIS: REVISE AVIONICS &amp; COMMS FROM FIRST PRINCIPLES</span>
-        </div>
-        <div className="text-sandstone-muted font-medium">
-          Decentralized Swarm • Analog-Deep Semantic Comms • 3D Voxel Autopilot
-        </div>
-      </footer>
+            <li className="flex items-center gap-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0A1628] shrink-0"></span>
+              <span>Manual scanning delays survivor emergency rescue</span>
+            </li>
+
+            <li className="flex items-center gap-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0A1628] shrink-0"></span>
+              <span>Enterprise drones cost over $50,000 each</span>
+            </li>
+
+          </ul>
+
+        </main>
+
+        {/* Bottom Slide Footer */}
+        <footer className="pt-6 border-t border-slate-200 flex justify-between items-center font-mono text-xs text-slate-500">
+          <div>PAGE 02</div>
+          <div className="font-semibold uppercase tracking-wider text-[#0A1628]">TEAM OFFGRID — PROJECT SUTRA</div>
+        </footer>
+
+      </div>
 
     </div>
   );
