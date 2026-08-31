@@ -138,10 +138,10 @@ def build_slide_01_title(prs):
     add_text(slide, Inches(7.5), Inches(5.75), Inches(5.033), Inches(0.2), "RESEARCH-BACKED & EMPIRICALLY VALIDATED", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.RIGHT)
 
     members = [
-        ("Nikhil", "Tech Lead · Subsys A & B", "GNC & COMMS", True),
-        ("Vedanth Sai Ram", "Lead · Subsystem C", "AI PERCEPTION", False),
+        ("Harika", "Operations Lead", "PRESENTER · OPS", True),
+        ("Vedanth Sai Ram", "AI & Vision Lead", "PRESENTER · VISION", True),
+        ("Nikhil", "Tech Lead · Swarm Architect", "PRESENTER · GNC/COMMS", True),
         ("Siva Kesava", "Lead · Subsystem D", "3D GIS GCS", False),
-        ("Harika", "Operations Lead · Subsys E", "AUDIT & OPS", True),
         ("Rohith Kumar", "Lead · Subsystem F", "FIELD CONOPS", False),
     ]
     col_w = Inches(2.2)
