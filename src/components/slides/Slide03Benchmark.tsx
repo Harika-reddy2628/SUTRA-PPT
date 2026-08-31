@@ -20,7 +20,7 @@ export const Slide03Benchmark: React.FC = () => {
           <div className="flex items-center gap-3.5">
             <div className="w-2 h-7 bg-[#0A1628] rounded-full"></div>
             <div className="font-mono text-sm sm:text-base font-bold uppercase tracking-[0.25em] text-[#0A1628]">
-              THE SOLUTION — SUBSYSTEM MOATS &amp; BENCHMARK
+              THE SOLUTION — SUBSYSTEM MOATS
             </div>
           </div>
 
@@ -30,210 +30,137 @@ export const Slide03Benchmark: React.FC = () => {
           </div>
         </header>
 
-        {/* Main Body: 2-Column Split */}
-        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-9 my-auto items-center">
+        {/* Main Body: Clean, Focused Layout */}
+        <main className="space-y-6 lg:space-y-8 my-auto">
           
-          {/* Left Column (6 Cols): Headline + 6x6 Bullets + Subsystem Moats Strip */}
-          <div className="lg:col-span-6 space-y-4">
-            
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-black tracking-tight leading-[1.08]">
+          {/* Large Headline */}
+          <div className="max-w-5xl">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[52px] font-extrabold text-black tracking-tight leading-[1.08]">
               AI Swarm Drones Find Survivors 3-4x Faster Than Traditional SAR
             </h2>
+          </div>
 
-            <ul className="space-y-2.5 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>78-85% survivor detection on first pass</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>10-18 min per sq mile speed</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>Mesh networking works in GPS-denied zones</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>24/7 autonomous operation for 11+ days</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>False positive rate down to 12%</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                <span>Cost per deployment: $12K vs $15K</span>
-              </li>
-            </ul>
+          {/* 6x6 Rule Bullets (Spacious 2-Column Grid) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3.5 max-w-5xl">
+            
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>78-85% survivor detection on first pass</span>
+            </div>
 
-            {/* 3 Subsystem Solutional Moats Strip */}
-            <div className="pt-1">
-              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2 flex items-center justify-between">
-                <span>PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS</span>
-                <span className="text-[9px] text-emerald-700 font-mono font-bold bg-emerald-50 px-2 py-0.5 rounded">3 CORE MOATS</span>
-              </div>
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>10-18 min per sq mile speed</span>
+            </div>
 
-              <div className="grid grid-cols-3 gap-3">
-                
-                {/* Moat 1: GNC */}
-                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM A MOAT</span>
-                  </div>
-                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">PX4 + VIO EKF2</div>
-                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">50Hz Offboard GNC, GPS-Denied Flocking</div>
-                </div>
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>Mesh networking works in GPS-denied zones</span>
+            </div>
 
-                {/* Moat 2: Deep JSCC */}
-                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM B MOAT</span>
-                  </div>
-                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">Deep JSCC Video</div>
-                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">Zero-Cliff Video Down to -5dB SNR</div>
-                </div>
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>24/7 autonomous operation for 11+ days</span>
+            </div>
 
-                {/* Moat 3: 3D DEM AI */}
-                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM C/D MOAT</span>
-                  </div>
-                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">3D DEM Raycast</div>
-                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">3.59cm Elevation-Corrected Geolocation</div>
-                </div>
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>False positive rate down to 12%</span>
+            </div>
 
-              </div>
+            <div className="flex items-center gap-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>Cost per deployment: $12K vs $15K</span>
             </div>
 
           </div>
 
-          {/* Right Column (6 Cols): Benchmark Comparison Matrix & Speed Comparison Bars */}
-          <div className="lg:col-span-6 space-y-4">
-            
-            {/* Key Statistics Comparison Table / Card */}
-            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-md space-y-3">
+          {/* 3 Subsystem Solutional Moats Cards (Full Width 3-Column Grid) */}
+          <div className="pt-2">
+            <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-3 flex items-center justify-between">
+              <span>PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS</span>
+              <span className="text-[10px] text-emerald-700 font-mono font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                3 CORE ENGINEERING MOATS
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
               
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-                <div>
-                  <span className="text-[10.5px] font-black uppercase tracking-[0.2em] text-slate-400 font-mono">
-                    BENCHMARK MATRIX
+              {/* Moat 1: GNC */}
+              <div className="p-5 lg:p-6 rounded-3xl border border-emerald-200 bg-emerald-50/40 space-y-2 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10.5px] font-mono font-bold text-emerald-800 uppercase tracking-wider">
+                    SUBSYSTEM A MOAT
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 font-heading mt-0.5">
-                    Search &amp; Rescue Performance Comparison
-                  </h3>
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-white px-2 py-0.5 rounded-md border border-emerald-200">
+                    50Hz OFFBOARD
+                  </span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[9.5px] font-mono font-bold">
-                  EMPIRICAL BENCHMARK
-                </span>
+                <div className="text-lg lg:text-xl font-bold text-slate-900 font-heading mt-1">
+                  PX4 + VIO EKF2 Autopilot
+                </div>
+                <p className="text-xs lg:text-sm text-slate-600 leading-relaxed font-normal">
+                  Decentralized 3D ORCA anti-collision and offboard setpoint streaming without ground control tower dependency.
+                </p>
               </div>
 
-              {/* Comparison Table Grid */}
-              <div className="grid grid-cols-12 gap-2 text-xs font-mono items-center pb-1 text-slate-400 border-b border-slate-100">
-                <div className="col-span-4 font-bold uppercase tracking-wider">METRIC</div>
-                <div className="col-span-2 text-center text-slate-500">TRADITIONAL</div>
-                <div className="col-span-3 text-center text-slate-500">SINGLE DRONE</div>
-                <div className="col-span-3 text-center font-bold text-emerald-700 bg-emerald-50 py-1 rounded-lg">AI SWARM (SUTRA)</div>
+              {/* Moat 2: Deep JSCC */}
+              <div className="p-5 lg:p-6 rounded-3xl border border-emerald-200 bg-emerald-50/40 space-y-2 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10.5px] font-mono font-bold text-emerald-800 uppercase tracking-wider">
+                    SUBSYSTEM B MOAT
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-white px-2 py-0.5 rounded-md border border-emerald-200">
+                    -5dB RESILIENT
+                  </span>
+                </div>
+                <div className="text-lg lg:text-xl font-bold text-slate-900 font-heading mt-1">
+                  Deep JSCC Neural Video
+                </div>
+                <p className="text-xs lg:text-sm text-slate-600 leading-relaxed font-normal">
+                  Zero-cliff neural semantic video encoding that degrades gracefully under extreme radio jamming and ravine occlusion.
+                </p>
               </div>
 
-              {/* Row 1: Deployment Time */}
-              <div className="grid grid-cols-12 gap-2 text-xs items-center py-1 border-b border-slate-100">
-                <div className="col-span-4 font-semibold text-slate-800">Deployment Time</div>
-                <div className="col-span-2 text-center font-mono text-slate-500">45-90 min</div>
-                <div className="col-span-3 text-center font-mono text-slate-600">15-30 min</div>
-                <div className="col-span-3 text-center font-mono font-bold text-emerald-700 bg-emerald-50/60 py-0.5 rounded-md">8-15 min</div>
-              </div>
-
-              {/* Row 2: Area Coverage */}
-              <div className="grid grid-cols-12 gap-2 text-xs items-center py-1 border-b border-slate-100">
-                <div className="col-span-4 font-semibold text-slate-800">Area Coverage / mi²</div>
-                <div className="col-span-2 text-center font-mono text-slate-500">2-3 hours</div>
-                <div className="col-span-3 text-center font-mono text-slate-600">45-60 min</div>
-                <div className="col-span-3 text-center font-mono font-bold text-emerald-700 bg-emerald-50/60 py-0.5 rounded-md">10-18 min</div>
-              </div>
-
-              {/* Row 3: Detection Rate */}
-              <div className="grid grid-cols-12 gap-2 text-xs items-center py-1 border-b border-slate-100">
-                <div className="col-span-4 font-semibold text-slate-800">Detection Rate</div>
-                <div className="col-span-2 text-center font-mono text-slate-500">65-70%</div>
-                <div className="col-span-3 text-center font-mono text-slate-600">55-65%</div>
-                <div className="col-span-3 text-center font-mono font-bold text-emerald-700 bg-emerald-50/60 py-0.5 rounded-md">78-85%</div>
-              </div>
-
-              {/* Row 4: Personnel Required */}
-              <div className="grid grid-cols-12 gap-2 text-xs items-center py-1">
-                <div className="col-span-4 font-semibold text-slate-800">Personnel Required</div>
-                <div className="col-span-2 text-center font-mono text-slate-500">15-25 crew</div>
-                <div className="col-span-3 text-center font-mono text-slate-600">2-3 pilots</div>
-                <div className="col-span-3 text-center font-mono font-bold text-emerald-700 bg-emerald-50/60 py-0.5 rounded-md">1-2 operators</div>
+              {/* Moat 3: 3D DEM AI */}
+              <div className="p-5 lg:p-6 rounded-3xl border border-emerald-200 bg-emerald-50/40 space-y-2 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10.5px] font-mono font-bold text-emerald-800 uppercase tracking-wider">
+                    SUBSYSTEM C/D MOAT
+                  </span>
+                  <span className="text-[10px] font-mono text-emerald-700 font-bold bg-white px-2 py-0.5 rounded-md border border-emerald-200">
+                    3.59cm ACCURACY
+                  </span>
+                </div>
+                <div className="text-lg lg:text-xl font-bold text-slate-900 font-heading mt-1">
+                  3D DEM Terrain Raycasting
+                </div>
+                <p className="text-xs lg:text-sm text-slate-600 leading-relaxed font-normal">
+                  Sub-15ms edge YOLOv8-Pose with WGS84 elevation raycasting, eliminating 15-30m flat-Earth geolocation errors.
+                </p>
               </div>
 
             </div>
+          </div>
 
-            {/* Speed Bars Comparison Chart */}
-            <div className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4 shadow-sm space-y-2.5">
-              
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">
-                  SPEED &amp; EFFICIENCY COMPARISON
-                </span>
-                <span className="text-[9.5px] font-mono text-emerald-700 font-bold bg-emerald-100/80 px-2 py-0.5 rounded-full">
-                  3-4X FASTER COVERAGE
-                </span>
-              </div>
-
-              {/* Metric 1: Coverage Speed per Hour */}
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs font-mono">
-                  <span className="text-slate-600 font-semibold">Area Survey Rate (sq miles / hr)</span>
-                  <span className="text-emerald-700 font-bold">4.5 mi²/hr vs 0.4 mi²/hr</span>
-                </div>
-                
-                <div className="space-y-1.5 pt-0.5">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono text-slate-400 w-24">Traditional Ground</span>
-                    <div className="flex-1 bg-slate-200 h-2 rounded-full overflow-hidden">
-                      <div className="bg-slate-400 h-full rounded-full" style={{ width: '10%' }}></div>
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-500 w-12 text-right">0.4 mi²</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono text-slate-400 w-24">Single Drone</span>
-                    <div className="flex-1 bg-slate-200 h-2 rounded-full overflow-hidden">
-                      <div className="bg-slate-500 h-full rounded-full" style={{ width: '30%' }}></div>
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-600 w-12 text-right">1.2 mi²</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold text-slate-900 w-24">AI Swarm (SUTRA)</span>
-                    <div className="flex-1 bg-emerald-100 h-3 rounded-full overflow-hidden p-0.5">
-                      <div className="bg-emerald-600 h-full rounded-full" style={{ width: '100%' }}></div>
-                    </div>
-                    <span className="text-[10px] font-mono font-bold text-emerald-700 w-12 text-right">4.5 mi²</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Market & Adoption Bar */}
-              <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200 text-center font-mono">
-                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
-                  <div className="text-xs font-bold text-slate-900">$8.94B</div>
-                  <div className="text-[8.5px] text-slate-500">Market by 2033</div>
-                </div>
-                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
-                  <div className="text-xs font-bold text-emerald-700">37 Nations</div>
-                  <div className="text-[8.5px] text-slate-500">Mandated SAR Drones</div>
-                </div>
-                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
-                  <div className="text-xs font-bold text-slate-900">$180M</div>
-                  <div className="text-[8.5px] text-slate-500">FEMA 2025 Budget</div>
-                </div>
-              </div>
-
+          {/* Market Validation Banner (Bottom Row) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 pt-1 font-mono">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg lg:text-xl font-bold text-slate-900 font-heading">$8.94B</div>
+              <div className="text-[9.5px] lg:text-[10px] text-slate-500 mt-0.5">Market by 2033 (18.4% CAGR)</div>
             </div>
-
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg lg:text-xl font-bold text-emerald-700 font-heading">+412%</div>
+              <div className="text-[9.5px] lg:text-[10px] text-slate-500 mt-0.5">Disaster Surge in 20 Yrs</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg lg:text-xl font-bold text-slate-900 font-heading">37 Nations</div>
+              <div className="text-[9.5px] lg:text-[10px] text-slate-500 mt-0.5">Mandating SAR Drones</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg lg:text-xl font-bold text-emerald-700 font-heading">$180M</div>
+              <div className="text-[9.5px] lg:text-[10px] text-slate-500 mt-0.5">FEMA 2025 Allocation</div>
+            </div>
           </div>
 
         </main>

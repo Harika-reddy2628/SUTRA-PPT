@@ -4,7 +4,7 @@ generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
 - Slide 02: The Problem (Subsystem Failure Modes, Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
-- Slide 03: The Solution (Subsystem Solutional Moats, Benchmark Matrix, Speed Comparison Bars)
+- Slide 03: The Solution (Subsystem Solutional Moats, 6x6 Bullets, Full-Width Architecture Cards, Market Validation)
 """
 
 from pathlib import Path
@@ -274,7 +274,7 @@ def build_slide_02_problem(prs):
              "TEAM OFFGRID — PROJECT SUTRA", FONT_MONO, 9, COLOR_NAVY, bold=True, align=PP_ALIGN.RIGHT)
 
 
-def build_slide_03_benchmark(prs):
+def build_slide_03_solution_moats(prs):
     blank_layout = prs.slide_layouts[6]
     slide = prs.slides.add_slide(blank_layout)
 
@@ -291,98 +291,85 @@ def build_slide_03_benchmark(prs):
     # 2. Top Section: Left Accent Bar + Slide Title
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.62), Inches(0.1), Inches(0.36), COLOR_NAVY)
     add_text(slide, Inches(1.05), Inches(0.65), Inches(5.5), Inches(0.35),
-             "THE SOLUTION — SUBSYSTEM MOATS & BENCHMARK", FONT_MONO, 12, COLOR_NAVY, bold=True)
+             "THE SOLUTION — SUBSYSTEM MOATS", FONT_MONO, 12, COLOR_NAVY, bold=True)
     
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.6), Inches(0.60), Inches(2.9), Inches(0.36), COLOR_CARD_BG, COLOR_BORDER)
     add_shape(slide, MSO_SHAPE.OVAL, Inches(9.8), Inches(0.72), Inches(0.1), Inches(0.1), COLOR_EMERALD)
     add_text(slide, Inches(9.95), Inches(0.66), Inches(2.5), Inches(0.25),
              "SWARM SEARCH EFFICIENCY", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.CENTER)
 
-    # 3. Left Column: Conclusion Headline + 6x6 Simple Bullets
-    add_text(slide, Inches(0.8), Inches(1.30), Inches(6.5), Inches(1.2),
+    # 3. Monumental Headline
+    add_text(slide, Inches(0.8), Inches(1.30), Inches(11.5), Inches(1.1),
              "AI Swarm Drones Find Survivors 3-4x Faster Than Traditional SAR",
-             FONT_HEADING, 28, COLOR_BLACK, bold=True)
+             FONT_HEADING, 32, COLOR_BLACK, bold=True)
 
-    bullets = [
+    # 4. 6x6 Rule Bullets in 2-Column Spacious Grid
+    bullets_col1 = [
         "78-85% survivor detection on first pass",
-        "10-18 min per sq mile speed",
         "Mesh networking works in GPS-denied zones",
-        "24/7 autonomous operation for 11+ days",
         "False positive rate down to 12%",
+    ]
+    bullets_col2 = [
+        "10-18 min per sq mile speed",
+        "24/7 autonomous operation for 11+ days",
         "Cost per deployment: $12K vs $15K",
     ]
 
-    bullet_start_y = Inches(2.55)
-    bullet_gap = Inches(0.38)
-    for i, b_text in enumerate(bullets):
+    bullet_start_y = Inches(2.45)
+    bullet_gap = Inches(0.42)
+    for i, b_text in enumerate(bullets_col1):
         curr_y = bullet_start_y + i * bullet_gap
-        add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.06), Inches(0.09), Inches(0.09), COLOR_EMERALD)
-        add_text(slide, Inches(1.02), curr_y, Inches(6.2), Inches(0.35),
-                 b_text, FONT_BODY, 13.5, COLOR_GRAY, bold=False)
+        add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.06), Inches(0.1), Inches(0.1), COLOR_EMERALD)
+        add_text(slide, Inches(1.05), curr_y, Inches(5.2), Inches(0.35),
+                 b_text, FONT_BODY, 15, COLOR_GRAY, bold=False)
 
-    # 3 Subsystem Solutional Moats Strip
-    add_text(slide, Inches(0.8), Inches(5.0), Inches(5.0), Inches(0.2),
-             "PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS", FONT_MONO, 7.5, COLOR_DIM, bold=True)
+    for i, b_text in enumerate(bullets_col2):
+        curr_y = bullet_start_y + i * bullet_gap
+        add_shape(slide, MSO_SHAPE.OVAL, Inches(6.82), curr_y + Inches(0.06), Inches(0.1), Inches(0.1), COLOR_EMERALD)
+        add_text(slide, Inches(7.05), curr_y, Inches(5.2), Inches(0.35),
+                 b_text, FONT_BODY, 15, COLOR_GRAY, bold=False)
+
+    # 5. 3 Subsystem Solutional Moats Full-Width Cards
+    add_text(slide, Inches(0.8), Inches(3.9), Inches(6.0), Inches(0.2),
+             "PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS", FONT_MONO, 8.0, COLOR_DIM, bold=True)
+    add_text(slide, Inches(9.0), Inches(3.9), Inches(3.5), Inches(0.2),
+             "3 CORE ENGINEERING MOATS", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
 
     moats = [
-        ("SUBSYSTEM A MOAT", "PX4 + VIO EKF2", "50Hz Offboard GNC", RGBColor(0xDC, 0xFC, 0xE7)),
-        ("SUBSYSTEM B MOAT", "Deep JSCC Video", "Zero-Cliff to -5dB", RGBColor(0xDC, 0xFC, 0xE7)),
-        ("SUBSYSTEM C/D MOAT", "3D DEM Raycast", "3.59cm Geolocation", RGBColor(0xDC, 0xFC, 0xE7)),
+        ("SUBSYSTEM A MOAT", "50Hz OFFBOARD", "PX4 + VIO EKF2 Autopilot",
+         "Decentralized 3D ORCA anti-collision and offboard setpoint streaming without ground control tower dependency."),
+        ("SUBSYSTEM B MOAT", "-5dB RESILIENT", "Deep JSCC Neural Video",
+         "Zero-cliff neural semantic video encoding that degrades gracefully under extreme radio jamming and ravine occlusion."),
+        ("SUBSYSTEM C/D MOAT", "3.59cm ACCURACY", "3D DEM Terrain Raycasting",
+         "Sub-15ms edge YOLOv8-Pose with WGS84 elevation raycasting, eliminating 15-30m flat-Earth geolocation errors."),
     ]
-    m_w = Inches(2.0)
-    m_gap = Inches(0.15)
-    for i, (m_badge, m_title, m_sub, m_bg) in enumerate(moats):
+    card_w = Inches(3.75)
+    card_gap = Inches(0.24)
+    for i, (m_badge, m_tag, m_title, m_desc) in enumerate(moats):
+        cx = Inches(0.8) + i * (card_w + card_gap)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx, Inches(4.15), card_w, Inches(1.3), RGBColor(0xEC, 0xFD, 0xF5), COLOR_BORDER)
+        add_text(slide, cx + Inches(0.15), Inches(4.22), Inches(1.8), Inches(0.2), m_badge, FONT_MONO, 7.0, COLOR_EMERALD, bold=True)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(2.3), Inches(4.22), Inches(1.3), Inches(0.22), COLOR_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(2.3), Inches(4.24), Inches(1.3), Inches(0.2), m_tag, FONT_MONO, 6.5, COLOR_EMERALD, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, cx + Inches(0.15), Inches(4.45), card_w - Inches(0.3), Inches(0.28), m_title, FONT_HEADING, 11, COLOR_BLACK, bold=True)
+        add_text(slide, cx + Inches(0.15), Inches(4.75), card_w - Inches(0.3), Inches(0.65), m_desc, FONT_BODY, 8.2, COLOR_SLATE)
+
+    # 6. Market Validation Banner (Bottom Row)
+    market_stats = [
+        ("$8.94B", "Market by 2033 (18.4% CAGR)"),
+        ("+412%", "Disaster Surge in 20 Yrs"),
+        ("37 Nations", "Mandating SAR Drones"),
+        ("$180M", "FEMA 2025 Allocation"),
+    ]
+    m_w = Inches(2.75)
+    m_gap = Inches(0.24)
+    for i, (val, sub) in enumerate(market_stats):
         mx = Inches(0.8) + i * (m_w + m_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, mx, Inches(5.25), m_w, Inches(0.95), m_bg, COLOR_BORDER)
-        add_text(slide, mx + Inches(0.08), Inches(5.32), m_w - Inches(0.16), Inches(0.18), m_badge, FONT_MONO, 6.5, COLOR_EMERALD, bold=True)
-        add_text(slide, mx + Inches(0.08), Inches(5.50), m_w - Inches(0.16), Inches(0.25), m_title, FONT_HEADING, 9.0, COLOR_BLACK, bold=True)
-        add_text(slide, mx + Inches(0.08), Inches(5.75), m_w - Inches(0.16), Inches(0.35), m_sub, FONT_MONO, 6.8, COLOR_SLATE)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, mx, Inches(5.6), m_w, Inches(0.72), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, mx + Inches(0.1), Inches(5.65), m_w - Inches(0.2), Inches(0.25), val, FONT_HEADING, 13, COLOR_BLACK, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, mx + Inches(0.1), Inches(5.90), m_w - Inches(0.2), Inches(0.35), sub, FONT_MONO, 7.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
 
-    # 4. Right Column: Benchmark Comparison Matrix & Speed Bars
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.4), Inches(1.35), Inches(5.133), Inches(3.3), COLOR_CARD_BG, COLOR_BORDER)
-    add_text(slide, Inches(7.6), Inches(1.45), Inches(3.0), Inches(0.2), "BENCHMARK MATRIX", FONT_MONO, 7.5, COLOR_DIM, bold=True)
-    add_text(slide, Inches(7.6), Inches(1.68), Inches(4.5), Inches(0.3), "Search & Rescue Performance Comparison", FONT_HEADING, 12, COLOR_BLACK, bold=True)
-
-    # Table Header
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(7.6), Inches(2.05), Inches(4.733), Inches(0.015), COLOR_BORDER)
-    add_text(slide, Inches(7.6), Inches(2.15), Inches(1.8), Inches(0.2), "METRIC", FONT_MONO, 7.5, COLOR_DIM, bold=True)
-    add_text(slide, Inches(9.4), Inches(2.15), Inches(0.8), Inches(0.2), "TRADITIONAL", FONT_MONO, 7.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
-    add_text(slide, Inches(10.2), Inches(2.15), Inches(1.0), Inches(0.2), "SINGLE DRONE", FONT_MONO, 7.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
-    add_text(slide, Inches(11.2), Inches(2.15), Inches(1.1), Inches(0.2), "AI SWARM", FONT_MONO, 7.5, COLOR_EMERALD, bold=True, align=PP_ALIGN.CENTER)
-
-    matrix_rows = [
-        ("Deployment Time", "45-90 min", "15-30 min", "8-15 min"),
-        ("Area Coverage / mi²", "2-3 hours", "45-60 min", "10-18 min"),
-        ("Detection Rate", "65-70%", "55-65%", "78-85%"),
-        ("Personnel Required", "15-25 crew", "2-3 pilots", "1-2 operators"),
-    ]
-    for i, (m_lbl, t_val, s_val, a_val) in enumerate(matrix_rows):
-        ry = Inches(2.45) + i * Inches(0.48)
-        add_text(slide, Inches(7.6), ry, Inches(1.8), Inches(0.3), m_lbl, FONT_BODY, 9.5, COLOR_BLACK, bold=True)
-        add_text(slide, Inches(9.4), ry, Inches(0.8), Inches(0.3), t_val, FONT_MONO, 8.5, COLOR_MUTED, align=PP_ALIGN.CENTER)
-        add_text(slide, Inches(10.2), ry, Inches(1.0), Inches(0.3), s_val, FONT_MONO, 8.5, COLOR_SLATE, align=PP_ALIGN.CENTER)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.2), ry - Inches(0.04), Inches(1.1), Inches(0.3), RGBColor(0xDC, 0xFC, 0xE7))
-        add_text(slide, Inches(11.2), ry, Inches(1.1), Inches(0.3), a_val, FONT_MONO, 8.5, COLOR_EMERALD, bold=True, align=PP_ALIGN.CENTER)
-
-    # Speed Bars Comparison Chart
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.4), Inches(4.8), Inches(5.133), Inches(1.4), COLOR_CARD_BG, COLOR_BORDER)
-    add_text(slide, Inches(7.6), Inches(4.9), Inches(3.5), Inches(0.2), "SPEED COMPARISON (SQ MILES / HOUR)", FONT_MONO, 7.5, COLOR_DIM, bold=True)
-    add_text(slide, Inches(10.5), Inches(4.9), Inches(1.8), Inches(0.2), "3-4X FASTER COVERAGE", FONT_MONO, 7.5, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
-
-    # Bars
-    add_text(slide, Inches(7.6), Inches(5.15), Inches(1.2), Inches(0.2), "Traditional Ground", FONT_MONO, 7.0, COLOR_MUTED)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.2), Inches(0.4), Inches(0.1), RGBColor(0x94, 0xA3, 0xB8))
-    add_text(slide, Inches(11.8), Inches(5.15), Inches(0.6), Inches(0.2), "0.4 mi²", FONT_MONO, 7.0, COLOR_MUTED, align=PP_ALIGN.RIGHT)
-
-    add_text(slide, Inches(7.6), Inches(5.4), Inches(1.2), Inches(0.2), "Single Drone", FONT_MONO, 7.0, COLOR_MUTED)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.45), Inches(1.2), Inches(0.1), COLOR_SLATE)
-    add_text(slide, Inches(11.8), Inches(5.4), Inches(0.6), Inches(0.2), "1.2 mi²", FONT_MONO, 7.0, COLOR_MUTED, align=PP_ALIGN.RIGHT)
-
-    add_text(slide, Inches(7.6), Inches(5.65), Inches(1.2), Inches(0.2), "AI Swarm (SUTRA)", FONT_MONO, 7.5, COLOR_BLACK, bold=True)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.7), Inches(3.0), Inches(0.14), COLOR_EMERALD)
-    add_text(slide, Inches(11.8), Inches(5.65), Inches(0.6), Inches(0.2), "4.5 mi²", FONT_MONO, 7.5, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
-
-    # 5. Footer (Page 3 & Company attribution)
+    # 7. Footer (Page 3 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
     add_text(slide, Inches(0.8), Inches(6.65), Inches(3.0), Inches(0.3),
              "PAGE 03", FONT_MONO, 9, COLOR_MUTED, bold=False)
@@ -400,7 +387,7 @@ def main():
     print("Building Slide 1 (Title), Slide 2 (Subsystem Problem Voids), & Slide 3 (Subsystem Solution Moats)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
-    build_slide_03_benchmark(prs)
+    build_slide_03_solution_moats(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")
     prs.save(str(output_path))
