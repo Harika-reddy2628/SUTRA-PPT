@@ -20,7 +20,7 @@ export const Slide03Benchmark: React.FC = () => {
           <div className="flex items-center gap-3.5">
             <div className="w-2 h-7 bg-[#0A1628] rounded-full"></div>
             <div className="font-mono text-sm sm:text-base font-bold uppercase tracking-[0.25em] text-[#0A1628]">
-              THE SOLUTION / BENCHMARK
+              THE SOLUTION — SUBSYSTEM MOATS &amp; BENCHMARK
             </div>
           </div>
 
@@ -31,17 +31,16 @@ export const Slide03Benchmark: React.FC = () => {
         </header>
 
         {/* Main Body: 2-Column Split */}
-        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 my-auto items-center">
+        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-9 my-auto items-center">
           
-          {/* Left Column (6 Cols): Increased Size Headline + 6x6 Bullets + Market Validation Banner */}
-          <div className="lg:col-span-6 space-y-5">
+          {/* Left Column (6 Cols): Headline + 6x6 Bullets + Subsystem Moats Strip */}
+          <div className="lg:col-span-6 space-y-4">
             
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-black tracking-tight leading-[1.08]">
               AI Swarm Drones Find Survivors 3-4x Faster Than Traditional SAR
             </h2>
 
-            {/* 6x6 Rule Bullets: <=6 words each, left-aligned, #374151 */}
-            <ul className="space-y-3 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
+            <ul className="space-y-2.5 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
                 <span>78-85% survivor detection on first pass</span>
@@ -68,33 +67,40 @@ export const Slide03Benchmark: React.FC = () => {
               </li>
             </ul>
 
-            {/* Market Validation Micro-Cards Banner */}
-            <div className="pt-2">
+            {/* 3 Subsystem Solutional Moats Strip */}
+            <div className="pt-1">
               <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2 flex items-center justify-between">
-                <span>MARKET VALIDATION &amp; ADOPTION</span>
-                <span className="text-[9px] text-slate-400 font-mono">GLOBAL SAR RESEARCH</span>
+                <span>PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS</span>
+                <span className="text-[9px] text-emerald-700 font-mono font-bold bg-emerald-50 px-2 py-0.5 rounded">3 CORE MOATS</span>
               </div>
 
-              <div className="grid grid-cols-4 gap-2.5">
+              <div className="grid grid-cols-3 gap-3">
                 
-                <div className="p-3 rounded-2xl border border-slate-200 bg-slate-50/90 space-y-1 shadow-sm">
-                  <div className="text-lg font-extrabold text-slate-900 font-heading">$8.94B</div>
-                  <div className="text-[9.5px] text-slate-500 font-mono leading-tight">By 2033 (18.4% CAGR)</div>
+                {/* Moat 1: GNC */}
+                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM A MOAT</span>
+                  </div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">PX4 + VIO EKF2</div>
+                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">50Hz Offboard GNC, GPS-Denied Flocking</div>
                 </div>
 
-                <div className="p-3 rounded-2xl border border-slate-200 bg-slate-50/90 space-y-1 shadow-sm">
-                  <div className="text-lg font-extrabold text-slate-900 font-heading">+412%</div>
-                  <div className="text-[9.5px] text-slate-500 font-mono leading-tight">Disaster Surge (20 Yrs)</div>
+                {/* Moat 2: Deep JSCC */}
+                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM B MOAT</span>
+                  </div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">Deep JSCC Video</div>
+                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">Zero-Cliff Video Down to -5dB SNR</div>
                 </div>
 
-                <div className="p-3 rounded-2xl border border-slate-200 bg-slate-50/90 space-y-1 shadow-sm">
-                  <div className="text-lg font-extrabold text-slate-900 font-heading">37 Nations</div>
-                  <div className="text-[9.5px] text-slate-500 font-mono leading-tight">Mandated SAR Drones</div>
-                </div>
-
-                <div className="p-3 rounded-2xl border border-slate-200 bg-slate-50/90 space-y-1 shadow-sm">
-                  <div className="text-lg font-extrabold text-slate-900 font-heading">$180M</div>
-                  <div className="text-[9.5px] text-slate-500 font-mono leading-tight">FEMA 2025 Allocation</div>
+                {/* Moat 3: 3D DEM AI */}
+                <div className="p-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/40 space-y-1 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[9px] font-mono font-bold text-emerald-800 uppercase">SUBSYSTEM C/D MOAT</span>
+                  </div>
+                  <div className="text-xs font-bold text-slate-900 leading-tight mt-0.5">3D DEM Raycast</div>
+                  <div className="text-[9.5px] text-slate-600 font-mono leading-tight">3.59cm Elevation-Corrected Geolocation</div>
                 </div>
 
               </div>
@@ -102,11 +108,11 @@ export const Slide03Benchmark: React.FC = () => {
 
           </div>
 
-          {/* Right Column (6 Cols): Visual Speed Comparison Bars & Benchmark Matrix */}
+          {/* Right Column (6 Cols): Benchmark Comparison Matrix & Speed Comparison Bars */}
           <div className="lg:col-span-6 space-y-4">
             
             {/* Key Statistics Comparison Table / Card */}
-            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-md space-y-3.5">
+            <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-md space-y-3">
               
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <div>
@@ -165,11 +171,11 @@ export const Slide03Benchmark: React.FC = () => {
             </div>
 
             {/* Speed Bars Comparison Chart */}
-            <div className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4 shadow-sm space-y-3">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4 shadow-sm space-y-2.5">
               
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em]">
-                  SPEED &amp; EFFICIENCY COMPARISON CHART
+                  SPEED &amp; EFFICIENCY COMPARISON
                 </span>
                 <span className="text-[9.5px] font-mono text-emerald-700 font-bold bg-emerald-100/80 px-2 py-0.5 rounded-full">
                   3-4X FASTER COVERAGE
@@ -210,15 +216,19 @@ export const Slide03Benchmark: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom Two Mini Metric Highlights */}
-              <div className="grid grid-cols-2 gap-3 pt-1 border-t border-slate-200">
-                <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200">
-                  <span className="text-[10px] font-mono text-slate-500">False Positive Drop</span>
-                  <span className="text-xs font-mono font-bold text-emerald-600">35% → 12% (-67%)</span>
+              {/* Bottom Market & Adoption Bar */}
+              <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200 text-center font-mono">
+                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
+                  <div className="text-xs font-bold text-slate-900">$8.94B</div>
+                  <div className="text-[8.5px] text-slate-500">Market by 2033</div>
                 </div>
-                <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200">
-                  <span className="text-[10px] font-mono text-slate-500">Continuous Flight</span>
-                  <span className="text-xs font-mono font-bold text-slate-900">24/7 (11+ Days)</span>
+                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
+                  <div className="text-xs font-bold text-emerald-700">37 Nations</div>
+                  <div className="text-[8.5px] text-slate-500">Mandated SAR Drones</div>
+                </div>
+                <div className="p-1.5 rounded-lg bg-white border border-slate-200">
+                  <div className="text-xs font-bold text-slate-900">$180M</div>
+                  <div className="text-[8.5px] text-slate-500">FEMA 2025 Budget</div>
                 </div>
               </div>
 

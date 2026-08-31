@@ -3,8 +3,8 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Increased Headline Size, Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
-- Slide 03: The Solution / Benchmark (Conclusion headline, 6x6 Bullets, Market Validation, Benchmark Matrix, Speed Comparison Bars)
+- Slide 02: The Problem (Subsystem Failure Modes, Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
+- Slide 03: The Solution (Subsystem Solutional Moats, Benchmark Matrix, Speed Comparison Bars)
 """
 
 from pathlib import Path
@@ -171,20 +171,20 @@ def build_slide_02_problem(prs):
         y = y_step * grid_spacing
         add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(y), SLIDE_WIDTH, Inches(0.008), COLOR_BORDER)
 
-    # 2. Top Section: Left Accent Bar + Prominent Slide Title
+    # 2. Top Section: Left Accent Bar + Slide Title
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.62), Inches(0.1), Inches(0.36), COLOR_NAVY)
-    add_text(slide, Inches(1.05), Inches(0.65), Inches(4.5), Inches(0.35),
-             "THE PROBLEM", FONT_MONO, 13, COLOR_NAVY, bold=True)
+    add_text(slide, Inches(1.05), Inches(0.65), Inches(5.5), Inches(0.35),
+             "THE PROBLEM — SUBSYSTEM FAILURE MODES", FONT_MONO, 12, COLOR_NAVY, bold=True)
     
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.6), Inches(0.60), Inches(2.9), Inches(0.36), COLOR_CARD_BG, COLOR_BORDER)
     add_shape(slide, MSO_SHAPE.OVAL, Inches(9.8), Inches(0.72), Inches(0.1), Inches(0.1), COLOR_RED)
     add_text(slide, Inches(9.95), Inches(0.66), Inches(2.5), Inches(0.25),
-             "RESCUE DRONE FAILURE MODES", FONT_MONO, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
+             "DISASTER FIELD BOTTLENECKS", FONT_MONO, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
 
-    # 3. Left Column: Increased Size Headline + 6x6 Simple Bullets
+    # 3. Left Column: Increased Size Headline + 6x6 Bullets
     add_text(slide, Inches(0.8), Inches(1.30), Inches(7.0), Inches(1.2),
              "GPS Loss and Radio Blackouts Cripple Disaster Rescue",
-             FONT_HEADING, 32, COLOR_BLACK, bold=True)
+             FONT_HEADING, 30, COLOR_BLACK, bold=True)
 
     bullets = [
         "Mountain valleys cut drone video feeds",
@@ -194,32 +194,33 @@ def build_slide_02_problem(prs):
         "Military drones cost over $50,000 each",
     ]
 
-    bullet_start_y = Inches(2.60)
-    bullet_gap = Inches(0.48)
+    bullet_start_y = Inches(2.55)
+    bullet_gap = Inches(0.44)
     for i, b_text in enumerate(bullets):
         curr_y = bullet_start_y + i * bullet_gap
         add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.06), Inches(0.09), Inches(0.09), COLOR_NAVY)
         add_text(slide, Inches(1.02), curr_y, Inches(6.8), Inches(0.4),
-                 b_text, FONT_BODY, 15, COLOR_GRAY, bold=False)
+                 b_text, FONT_BODY, 14, COLOR_GRAY, bold=False)
 
-    # 3D Isometric Failure Schematics Strip
-    add_text(slide, Inches(0.8), Inches(5.05), Inches(5.0), Inches(0.2),
-             "TACTICAL FAILURE SCHEMATICS", FONT_MONO, 7.5, COLOR_DIM, bold=True)
+    # Subsystem Failure Schematics Strip
+    add_text(slide, Inches(0.8), Inches(4.95), Inches(5.0), Inches(0.2),
+             "SUBSYSTEM FAILURE SCHEMATICS & VOIDS", FONT_MONO, 7.5, COLOR_DIM, bold=True)
 
     schematics = [
-        ("RF Ridge Shadow", "Video Stream Severance", "assets/illustrations/rf_mountain_shadow.jpg"),
-        ("Canopy Shadow", "GNSS Multi-Path Drift", "assets/illustrations/gps_canopy_shadow.jpg"),
-        ("Central Link Loss", "Single Point Abort", "assets/illustrations/single_link_loss.jpg"),
+        ("SUBSYSTEM A VOID", "Canopy GPS Drift", "GNSS Multi-Path Crash", "assets/illustrations/gps_canopy_shadow.jpg"),
+        ("SUBSYSTEM B VOID", "RF Ridge Cut", "Digital Cliff Blackout", "assets/illustrations/rf_mountain_shadow.jpg"),
+        ("SUBSYSTEM C/D VOID", "Central Link Abort", "Single Point Loss", "assets/illustrations/single_link_loss.jpg"),
     ]
     sch_w = Inches(2.2)
     sch_gap = Inches(0.18)
-    for i, (sch_title, sch_sub, img_file) in enumerate(schematics):
+    for i, (sch_badge, sch_title, sch_sub, img_file) in enumerate(schematics):
         sx = Inches(0.8) + i * (sch_w + sch_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, sx, Inches(5.28), sch_w, Inches(1.02), COLOR_CARD_BG, COLOR_BORDER)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, sx, Inches(5.2), sch_w, Inches(1.15), COLOR_CARD_BG, COLOR_BORDER)
         if Path(img_file).exists():
-            slide.shapes.add_picture(img_file, sx + Inches(0.06), Inches(5.32), sch_w - Inches(0.12), Inches(0.55))
-        add_text(slide, sx + Inches(0.08), Inches(5.92), sch_w - Inches(0.16), Inches(0.2), sch_title, FONT_HEADING, 8.0, COLOR_BLACK, bold=True)
-        add_text(slide, sx + Inches(0.08), Inches(6.10), sch_w - Inches(0.16), Inches(0.18), sch_sub, FONT_MONO, 6.5, COLOR_MUTED)
+            slide.shapes.add_picture(img_file, sx + Inches(0.06), Inches(5.24), sch_w - Inches(0.12), Inches(0.55))
+        add_text(slide, sx + Inches(0.08), Inches(5.82), sch_w - Inches(0.16), Inches(0.18), sch_badge, FONT_MONO, 6.5, COLOR_RED, bold=True)
+        add_text(slide, sx + Inches(0.08), Inches(5.98), sch_w - Inches(0.16), Inches(0.2), sch_title, FONT_HEADING, 8.0, COLOR_BLACK, bold=True)
+        add_text(slide, sx + Inches(0.08), Inches(6.16), sch_w - Inches(0.16), Inches(0.18), sch_sub, FONT_MONO, 6.2, COLOR_MUTED)
 
     # 4. Right Column: Reference-Matching Big Full-Bleed Image Card Carousel
     add_text(slide, Inches(8.0), Inches(1.35), Inches(4.5), Inches(0.25),
@@ -289,8 +290,8 @@ def build_slide_03_benchmark(prs):
 
     # 2. Top Section: Left Accent Bar + Slide Title
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.62), Inches(0.1), Inches(0.36), COLOR_NAVY)
-    add_text(slide, Inches(1.05), Inches(0.65), Inches(4.5), Inches(0.35),
-             "THE SOLUTION / BENCHMARK", FONT_MONO, 13, COLOR_NAVY, bold=True)
+    add_text(slide, Inches(1.05), Inches(0.65), Inches(5.5), Inches(0.35),
+             "THE SOLUTION — SUBSYSTEM MOATS & BENCHMARK", FONT_MONO, 12, COLOR_NAVY, bold=True)
     
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.6), Inches(0.60), Inches(2.9), Inches(0.36), COLOR_CARD_BG, COLOR_BORDER)
     add_shape(slide, MSO_SHAPE.OVAL, Inches(9.8), Inches(0.72), Inches(0.1), Inches(0.1), COLOR_EMERALD)
@@ -312,30 +313,30 @@ def build_slide_03_benchmark(prs):
     ]
 
     bullet_start_y = Inches(2.55)
-    bullet_gap = Inches(0.40)
+    bullet_gap = Inches(0.38)
     for i, b_text in enumerate(bullets):
         curr_y = bullet_start_y + i * bullet_gap
         add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.06), Inches(0.09), Inches(0.09), COLOR_EMERALD)
         add_text(slide, Inches(1.02), curr_y, Inches(6.2), Inches(0.35),
                  b_text, FONT_BODY, 13.5, COLOR_GRAY, bold=False)
 
-    # Market Validation Micro-Cards
-    add_text(slide, Inches(0.8), Inches(5.1), Inches(5.0), Inches(0.2),
-             "MARKET VALIDATION & ADOPTION", FONT_MONO, 7.5, COLOR_DIM, bold=True)
+    # 3 Subsystem Solutional Moats Strip
+    add_text(slide, Inches(0.8), Inches(5.0), Inches(5.0), Inches(0.2),
+             "PROJECT SUTRA SUBSYSTEM SOLUTIONAL MOATS", FONT_MONO, 7.5, COLOR_DIM, bold=True)
 
-    market_stats = [
-        ("$8.94B", "By 2033 (18.4% CAGR)"),
-        ("+412%", "Disaster Surge (20 Yrs)"),
-        ("37 Nations", "Mandated SAR Drones"),
-        ("$180M", "FEMA 2025 Budget"),
+    moats = [
+        ("SUBSYSTEM A MOAT", "PX4 + VIO EKF2", "50Hz Offboard GNC", RGBColor(0xDC, 0xFC, 0xE7)),
+        ("SUBSYSTEM B MOAT", "Deep JSCC Video", "Zero-Cliff to -5dB", RGBColor(0xDC, 0xFC, 0xE7)),
+        ("SUBSYSTEM C/D MOAT", "3D DEM Raycast", "3.59cm Geolocation", RGBColor(0xDC, 0xFC, 0xE7)),
     ]
-    m_w = Inches(1.48)
-    m_gap = Inches(0.12)
-    for i, (val, sub) in enumerate(market_stats):
+    m_w = Inches(2.0)
+    m_gap = Inches(0.15)
+    for i, (m_badge, m_title, m_sub, m_bg) in enumerate(moats):
         mx = Inches(0.8) + i * (m_w + m_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, mx, Inches(5.35), m_w, Inches(0.85), COLOR_CARD_BG, COLOR_BORDER)
-        add_text(slide, mx + Inches(0.08), Inches(5.42), m_w - Inches(0.16), Inches(0.3), val, FONT_HEADING, 13, COLOR_BLACK, bold=True)
-        add_text(slide, mx + Inches(0.08), Inches(5.72), m_w - Inches(0.16), Inches(0.4), sub, FONT_MONO, 6.8, COLOR_MUTED)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, mx, Inches(5.25), m_w, Inches(0.95), m_bg, COLOR_BORDER)
+        add_text(slide, mx + Inches(0.08), Inches(5.32), m_w - Inches(0.16), Inches(0.18), m_badge, FONT_MONO, 6.5, COLOR_EMERALD, bold=True)
+        add_text(slide, mx + Inches(0.08), Inches(5.50), m_w - Inches(0.16), Inches(0.25), m_title, FONT_HEADING, 9.0, COLOR_BLACK, bold=True)
+        add_text(slide, mx + Inches(0.08), Inches(5.75), m_w - Inches(0.16), Inches(0.35), m_sub, FONT_MONO, 6.8, COLOR_SLATE)
 
     # 4. Right Column: Benchmark Comparison Matrix & Speed Bars
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.4), Inches(1.35), Inches(5.133), Inches(3.3), COLOR_CARD_BG, COLOR_BORDER)
@@ -396,7 +397,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title), Slide 2 (Problem), & Slide 3 (Solution Benchmark)...")
+    print("Building Slide 1 (Title), Slide 2 (Subsystem Problem Voids), & Slide 3 (Subsystem Solution Moats)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
     build_slide_03_benchmark(prs)
