@@ -15,7 +15,7 @@ export const PerceptionSection: React.FC = () => {
   const sutraError = (0.032 + (alt / 30) * 0.0039).toFixed(4);
 
   return (
-    <section id="perception" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+    <section id="perception" className="py-28 px-6 max-w-7xl mx-auto z-10 relative">
       
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">

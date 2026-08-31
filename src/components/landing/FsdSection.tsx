@@ -13,7 +13,7 @@ export const FsdSection: React.FC = () => {
   const pushForce = staticPushActive ? ((2.80 - separation) * 1.8).toFixed(2) : '0.00';
 
   return (
-    <section id="fsd" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+    <section id="fsd" className="py-28 px-6 max-w-7xl mx-auto z-10 relative">
       
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">

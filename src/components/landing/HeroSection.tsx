@@ -11,10 +11,10 @@ import {
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative pt-24 pb-20 px-6 max-w-7xl mx-auto z-10">
+    <section className="relative pt-32 pb-28 px-6 max-w-7xl mx-auto z-10">
       
       {/* Spacious Hero Container */}
-      <div className="max-w-5xl space-y-8 mb-20">
+      <div className="max-w-5xl space-y-9 mb-24">
         
         {/* Subtle Category Overline */}
         <div className="inline-flex items-center gap-3 font-mono text-xs font-bold tracking-widest uppercase text-earth-terracotta">

@@ -31,7 +31,7 @@ export const ScorecardSection: React.FC = () => {
   const savings = militaryCost - f450Cost;
 
   return (
-    <section id="benchmarks" className="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+    <section id="benchmarks" className="py-28 px-6 max-w-7xl mx-auto z-10 relative">
       
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
