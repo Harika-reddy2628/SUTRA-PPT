@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-08-29",
+    "macrostructure": "Aerospace Telemetry Deck",
+    "theme": "SUTRA Tactical Monolith",
+    "genre": "modern-minimal",
+    "design_md": "DESIGN.md",
+    "stitch_project_id": "16844578275374755336",
+    "brief": "Nothing OS / Apple iOS minimalist pitch deck for Project SUTRA defense drone swarm",
+    "palette": "Paper White #FAFAFA / Carbon #09090B / Nothing Red #E11D48 / Telemetry Emerald #10B981",
+    "audit_status": "PASSED (0 critical, 0 major, 0 minor)"
+  }
+]
