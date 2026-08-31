@@ -52,8 +52,6 @@ export const Slide02Problem: React.FC = () => {
     return () => clearInterval(timer);
   }, [isPaused]);
 
-  const activeSource = AUDIT_SOURCES[currentIndex];
-
   return (
     <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-10 lg:p-16 select-none overflow-hidden border border-slate-200">
       
@@ -126,7 +124,7 @@ export const Slide02Problem: React.FC = () => {
 
           </div>
 
-          {/* Right Column (5 Cols): Auto-Sliding Dossier Card with Paperclip Effect */}
+          {/* Right Column (5 Cols): Smooth Parallax Stacked Dossier Cards */}
           <div 
             className="lg:col-span-5 relative"
             onMouseEnter={() => setIsPaused(true)}
@@ -143,64 +141,95 @@ export const Slide02Problem: React.FC = () => {
               </span>
             </div>
 
-            {/* Card Container */}
-            <div className="relative">
+            {/* 3D Stacked Container */}
+            <div className="relative w-full h-[310px]">
               
-              {/* Paperclip Visual Hook (Realistic SVG Over Card Top) */}
+              {/* Metallic Paperclip (Anchored seamlessly on the top edge of active card) */}
               <div className="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
-                <svg width="28" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="28" height="44" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path 
-                    d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                    stroke="#475569" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
+                    d="M7 13V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
+                    stroke="#1E293B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.2"
                   />
                   <path 
                     d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                    stroke="#94A3B8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"
+                    stroke="#475569" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
+                  />
+                  <path 
+                    d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
+                    stroke="#CBD5E1" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round"
                   />
                 </svg>
               </div>
 
-              {/* Active Slide Card */}
-              <div 
-                key={currentIndex}
-                className="rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden shadow-lg transition-all duration-500 ease-out"
-                style={{
-                  boxShadow: '0 12px 36px -4px rgba(10, 22, 40, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9)'
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full ${activeSource.badgeBg} text-white text-[8.5px] font-black uppercase tracking-wider font-mono`}>
-                    {activeSource.badge}
-                  </span>
-                  <span className="text-[10px] text-slate-400 font-mono font-semibold">
-                    {activeSource.category}
-                  </span>
-                </div>
+              {/* Stacked Parallax Cards */}
+              {AUDIT_SOURCES.map((source, idx) => {
+                const offset = (idx - currentIndex + AUDIT_SOURCES.length) % AUDIT_SOURCES.length;
+                
+                let transformStyle = 'translateY(0px) scale(1)';
+                let opacityStyle = 1;
+                let zIndex = 20;
+                let shadowStyle = '0 20px 40px -12px rgba(10, 22, 40, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9)';
 
-                <div className="text-base font-bold text-black pt-1 leading-snug">
-                  {activeSource.headline}
-                </div>
+                if (offset === 1) {
+                  transformStyle = 'translateY(16px) scale(0.95)';
+                  opacityStyle = 0.45;
+                  zIndex = 10;
+                  shadowStyle = '0 12px 24px -8px rgba(10, 22, 40, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6)';
+                } else if (offset === 2) {
+                  transformStyle = 'translateY(30px) scale(0.90)';
+                  opacityStyle = 0.18;
+                  zIndex = 5;
+                  shadowStyle = '0 6px 16px -4px rgba(10, 22, 40, 0.04), 0 0 0 1px rgba(226, 232, 240, 0.4)';
+                }
 
-                <p className="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
-                  {activeSource.quote}
-                </p>
+                return (
+                  <div 
+                    key={idx}
+                    className="absolute inset-0 rounded-2xl bg-white p-6 space-y-3 origin-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    style={{
+                      transform: transformStyle,
+                      opacity: opacityStyle,
+                      zIndex,
+                      boxShadow: shadowStyle,
+                      pointerEvents: offset === 0 ? 'auto' : 'none',
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className={`inline-block px-2.5 py-0.5 rounded-full ${source.badgeBg} text-white text-[8.5px] font-black uppercase tracking-wider font-mono`}>
+                        {source.badge}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono font-semibold">
+                        {source.category}
+                      </span>
+                    </div>
 
-                <div className="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
-                  <span>{activeSource.ref}</span>
-                  <span className="text-emerald-700 font-bold">{activeSource.status}</span>
-                </div>
-              </div>
+                    <div className="text-base font-bold text-black pt-1 leading-snug">
+                      {source.headline}
+                    </div>
+
+                    <p className="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3 rounded-xl border border-slate-100 italic">
+                      {source.quote}
+                    </p>
+
+                    <div className="pt-1 text-[11px] font-mono text-slate-500 flex items-center justify-between border-t border-slate-100">
+                      <span>{source.ref}</span>
+                      <span className="text-emerald-700 font-bold">{source.status}</span>
+                    </div>
+                  </div>
+                );
+              })}
 
             </div>
 
             {/* Carousel Indicator Dots + Pause Status */}
-            <div className="flex items-center justify-between mt-3.5 font-mono">
+            <div className="flex items-center justify-between mt-8 font-mono">
               <div className="flex items-center gap-2">
                 {AUDIT_SOURCES.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
                       idx === currentIndex ? 'w-8 bg-black' : 'w-2 bg-slate-300 hover:bg-slate-400'
                     }`}
                     aria-label={`Slide ${idx + 1}`}
@@ -208,7 +237,7 @@ export const Slide02Problem: React.FC = () => {
                 ))}
               </div>
               <div className="text-[10px] text-slate-400 uppercase tracking-wider">
-                {isPaused ? 'PAUSED ON HOVER' : 'AUTO-ADVANCING 3.5S'}
+                {isPaused ? 'PAUSED ON HOVER' : 'SMOOTH PARALLAX 3.5S'}
               </div>
             </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Slide 02: The Problem (Simple Copy + Paperclip Carousel)</title>
+  <title>PROJECT SUTRA — Slide 02: The Problem (Smooth Parallax Dossier Stack)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,10 +82,35 @@
       justify-content: space-between;
     }
 
-    /* Paperclip Animation & Card Shadow */
-    .paperclip-card {
-      box-shadow: 0 12px 36px -4px rgba(10, 22, 40, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* 3D Stacked Parallax Transition */
+    .stack-card {
+      position: absolute;
+      inset: 0;
+      transition: all 700ms cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top center;
+    }
+
+    .stack-pos-0 {
+      transform: translateY(0px) scale(1);
+      opacity: 1;
+      z-index: 20;
+      box-shadow: 0 20px 40px -12px rgba(10, 22, 40, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
+    }
+
+    .stack-pos-1 {
+      transform: translateY(16px) scale(0.95);
+      opacity: 0.45;
+      z-index: 10;
+      box-shadow: 0 12px 24px -8px rgba(10, 22, 40, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6);
+      pointer-events: none;
+    }
+
+    .stack-pos-2 {
+      transform: translateY(30px) scale(0.90);
+      opacity: 0.18;
+      z-index: 5;
+      box-shadow: 0 6px 16px -4px rgba(10, 22, 40, 0.04), 0 0 0 1px rgba(226, 232, 240, 0.4);
+      pointer-events: none;
     }
   </style>
 </head>
@@ -156,10 +181,10 @@
 
         </div>
 
-        <!-- Right Column (5 Cols): Auto-Sliding Dossier Card with Paperclip Effect -->
+        <!-- Right Column (5 Cols): Smooth Parallax Stacked Dossier Cards -->
         <div class="col-span-5 relative">
           
-          <!-- Dossier Section Header -->
+          <!-- Dossier Header -->
           <div class="flex items-center justify-between pb-3">
             <span class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 font-mono">
               OFFICIAL EVIDENCE &amp; AUDITS
@@ -169,22 +194,26 @@
             </span>
           </div>
 
-          <!-- Carousel Container -->
-          <div class="relative min-h-[300px]" id="carousel-root">
+          <!-- 3D Parallax Stack Container -->
+          <div class="relative w-full h-[310px]">
             
-            <!-- Paperclip Visual Hook (Realistic SVG Over Card Top) -->
+            <!-- Metallic Paperclip (Anchored seamlessly on the top edge of active card) -->
             <div class="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
-              <svg width="28" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Outer loop -->
+              <svg width="28" height="44" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shadow line -->
+                <path d="M7 13V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
+                      stroke="#1E293B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.2" />
+                <!-- Main Metallic Wire -->
                 <path d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                      stroke="#475569" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke="#475569" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Highlight Wire -->
                 <path d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                      stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke="#CBD5E1" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
 
-            <!-- Slide Card 01: NDMA Field Audit -->
-            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden" id="slide-0">
+            <!-- Card 01: NDMA Field Audit -->
+            <div class="stack-card stack-pos-0 rounded-2xl bg-white p-6 space-y-3" id="card-0">
               <div class="flex items-center justify-between">
                 <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#0A1628] text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
                   GOVT DISASTER AUDIT
@@ -203,8 +232,8 @@
               </div>
             </div>
 
-            <!-- Slide Card 02: IEEE Research -->
-            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden hidden" id="slide-1">
+            <!-- Card 02: IEEE Research -->
+            <div class="stack-card stack-pos-1 rounded-2xl bg-white p-6 space-y-3" id="card-1">
               <div class="flex items-center justify-between">
                 <span class="inline-block px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
                   PEER-REVIEWED SCIENCE
@@ -223,8 +252,8 @@
               </div>
             </div>
 
-            <!-- Slide Card 03: Government RTI Records -->
-            <div class="carousel-slide paperclip-card rounded-2xl border border-slate-200 bg-white/95 p-6 space-y-3 relative overflow-hidden hidden" id="slide-2">
+            <!-- Card 03: Government RTI Records -->
+            <div class="stack-card stack-pos-2 rounded-2xl bg-white p-6 space-y-3" id="card-2">
               <div class="flex items-center justify-between">
                 <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-700 text-white text-[8.5px] font-black uppercase tracking-wider font-mono">
                   PUBLIC RTI PROCUREMENT
@@ -245,15 +274,15 @@
 
           </div>
 
-          <!-- Carousel Indicator Dots + Progress Bar -->
-          <div class="flex items-center justify-between mt-4">
+          <!-- Carousel Controls: Clickable progress pills & timer note -->
+          <div class="flex items-center justify-between mt-8">
             <div class="flex items-center gap-2">
-              <button onclick="setSlide(0)" class="h-1.5 rounded-full transition-all duration-300 w-8 bg-black" id="dot-0"></button>
-              <button onclick="setSlide(1)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300" id="dot-1"></button>
-              <button onclick="setSlide(2)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300" id="dot-2"></button>
+              <button onclick="setSlide(0)" class="h-1.5 rounded-full transition-all duration-500 w-8 bg-black" id="dot-0"></button>
+              <button onclick="setSlide(1)" class="h-1.5 rounded-full transition-all duration-500 w-2 bg-slate-300" id="dot-1"></button>
+              <button onclick="setSlide(2)" class="h-1.5 rounded-full transition-all duration-500 w-2 bg-slate-300" id="dot-2"></button>
             </div>
             <div class="font-mono text-[10px] text-slate-400 uppercase tracking-wider">
-              Auto-advancing 3.5s
+              SMOOTH PARALLAX 3.5S
             </div>
           </div>
 
@@ -279,14 +308,19 @@
     function setSlide(index) {
       currentSlide = index;
       for (let i = 0; i < totalSlides; i++) {
-        const slideEl = document.getElementById(`slide-${i}`);
+        const cardEl = document.getElementById(`card-${i}`);
         const dotEl = document.getElementById(`dot-${i}`);
+        
+        const offset = (i - index + totalSlides) % totalSlides;
+        
+        // Remove previous position classes
+        cardEl.classList.remove('stack-pos-0', 'stack-pos-1', 'stack-pos-2');
+        cardEl.classList.add(`stack-pos-${offset}`);
+        
         if (i === index) {
-          slideEl.classList.remove('hidden');
-          dotEl.className = 'h-1.5 rounded-full transition-all duration-300 w-8 bg-black';
+          dotEl.className = 'h-1.5 rounded-full transition-all duration-500 w-8 bg-black';
         } else {
-          slideEl.classList.add('hidden');
-          dotEl.className = 'h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-300';
+          dotEl.className = 'h-1.5 rounded-full transition-all duration-500 w-2 bg-slate-300';
         }
       }
       document.getElementById('carousel-counter').innerText = slideLabels[index];

@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Paperclip Dossier Audit Card)
+- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Stacked Parallax Dossier Cards)
 """
 
 from pathlib import Path
@@ -198,14 +198,18 @@ def build_slide_02_problem(prs):
         add_text(slide, Inches(1.05), curr_y, Inches(6.8), Inches(0.45),
                  b_text, FONT_BODY, 17, COLOR_GRAY, bold=False)
 
-    # 4. Right Column: Dossier Evidence Card with Paperclip
+    # 4. Right Column: 3D Stacked Dossier Evidence Cards
     add_text(slide, Inches(8.2), Inches(1.5), Inches(4.3), Inches(0.25),
              "OFFICIAL EVIDENCE & AUDITS", FONT_MONO, 8.5, COLOR_DIM, bold=True)
     add_text(slide, Inches(10.8), Inches(1.5), Inches(1.7), Inches(0.25),
              "SOURCE 01 / 03", FONT_MONO, 8.5, COLOR_MUTED, bold=True, align=PP_ALIGN.RIGHT)
 
-    # Dossier Card Container
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.85), Inches(4.3), Inches(3.8), COLOR_CARD_BG, COLOR_BORDER)
+    # Stack Layer 2 (Deep Background Card)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.4), Inches(2.1), Inches(3.9), Inches(3.4), RGBColor(0xF1, 0xF5, 0xF9), COLOR_BORDER)
+    # Stack Layer 1 (Middle Card)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.3), Inches(1.98), Inches(4.1), Inches(3.5), RGBColor(0xF8, 0xFA, 0xFC), COLOR_BORDER)
+    # Stack Layer 0 (Top Active Card)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.85), Inches(4.3), Inches(3.6), COLOR_BG, COLOR_BORDER)
     
     # Paperclip Graphic on Top Right
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.8), Inches(1.68), Inches(0.25), Inches(0.55), COLOR_SLATE)
@@ -221,20 +225,20 @@ def build_slide_02_problem(prs):
              FONT_HEADING, 12.0, COLOR_BLACK, bold=True)
 
     # Quote Box
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.1), Inches(3.8), Inches(1.5), COLOR_BG, COLOR_BORDER)
-    add_text(slide, Inches(8.6), Inches(3.2), Inches(3.5), Inches(1.3),
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.1), Inches(3.8), Inches(1.4), COLOR_CARD_BG, COLOR_BORDER)
+    add_text(slide, Inches(8.6), Inches(3.2), Inches(3.5), Inches(1.2),
              "“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”",
              FONT_BODY, 9.5, COLOR_GRAY, italic=True)
 
     # Verification Footer
-    add_text(slide, Inches(8.45), Inches(4.8), Inches(2.2), Inches(0.3), "Ref: NDMA Field Review", FONT_MONO, 8.0, COLOR_MUTED)
-    add_text(slide, Inches(10.65), Inches(4.8), Inches(1.6), Inches(0.3), "✓ VERIFIED RECORD", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
+    add_text(slide, Inches(8.45), Inches(4.7), Inches(2.2), Inches(0.3), "Ref: NDMA Field Review", FONT_MONO, 8.0, COLOR_MUTED)
+    add_text(slide, Inches(10.65), Inches(4.7), Inches(1.6), Inches(0.3), "✓ VERIFIED RECORD", FONT_MONO, 8.0, COLOR_EMERALD, bold=True, align=PP_ALIGN.RIGHT)
 
     # Carousel Dots
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(5.8), Inches(0.6), Inches(0.08), COLOR_BLACK)
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.8), Inches(0.12), Inches(0.08), COLOR_BORDER)
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.1), Inches(5.8), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_text(slide, Inches(10.0), Inches(5.72), Inches(2.5), Inches(0.25), "AUTO-ADVANCING 3.5S", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
+    add_text(slide, Inches(10.0), Inches(5.72), Inches(2.5), Inches(0.25), "SMOOTH PARALLAX 3.5S", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
     # 5. Footer (Page 2 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
@@ -251,7 +255,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with Paperclip Carousel)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Stacked Parallax Dossier)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 
