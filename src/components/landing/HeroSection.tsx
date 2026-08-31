@@ -95,19 +95,19 @@ export const HeroSection: React.FC = () => {
 
           {/* Subsystems Mini Tags */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
-            <div className="p-2.5 rounded-lg bg-white border border-sandstone-border text-center shadow-sm">
+            <div className="p-3 rounded-xl bg-white border border-sandstone-border text-center shadow-sm">
               <div className="font-mono text-[10px] font-bold text-earth-forest">SUBSYS A</div>
               <div className="text-[11px] text-sandstone-muted font-medium mt-0.5">SUTRA-FSD &amp; ORCA</div>
             </div>
-            <div className="p-2.5 rounded-lg bg-white border border-sandstone-border text-center shadow-sm">
+            <div className="p-3 rounded-xl bg-white border border-sandstone-border text-center shadow-sm">
               <div className="font-mono text-[10px] font-bold text-earth-terracotta">SUBSYS B</div>
               <div className="text-[11px] text-sandstone-muted font-medium mt-0.5">Deep JSCC Comms</div>
             </div>
-            <div className="p-2.5 rounded-lg bg-white border border-sandstone-border text-center shadow-sm">
+            <div className="p-3 rounded-xl bg-white border border-sandstone-border text-center shadow-sm">
               <div className="font-mono text-[10px] font-bold text-earth-sage">SUBSYS C</div>
               <div className="text-[11px] text-sandstone-muted font-medium mt-0.5">Tri-Modal AI (3.59cm)</div>
             </div>
-            <div className="p-2.5 rounded-lg bg-white border border-sandstone-border text-center shadow-sm">
+            <div className="p-3 rounded-xl bg-white border border-sandstone-border text-center shadow-sm">
               <div className="font-mono text-[10px] font-bold text-elemental-sky">SUBSYS D</div>
               <div className="text-[11px] text-sandstone-muted font-medium mt-0.5">Pegasus 3D GCS</div>
             </div>
