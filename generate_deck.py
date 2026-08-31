@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
-Compliant with PPT Artisan Skills, Stitch Tactical Monolith & Web Aura Design System:
+Compliant with PPT Artisan Skills, Stitch Tactical Monolith & Hallmark Anti-Slop Discipline:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Subsystem Failure Modes, Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
-- Slide 03: The Solution (4-Column Spatial Subsystem Architecture Grid, Voids Solved, Moats, Telemetry Banner)
+- Slide 02: The Problem (4-Column Subsystem Failure Voids Grid: A, B, C, D)
+- Slide 03: The Solution (4-Column Subsystem Moats Architecture Grid: A, B, C, D)
 """
 
 from pathlib import Path
@@ -18,7 +18,7 @@ from pptx.enum.shapes import MSO_SHAPE
 COLOR_BG = RGBColor(0xFF, 0xFF, 0xFF)        # Pure White (#FFFFFF)
 COLOR_BLACK = RGBColor(0x09, 0x09, 0x0B)     # Tactical Ink Black (#09090B)
 COLOR_NAVY = RGBColor(0x0A, 0x16, 0x28)      # Deep Navy Accent (#0A1628)
-COLOR_GRAY = RGBColor(0x37, 0x41, 0x51)      # Dark Gray 6x6 Text (#374151)
+COLOR_GRAY = RGBColor(0x37, 0x41, 0x51)      # Dark Gray Text (#374151)
 COLOR_SLATE = RGBColor(0x47, 0x55, 0x69)     # Slate Neutral (#475569)
 COLOR_MUTED = RGBColor(0x64, 0x74, 0x8B)     # Muted Text (#64748B)
 COLOR_DIM = RGBColor(0x94, 0xA3, 0xB8)       # Dim Label (#94A3B8)
@@ -27,7 +27,7 @@ COLOR_CARD_BG = RGBColor(0xF8, 0xFA, 0xFC)   # Slate Surface (#F8FAFC)
 COLOR_WATERMARK = RGBColor(0xF1, 0xF5, 0xF9) # Faint Watermark Number (#F1F5F9)
 COLOR_EMERALD = RGBColor(0x04, 0x78, 0x57)   # Emerald Status Pill
 COLOR_LIGHT_EMERALD = RGBColor(0x34, 0xD3, 0x99) # Emerald Green Text (#34D399)
-COLOR_RED = RGBColor(0xD7, 0x19, 0x20)       # Crimson Warning Pill
+COLOR_RED = RGBColor(0xE1, 0x1D, 0x48)       # Crimson Warning Pill
 
 FONT_HEADING = "Space Grotesk"
 FONT_SERIF = "Georgia"
@@ -171,106 +171,116 @@ def build_slide_02_problem(prs):
         y = y_step * grid_spacing
         add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(y), SLIDE_WIDTH, Inches(0.008), COLOR_BORDER)
 
-    # 2. Top Section: Left Accent Bar + Slide Title
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.62), Inches(0.1), Inches(0.36), COLOR_NAVY)
-    add_text(slide, Inches(1.05), Inches(0.65), Inches(5.5), Inches(0.35),
-             "THE PROBLEM — SUBSYSTEM FAILURE MODES", FONT_MONO, 12, COLOR_NAVY, bold=True)
-    
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.6), Inches(0.60), Inches(2.9), Inches(0.36), COLOR_CARD_BG, COLOR_BORDER)
-    add_shape(slide, MSO_SHAPE.OVAL, Inches(9.8), Inches(0.72), Inches(0.1), Inches(0.1), COLOR_RED)
-    add_text(slide, Inches(9.95), Inches(0.66), Inches(2.5), Inches(0.25),
-             "DISASTER FIELD BOTTLENECKS", FONT_MONO, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
+    # 2. Top Header
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.48), Inches(0.08), Inches(0.30), COLOR_RED)
+    add_text(slide, Inches(0.96), Inches(0.50), Inches(6.0), Inches(0.3),
+             "THE PROBLEM — 4 SUBSYSTEM FAILURE VOIDS", FONT_MONO, 11, COLOR_BLACK, bold=True)
 
-    # 3. Left Column: Increased Size Headline + 6x6 Bullets
-    add_text(slide, Inches(0.8), Inches(1.30), Inches(7.0), Inches(1.2),
-             "GPS Loss and Radio Blackouts Cripple Disaster Rescue",
-             FONT_HEADING, 30, COLOR_BLACK, bold=True)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.48), Inches(2.7), Inches(0.30), RGBColor(0xFF, 0xF1, 0xF2), RGBColor(0xFE, 0xCD, 0xD3))
+    add_shape(slide, MSO_SHAPE.OVAL, Inches(9.95), Inches(0.58), Inches(0.08), Inches(0.08), COLOR_RED)
+    add_text(slide, Inches(10.1), Inches(0.52), Inches(2.3), Inches(0.22), "FIELD BOTTLENECKS", FONT_MONO, 7.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
 
-    bullets = [
-        "Mountain valleys cut drone video feeds",
-        "Dense trees block satellite GPS signals",
-        "Single control towers cause mission failure",
-        "Manual searching delays finding trapped victims",
-        "Military drones cost over ₹40 Lakhs each",
+    # 3. Compact Headline & Quick Highlights
+    add_text(slide, Inches(0.8), Inches(0.95), Inches(7.5), Inches(0.65),
+             "Traditional Search & Rescue Fails Across 4 Critical Voids",
+             FONT_HEADING, 21, COLOR_BLACK, bold=True)
+
+    quick_badges = ["70% CANOPY CRASHES", "15-30m GEO ERROR", "2-3 HOURS DELAY", "₹40L+ AIRFRAMES"]
+    for i, b_text in enumerate(quick_badges):
+        bx = Inches(8.3) + i * Inches(1.1)
+        is_em = "CRASHES" in b_text or "₹40L" in b_text
+        bg_col = RGBColor(0xFF, 0xF1, 0xF2) if is_em else COLOR_CARD_BG
+        txt_col = COLOR_RED if is_em else COLOR_SLATE
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, bx, Inches(1.05), Inches(1.05), Inches(0.3), bg_col, COLOR_BORDER)
+        add_text(slide, bx, Inches(1.10), Inches(1.05), Inches(0.2), b_text, FONT_MONO, 6.0, txt_col, bold=True, align=PP_ALIGN.CENTER)
+
+    # 4. 4-Column Subsystem Problem Void Grid
+    problem_voids = [
+        ("SUBSYSTEM A // GNC", "Canopy GPS Drift & Crashes", "GPS MULTI-PATH",
+         "Dense foliage blocks satellite GNSS signals",
+         "Commercial flight controllers lose position lock, drifting into tree canopies and causing catastrophic rotor loss.",
+         "70% Loss", "Canopy Sorties", "0 Hold", "Non-GPS Stability", "TARGET: PX4 & 3D ORCA", "LEAD: NIKHIL", COLOR_RED),
+
+        ("SUBSYSTEM B // COMMS", "Mountain Ravine RF Blackout", "DIGITAL CLIFF",
+         "Ridgelines sever direct line-of-sight RF",
+         "Conventional H.264 digital video completely cuts out below 5dB SNR, plunging base operators into total blindness.",
+         "<5dB SNR", "Video Blackout", "0 Relay", "Single-Drone Link", "TARGET: DEEP JSCC MESH", "LEAD: NIKHIL", COLOR_RED),
+
+        ("SUBSYSTEM C // VISION", "Flat-Earth Elevation Drift", "35% FALSE ALARMS",
+         "2D raycasts assume flat zero-elevation ground",
+         "Sloping terrains produce 15–30m calculated coordinate errors, routing emergency ground teams to empty ravines.",
+         "15–30m", "Location Drift", "35%", "False Alarm Rate", "TARGET: 3D DEM RAYCAST", "LEAD: VEDANTH", COLOR_RED),
+
+        ("SUBSYSTEM D // C2 GCS", "Central Pilot Bottleneck", "15-25 CREW LOAD",
+         "1-pilot-per-drone manual radio control",
+         "Requires 15–25 field personnel and 45–90 min setup; sortie collapses immediately if the single pilot link drops.",
+         "2–3 Hrs", "Search Time / mi²", "₹12.5L", "Cost / Deployment", "TARGET: WEBGPU ATAK GCS", "LEAD: SIVA", COLOR_RED),
     ]
 
-    bullet_start_y = Inches(2.55)
-    bullet_gap = Inches(0.44)
-    for i, b_text in enumerate(bullets):
-        curr_y = bullet_start_y + i * bullet_gap
-        add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.06), Inches(0.09), Inches(0.09), COLOR_NAVY)
-        add_text(slide, Inches(1.02), curr_y, Inches(6.8), Inches(0.4),
-                 b_text, FONT_BODY, 14, COLOR_GRAY, bold=False)
+    card_w = Inches(2.78)
+    card_gap = Inches(0.2)
+    for i, (sub_tag, sub_title, sub_badge, void_mech, void_impact, s1_val, s1_lbl, s2_val, s2_lbl, f1, f2, b_col) in enumerate(problem_voids):
+        cx = Inches(0.8) + i * (card_w + card_gap)
+        cy = Inches(1.68)
+        card_h = Inches(4.35)
 
-    # Subsystem Failure Schematics Strip
-    add_text(slide, Inches(0.8), Inches(4.95), Inches(5.0), Inches(0.2),
-             "SUBSYSTEM FAILURE SCHEMATICS & VOIDS", FONT_MONO, 7.5, COLOR_DIM, bold=True)
+        # Card Box
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx, cy, card_w, card_h, COLOR_BG, COLOR_BORDER)
 
-    schematics = [
-        ("SUBSYSTEM A VOID", "Canopy GPS Drift", "GNSS Multi-Path Crash", "assets/illustrations/gps_canopy_shadow.jpg"),
-        ("SUBSYSTEM B VOID", "RF Ridge Cut", "Digital Cliff Blackout", "assets/illustrations/rf_mountain_shadow.jpg"),
-        ("SUBSYSTEM C/D VOID", "Central Link Abort", "Single Point Loss", "assets/illustrations/single_link_loss.jpg"),
+        # Top Badge & Tag
+        add_text(slide, cx + Inches(0.12), cy + Inches(0.12), Inches(1.3), Inches(0.2), sub_tag, FONT_MONO, 7.0, COLOR_DIM, bold=True)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.45), cy + Inches(0.10), Inches(1.2), Inches(0.22), RGBColor(0xFF, 0xF1, 0xF2), RGBColor(0xFE, 0xCD, 0xD3))
+        add_text(slide, cx + Inches(1.45), cy + Inches(0.12), Inches(1.2), Inches(0.2), sub_badge, FONT_MONO, 6.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
+
+        # Title
+        add_text(slide, cx + Inches(0.12), cy + Inches(0.38), card_w - Inches(0.24), Inches(0.45), sub_title, FONT_HEADING, 11, COLOR_BLACK, bold=True)
+
+        # Mechanism Box
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(0.90), card_w - Inches(0.24), Inches(0.65), RGBColor(0xFE, 0xF2, 0xF2), RGBColor(0xFE, 0xCD, 0xCD))
+        add_text(slide, cx + Inches(0.18), cy + Inches(0.94), card_w - Inches(0.36), Inches(0.18), "CORE FAILURE MECHANISM:", FONT_MONO, 6.0, COLOR_RED, bold=True)
+        add_text(slide, cx + Inches(0.18), cy + Inches(1.12), card_w - Inches(0.36), Inches(0.4), void_mech, FONT_BODY, 7.5, COLOR_BLACK, bold=True)
+
+        # Impact Box
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(1.65), card_w - Inches(0.24), Inches(1.45), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(0.18), cy + Inches(1.70), card_w - Inches(0.36), Inches(0.18), "OPERATIONAL IMPACT:", FONT_MONO, 6.5, COLOR_BLACK, bold=True)
+        add_text(slide, cx + Inches(0.18), cy + Inches(1.92), card_w - Inches(0.36), Inches(1.1), void_impact, FONT_MONO, 7.2, COLOR_SLATE)
+
+        # Specs Grid
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(0.12), cy + Inches(3.20), Inches(1.22), Inches(0.55), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(0.12), cy + Inches(3.24), Inches(1.22), Inches(0.25), s1_val, FONT_MONO, 9.5, COLOR_RED, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, cx + Inches(0.12), cy + Inches(3.52), Inches(1.22), Inches(0.2), s1_lbl, FONT_MONO, 6.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
+
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, cx + Inches(1.44), cy + Inches(3.20), Inches(1.22), Inches(0.55), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, cx + Inches(1.44), cy + Inches(3.24), Inches(1.22), Inches(0.25), s2_val, FONT_MONO, 9.5, COLOR_BLACK, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, cx + Inches(1.44), cy + Inches(3.52), Inches(1.22), Inches(0.2), s2_lbl, FONT_MONO, 6.0, COLOR_MUTED, align=PP_ALIGN.CENTER)
+
+        # Bottom Subsystem Strip
+        add_text(slide, cx + Inches(0.12), cy + Inches(3.90), Inches(1.3), Inches(0.2), f1, FONT_MONO, 6.0, COLOR_MUTED)
+        add_text(slide, cx + Inches(1.35), cy + Inches(3.90), Inches(1.3), Inches(0.2), f2, FONT_MONO, 6.0, COLOR_RED, bold=True, align=PP_ALIGN.RIGHT)
+
+        # Accent Bar at Bottom
+        add_shape(slide, MSO_SHAPE.RECTANGLE, cx, cy + card_h - Inches(0.04), card_w, Inches(0.04), b_col)
+
+    # 5. Bottom Disaster Citations Banner
+    disaster_stats = [
+        ("FIELD EVIDENCE", "Wayanad Landslide Audit", COLOR_BLACK),
+        ("AUDIT FINDING", "70% RF/GPS Disconnect", COLOR_RED),
+        ("COST PENALTY", "₹40L Military Airframes", COLOR_BLACK),
+        ("SURVIVOR RISK", "412% Disaster Surge", COLOR_RED),
     ]
-    sch_w = Inches(2.2)
-    sch_gap = Inches(0.18)
-    for i, (sch_badge, sch_title, sch_sub, img_file) in enumerate(schematics):
-        sx = Inches(0.8) + i * (sch_w + sch_gap)
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, sx, Inches(5.2), sch_w, Inches(1.15), COLOR_CARD_BG, COLOR_BORDER)
-        if Path(img_file).exists():
-            slide.shapes.add_picture(img_file, sx + Inches(0.06), Inches(5.24), sch_w - Inches(0.12), Inches(0.55))
-        add_text(slide, sx + Inches(0.08), Inches(5.82), sch_w - Inches(0.16), Inches(0.18), sch_badge, FONT_MONO, 6.5, COLOR_RED, bold=True)
-        add_text(slide, sx + Inches(0.08), Inches(5.98), sch_w - Inches(0.16), Inches(0.2), sch_title, FONT_HEADING, 8.0, COLOR_BLACK, bold=True)
-        add_text(slide, sx + Inches(0.08), Inches(6.16), sch_w - Inches(0.16), Inches(0.18), sch_sub, FONT_MONO, 6.2, COLOR_MUTED)
+    banner_w = Inches(2.78)
+    banner_gap = Inches(0.2)
+    for i, (lbl, val, col) in enumerate(disaster_stats):
+        bx = Inches(0.8) + i * (banner_w + banner_gap)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, bx, Inches(6.15), banner_w, Inches(0.48), COLOR_CARD_BG, COLOR_BORDER)
+        add_text(slide, bx + Inches(0.1), Inches(6.22), Inches(1.3), Inches(0.2), lbl, FONT_MONO, 6.5, COLOR_MUTED)
+        add_text(slide, bx + Inches(1.2), Inches(6.20), Inches(1.45), Inches(0.25), val, FONT_MONO, 8.5, col, bold=True, align=PP_ALIGN.RIGHT)
 
-    # 4. Right Column: Reference-Matching Big Full-Bleed Image Card Carousel
-    add_text(slide, Inches(8.0), Inches(1.35), Inches(4.5), Inches(0.25),
-             "REAL DISASTER FIELD EVIDENCE", FONT_MONO, 8.5, COLOR_DIM, bold=True)
-    add_text(slide, Inches(10.8), Inches(1.35), Inches(1.7), Inches(0.25),
-             "SOURCE 01 / 03", FONT_MONO, 8.5, COLOR_MUTED, bold=True, align=PP_ALIGN.RIGHT)
-
-    # Stack Layer 2 & 1 shadows
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.95), Inches(4.3), Inches(3.8), RGBColor(0x30, 0x30, 0x30))
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.1), Inches(1.85), Inches(4.4), Inches(3.9), RGBColor(0x20, 0x20, 0x20))
-
-    # Top Active Card Background Frame
-    card_rect = add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.0), Inches(1.75), Inches(4.5), Inches(4.0), COLOR_BLACK)
-
-    # Embed Full Bleed Image
-    img_path = Path("assets/disaster/wayanad_rescue.jpg")
-    if img_path.exists():
-        slide.shapes.add_picture(str(img_path), Inches(8.0), Inches(1.75), Inches(4.5), Inches(4.0))
-
-    # Dark Gradient Overlay Box
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(8.0), Inches(3.6), Inches(4.5), Inches(2.15), RGBColor(0x0A, 0x0A, 0x0A))
-
-    # Top Monogram Circle + Badge
-    add_shape(slide, MSO_SHAPE.OVAL, Inches(8.25), Inches(1.95), Inches(0.4), Inches(0.4), RGBColor(0x40, 0x40, 0x40))
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(10.6), Inches(1.95), Inches(1.7), Inches(0.28), RGBColor(0x20, 0x20, 0x20))
-    add_text(slide, Inches(10.6), Inches(1.98), Inches(1.7), Inches(0.25), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
-
-    # Bottom Overlay Typography
-    add_text(slide, Inches(8.25), Inches(3.8), Inches(4.0), Inches(0.45),
-             "Wayanad Landslide Search", FONT_HEADING, 16, COLOR_BG, bold=True)
-    add_text(slide, Inches(8.25), Inches(4.25), Inches(4.0), Inches(0.25),
-             "Western Ghats • NDMA Official Disaster Review", FONT_MONO, 8.0, COLOR_DIM)
-
-    add_text(slide, Inches(8.25), Inches(4.6), Inches(4.0), Inches(0.22),
-             "FIELD BOTTLENECK", FONT_MONO, 7.5, COLOR_LIGHT_EMERALD, bold=True)
-    add_text(slide, Inches(8.25), Inches(4.85), Inches(4.0), Inches(0.8),
-             "“70% of commercial drones lost connection behind mountain ridges and crashed under thick tree canopy.”",
-             FONT_BODY, 9.0, RGBColor(0xE2, 0xE8, 0xF0), italic=False)
-
-    # Continuous Indicator Dots
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.0), Inches(5.95), Inches(0.6), Inches(0.08), COLOR_BLACK)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.7), Inches(5.95), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.95), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_text(slide, Inches(10.0), Inches(5.88), Inches(2.5), Inches(0.25), "CONTINUOUS LOOP", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
-
-    # 5. Footer (Page 2 & Company attribution)
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
-    add_text(slide, Inches(0.8), Inches(6.65), Inches(3.0), Inches(0.3),
+    # 6. Footer
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.75), Inches(11.733), Inches(0.015), COLOR_BORDER)
+    add_text(slide, Inches(0.8), Inches(6.85), Inches(3.0), Inches(0.3),
              "PAGE 02", FONT_MONO, 9, COLOR_MUTED, bold=False)
-    add_text(slide, Inches(7.5), Inches(6.65), Inches(5.033), Inches(0.3),
+    add_text(slide, Inches(7.5), Inches(6.85), Inches(5.033), Inches(0.3),
              "TEAM OFFGRID — PROJECT SUTRA", FONT_MONO, 9, COLOR_NAVY, bold=True, align=PP_ALIGN.RIGHT)
 
 
@@ -313,22 +323,22 @@ def build_slide_03_4subsystems(prs):
 
     # 4. 4-Column Subsystem Architecture Grid
     subsystems = [
-        ("SUBSYSTEM A", "SUTRA-FSD GNC & 3D ORCA", "50Hz OFFBOARD",
+        ("SUBSYSTEM A // GNC", "SUTRA-FSD GNC & 3D ORCA", "50Hz OFFBOARD",
          "Canopy GPS Multi-Path Drift & Crashes",
          "Decentralized 3D velocity obstacle collision avoidance + PX4 MicroXRCE 50Hz offboard setpoint streaming.",
          "0.05s", "Latency", "0 Tower", "Reliance", "DECENTRALIZED VIO", "50Hz RATE", COLOR_EMERALD),
 
-        ("SUBSYSTEM B", "Deep JSCC Neural Video", "-5dB RESILIENT",
+        ("SUBSYSTEM B // COMMS", "Deep JSCC Neural Video", "-5dB RESILIENT",
          "Mountain Ravine RF Ridge Blackout",
          "Differentiable joint source-channel coding yielding zero digital cliff and graceful video degradation down to -5dB.",
          "-5dB", "SNR Thresh", "0 Cliff", "Degradation", "SEMANTIC COMMS", "EDGE TPU", COLOR_BLACK),
 
-        ("SUBSYSTEM C", "3D DEM AI Geolocation", "3.59cm ACCURACY",
+        ("SUBSYSTEM C // VISION", "3D DEM AI Geolocation", "3.59cm ACCURACY",
          "35% False Alarms & Flat GPS Drift",
          "Jetson Orin YOLOv8-Pose with real-time WGS84 elevation raycasting, eliminating 15-30m calculation errors.",
          "<15ms", "Inference", "3.59cm", "Geo Error", "ELEVATION CORRECTED", "JETSON ORIN", COLOR_EMERALD),
 
-        ("SUBSYSTEM D", "Pegasus 3D WebGPU GCS", "1-2 OPERATORS",
+        ("SUBSYSTEM D // C2 GCS", "Pegasus 3D WebGPU GCS", "1-2 OPERATORS",
          "15-25 Ground Crew Cognitive Overload",
          "Offline tactical 3D digital twin + ATAK plugin, empowering 1-2 operators to orchestrate full drone swarms.",
          "1-2 Ops", "Crew Size", "100%", "Offline ATAK", "ATAK INTEGRATION", "WEBGPU 3D", COLOR_BLACK),
@@ -408,7 +418,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title), Slide 2 (Subsystem Problem Voids), & Slide 3 (4 Subsystems)...")
+    print("Building Slide 1 (Title), Slide 2 (4 Subsystem Problem Voids), & Slide 3 (4 Subsystem Moats)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
     build_slide_03_4subsystems(prs)
