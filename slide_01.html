@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Title Slide (Syncopate & Bebas Neue)</title>
+  <title>PROJECT SUTRA — Title Slide (Web Aura Architecture)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -15,19 +15,20 @@
       theme: {
         extend: {
           fontFamily: {
-            syncopate: ['"Syncopate"', 'sans-serif'],
-            bebas: ['"Bebas Neue"', 'sans-serif'],
-            sans: ['"Space Grotesk"', 'sans-serif'],
+            serif: ['"Lora"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            nothing: {
-              dark: '#191516',
-              bg: '#FFFFFF',
-              surface: '#F8F6F4',
+            aura: {
+              black: '#000000',
+              navy: '#0A1628',
+              slate: '#64748B',
+              muted: '#94A3B8',
+              border: '#E2E8F0',
+              surface: '#F8FAFC',
               red: '#D71920',
-              muted: '#7A7576',
-              border: '#E8E3DF',
             }
           }
         }
@@ -40,12 +41,12 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #EFECE9;
+      background-color: #F1F5F9;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -56,21 +57,46 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 95px 120px;
+      padding: 85px 120px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(25, 21, 22, 0.06);
-      border: 1px solid #EAE5E1;
+      box-shadow: 0 30px 80px rgba(10, 22, 40, 0.08);
+      border: 1px solid #E2E8F0;
     }
 
-    /* Nothing OS Subtle Light Dot Grid */
-    .nothing-dot-grid {
+    /* Web Aura Architectural Grid & Geometric Rings */
+    .aura-grid-background {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(25, 21, 22, 0.12) 1.4px, transparent 1.4px);
-      background-size: 32px 32px;
-      mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%);
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .geometric-ring-1 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(10, 22, 40, 0.05);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .geometric-ring-2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 90px;
+      transform: rotate(45deg);
+      border: 1px solid rgba(10, 22, 40, 0.04);
+      bottom: -100px;
+      left: -80px;
       pointer-events: none;
       z-index: 1;
     }
@@ -83,96 +109,147 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
+    /* Architectural Corner L-Brackets */
+    .corner-bracket-tl {
+      position: absolute;
+      top: -24px;
+      left: -24px;
+      width: 32px;
+      height: 32px;
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+    }
+
+    .corner-bracket-br {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 32px;
+      height: 32px;
+      border-bottom: 2px solid #000000;
+      border-right: 2px solid #000000;
+    }
   </style>
 </head>
 <body>
 
-  <div class="slide-canvas text-[#191516]">
+  <div class="slide-canvas text-[#000000]">
     
-    <!-- Nothing Light Dot Grid Texture -->
-    <div class="nothing-dot-grid"></div>
+    <!-- Background Grid & Orbital Rings -->
+    <div class="aura-grid-background"></div>
+    <div class="geometric-ring-1"></div>
+    <div class="geometric-ring-2"></div>
 
     <div class="content-layer">
       
-      <!-- Top Header: Status Bar with Syncopate -->
+      <!-- Top Split Header: Web Aura Style -->
       <header class="flex justify-between items-center">
+        
+        <!-- Left: Status & Category -->
         <div class="flex items-center gap-3.5">
-          <!-- Iconic Nothing Red Dot -->
-          <div class="w-3 h-3 rounded-full bg-[#D71920] shadow-[0_0_8px_#D71920] animate-pulse"></div>
-          
-          <div class="font-syncopate text-[11px] font-bold tracking-[0.2em] uppercase text-[#7A7576]">
-            TEAM OFFGRID <span class="mx-2 text-[#CCC6C2]">/</span> DEFENSE &amp; DISASTER ROBOTICS
+          <div class="w-8 h-8 rounded-xl bg-black flex items-center justify-center text-white font-mono font-bold text-xs shadow-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg>
+          </div>
+          <div class="text-[11px] font-black uppercase tracking-[0.25em] text-slate-800">
+            TEAM OFFGRID <span class="mx-2 text-slate-300">/</span> DEFENSE &amp; DISASTER ROBOTICS
           </div>
         </div>
 
-        <div class="font-mono text-xs font-semibold tracking-wider text-[#7A7576]">
-          AUG 2026 <span class="mx-2 text-[#CCC6C2]">•</span> REV 1.0
+        <!-- Center / Right Pill Tag -->
+        <div class="flex items-center gap-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span>AUTONOMOUS SWARM</span>
+          </div>
+          <div class="font-mono text-xs font-semibold tracking-wider text-slate-500">
+            AUG 2026 <span class="mx-1 text-slate-300">•</span> REV 1.0
+          </div>
         </div>
+
       </header>
 
-      <!-- Center Formula: [Context in Syncopate] -> [Accent Line] -> [Main Title in Syncopate/Bebas] -> [Subtitle] -->
-      <main class="max-w-5xl space-y-6 my-auto">
+      <!-- Center Hero Section: Web Aura Peak Craft Formula -->
+      <main class="max-w-5xl my-auto py-6">
         
-        <!-- 1. Context Tagline in Syncopate -->
-        <div class="font-syncopate text-xs font-bold tracking-[0.25em] uppercase text-[#7A7576]">
-          [ AUTONOMOUS MULTI-UAV SWARM ARCHITECTURE ]
+        <!-- 1. Serif Hook Quote -->
+        <blockquote class="text-2xl sm:text-3xl font-serif italic text-black/80 font-normal leading-snug mb-8">
+          “When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”
+        </blockquote>
+
+        <!-- 2. Monumental Headline with L-Bracket Corner Frame -->
+        <div class="relative inline-block my-2">
+          <div class="corner-bracket-tl"></div>
+          <div class="corner-bracket-br"></div>
+
+          <h1 class="text-[100px] sm:text-[120px] font-black uppercase tracking-tighter text-black leading-[0.88] select-none">
+            PROJECT<br/>
+            <span class="italic font-light opacity-80">SUTRA.</span>
+          </h1>
         </div>
 
-        <!-- 2. Nothing Minimalist Accent Separator -->
-        <div class="flex items-center gap-2">
-          <div class="w-16 h-[2px] bg-[#D71920]"></div>
-          <div class="w-2 h-2 rounded-full bg-[#191516]"></div>
-          <div class="w-8 h-[2px] bg-[#D0CAC5]"></div>
-        </div>
-
-        <!-- 3. Main Title in Syncopate 700 Bold (#191516) -->
-        <h1 class="font-syncopate text-6xl sm:text-7xl lg:text-[76px] font-bold tracking-tight text-[#191516] uppercase leading-[1.05]">
-          PROJECT SUTRA
-        </h1>
-
-        <!-- 4. Subtitle in Space Grotesk -->
-        <p class="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed">
-          Swarm Unified Tactical Reconnaissance Architecture for GPS-Denied and Jammed Mountain Environments.
+        <!-- 3. Subtitle / One-Liner Description -->
+        <p class="text-lg sm:text-xl font-medium text-slate-600 max-w-3xl leading-relaxed mt-8">
+          Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.
         </p>
 
       </main>
 
-      <!-- Bottom Bar: Complete Team Offgrid Subsystem Roster -->
-      <footer class="pt-6 border-t border-[#E8E3DF]">
-        <div class="font-syncopate text-[10px] font-bold text-[#D71920] uppercase tracking-[0.2em] mb-3">
-          CORE ARCHITECTURE TEAM (OFFGRID)
+      <!-- Bottom Bar: Complete Team Offgrid Subsystem Roster (Web Aura Card Row Style) -->
+      <footer class="pt-6 border-t border-slate-200">
+        <div class="flex justify-between items-center mb-4">
+          <div class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+            CORE ARCHITECTURE TEAM (OFFGRID)
+          </div>
+          <div class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            232/232 VERIFIED ZERO-MOCK TESTS
+          </div>
         </div>
 
-        <div class="grid grid-cols-5 gap-6 font-mono text-xs">
+        <div class="grid grid-cols-5 gap-5">
           
-          <div class="space-y-1">
-            <div class="font-bold text-[#191516] text-base">Nikhil</div>
-            <div class="text-xs text-[#7A7576]">Tech Lead · Subsys A &amp; B</div>
-            <div class="text-[11px] text-[#A09A97] font-medium">GNC, FSD &amp; Deep JSCC</div>
+          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div class="font-black text-black text-sm">Nikhil</div>
+            <div class="text-[11px] text-slate-600 font-semibold">Tech Lead · Subsys A &amp; B</div>
+            <div class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[8.5px] font-black tracking-wider uppercase mt-1">
+              GNC &amp; JSCC
+            </div>
           </div>
 
-          <div class="space-y-1">
-            <div class="font-bold text-[#191516] text-base">Vedanth Sai Ram</div>
-            <div class="text-xs text-[#7A7576]">Lead · Subsystem C</div>
-            <div class="text-[11px] text-[#A09A97] font-medium">Tri-Modal AI &amp; DEM</div>
+          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div class="font-black text-black text-sm">Vedanth Sai Ram</div>
+            <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem C</div>
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              AI PERCEPTION
+            </div>
           </div>
 
-          <div class="space-y-1">
-            <div class="font-bold text-[#191516] text-base">Siva Kesava</div>
-            <div class="text-xs text-[#7A7576]">Lead · Subsystem D</div>
-            <div class="text-[11px] text-[#A09A97] font-medium">3D GIS GCS &amp; WebGPU</div>
+          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div class="font-black text-black text-sm">Siva Kesava</div>
+            <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem D</div>
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              3D GIS GCS
+            </div>
           </div>
 
-          <div class="space-y-1">
-            <div class="font-bold text-[#191516] text-base">Harika</div>
-            <div class="text-xs text-[#7A7576]">Lead · Subsystem E</div>
-            <div class="text-[11px] text-[#A09A97] font-medium">Verification &amp; Pitch QA</div>
+          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div class="font-black text-black text-sm">Harika</div>
+            <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem E</div>
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              VERIFICATION QA
+            </div>
           </div>
 
-          <div class="space-y-1">
-            <div class="font-bold text-[#191516] text-base">Rohith Kumar</div>
-            <div class="text-xs text-[#7A7576]">Lead · Subsystem F</div>
-            <div class="text-[11px] text-[#A09A97] font-medium">NDMA CONOPS &amp; Ops</div>
+          <div class="p-3.5 rounded-2xl border border-slate-200/80 bg-slate-50/60 space-y-1">
+            <div class="font-black text-black text-sm">Rohith Kumar</div>
+            <div class="text-[11px] text-slate-600 font-semibold">Lead · Subsystem F</div>
+            <div class="inline-block px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[8.5px] font-black tracking-wider uppercase mt-1">
+              NDMA CONOPS
+            </div>
           </div>
 
         </div>

@@ -1,0 +1,78 @@
+{
+  "heroHeadline": "PEAK\nCRAFT.",
+  "heroQuote": "“We don't just make websites.\nWe craft them to perfection.”",
+  "services": [
+    {
+      "number": "01",
+      "title": "Web Development",
+      "desc": "We engineer Next.js web applications tailored to your business goals. Hardened with Core Web Vitals discipline, semantic tags, and optimized performance budgets.",
+      "tag": "NEXT.JS & REACT"
+    },
+    {
+      "number": "02",
+      "title": "UI/UX Design",
+      "desc": "Crafting minimalist, highly detailed brand interfaces focused on visual hierarchy, smooth transitions, micro-interactions, and premium layouts.",
+      "tag": "FIGMA TO CODE"
+    },
+    {
+      "number": "03",
+      "title": "ERP Systems",
+      "desc": "Bespoke internal management platforms and enterprise ERPs designed for scale, data safety, complex workflows, and clean domain models.",
+      "tag": "ENTERPRISE TECH"
+    },
+    {
+      "number": "04",
+      "title": "AI Integrations",
+      "desc": "Supercharging systems with intelligent agents, conversational bots, LLMs, and workflow bots with guardrails and audit-friendly logging.",
+      "tag": "AUTONOMOUS LLMS"
+    },
+    {
+      "number": "05",
+      "title": "SEO Optimization",
+      "desc": "Technical search positioning, answer-first structures, rich schema markups, and strict Core Web Vitals to dominate organic search channels.",
+      "tag": "RANK BOOSTER"
+    },
+    {
+      "number": "06",
+      "title": "Booking Platforms",
+      "desc": "Deterministic online booking, reservation desks, calendar integrations, and transactional pipelines tailored for travel and scheduling operations.",
+      "tag": "TRANSACTIONAL UI"
+    },
+    {
+      "number": "07",
+      "title": "Dashboard Systems",
+      "desc": "Custom analytics hubs, referral portals, and administrative command centers featuring beautiful minimalist weekly executive readouts.",
+      "tag": "REAL-TIME ANALYTICS"
+    },
+    {
+      "number": "08",
+      "title": "Branding & Identity",
+      "desc": "Defining unique brand systems, custom typography, palettes, and rules that elevate standard agency websites to premium enterprise experiences.",
+      "tag": "BRAND SYSTEMS"
+    },
+    {
+      "number": "09",
+      "title": "Maintenance & Support",
+      "desc": "Continuous system telemetry, cloud infrastructure updates, prompt tuning, monthly feature enhancements, and instant developer availability.",
+      "tag": "24/7 SHIELD"
+    },
+    {
+      "number": "10",
+      "title": "Digital Marketing",
+      "desc": "Data-driven marketing campaigns including paid media, social strategy, and email automation designed to scale your business predictably.",
+      "tag": "GROWTH ENGINE"
+    }
+  ],
+  "navLinks": [
+    "WORK",
+    "SERVICES",
+    "ABOUT US",
+    "WEB AURA",
+    "BLOG",
+    "FAQ",
+    "CONTACT",
+    "START\nA PROJECT"
+  ],
+  "bodyFont": "\"Plus Jakarta Sans\", \"Plus Jakarta Sans Fallback\", Outfit, \"Outfit Fallback\", Inter, ui-sans-serif, system-ui",
+  "bgColor": "rgb(255, 255, 255)"
+}

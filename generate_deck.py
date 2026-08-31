@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
 generate_deck.py - Generates the SUTRA Title Slide (.pptx)
-Nothing Phone Light Theme (#191516, #FFFFFF, #D71920) with Syncopate typography.
+Web Aura India Architectural Design System:
+- Pure White Background (#FFFFFF) with micro-grid pattern
+- Serif quotation quote
+- Monumental headline with L-bracket alignment framing
+- Complete Team Offgrid Subsystem Card row
 """
 
 from pathlib import Path
@@ -11,17 +15,20 @@ from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
 
-# Nothing Light Minimalist Palette (#191516 & #FFFFFF)
-COLOR_BG = RGBColor(0xFF, 0xFF, 0xFF)        # Pure White Background (#FFFFFF)
-COLOR_DARK = RGBColor(0x19, 0x15, 0x16)      # Nothing Volcanic Dark Charcoal (#191516)
-COLOR_RED = RGBColor(0xD7, 0x19, 0x20)       # Iconic Nothing Red (#D71920)
-COLOR_MUTED = RGBColor(0x7A, 0x75, 0x76)     # Neutral Ash Muted (#7A7576)
-COLOR_DIM = RGBColor(0xA0, 0x9A, 0x97)       # Faint Ash Muted
-COLOR_BORDER = RGBColor(0xE8, 0xE3, 0xDF)    # Light Border
-COLOR_DOT = RGBColor(0xDC, 0xD6, 0xD2)       # Subtle Light Dot Matrix
+# Web Aura Color Palette
+COLOR_BG = RGBColor(0xFF, 0xFF, 0xFF)        # Pure White (#FFFFFF)
+COLOR_BLACK = RGBColor(0x00, 0x00, 0x00)     # Solid Black (#000000)
+COLOR_NAVY = RGBColor(0x0A, 0x16, 0x28)      # Deep Navy/Charcoal (#0A1628)
+COLOR_SLATE = RGBColor(0x47, 0x55, 0x69)     # Slate Neutral (#475569)
+COLOR_MUTED = RGBColor(0x64, 0x74, 0x8B)     # Muted Text (#64748B)
+COLOR_DIM = RGBColor(0x94, 0xA3, 0xB8)       # Dim Label (#94A3B8)
+COLOR_BORDER = RGBColor(0xE2, 0xE8, 0xF0)    # Light Border (#E2E8F0)
+COLOR_CARD_BG = RGBColor(0xF8, 0xFA, 0xFC)   # Slate Surface (#F8FAFC)
+COLOR_EMERALD = RGBColor(0x05, 0x96, 0x69)   # Emerald Status Pill
 
-FONT_HEADING = "Syncopate"
-FONT_BODY = "Space Grotesk"
+FONT_HEADING = "Plus Jakarta Sans"
+FONT_SERIF = "Georgia"
+FONT_BODY = "Plus Jakarta Sans"
 FONT_MONO = "JetBrains Mono"
 
 SLIDE_WIDTH = Inches(13.333)
@@ -41,7 +48,7 @@ def add_shape(slide, shape_type, left, top, width, height, fill_color, line_colo
 
 
 def add_text(slide, left, top, width, height, text, font_name=FONT_BODY,
-             font_size=14, color=COLOR_DARK, bold=False, align=PP_ALIGN.LEFT):
+             font_size=14, color=COLOR_BLACK, bold=False, italic=False, align=PP_ALIGN.LEFT):
     tx = slide.shapes.add_textbox(left, top, width, height)
     tf = tx.text_frame
     tf.word_wrap = True
@@ -55,6 +62,7 @@ def add_text(slide, left, top, width, height, text, font_name=FONT_BODY,
         run.font.size = Pt(font_size)
         run.font.color.rgb = color
         run.font.bold = bold
+        run.font.italic = italic
     return tx
 
 
@@ -65,80 +73,104 @@ def build_title_slide(prs):
     # 1. Pure White Background (#FFFFFF)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), SLIDE_WIDTH, SLIDE_HEIGHT, COLOR_BG)
 
-    # 1b. Subtle Dot Grid Matrix (Center Faded)
+    # 1b. Architectural Grid Pattern (Fine Slate lines)
     grid_spacing = 0.5  # Inches
-    for x_step in range(3, 24):
+    for x_step in range(1, 26):
         x = x_step * grid_spacing
-        for y_step in range(2, 13):
-            y = y_step * grid_spacing
-            dx = (x - 6.666) / 5.5
-            dy = (y - 3.75) / 3.0
-            dist_sq = dx * dx + dy * dy
-            if dist_sq < 1.0:
-                dot_size = Inches(0.025)
-                add_shape(slide, MSO_SHAPE.OVAL, Inches(x), Inches(y), dot_size, dot_size, COLOR_DOT)
+        add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(x), Inches(0), Inches(0.008), SLIDE_HEIGHT, COLOR_BORDER)
+    for y_step in range(1, 15):
+        y = y_step * grid_spacing
+        add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(y), SLIDE_WIDTH, Inches(0.008), COLOR_BORDER)
 
-    # 2. Top Header: Nothing OS Status Bar Style
-    add_shape(slide, MSO_SHAPE.OVAL, Inches(0.8), Inches(0.65), Inches(0.12), Inches(0.12), COLOR_RED)
+    # 2. Top Header: Web Aura Split Style
+    # Icon Box
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.55), Inches(0.35), Inches(0.35), COLOR_BLACK)
     
-    add_text(slide, Inches(1.05), Inches(0.62), Inches(6.0), Inches(0.3),
-             "TEAM OFFGRID  /  DEFENSE & DISASTER ROBOTICS", FONT_HEADING, 8.5, COLOR_MUTED, True)
+    add_text(slide, Inches(1.25), Inches(0.62), Inches(6.0), Inches(0.3),
+             "TEAM OFFGRID  /  DEFENSE & DISASTER ROBOTICS", FONT_HEADING, 9.5, COLOR_BLACK, bold=True)
 
-    add_text(slide, Inches(8.5), Inches(0.62), Inches(4.0), Inches(0.3),
-             "AUG 2026  •  REV 1.0", FONT_MONO, 9.5, COLOR_MUTED, True, PP_ALIGN.RIGHT)
+    # Pill Tag & Rev
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.58), Inches(1.8), Inches(0.3), COLOR_CARD_BG, COLOR_BORDER)
+    add_shape(slide, MSO_SHAPE.OVAL, Inches(9.95), Inches(0.68), Inches(0.08), Inches(0.08), COLOR_EMERALD)
+    add_text(slide, Inches(10.1), Inches(0.64), Inches(1.5), Inches(0.2), "AUTONOMOUS SWARM", FONT_HEADING, 7.5, COLOR_SLATE, bold=True)
 
-    # 3. Center Formula: [Context] -> [Accent Line] -> [Main Title] -> [Subtitle]
-    # [Context / Tagline]
-    add_text(slide, Inches(0.8), Inches(2.4), Inches(10.0), Inches(0.3),
-             "[ AUTONOMOUS MULTI-UAV SWARM ARCHITECTURE ]",
-             FONT_HEADING, 9.5, COLOR_MUTED, True)
+    add_text(slide, Inches(11.7), Inches(0.62), Inches(1.5), Inches(0.3),
+             "AUG 2026 • REV 1.0", FONT_MONO, 8.5, COLOR_MUTED, bold=False, italic=False, align=PP_ALIGN.RIGHT)
 
-    # [Nothing Minimalist Accent Separator: Red bar + Dark dot]
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(2.78), Inches(0.8), Inches(0.025), COLOR_RED)
-    add_shape(slide, MSO_SHAPE.OVAL, Inches(1.68), Inches(2.74), Inches(0.08), Inches(0.08), COLOR_DARK)
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(1.84), Inches(2.78), Inches(0.4), Inches(0.025), COLOR_BORDER)
+    # 3. Center Hero: Web Aura Peak Craft Formula
+    # [3a. Serif Quotation Hook]
+    add_text(slide, Inches(0.8), Inches(1.8), Inches(11.0), Inches(0.5),
+             "“When GPS fails and RF links jam, SUTRA geonavigates and locates survivors in real-time.”",
+             FONT_SERIF, 19, COLOR_BLACK, bold=False, italic=True)
 
-    # [Main Title — Syncopate (#191516)]
-    add_text(slide, Inches(0.8), Inches(3.05), Inches(11.5), Inches(1.2),
-             "PROJECT SUTRA", FONT_HEADING, 44, COLOR_DARK, True)
+    # [3b. L-Bracket Corner Frames]
+    bracket_len = Inches(0.35)
+    bracket_thick = Inches(0.02)
+    # Top-Left L-bracket
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.4), bracket_len, bracket_thick, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(2.4), bracket_thick, bracket_len, COLOR_BLACK)
+    # Bottom-Right L-bracket
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.4), Inches(4.5), bracket_len, bracket_thick, COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(6.73), Inches(4.17), bracket_thick, bracket_len, COLOR_BLACK)
 
-    # [Subtitle / Context description]
-    add_text(slide, Inches(0.8), Inches(4.3), Inches(9.0), Inches(0.8),
-             "Swarm Unified Tactical Reconnaissance Architecture for GPS-Denied and Jammed Mountain Environments.",
-             FONT_BODY, 17, COLOR_MUTED, False)
+    # [3c. Monumental Headline: PROJECT SUTRA]
+    add_text(slide, Inches(0.8), Inches(2.45), Inches(8.0), Inches(0.9),
+             "PROJECT", FONT_HEADING, 62, COLOR_BLACK, bold=True)
+    add_text(slide, Inches(0.8), Inches(3.35), Inches(8.0), Inches(0.9),
+             "SUTRA.", FONT_HEADING, 62, COLOR_SLATE, bold=False, italic=True)
 
-    # 4. Bottom Bar: Complete Team Offgrid Roster
-    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(5.85), Inches(11.733), Inches(0.015),
-              COLOR_BORDER)
+    # [3d. Description]
+    add_text(slide, Inches(0.8), Inches(4.5), Inches(10.0), Inches(0.6),
+             "Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.",
+             FONT_BODY, 13.5, COLOR_SLATE, bold=False)
 
-    add_text(slide, Inches(0.8), Inches(6.0), Inches(8.0), Inches(0.25),
-             "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_HEADING, 8.0, COLOR_RED, True)
+    # 4. Bottom Bar: Web Aura Card Row Style (5 Team Subsystems)
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(5.6), Inches(11.733), Inches(0.015), COLOR_BORDER)
+
+    add_text(slide, Inches(0.8), Inches(5.72), Inches(6.0), Inches(0.2),
+             "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_HEADING, 8.0, COLOR_DIM, bold=True)
+    add_text(slide, Inches(8.0), Inches(5.72), Inches(4.533), Inches(0.2),
+             "232/232 VERIFIED ZERO-MOCK TESTS", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, italic=False, align=PP_ALIGN.RIGHT)
 
     members = [
-        ("Nikhil", "Tech Lead · Subsys A & B", "GNC, FSD & Deep JSCC"),
-        ("Vedanth Sai Ram", "Lead · Subsystem C", "Tri-Modal AI & DEM"),
-        ("Siva Kesava", "Lead · Subsystem D", "3D GIS GCS & WebGPU"),
-        ("Harika", "Lead · Subsystem E", "Verification & Pitch QA"),
-        ("Rohith Kumar", "Lead · Subsystem F", "NDMA CONOPS & Ops"),
+        ("Nikhil", "Tech Lead · Subsys A & B", "GNC & JSCC", True),
+        ("Vedanth Sai Ram", "Lead · Subsystem C", "AI PERCEPTION", False),
+        ("Siva Kesava", "Lead · Subsystem D", "3D GIS GCS", False),
+        ("Harika", "Lead · Subsystem E", "VERIFICATION QA", False),
+        ("Rohith Kumar", "Lead · Subsystem F", "NDMA CONOPS", False),
     ]
 
     col_w = Inches(2.2)
     gap = Inches(0.18)
-    for i, (name, role, focus) in enumerate(members):
+    for i, (name, role, badge, is_lead) in enumerate(members):
         left_pos = Inches(0.8) + i * (col_w + gap)
-        add_text(slide, left_pos, Inches(6.3), col_w, Inches(0.25), name, FONT_MONO, 10, COLOR_DARK, True)
-        add_text(slide, left_pos, Inches(6.55), col_w, Inches(0.22), role, FONT_MONO, 8, COLOR_MUTED, False)
-        add_text(slide, left_pos, Inches(6.77), col_w, Inches(0.22), focus, FONT_MONO, 7.5, COLOR_DIM, True)
+        # Card Background
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left_pos, Inches(6.0), col_w, Inches(1.15),
+                  COLOR_CARD_BG, COLOR_BORDER)
+        
+        # Name & Role
+        add_text(slide, left_pos + Inches(0.12), Inches(6.08), col_w - Inches(0.24), Inches(0.25),
+                 name, FONT_HEADING, 10.5, COLOR_BLACK, bold=True)
+        add_text(slide, left_pos + Inches(0.12), Inches(6.32), col_w - Inches(0.24), Inches(0.22),
+                 role, FONT_BODY, 8.0, COLOR_SLATE, bold=False)
+        
+        # Badge Pill
+        badge_bg = COLOR_BLACK if is_lead else COLOR_BORDER
+        badge_txt_color = COLOR_BG if is_lead else COLOR_NAVY
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left_pos + Inches(0.12), Inches(6.65), Inches(1.2), Inches(0.22),
+                  badge_bg)
+        add_text(slide, left_pos + Inches(0.12), Inches(6.67), Inches(1.2), Inches(0.2),
+                 badge, FONT_HEADING, 6.8, badge_txt_color, bold=True, italic=False, align=PP_ALIGN.CENTER)
 
 
 def main():
     prs = Presentation()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
-    prs.core_properties.title = "PROJECT SUTRA — Title Slide (Syncopate)"
+    prs.core_properties.title = "PROJECT SUTRA — Title Slide (Web Aura Architecture)"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Nothing Light Theme Title Slide with Syncopate (#191516 & #FFFFFF)...")
+    print("Building Web Aura Architectural Title Slide (.pptx)...")
     build_title_slide(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")
