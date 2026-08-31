@@ -68,7 +68,7 @@ export const PresentationDeck: React.FC = () => {
     {
       id: 'scorecard',
       title: '07. Empirical Scorecard & Hardware',
-      category: 'Verification & Cost',
+      category: 'Verification & Economics',
       component: <Slide07Scorecard />,
     },
   ];
@@ -76,123 +76,160 @@ export const PresentationDeck: React.FC = () => {
   const totalSlides = slides.length;
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev < totalSlides - 1 ? prev + 1 : prev));
+    setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : prev));
   }, [totalSlides]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev > 0 ? prev - 1 : prev));
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
   }, []);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
+      document.documentElement.requestFullscreen().catch(() => {});
+      setIsFullscreen(true);
     } else {
-      document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+        setIsFullscreen(false);
+      }
     }
   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
         nextSlide();
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
         prevSlide();
-      } else if (e.key === 'Home') {
-        setCurrentSlide(0);
-      } else if (e.key === 'End') {
-        setCurrentSlide(totalSlides - 1);
-      } else if (e.key.toLowerCase() === 'f') {
+      } else if (e.key === 'f' || e.key === 'F') {
         toggleFullscreen();
-      } else if (e.key.toLowerCase() === 'o') {
-        setShowDrawer(prev => !prev);
+      } else if (e.key === 'Escape') {
+        setShowDrawer(false);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide, totalSlides]);
+  }, [nextSlide, prevSlide]);
 
   return (
-    <div className="presentation-viewport select-none">
+    <div className="w-screen h-screen bg-[#000000] text-white flex flex-col justify-between overflow-hidden relative select-none">
       
-      {/* 16:9 Slide Canvas (Light Sandstone & Sovereign Forest) */}
-      <div className="slide-canvas-light">
-        <div className="grid-overlay-light"></div>
-        <div className="ambient-glow"></div>
-        
-        {slides[currentSlide].component}
+      {/* Top HUD Bar */}
+      <div className="h-12 border-b border-neutral-900 bg-[#000000] px-6 flex items-center justify-between z-30">
+        <div className="flex items-center gap-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#D71920] shadow-[0_0_6px_#D71920]"></div>
+          <span className="font-mono text-xs font-bold tracking-widest text-neutral-300">
+            PROJECT SUTRA <span className="text-neutral-700">/</span> {slides[currentSlide].title.toUpperCase()}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {/* Slide List Drawer Toggle */}
+          <button
+            onClick={() => setShowDrawer((prev) => !prev)}
+            className="p-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white transition-colors"
+            title="Slide Index"
+          >
+            <Layers className="w-3.5 h-3.5" />
+          </button>
+
+          {/* Fullscreen Toggle */}
+          <button
+            onClick={toggleFullscreen}
+            className="p-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white transition-colors"
+            title="Toggle Fullscreen"
+          >
+            {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+          </button>
+        </div>
       </div>
 
-      {/* FLOATING CONTROLS HUD (Light Elegant Glass) */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-sandstone-border backdrop-blur-xl shadow-card-hover transition-all duration-200 opacity-40 hover:opacity-100">
+      {/* Main 16:9 Presentation Stage */}
+      <div className="flex-1 flex items-center justify-center p-4 lg:p-6 relative">
+        <div className="w-full max-w-[1600px] aspect-[16/9] max-h-[88vh] bg-[#000000] rounded-2xl border border-neutral-900 shadow-2xl overflow-hidden relative flex flex-col">
+          {slides[currentSlide].component}
+        </div>
+      </div>
+
+      {/* Bottom Minimal Navigation Bar */}
+      <div className="h-14 border-t border-neutral-900 bg-[#000000] px-6 flex items-center justify-between z-30 font-mono text-xs">
         
-        <button 
-          onClick={prevSlide}
-          disabled={currentSlide === 0}
-          className="p-1.5 rounded-full hover:bg-canvas-raised disabled:opacity-30 disabled:hover:bg-transparent text-earth-forest transition-colors"
-          title="Previous Slide (← / PageUp)"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
+        {/* Slide Counter */}
+        <div className="flex items-center gap-3">
+          <span className="text-neutral-500">SLIDE</span>
+          <span className="font-bold text-white tracking-widest">
+            0{currentSlide + 1} <span className="text-neutral-700">/</span> 0{totalSlides}
+          </span>
+          <span className="hidden sm:inline text-neutral-600">({slides[currentSlide].category})</span>
+        </div>
 
-        <button 
-          onClick={() => setShowDrawer(prev => !prev)}
-          className="font-mono text-xs font-bold text-earth-forest px-2.5 py-0.5 rounded-full bg-canvas-raised border border-sandstone-border hover:bg-canvas-hover transition-colors flex items-center gap-1.5"
-          title="Toggle Slide Menu (O)"
-        >
-          <Layers className="w-3.5 h-3.5 text-earth-forest" />
-          <span><span className="text-earth-forest">{currentSlide + 1}</span> / {totalSlides}</span>
-        </button>
+        {/* Navigation Arrows */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={prevSlide}
+            disabled={currentSlide === 0}
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600 disabled:opacity-30 disabled:pointer-events-none transition-all"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            <span className="hidden sm:inline">PREV</span>
+          </button>
 
-        <button 
-          onClick={nextSlide}
-          disabled={currentSlide === totalSlides - 1}
-          className="p-1.5 rounded-full hover:bg-canvas-raised disabled:opacity-30 disabled:hover:bg-transparent text-earth-forest transition-colors"
-          title="Next Slide (→ / Space / PageDown)"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
+          <button
+            onClick={nextSlide}
+            disabled={currentSlide === totalSlides - 1}
+            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-white text-black font-bold hover:bg-neutral-200 disabled:opacity-30 disabled:pointer-events-none transition-all"
+          >
+            <span className="hidden sm:inline">NEXT</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
 
-        <div className="w-[1px] h-3.5 bg-sandstone-border mx-0.5"></div>
-
-        <button 
-          onClick={toggleFullscreen}
-          className="p-1.5 rounded-full hover:bg-canvas-raised text-earth-forest transition-colors"
-          title="Toggle Fullscreen (F)"
-        >
-          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-        </button>
+        {/* Quick Help / Downloads */}
+        <div className="hidden md:flex items-center gap-4 text-neutral-500">
+          <a href="/sutra_pitch_deck.pptx" download className="hover:text-white transition-colors flex items-center gap-1">
+            <FileText className="w-3.5 h-3.5" />
+            <span>.PPTX</span>
+          </a>
+          <span className="text-neutral-700">|</span>
+          <span className="flex items-center gap-1">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>Use ← / → Keys</span>
+          </span>
+        </div>
 
       </div>
 
-      {/* QUICK DRAWER */}
+      {/* Slide Index Drawer */}
       {showDrawer && (
-        <div className="fixed inset-0 z-50 bg-[#183A2B]/20 backdrop-blur-md flex items-center justify-center p-6" onClick={() => setShowDrawer(false)}>
-          <div className="bg-white border border-sandstone-border rounded-2xl p-6 max-w-lg w-full shadow-card-hover" onClick={e => e.stopPropagation()}>
-            <div className="flex justify-between items-center pb-3 border-b border-sandstone-border mb-4">
-              <div className="flex items-center gap-2 font-mono text-sm font-bold text-earth-forest">
-                <Layers className="w-4 h-4 text-earth-forest" />
-                <span>DECK NAVIGATION &amp; SHORTCUTS</span>
-              </div>
-              <button onClick={() => setShowDrawer(false)} className="text-xs text-sandstone-muted hover:text-earth-forest font-semibold">✕ Close</button>
+        <div className="absolute inset-0 z-50 bg-black/80 backdrop-blur-md flex justify-end">
+          <div className="w-80 h-full bg-[#050505] border-l border-neutral-800 p-6 space-y-4 font-mono text-xs overflow-y-auto">
+            <div className="flex justify-between items-center pb-3 border-b border-neutral-800">
+              <span className="font-bold text-white uppercase tracking-wider">SLIDE INDEX</span>
+              <button
+                onClick={() => setShowDrawer(false)}
+                className="text-neutral-400 hover:text-white"
+              >
+                ✕
+              </button>
             </div>
 
-            <div className="space-y-2 mb-4 max-h-[60vh] overflow-y-auto pr-1">
+            <div className="space-y-1.5">
               {slides.map((s, idx) => (
                 <button
                   key={s.id}
-                  onClick={() => { setCurrentSlide(idx); setShowDrawer(false); }}
-                  className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-all ${idx === currentSlide ? 'bg-earth-forest text-white shadow-md' : 'bg-canvas-raised border border-sandstone-border text-earth-forest hover:bg-canvas-hover'}`}
+                  onClick={() => {
+                    setCurrentSlide(idx);
+                    setShowDrawer(false);
+                  }}
+                  className={`w-full text-left px-3 py-2.5 rounded-lg transition-all ${currentSlide === idx ? 'bg-neutral-900 border border-neutral-700 text-white font-bold' : 'text-neutral-400 hover:bg-neutral-950 hover:text-neutral-200'}`}
                 >
-                  <span className="font-semibold text-sm">{s.title}</span>
-                  <span className={`font-mono text-xs px-2 py-0.5 rounded-full ${idx === currentSlide ? 'bg-white/20 text-white' : 'bg-white text-sandstone-muted border border-sandstone-border'}`}>{s.category}</span>
+                  <div className="text-[11px] text-neutral-500">{s.category}</div>
+                  <div className="text-xs text-white truncate">{s.title}</div>
                 </button>
               ))}
-            </div>
-
-            <div className="pt-3 border-t border-sandstone-border text-xs font-mono text-sandstone-muted flex items-center justify-between">
-              <div className="flex items-center gap-1.5"><HelpCircle className="w-3.5 h-3.5 text-sandstone-faint" /> Space / Arrows: Nav</div>
-              <div className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5 text-sandstone-faint" /> F: Fullscreen | O: Menu</div>
             </div>
           </div>
         </div>
@@ -201,3 +238,5 @@ export const PresentationDeck: React.FC = () => {
     </div>
   );
 };
+
+export default PresentationDeck;

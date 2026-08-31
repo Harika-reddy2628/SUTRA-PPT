@@ -47,9 +47,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+        ndot: ['"Doto"', 'monospace'],
+        space: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['"Space Grotesk"', '"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
         serif: ['"Lora"', 'Georgia', 'serif'],
-        heading: ['"Plus Jakarta Sans"', '"Montserrat"', 'sans-serif'],
+        heading: ['"Doto"', '"Space Grotesk"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
