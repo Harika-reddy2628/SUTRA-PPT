@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Conclusion-style headline, Left Accent Bar, 6x6 Bullets, #374151)
+- Slide 02: The Problem (Conclusion-style headline, Left Accent Bar, 6x6 Bullets, Research & RTI Citations)
 """
 
 from pathlib import Path
@@ -24,7 +24,7 @@ COLOR_DIM = RGBColor(0x94, 0xA3, 0xB8)       # Dim Label (#94A3B8)
 COLOR_BORDER = RGBColor(0xE2, 0xE8, 0xF0)    # Light Border (#E2E8F0)
 COLOR_CARD_BG = RGBColor(0xF8, 0xFA, 0xFC)   # Slate Surface (#F8FAFC)
 COLOR_WATERMARK = RGBColor(0xF1, 0xF5, 0xF9) # Faint Watermark Number (#F1F5F9)
-COLOR_EMERALD = RGBColor(0x05, 0x96, 0x69)   # Emerald Status Pill
+COLOR_EMERALD = RGBColor(0x04, 0x78, 0x57)   # Emerald Status Pill
 
 FONT_HEADING = "Plus Jakarta Sans"
 FONT_SERIF = "Georgia"
@@ -169,16 +169,19 @@ def build_slide_02_problem(prs):
         add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0), Inches(y), SLIDE_WIDTH, Inches(0.008), COLOR_BORDER)
 
     # 2. Top Section: Left Accent Bar + Category Tag
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.7), Inches(0.08), Inches(0.3), COLOR_NAVY)
-    add_text(slide, Inches(1.0), Inches(0.72), Inches(4.0), Inches(0.3),
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.65), Inches(0.08), Inches(0.3), COLOR_NAVY)
+    add_text(slide, Inches(1.0), Inches(0.67), Inches(4.0), Inches(0.3),
              "THE PROBLEM", FONT_MONO, 10, COLOR_NAVY, bold=True)
+    
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.8), Inches(0.62), Inches(2.7), Inches(0.3), COLOR_CARD_BG, COLOR_BORDER)
+    add_text(slide, Inches(9.8), Inches(0.67), Inches(2.7), Inches(0.2),
+             "CRITICAL MISSION BOTTLENECKS", FONT_MONO, 7.5, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
 
-    # 3. Conclusion-Style Headline (Not a Label)
-    add_text(slide, Inches(0.8), Inches(1.6), Inches(11.5), Inches(1.4),
+    # 3. Left Column: Conclusion Headline + 6x6 Bullets
+    add_text(slide, Inches(0.8), Inches(1.5), Inches(7.0), Inches(1.3),
              "GPS Denial and RF Blackouts Paralyze Disaster Reconnaissance",
-             FONT_HEADING, 38, COLOR_BLACK, bold=True)
+             FONT_HEADING, 30, COLOR_BLACK, bold=True)
 
-    # 4. 6x6 Bullets (<=6 words each, left-aligned, 20pt, #374151)
     bullets = [
         "Mountain valleys cause sudden video blackouts",
         "Dense canopies block satellite GPS signals",
@@ -187,15 +190,42 @@ def build_slide_02_problem(prs):
         "Enterprise drones cost over $50,000 each",
     ]
 
-    bullet_start_y = Inches(3.3)
-    bullet_gap = Inches(0.55)
+    bullet_start_y = Inches(3.0)
+    bullet_gap = Inches(0.6)
     for i, b_text in enumerate(bullets):
         curr_y = bullet_start_y + i * bullet_gap
-        # Bullet Dot
-        add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.07), Inches(0.12), Inches(0.12), COLOR_NAVY)
-        # Bullet Text
-        add_text(slide, Inches(1.1), curr_y, Inches(10.5), Inches(0.45),
-                 b_text, FONT_BODY, 20, COLOR_GRAY, bold=False)
+        add_shape(slide, MSO_SHAPE.OVAL, Inches(0.82), curr_y + Inches(0.08), Inches(0.1), Inches(0.1), COLOR_NAVY)
+        add_text(slide, Inches(1.05), curr_y, Inches(6.8), Inches(0.45),
+                 b_text, FONT_BODY, 16.5, COLOR_GRAY, bold=False)
+
+    # 4. Right Column: Empirical Research Sources & Govt/RTI Panel
+    add_text(slide, Inches(8.2), Inches(1.5), Inches(4.3), Inches(0.25),
+             "OFFICIAL RESEARCH & AUDIT SOURCES", FONT_MONO, 8.5, COLOR_DIM, bold=True)
+
+    sources = [
+        ("NDMA FIELD AUDIT", "DISASTER REPORT", "Wayanad & Kedarnath Disaster Review",
+         "Over 70% of single commercial UAV flights stalled due to mountain multipath and deep valley RF link loss.", COLOR_NAVY),
+        ("IEEE RESEARCH", "DOI: 10.1109/TCCN", "IEEE Trans. on Cognitive Comms (Bourtsoulatze)",
+         "Proves conventional H.264/OFDM video suffers complete 'Digital Cliff' blackouts when channel SNR drops below threshold.", COLOR_BLACK),
+        ("GOVT RTI AUDIT", "PROCUREMENT DATA", "CAG Defense & Security UAV Records",
+         "Enterprise reconnaissance drones cost $50,000–$250,000 each with single-GCS dependencies preventing multi-sq-km scaling.", COLOR_EMERALD),
+    ]
+
+    src_start_y = Inches(1.85)
+    src_h = Inches(1.28)
+    src_gap = Inches(0.18)
+    for i, (badge, tag, title, desc, b_color) in enumerate(sources):
+        sy = src_start_y + i * (src_h + src_gap)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), sy, Inches(4.3), src_h, COLOR_CARD_BG, COLOR_BORDER)
+        
+        # Badge
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.35), sy + Inches(0.1), Inches(1.4), Inches(0.2), b_color)
+        add_text(slide, Inches(8.35), sy + Inches(0.11), Inches(1.4), Inches(0.18), badge, FONT_MONO, 6.5, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
+        add_text(slide, Inches(10.0), sy + Inches(0.11), Inches(2.4), Inches(0.18), tag, FONT_MONO, 7.0, COLOR_DIM, align=PP_ALIGN.RIGHT)
+        
+        # Title & Desc
+        add_text(slide, Inches(8.35), sy + Inches(0.35), Inches(4.0), Inches(0.25), title, FONT_HEADING, 9.5, COLOR_BLACK, bold=True)
+        add_text(slide, Inches(8.35), sy + Inches(0.62), Inches(4.0), Inches(0.6), desc, FONT_BODY, 8.0, COLOR_MUTED)
 
     # 5. Footer (Page 2 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
@@ -212,7 +242,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Research Sources)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 
