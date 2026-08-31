@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Punchy Grand Finals Pitch Script (Slides 1 to 3)</title>
+  <title>PROJECT SUTRA — Grand Finals Twin Pitch Script (Nikhil & Harika)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
   <style>
     @page {
       size: A4;
-      margin: 12mm 14mm 12mm 14mm;
+      margin: 10mm 12mm 10mm 12mm;
     }
 
     * { box-sizing: border-box; }
@@ -21,8 +21,8 @@
       font-family: 'Inter', -apple-system, sans-serif;
       color: #09090B;
       background: #FFFFFF;
-      line-height: 1.5;
-      font-size: 9.5pt;
+      line-height: 1.45;
+      font-size: 9.2pt;
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
@@ -30,8 +30,8 @@
 
     .header-bar {
       border-bottom: 2px solid #09090B;
-      padding-bottom: 10px;
-      margin-bottom: 16px;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -39,7 +39,7 @@
 
     .title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 18pt;
+      font-size: 17pt;
       font-weight: 800;
       color: #09090B;
       margin: 0;
@@ -49,10 +49,10 @@
 
     .subtitle {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8pt;
+      font-size: 7.8pt;
       font-weight: 600;
       color: #52525B;
-      margin-top: 3px;
+      margin-top: 2px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -61,20 +61,19 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 7.5pt;
       font-weight: 700;
-      background: #F4F4F5;
-      border: 1px solid #E4E4E7;
+      background: #09090B;
+      color: #FFFFFF;
       padding: 4px 8px;
       border-radius: 4px;
       text-align: right;
-      color: #18181B;
     }
 
     .slide-section {
       break-inside: avoid-page;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       border: 1px solid #E4E4E7;
       border-radius: 8px;
-      padding: 14px 16px;
+      padding: 11px 14px;
       background: #FFFFFF;
     }
 
@@ -83,32 +82,32 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #F4F4F5;
-      padding-bottom: 6px;
-      margin-bottom: 10px;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
       break-after: avoid;
     }
 
     .slide-num-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8pt;
+      font-size: 7.5pt;
       font-weight: 800;
       color: #FFFFFF;
       background: #09090B;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 4px;
       letter-spacing: 0.05em;
     }
 
     .slide-title-text {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 11pt;
+      font-size: 10.5pt;
       font-weight: 700;
       color: #09090B;
     }
 
     .timing-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.5pt;
+      font-size: 7.2pt;
       font-weight: 700;
       color: #047857;
       background: #ECFDF5;
@@ -117,20 +116,47 @@
       border-radius: 4px;
     }
 
+    .speaker-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .speaker-nikhil {
+      color: #1D4ED8;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .speaker-harika {
+      color: #9333EA;
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
     .hook-callout {
       background: #FAFAFA;
       border-left: 3px solid #09090B;
-      padding: 6px 10px;
-      margin-bottom: 8px;
-      font-size: 9.5pt;
+      padding: 5px 8px;
+      margin-bottom: 6px;
+      font-size: 9pt;
       font-weight: 600;
       color: #09090B;
     }
 
     .dialogue-p {
-      margin: 0 0 8px 0;
-      font-size: 9.2pt;
-      line-height: 1.55;
+      margin: 0 0 6px 0;
+      font-size: 8.8pt;
+      line-height: 1.5;
       color: #27272A;
     }
 
@@ -138,30 +164,43 @@
       color: #09090B;
     }
 
-    .cue-box {
+    .handoff-cue {
       font-family: 'JetBrains Mono', monospace;
       font-size: 7.5pt;
-      background: #FEF3C7;
+      background: #FFFBEB;
       border: 1px solid #FDE68A;
-      color: #92400E;
-      padding: 4px 8px;
+      color: #B45309;
+      padding: 3px 6px;
       border-radius: 4px;
-      margin-top: 6px;
+      margin: 4px 0;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .cue-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.2pt;
+      background: #F4F4F5;
+      border: 1px solid #E4E4E7;
+      color: #52525B;
+      padding: 3px 6px;
+      border-radius: 4px;
+      margin-top: 5px;
     }
 
     .bullet-point {
       display: flex;
       align-items: baseline;
-      gap: 6px;
-      margin-bottom: 4px;
-      font-size: 9pt;
+      gap: 5px;
+      margin-bottom: 3px;
+      font-size: 8.7pt;
     }
 
     .bullet-point .tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.5pt;
+      font-size: 7pt;
       font-weight: 700;
-      padding: 1px 5px;
+      padding: 1px 4px;
       border-radius: 3px;
       white-space: nowrap;
     }
@@ -172,32 +211,32 @@
     .proof-matrix {
       width: 100%;
       border-collapse: collapse;
-      font-size: 7.5pt;
+      font-size: 7.2pt;
       font-family: 'JetBrains Mono', monospace;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .proof-matrix th {
       background: #F4F4F5;
       color: #09090B;
-      padding: 4px 6px;
+      padding: 3px 5px;
       text-align: left;
       border: 1px solid #E4E4E7;
       font-weight: 700;
     }
 
     .proof-matrix td {
-      padding: 4px 6px;
+      padding: 3px 5px;
       border: 1px solid #E4E4E7;
       color: #3F3F46;
     }
 
     .footer {
       border-top: 1px solid #E4E4E7;
-      padding-top: 6px;
-      margin-top: 14px;
+      padding-top: 5px;
+      margin-top: 10px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7pt;
+      font-size: 6.8pt;
       color: #71717A;
       display: flex;
       justify-content: space-between;
@@ -210,16 +249,16 @@
   <!-- Header -->
   <div class="header-bar">
     <div>
-      <h1 class="title">PROJECT SUTRA — PUNCHY GRAND FINALS SCRIPT</h1>
-      <div class="subtitle">Fast-Paced, Word-for-Word Defense &amp; Disaster Robotics Pitch (Slides 1 to 3)</div>
+      <h1 class="title">PROJECT SUTRA — TWIN GRAND FINALS PITCH SCRIPT</h1>
+      <div class="subtitle">Strict Co-Presenter Format: Nikhil (Tech Lead) &amp; Harika (Operations &amp; Audit Lead)</div>
     </div>
     <div class="meta-badge">
-      PACE: CRISP &amp; ENERGETIC<br>
+      PRESENTERS: NIKHIL &bull; HARIKA<br>
       TOTAL TIME: ~2 MIN 30 SEC
     </div>
   </div>
 
-  <!-- SLIDE 1: TITLE & CORE TEAM -->
+  <!-- SLIDE 1: TITLE & VISION (NIKHIL) -->
   <div class="slide-section">
     <div class="slide-header">
       <div style="display: flex; align-items: center; gap: 8px;">
@@ -229,114 +268,136 @@
       <span class="timing-tag">00:00 – 00:35 (35s)</span>
     </div>
 
+    <div class="speaker-box">
+      <span class="speaker-nikhil">SPEAKER: NIKHIL (TECH LEAD)</span>
+      <span style="font-size: 7.2pt; color: #64748B;">[STAGE PRESENCE: CENTER-LEFT &bull; DIRECT JURY EYE CONTACT]</span>
+    </div>
+
     <div class="hook-callout">
       🔥 <strong>HOOK:</strong> "When a disaster strikes, the first 72 hours decide who lives. But the moment drones enter thick forests or mountain ravines, they go blind."
     </div>
 
     <p class="dialogue-p">
-      "Respected jury, we are <strong>Team OFFGRID</strong>, and we built <strong>Project SUTRA</strong> — an autonomous drone swarm that finds survivors in GPS-denied, zero-network disaster zones."
+      "Respected jury, we are <strong>Team OFFGRID</strong>. I am Nikhil, Tech Lead, and with me is Harika. We built <strong>Project SUTRA</strong> — an autonomous drone swarm that finds survivors in GPS-denied, zero-network disaster zones."
     </p>
 
     <p class="dialogue-p">
-      "Instead of relying on single manual drones, SUTRA deploys an intelligent swarm backed by 3 breakthrough pillars:"
+      "Instead of single manual drones, SUTRA deploys an intelligent swarm backed by 3 breakthrough pillars:"
     </p>
 
     <div class="bullet-point">
       <span class="tag tag-green">50Hz GNC</span>
-      <span><strong>Decentralized Flight:</strong> Drones coordinate locally without towers or cloud servers.</span>
+      <span><strong>Decentralized Flight:</strong> Drones coordinate locally at 50Hz without ground towers.</span>
     </div>
     <div class="bullet-point">
       <span class="tag tag-green">-5dB JSCC</span>
-      <span><strong>Neural Video:</strong> Feeds stay connected through mountain ridges without blacking out.</span>
+      <span><strong>Neural Video:</strong> Feeds stay connected through mountain ridges without blackouts.</span>
     </div>
     <div class="bullet-point">
       <span class="tag tag-green">3.59cm GEO</span>
       <span><strong>3D Terrain AI:</strong> Pinpoints survivors on steep slopes with centimeter accuracy.</span>
     </div>
 
-    <div class="cue-box">
-      <strong>[ACTION]:</strong> Point to the 3 telemetry boxes and introduce lead roles (Nikhil: GNC &amp; Comms, Vedanth: Vision, Siva: GCS).
+    <div class="handoff-cue">
+      HANDOFF TO HARIKA &rarr; "Harika will show why traditional search and rescue collapses in the field."
     </div>
   </div>
 
-  <!-- SLIDE 2: THE PROBLEM (4 SUBSYSTEM FAILURE VOIDS) -->
+  <!-- SLIDE 2: THE PROBLEM (HARIKA) -->
   <div class="slide-section">
     <div class="slide-header">
       <div style="display: flex; align-items: center; gap: 8px;">
         <span class="slide-num-tag" style="background: #E11D48;">SLIDE 02</span>
         <span class="slide-title-text">The Problem: 4 Critical Failure Voids</span>
       </div>
-      <span class="timing-tag" style="color: #BE123C; background: #FFF1F2; border-color: #FECDD3;">00:35 – 01:25 (50s)</span>
+      <span class="timing-tag" style="color: #BE123C; background: #FFF1F2; border-color: #FECDD3;">00:35 – 01:20 (45s)</span>
+    </div>
+
+    <div class="speaker-box">
+      <span class="speaker-harika">SPEAKER: HARIKA (OPERATIONS &amp; AUDIT LEAD)</span>
+      <span style="font-size: 7.2pt; color: #64748B;">[STAGE PRESENCE: STEP FORWARD &bull; CONFIDENT &amp; FACTUAL]</span>
     </div>
 
     <div class="hook-callout" style="border-left-color: #E11D48;">
-      ⚠️ <strong>HOOK:</strong> "Why does current search and rescue fail? Because existing drones break down across 4 fatal engineering voids:"
+      ⚠️ <strong>HOOK:</strong> "Thank you, Nikhil. When we audited actual NDRF disaster reports, we found 4 fatal engineering voids that cause current missions to fail:"
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-red">SUBSYSTEM A</span>
-      <span><strong>Canopy GPS Drift:</strong> Dense trees block satellite signals. Drones drift and crash into trees. <em>(70% loss in Wayanad).</em></span>
+      <span class="tag tag-red">SUBSYS A (GNC)</span>
+      <span><strong>Canopy GPS Drift:</strong> Trees block satellite signals. Drones drift and crash into branches. <em>(70% loss in Wayanad).</em></span>
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-red">SUBSYSTEM B</span>
+      <span class="tag tag-red">SUBSYS B (COMMS)</span>
       <span><strong>Mountain RF Blackout:</strong> Ridges cut radio line-of-sight. Standard video drops off a digital cliff below 5dB SNR.</span>
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-red">SUBSYSTEM C</span>
-      <span><strong>Flat-Earth AI Error:</strong> 2D drone cameras assume the ground is flat. On steep slopes, coordinates miss by <strong>15 to 30 meters</strong>.</span>
+      <span class="tag tag-red">SUBSYS C (VISION)</span>
+      <span><strong>Flat-Earth AI Error:</strong> 2D cameras assume flat ground. On steep slopes, coordinates miss by <strong>15 to 30 meters</strong>.</span>
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-red">SUBSYSTEM D</span>
-      <span><strong>Manual Pilot Bottleneck:</strong> Needs 1 pilot per drone and <strong>15 to 25 crew members</strong>, costing ₹12.5 Lakhs per mission.</span>
+      <span class="tag tag-red">SUBSYS D (C2 GCS)</span>
+      <span><strong>Pilot Bottleneck:</strong> Requires 1 pilot per drone and <strong>15 to 25 crew</strong>, costing ₹12.5 Lakhs per deployment.</span>
     </div>
 
-    <div class="cue-box">
-      <strong>[ACTION]:</strong> Glance across the 4 problem cards on screen (Wayanad crash, Chamoli cut, Sikkim slope drift, crew bottleneck).
+    <div class="handoff-cue">
+      HANDOFF TO NIKHIL &rarr; "Nikhil, walk the jury through how SUTRA's architecture solves all four voids."
     </div>
   </div>
 
-  <!-- SLIDE 3: THE SOLUTION & BENCHMARKS -->
+  <!-- SLIDE 3: THE SOLUTION & BENCHMARKS (NIKHIL & HARIKA SPLIT) -->
   <div class="slide-section">
     <div class="slide-header">
       <div style="display: flex; align-items: center; gap: 8px;">
         <span class="slide-num-tag" style="background: #047857;">SLIDE 03</span>
-        <span class="slide-title-text">The Solution: 4 Subsystem Moats &amp; 3-4x Performance</span>
+        <span class="slide-title-text">The Solution: 4 Architectural Moats &amp; 3-4x Performance Delta</span>
       </div>
-      <span class="timing-tag">01:25 – 02:25 (60s)</span>
+      <span class="timing-tag">01:20 – 02:25 (65s)</span>
     </div>
 
-    <div class="hook-callout" style="border-left-color: #047857;">
-      🛡️ <strong>HOOK:</strong> "SUTRA solves each void with a hardened, defensible technical moat:"
+    <!-- Part 1: Nikhil on Core Tech Moats A & B -->
+    <div class="speaker-box">
+      <span class="speaker-nikhil">NIKHIL: CORE TECH MOATS (A &amp; B)</span>
+      <span style="font-size: 7.2pt; color: #64748B;">[25s &bull; DEEP TECHNICAL AUTHORITY]</span>
+    </div>
+
+    <p class="dialogue-p">
+      "SUTRA answers each void with a hardened, defensible technical moat:"
+    </p>
+
+    <div class="bullet-point">
+      <span class="tag tag-green">MOAT A (GNC)</span>
+      <span><strong>SUTRA-FSD &amp; 3D ORCA:</strong> Onboard 50Hz obstacle avoidance. Autonomous flight with zero towers or GPS.</span>
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-green">MOAT A</span>
-      <span><strong>SUTRA-FSD &amp; 3D ORCA:</strong> Onboard 50Hz obstacle avoidance. Autonomous flight with zero towers.</span>
-    </div>
-
-    <div class="bullet-point">
-      <span class="tag tag-green">MOAT B</span>
+      <span class="tag tag-green">MOAT B (COMMS)</span>
       <span><strong>Deep JSCC Neural Video:</strong> Analog neural transmission. Clear video down to -5dB SNR with zero digital cliff.</span>
     </div>
 
+    <!-- Part 2: Harika on Edge Vision, GCS & Mission Impact -->
+    <div class="speaker-box" style="margin-top: 6px;">
+      <span class="speaker-harika">HARIKA: VISION, C2 GCS &amp; MISSION BENCHMARKS</span>
+      <span style="font-size: 7.2pt; color: #64748B;">[40s &bull; CLOSING PUNCH &amp; ROI]</span>
+    </div>
+
     <div class="bullet-point">
-      <span class="tag tag-green">MOAT C</span>
+      <span class="tag tag-green">MOAT C (VISION)</span>
       <span><strong>3D DEM AI Geolocation:</strong> Edge YOLOv8 + 3D terrain raycasting on Jetson Orin. <strong>3.59cm accuracy</strong> in &lt;15ms.</span>
     </div>
 
     <div class="bullet-point">
-      <span class="tag tag-green">MOAT D</span>
-      <span><strong>Pegasus 3D GCS:</strong> Offline 3D tactical twin. <strong>1 to 2 operators fly the whole swarm</strong> for just <strong>₹95,000 / sortie</strong>.</span>
+      <span class="tag tag-green">MOAT D (C2 GCS)</span>
+      <span><strong>Pegasus 3D GCS:</strong> Offline tactical twin. <strong>1 to 2 operators fly the whole swarm</strong> for just <strong>₹95,000 / sortie</strong>.</span>
     </div>
 
-    <p class="dialogue-p" style="margin-top: 6px; font-weight: 600; color: #09090B;">
+    <p class="dialogue-p" style="margin-top: 4px; font-weight: 700; color: #09090B;">
       "The result? SUTRA scans a square mile in <strong>10 to 18 minutes</strong> — 3 to 4 times faster than traditional teams, saving lives when every second counts."
     </p>
 
-    <!-- Quick Proof Table -->
+    <!-- Proof Table -->
     <table class="proof-matrix">
       <thead>
         <tr>
@@ -377,8 +438,8 @@
 
   <!-- Footer -->
   <div class="footer">
-    <span>PROJECT SUTRA — GRAND FINALS DEFENSE PITCH SCRIPT</span>
-    <span>CONFIDENTIAL &bull; TEAM OFFGRID &bull; DEFENSE &amp; DISASTER ROBOTICS</span>
+    <span>PROJECT SUTRA — TWIN GRAND FINALS DEFENSE PITCH SCRIPT</span>
+    <span>CONFIDENTIAL &bull; PRESENTED BY NIKHIL &amp; HARIKA &bull; TEAM OFFGRID</span>
   </div>
 
 </body>
