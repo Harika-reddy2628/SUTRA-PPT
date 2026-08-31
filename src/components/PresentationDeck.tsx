@@ -115,21 +115,21 @@ export const PresentationDeck: React.FC = () => {
   return (
     <div className="presentation-viewport select-none">
       
-      {/* 16:9 Slide Canvas */}
-      <div className="slide-canvas shadow-2xl">
-        <div className="grid-overlay"></div>
-        <div className="scanline"></div>
+      {/* 16:9 Slide Canvas (Light Sandstone & Sovereign Forest) */}
+      <div className="slide-canvas-light">
+        <div className="grid-overlay-light"></div>
+        <div className="ambient-glow"></div>
         
         {slides[currentSlide].component}
       </div>
 
-      {/* FLOATING CONTROLS HUD */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 backdrop-blur-xl shadow-2xl transition-all duration-200 opacity-40 hover:opacity-100">
+      {/* FLOATING CONTROLS HUD (Light Elegant Glass) */}
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-sandstone-border backdrop-blur-xl shadow-card-hover transition-all duration-200 opacity-40 hover:opacity-100">
         
         <button 
           onClick={prevSlide}
           disabled={currentSlide === 0}
-          className="p-1.5 rounded-full hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent text-slate-300 hover:text-white transition-colors"
+          className="p-1.5 rounded-full hover:bg-canvas-raised disabled:opacity-30 disabled:hover:bg-transparent text-earth-forest transition-colors"
           title="Previous Slide (← / PageUp)"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -137,44 +137,44 @@ export const PresentationDeck: React.FC = () => {
 
         <button 
           onClick={() => setShowDrawer(prev => !prev)}
-          className="font-mono text-xs font-semibold text-slate-300 px-2 py-0.5 rounded hover:bg-slate-800 transition-colors flex items-center gap-1.5"
+          className="font-mono text-xs font-bold text-earth-forest px-2.5 py-0.5 rounded-full bg-canvas-raised border border-sandstone-border hover:bg-canvas-hover transition-colors flex items-center gap-1.5"
           title="Toggle Slide Menu (O)"
         >
-          <Layers className="w-3.5 h-3.5 text-cyan-400" />
-          <span><span className="text-cyan-400">{currentSlide + 1}</span> / {totalSlides}</span>
+          <Layers className="w-3.5 h-3.5 text-earth-forest" />
+          <span><span className="text-earth-forest">{currentSlide + 1}</span> / {totalSlides}</span>
         </button>
 
         <button 
           onClick={nextSlide}
           disabled={currentSlide === totalSlides - 1}
-          className="p-1.5 rounded-full hover:bg-slate-800 disabled:opacity-30 disabled:hover:bg-transparent text-slate-300 hover:text-white transition-colors"
+          className="p-1.5 rounded-full hover:bg-canvas-raised disabled:opacity-30 disabled:hover:bg-transparent text-earth-forest transition-colors"
           title="Next Slide (→ / Space / PageDown)"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
 
-        <div className="w-[1px] h-3.5 bg-slate-700 mx-0.5"></div>
+        <div className="w-[1px] h-3.5 bg-sandstone-border mx-0.5"></div>
 
         <button 
           onClick={toggleFullscreen}
-          className="p-1.5 rounded-full hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+          className="p-1.5 rounded-full hover:bg-canvas-raised text-earth-forest transition-colors"
           title="Toggle Fullscreen (F)"
         >
-          {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+          {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
         </button>
 
       </div>
 
       {/* QUICK DRAWER */}
       {showDrawer && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-6" onClick={() => setShowDrawer(false)}>
-          <div className="bg-slate-900 border border-slate-700 rounded-xl p-6 max-w-lg w-full shadow-2xl" onClick={e => e.stopPropagation()}>
-            <div className="flex justify-between items-center pb-3 border-b border-slate-800 mb-4">
-              <div className="flex items-center gap-2 font-mono text-sm font-bold text-white">
-                <Layers className="w-4 h-4 text-cyan-400" />
+        <div className="fixed inset-0 z-50 bg-[#183A2B]/20 backdrop-blur-md flex items-center justify-center p-6" onClick={() => setShowDrawer(false)}>
+          <div className="bg-white border border-sandstone-border rounded-2xl p-6 max-w-lg w-full shadow-card-hover" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center pb-3 border-b border-sandstone-border mb-4">
+              <div className="flex items-center gap-2 font-mono text-sm font-bold text-earth-forest">
+                <Layers className="w-4 h-4 text-earth-forest" />
                 <span>DECK NAVIGATION &amp; SHORTCUTS</span>
               </div>
-              <button onClick={() => setShowDrawer(false)} className="text-xs text-slate-400 hover:text-white">✕ Close</button>
+              <button onClick={() => setShowDrawer(false)} className="text-xs text-sandstone-muted hover:text-earth-forest font-semibold">✕ Close</button>
             </div>
 
             <div className="space-y-2 mb-4 max-h-[60vh] overflow-y-auto pr-1">
@@ -182,17 +182,17 @@ export const PresentationDeck: React.FC = () => {
                 <button
                   key={s.id}
                   onClick={() => { setCurrentSlide(idx); setShowDrawer(false); }}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${idx === currentSlide ? 'bg-cyan-500/10 border border-cyan-500/40 text-white' : 'bg-slate-950/50 border border-slate-800/60 text-slate-300 hover:bg-slate-800'}`}
+                  className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-all ${idx === currentSlide ? 'bg-earth-forest text-white shadow-md' : 'bg-canvas-raised border border-sandstone-border text-earth-forest hover:bg-canvas-hover'}`}
                 >
                   <span className="font-semibold text-sm">{s.title}</span>
-                  <span className="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400">{s.category}</span>
+                  <span className={`font-mono text-xs px-2 py-0.5 rounded-full ${idx === currentSlide ? 'bg-white/20 text-white' : 'bg-white text-sandstone-muted border border-sandstone-border'}`}>{s.category}</span>
                 </button>
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-800 text-xs font-mono text-slate-400 flex items-center justify-between">
-              <div className="flex items-center gap-1.5"><HelpCircle className="w-3.5 h-3.5 text-slate-500" /> Key: Space / Arrows: Nav</div>
-              <div className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5 text-slate-500" /> F: Fullscreen | O: Menu</div>
+            <div className="pt-3 border-t border-sandstone-border text-xs font-mono text-sandstone-muted flex items-center justify-between">
+              <div className="flex items-center gap-1.5"><HelpCircle className="w-3.5 h-3.5 text-sandstone-faint" /> Space / Arrows: Nav</div>
+              <div className="flex items-center gap-1.5"><FileText className="w-3.5 h-3.5 text-sandstone-faint" /> F: Fullscreen | O: Menu</div>
             </div>
           </div>
         </div>
