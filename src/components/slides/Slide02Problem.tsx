@@ -53,7 +53,7 @@ export const Slide02Problem: React.FC = () => {
   }, [isPaused]);
 
   return (
-    <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-10 lg:p-16 select-none overflow-hidden border border-slate-200">
+    <div className="relative w-full h-full bg-[#FFFFFF] text-[#000000] font-sans flex flex-col justify-between p-10 lg:p-14 select-none overflow-hidden border border-slate-200">
       
       {/* Subtle Background Architectural Grid */}
       <div 
@@ -82,18 +82,18 @@ export const Slide02Problem: React.FC = () => {
         </header>
 
         {/* Main Body: 2-Column Split */}
-        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 my-auto items-center">
+        <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 my-auto items-center">
           
-          {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets + Schematic Illustrations */}
+          <div className="lg:col-span-7 space-y-5">
             
             {/* Simple Conclusion-Style Headline */}
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-black tracking-tight leading-[1.12]">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-black tracking-tight leading-[1.12]">
               GPS Loss and Radio Blackouts Cripple Disaster Rescue
             </h2>
 
             {/* 6x6 Rule Bullets: Simple Words, <=6 words each, left-aligned, #374151 */}
-            <ul className="space-y-3.5 text-base sm:text-lg lg:text-xl font-normal text-[#374151] leading-relaxed">
+            <ul className="space-y-2.5 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
               
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
@@ -122,6 +122,61 @@ export const Slide02Problem: React.FC = () => {
 
             </ul>
 
+            {/* Technical Vector Schematic Illustration Strip */}
+            <div className="pt-2">
+              <div className="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">
+                TACTICAL FAILURE SCHEMATICS
+              </div>
+              
+              <div className="grid grid-cols-3 gap-2.5">
+                
+                {/* Schematic 1: Mountain RF Blockage */}
+                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
+                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
+                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
+                    <polygon points="4,30 16,12 28,30" fill="#94A3B8" />
+                    <polygon points="18,30 26,18 34,30" fill="#CBD5E1" />
+                    <path d="M6 10 C10 8, 14 10, 16 14" stroke="#D71920" strokeWidth="1.8" strokeDasharray="2 2" />
+                    <circle cx="28" cy="14" r="2.5" fill="#0A1628" />
+                  </svg>
+                  <div className="space-y-0.5">
+                    <div className="text-[10px] font-bold text-slate-800 leading-tight">RF Ridge Shadow</div>
+                    <div className="text-[8.5px] text-slate-500 font-mono">Video Stream Drop</div>
+                  </div>
+                </div>
+
+                {/* Schematic 2: Forest Canopy GPS Shadow */}
+                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
+                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
+                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
+                    <rect x="6" y="6" width="6" height="4" rx="1" fill="#0A1628" />
+                    <line x1="9" y1="12" x2="16" y2="20" stroke="#D71920" strokeWidth="1.8" strokeDasharray="2 2" />
+                    <circle cx="20" cy="22" r="6" fill="#059669" opacity="0.8" />
+                    <circle cx="26" cy="24" r="5" fill="#10B981" opacity="0.8" />
+                  </svg>
+                  <div className="space-y-0.5">
+                    <div className="text-[10px] font-bold text-slate-800 leading-tight">Canopy Shadow</div>
+                    <div className="text-[8.5px] text-slate-500 font-mono">GNSS Multi-Path</div>
+                  </div>
+                </div>
+
+                {/* Schematic 3: Single Point Comms Loss */}
+                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
+                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
+                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
+                    <polygon points="12,30 18,12 24,30" stroke="#0A1628" strokeWidth="1.5" />
+                    <line x1="18" y1="12" x2="28" y2="8" stroke="#D71920" strokeWidth="1.5" strokeDasharray="2 2" />
+                    <text x="22" y="18" fill="#D71920" fontSize="10" fontWeight="bold">✕</text>
+                  </svg>
+                  <div className="space-y-0.5">
+                    <div className="text-[10px] font-bold text-slate-800 leading-tight">Central Link Loss</div>
+                    <div className="text-[8.5px] text-slate-500 font-mono">Single Point Abort</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
           </div>
 
           {/* Right Column (5 Cols): Smooth Parallax Stacked Dossier Cards */}
@@ -132,7 +187,7 @@ export const Slide02Problem: React.FC = () => {
           >
             
             {/* Dossier Header */}
-            <div className="flex items-center justify-between pb-2.5 font-mono">
+            <div className="flex items-center justify-between pb-2 font-mono">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
                 OFFICIAL EVIDENCE &amp; AUDITS
               </span>
@@ -142,7 +197,7 @@ export const Slide02Problem: React.FC = () => {
             </div>
 
             {/* 3D Stacked Container */}
-            <div className="relative w-full h-[310px]">
+            <div className="relative w-full h-[320px]">
               
               {/* Metallic Paperclip (Anchored seamlessly on the top edge of active card) */}
               <div className="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
@@ -246,7 +301,7 @@ export const Slide02Problem: React.FC = () => {
         </main>
 
         {/* Bottom Standard Slide Footer */}
-        <footer className="pt-4 border-t border-[#E5E7EB] flex justify-between items-center font-mono text-xs text-[#6B7280]">
+        <footer className="pt-3.5 border-t border-[#E5E7EB] flex justify-between items-center font-mono text-xs text-[#6B7280]">
           <div>PAGE 02</div>
           <div className="font-semibold uppercase tracking-wider text-[#0A1628]">TEAM OFFGRID — PROJECT SUTRA</div>
         </footer>
