@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT SUTRA — Harika's Master Pitch Script</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #09090B;
+      background: #FFFFFF;
+      line-height: 1.5;
+      font-size: 9.6pt;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header-bar {
+      border-bottom: 2.5px solid #9333EA;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18pt;
+      font-weight: 800;
+      color: #09090B;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #9333EA;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .meta-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      font-weight: 700;
+      background: #9333EA;
+      color: #FFFFFF;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-align: right;
+    }
+
+    .cue-box {
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+      border-left: 4px solid #9333EA;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      font-size: 8pt;
+      color: #581C87;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .slide-block {
+      border: 1.5px solid #E4E4E7;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      background: #FFFFFF;
+    }
+
+    .slide-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #F4F4F5;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .slide-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      font-weight: 800;
+      color: #FFFFFF;
+      background: #09090B;
+      padding: 2.5px 7px;
+      border-radius: 4px;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #09090B;
+    }
+
+    .timer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      font-weight: 700;
+      color: #9333EA;
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .stage-direction {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.6pt;
+      color: #64748B;
+      font-style: italic;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .hook-text {
+      background: #FDF4FF;
+      border-left: 3.5px solid #C026D3;
+      padding: 7px 11px;
+      margin-bottom: 8px;
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #09090B;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .speech-body {
+      font-size: 9.6pt;
+      line-height: 1.55;
+      color: #18181B;
+      margin: 0 0 8px 0;
+    }
+
+    .speech-body strong {
+      color: #09090B;
+      font-weight: 700;
+    }
+
+    .pillar-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 5px;
+      font-size: 9.2pt;
+    }
+
+    .pill-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7pt;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .pill-green { background: #D1FAE5; color: #065F46; }
+    .pill-red { background: #FFE4E6; color: #9F1239; }
+
+    .slide-mirror {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.2pt;
+      color: #6B7280;
+      background: #F3F4F6;
+      padding: 1.5px 5px;
+      border-radius: 3px;
+      margin-left: 4px;
+    }
+
+    .handoff-box {
+      background: #F0FDF4;
+      border: 1.5px solid #BBF7D0;
+      color: #166534;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .footer {
+      border-top: 1px solid #E4E4E7;
+      padding-top: 5px;
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.2pt;
+      color: #71717A;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header-bar">
+    <div>
+      <h1 class="title">PROJECT SUTRA — HARIKA'S PITCH SCRIPT</h1>
+      <div class="subtitle">Speaker: Harika &bull; Operations Lead &bull; Slides 01 &amp; 02</div>
+    </div>
+    <div class="meta-badge">
+      TOTAL TIME: ~65 SECONDS<br>
+      STAGE: CENTER STAGE
+    </div>
+  </div>
+
+  <!-- Delivery Guidance -->
+  <div class="cue-box">
+    💡 <strong>DELIVERY TIPS FOR HARIKA:</strong> Speak clearly, naturally, and with urgent conviction. Maintain confident eye contact with the jury. You set the entire high-stakes mood of the room before handing over to the engineering leads.
+  </div>
+
+  <!-- SLIDE 01: INTRODUCTION & 3 PILLARS -->
+  <div class="slide-block">
+    <div class="slide-head">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="slide-tag">SLIDE 01</span>
+        <span class="slide-title">Opening Hook &amp; Project SUTRA Introduction</span>
+      </div>
+      <span class="timer">00:00 – 00:30 (30s)</span>
+    </div>
+
+    <span class="stage-direction">[Stand center stage &bull; Take a 1-second pause &bull; Deliver opening hook with serious, grounded tone]</span>
+
+    <div class="hook-text">
+      🔥 <strong>HOOK:</strong> "When over 300 lives were buried under mud in the <strong>July 2024 Wayanad landslides</strong>, and flash floods cut off entire mountain valleys across <strong>Kedarnath and Nepal</strong>, rescue teams had only 72 hours to save lives. But the moment standard drones entered thick forests and deep ravines, they lost signal and crashed."
+    </div>
+
+    <p class="speech-body">
+      "Respected jury, we are <strong>Team OFFGRID</strong>. I am Harika, and with me are Vedanth and Nikhil. We built <strong>Project SUTRA</strong> — an autonomous drone swarm engineered to find survivors even when <strong>GPS fails and normal communications collapse</strong>."
+    </p>
+
+    <span class="stage-direction">[Point smoothly toward the 3 cards on Slide 1]</span>
+
+    <p class="speech-body" style="margin-bottom: 5px;">
+      "SUTRA is powered by 3 core breakthroughs:"
+    </p>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">PILLAR 1</span>
+      <span><strong>Self-Flying Swarms:</strong> Drones dodge trees and coordinate together at 50 times a second without ground towers. <span class="slide-mirror">[50Hz GNC]</span></span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">PILLAR 2</span>
+      <span><strong>Smart AI Video:</strong> Live video stays connected through deep mountain valleys without blacking out. <span class="slide-mirror">[-5dB JSCC]</span></span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">PILLAR 3</span>
+      <span><strong>Thermal &amp; 3D AI Vision:</strong> Spots survivors through smoke and finds their exact coordinates on steep slopes. <span class="slide-mirror">[3D DEM &bull; 3.59cm]</span></span>
+    </div>
+  </div>
+
+  <!-- SLIDE 02: THE PROBLEM (4 BREAKDOWNS) -->
+  <div class="slide-block">
+    <div class="slide-head">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="slide-tag" style="background: #E11D48;">SLIDE 02</span>
+        <span class="slide-title">The Problem: 4 Real Disaster Breakdowns</span>
+      </div>
+      <span class="timer" style="color: #BE123C; background: #FFF1F2; border-color: #FECDD3;">00:30 – 01:05 (35s)</span>
+    </div>
+
+    <span class="stage-direction">[Click to Slide 2 &bull; Transition tone to urgent, factual investigation]</span>
+
+    <div class="hook-text" style="background: #FFF1F2; border-left-color: #E11D48;">
+      ⚠️ <strong>THE VOD:</strong> "When our team audited actual NDRF and Army rescue reports from recent disaster zones, we found 4 major breakdowns:"
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-red">BREAKDOWN 1</span>
+      <span><strong>Trees Block GPS:</strong> In Wayanad, thick tree cover blocked satellite signals, causing <strong>70% of drones to crash into branches</strong>.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-red">BREAKDOWN 2</span>
+      <span><strong>Mountains Block Radio:</strong> In mountain gorges, steep ridges blocked radio signals, dropping video feeds to total black.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-red">BREAKDOWN 3</span>
+      <span><strong>Slope Errors:</strong> On steep 45-degree hillsides, standard drone cameras assumed flat ground, <strong>missing survivor locations by 15 to 30 meters</strong>.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-red">BREAKDOWN 4</span>
+      <span><strong>Pilot Overload:</strong> Deploying 5 separate drones required <strong>15 to 25 crew members</strong> and 2 hours of setup, costing ₹12.5 Lakhs per flight.</span>
+    </div>
+
+    <!-- Power Handoff -->
+    <div class="handoff-box">
+      🤝 <strong>POWER HANDOFF TO VEDANTH:</strong><br>
+      "Vedanth will now explain how our AI vision and tactical ground control solve these bottlenecks."
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>PROJECT SUTRA — HARIKA'S SOLO OPENING SCRIPT</span>
+    <span>CONFIDENTIAL &bull; TEAM OFFGRID &bull; GRAND FINALS</span>
+  </div>
+
+</body>
+</html>
