@@ -11,11 +11,36 @@
 
 This repository hosts the **official interactive landing page, presentation engine, and defense architecture compendium** for Project SUTRA.
 
-All collaborating human engineers, AI agents, and subagents contributing to this repository **MUST** adhere to the protocols, invariants, and design system documented in this file to guarantee zero regressions, clean git history, and continuous remote synchronization.
+All collaborating human engineers, AI agents (Claude, Antigravity, Gemini, OpenAI, etc.), and subagents contributing to this repository **MUST** strictly adhere to the protocols, invariants, skills, and design system documented in this file to guarantee zero regressions, clean git history, and continuous remote synchronization.
 
 ---
 
-## 👥 2. Subsystem Ownership & Team Attribution
+## ⚡ 2. MANDATORY SKILL ENFORCEMENT: `ppt-artisan`
+
+> [!IMPORTANT]
+> **ALL AGENTS MUST UNCONDITIONALLY USE THE LOCAL `ppt-artisan` SKILL** located inside this repository at [`.claude/skills/ppt-artisan/`](file:///home/nikhil/Desktop/sutra_pitch_deck/.claude/skills/ppt-artisan/SKILL.md) (and [`.agents/skills/ppt-artisan/`](file:///home/nikhil/Desktop/sutra_pitch_deck/.agents/skills/ppt-artisan/SKILL.md)) for generating, editing, or augmenting any presentation decks, `.pptx` slides, KPI dashboards, comparative tables, and visual reporting assets.
+
+### Skill Location & Integration
+* Skill Root: [`.claude/skills/ppt-artisan/`](.claude/skills/ppt-artisan/)
+* Python Scripts: [`.claude/skills/ppt-artisan/scripts/`](.claude/skills/ppt-artisan/scripts/)
+* Master Runner: [`build_sutra_deck_artisan.py`](build_sutra_deck_artisan.py)
+
+### Required Usage Rules:
+1. **Always import from repository-local skill path**:
+   ```python
+   import sys
+   from pathlib import Path
+   LOCAL_SKILL_DIR = Path(__file__).resolve().parent / ".claude/skills/ppt-artisan/scripts"
+   sys.path.insert(0, str(LOCAL_SKILL_DIR))
+   from deck_builder import SlideBuilder
+   ```
+2. **Always apply the Vitt Light Elegant Sandstone & Sovereign Forest Theme** (`SUTRA_THEME`).
+3. **Always populate comprehensive speaker notes** on every slide (`builder.add_notes(slide_index, notes_text)`).
+4. **Never create ad-hoc manual slide scripts without using `SlideBuilder`**.
+
+---
+
+## 👥 3. Subsystem Ownership & Team Attribution
 
 | Subsystem | Scope & Modules | Lead Architect |
 | :--- | :--- | :--- |
@@ -28,7 +53,7 @@ All collaborating human engineers, AI agents, and subagents contributing to this
 
 ---
 
-## 🚫 3. The 7 Engineering Invariants (Zero-Regression Policy)
+## 🚫 4. The 7 Engineering Invariants (Zero-Regression Policy)
 
 Collaborating agents and developers must NEVER violate these mathematical and architectural rules:
 
@@ -56,7 +81,7 @@ Collaborating agents and developers must NEVER violate these mathematical and ar
 
 ---
 
-## 🎨 4. Design System & Theme Specification
+## 🎨 5. Design System & Theme Specification
 
 The repository enforces the **Vitt Light Elegant Sandstone & Sovereign Forest Theme** (anti-AI-slop standard):
 
@@ -78,7 +103,7 @@ The repository enforces the **Vitt Light Elegant Sandstone & Sovereign Forest Th
 
 ---
 
-## 🔄 5. Git Collaboration & Synchronization Protocol
+## 🔄 6. Git Collaboration & Synchronization Protocol
 
 To ensure local and remote repositories remain clean, synchronized, and error-free:
 
@@ -86,9 +111,10 @@ To ensure local and remote repositories remain clean, synchronized, and error-fr
    ```bash
    git pull origin main
    ```
-2. **Build Verification**: Ensure TypeScript and Vite build passes with **0 errors**:
+2. **Build Verification**: Ensure TypeScript, Vite, and PPT Artisan builds pass with **0 errors**:
    ```bash
    npm run build
+   python3 build_sutra_deck_artisan.py
    ```
 3. **Structured Semantic Commits**: Commit messages must follow Conventional Commits:
    * `feat(...)`: New features, interactive components, or slide additions
@@ -102,7 +128,7 @@ To ensure local and remote repositories remain clean, synchronized, and error-fr
 
 ---
 
-## 🛠️ 6. Build, Test & Run Commands
+## 🛠️ 7. Build, Test & Run Commands
 
 ```bash
 # Install node dependencies
@@ -117,58 +143,9 @@ npm run build
 # Preview production build
 npm run preview
 
-# Generate updated PowerPoint deck (.pptx)
-python3 generate_deck.py
+# Generate updated PowerPoint deck (.pptx) via ppt-artisan
+python3 build_sutra_deck_artisan.py
 
 # Generate updated high-resolution PDF & PNG slide export
 google-chrome --headless=new --disable-gpu --window-size=1920,1080 --screenshot=slide_01.png --print-to-pdf=slide_01.pdf --no-pdf-header-footer slide_01.html
-```
-
----
-
-## 📂 7. Repository File Map
-
-```
-├── .gitignore
-├── .hallmark/
-│   └── log.json                                    # Hallmark design log & theme record
-├── AGENT.md                                        # Master multi-agent collaboration directive
-├── PROJECT_SUTRA_MASTER_COMPREHENSIVE_BLUEPRINT.md # 335-line comprehensive defense research compendium
-├── README.md                                       # User-facing repository overview & scorecard
-├── generate_deck.py                                # Programmatic PPTX slide generation engine
-├── index.html                                      # Vite HTML entry point with Vitt fonts
-├── package.json                                    # Project dependencies & scripts
-├── slide_01.html                                   # Standalone HTML5 16:9 slide
-├── slide_01.pdf                                    # Print-ready vector PDF slide export
-├── slide_01.png                                    # High-resolution 1080p preview image
-├── sutra_pitch_deck.pptx                           # Native Microsoft PowerPoint 16:9 presentation
-├── tailwind.config.js                              # Tailwind configuration with Vitt design tokens
-├── tsconfig.json                                   # TypeScript configuration
-├── vite.config.ts                                  # Vite configuration
-└── src/
-    ├── App.tsx                                     # Dual-mode root orchestrator (Landing + Deck)
-    ├── index.css                                   # Global CSS styles & design tokens
-    ├── main.tsx                                    # React DOM entry point
-    ├── components/
-    │   ├── PresentationDeck.tsx                    # 16:9 widescreen presentation deck engine
-    │   ├── landing/
-    │   │   ├── DeepJsccSection.tsx                 # Subsystem B: RF Jamming SNR simulator & SwarmRAFT
-    │   │   ├── DroneMeshCanvasBackground.tsx       # Interactive animated canvas node background
-    │   │   ├── Footer.tsx                          # Footer with downloads & GitHub links
-    │   │   ├── FsdSection.tsx                      # Subsystem A: SUTRA-FSD & ORCA 3D calculator
-    │   │   ├── GcsSection.tsx                      # Subsystem D: Pegasus 3D GCS & CoT XML generator
-    │   │   ├── HeroSection.tsx                     # Hero banner & interactive fleet inspector
-    │   │   ├── Navbar.tsx                          # Sticky glass navbar with dual-mode switch
-    │   │   ├── PerceptionSection.tsx               # Subsystem C: Tri-modal AI & DEM raycaster
-    │   │   ├── ProblemSection.tsx                  # The 3 fatal operational bottlenecks
-    │   │   ├── ScorecardSection.tsx                # 232/232 test matrix & swarm ROI calculator
-    │   │   └── TeamSection.tsx                     # Core architecture team attribution
-    │   └── slides/
-    │       ├── Slide01Title.tsx                    # Slide 1: Master Title & Mission Architecture
-    │       ├── Slide02Problem.tsx                  # Slide 2: Disaster Search Bottlenecks
-    │       ├── Slide03FSD.tsx                      # Slide 3: SUTRA-FSD & ORCA 3D Autopilot
-    │       ├── Slide04DeepJSCC.tsx                 # Slide 4: Deep JSCC Neural Comms
-    │       ├── Slide05Perception.tsx               # Slide 5: Tri-Modal Edge AI & DEM Raycast
-    │       ├── Slide06GCS.tsx                      # Slide 6: Pegasus 3D GIS GCS & ATAK
-    │       └── Slide07Scorecard.tsx                # Slide 7: Empirical Scorecard & Hardware
 ```

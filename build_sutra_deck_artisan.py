@@ -7,8 +7,9 @@ Theme: Vitt Light Elegant Sandstone & Sovereign Forest
 import sys
 from pathlib import Path
 
-# Insert ppt-artisan scripts directory
-sys.path.insert(0, '/home/nikhil/.claude/skills/ppt-artisan/scripts')
+# Insert repository-local ppt-artisan scripts directory
+LOCAL_SKILL_DIR = Path(__file__).resolve().parent / ".claude/skills/ppt-artisan/scripts"
+sys.path.insert(0, str(LOCAL_SKILL_DIR))
 
 from deck_builder import SlideBuilder, _hex_to_rgb, _add_textbox, _add_shape_rect
 from pptx.dml.color import RGBColor

@@ -11,11 +11,36 @@
 
 This repository hosts the **official interactive landing page, presentation engine, and defense architecture compendium** for Project SUTRA.
 
-All collaborating human engineers, AI agents, and subagents contributing to this repository **MUST** adhere to the protocols, invariants, and design system documented in this file to guarantee zero regressions, clean git history, and continuous remote synchronization.
+All collaborating human engineers, AI agents (Claude, Antigravity, Gemini, OpenAI, etc.), and subagents contributing to this repository **MUST** strictly adhere to the protocols, invariants, skills, and design system documented in this file to guarantee zero regressions, clean git history, and continuous remote synchronization.
 
 ---
 
-## 👥 2. Subsystem Ownership & Team Attribution
+## ⚡ 2. MANDATORY SKILL ENFORCEMENT: `ppt-artisan`
+
+> [!IMPORTANT]
+> **ALL AGENTS MUST UNCONDITIONALLY USE THE LOCAL `ppt-artisan` SKILL** located inside this repository at [`.claude/skills/ppt-artisan/`](file:///home/nikhil/Desktop/sutra_pitch_deck/.claude/skills/ppt-artisan/SKILL.md) (and [`.agents/skills/ppt-artisan/`](file:///home/nikhil/Desktop/sutra_pitch_deck/.agents/skills/ppt-artisan/SKILL.md)) for generating, editing, or augmenting any presentation decks, `.pptx` slides, KPI dashboards, comparative tables, and visual reporting assets.
+
+### Skill Location & Integration
+* Skill Root: [`.claude/skills/ppt-artisan/`](.claude/skills/ppt-artisan/)
+* Python Scripts: [`.claude/skills/ppt-artisan/scripts/`](.claude/skills/ppt-artisan/scripts/)
+* Master Runner: [`build_sutra_deck_artisan.py`](build_sutra_deck_artisan.py)
+
+### Required Usage Rules:
+1. **Always import from repository-local skill path**:
+   ```python
+   import sys
+   from pathlib import Path
+   LOCAL_SKILL_DIR = Path(__file__).resolve().parent / ".claude/skills/ppt-artisan/scripts"
+   sys.path.insert(0, str(LOCAL_SKILL_DIR))
+   from deck_builder import SlideBuilder
+   ```
+2. **Always apply the Vitt Light Elegant Sandstone & Sovereign Forest Theme** (`SUTRA_THEME`).
+3. **Always populate comprehensive speaker notes** on every slide (`builder.add_notes(slide_index, notes_text)`).
+4. **Never create ad-hoc manual slide scripts without using `SlideBuilder`**.
+
+---
+
+## 👥 3. Subsystem Ownership & Team Attribution
 
 | Subsystem | Scope & Modules | Lead Architect |
 | :--- | :--- | :--- |
@@ -28,7 +53,7 @@ All collaborating human engineers, AI agents, and subagents contributing to this
 
 ---
 
-## 🚫 3. The 7 Engineering Invariants (Zero-Regression Policy)
+## 🚫 4. The 7 Engineering Invariants (Zero-Regression Policy)
 
 Collaborating agents and developers must NEVER violate these mathematical and architectural rules:
 
@@ -56,7 +81,7 @@ Collaborating agents and developers must NEVER violate these mathematical and ar
 
 ---
 
-## 🎨 4. Design System & Theme Specification
+## 🎨 5. Design System & Theme Specification
 
 The repository enforces the **Vitt Light Elegant Sandstone & Sovereign Forest Theme** (anti-AI-slop standard):
 
@@ -78,7 +103,7 @@ The repository enforces the **Vitt Light Elegant Sandstone & Sovereign Forest Th
 
 ---
 
-## 🔄 5. Git Collaboration & Synchronization Protocol
+## 🔄 6. Git Collaboration & Synchronization Protocol
 
 To ensure local and remote repositories remain clean, synchronized, and error-free:
 
@@ -86,9 +111,10 @@ To ensure local and remote repositories remain clean, synchronized, and error-fr
    ```bash
    git pull origin main
    ```
-2. **Build Verification**: Ensure TypeScript and Vite build passes with **0 errors**:
+2. **Build Verification**: Ensure TypeScript, Vite, and PPT Artisan builds pass with **0 errors**:
    ```bash
    npm run build
+   python3 build_sutra_deck_artisan.py
    ```
 3. **Structured Semantic Commits**: Commit messages must follow Conventional Commits:
    * `feat(...)`: New features, interactive components, or slide additions
@@ -102,7 +128,7 @@ To ensure local and remote repositories remain clean, synchronized, and error-fr
 
 ---
 
-## 🛠️ 6. Build, Test & Run Commands
+## 🛠️ 7. Build, Test & Run Commands
 
 ```bash
 # Install node dependencies
@@ -117,8 +143,8 @@ npm run build
 # Preview production build
 npm run preview
 
-# Generate updated PowerPoint deck (.pptx)
-python3 generate_deck.py
+# Generate updated PowerPoint deck (.pptx) via ppt-artisan
+python3 build_sutra_deck_artisan.py
 
 # Generate updated high-resolution PDF & PNG slide export
 google-chrome --headless=new --disable-gpu --window-size=1920,1080 --screenshot=slide_01.png --print-to-pdf=slide_01.pdf --no-pdf-header-footer slide_01.html
