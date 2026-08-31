@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Slide01Title } from './slides/Slide01Title';
 import { Slide02Problem } from './slides/Slide02Problem';
+import { Slide03Benchmark } from './slides/Slide03Benchmark';
 import { Slide03FSD } from './slides/Slide03FSD';
 import { Slide04DeepJSCC } from './slides/Slide04DeepJSCC';
 import { Slide05Perception } from './slides/Slide05Perception';
@@ -42,32 +43,38 @@ export const PresentationDeck: React.FC = () => {
       component: <Slide02Problem />,
     },
     {
+      id: 'benchmark',
+      title: '03. Swarm Search Benchmark',
+      category: 'The Solution',
+      component: <Slide03Benchmark />,
+    },
+    {
       id: 'fsd',
-      title: '03. SUTRA-FSD & ORCA 3D Autopilot',
+      title: '04. SUTRA-FSD & ORCA 3D Autopilot',
       category: 'Subsystem A (GNC)',
       component: <Slide03FSD />,
     },
     {
       id: 'deep-jscc',
-      title: '04. Deep JSCC Neural Video Comms',
+      title: '05. Deep JSCC Neural Video Comms',
       category: 'Subsystem B (Comms)',
       component: <Slide04DeepJSCC />,
     },
     {
       id: 'perception',
-      title: '05. Tri-Modal Edge AI & DEM Raycast',
+      title: '06. Tri-Modal Edge AI & DEM Raycast',
       category: 'Subsystem C (Perception)',
       component: <Slide05Perception />,
     },
     {
       id: 'gcs',
-      title: '06. Pegasus 3D WebGPU GCS & ATAK',
+      title: '07. Pegasus 3D WebGPU GCS & ATAK',
       category: 'Subsystem D (GCS)',
       component: <Slide06GCS />,
     },
     {
       id: 'scorecard',
-      title: '07. Empirical Scorecard & Hardware',
+      title: '08. Empirical Scorecard & Hardware',
       category: 'Verification & Economics',
       component: <Slide07Scorecard />,
     },
