@@ -86,7 +86,7 @@ export const Slide02Problem: React.FC = () => {
         {/* Main Body: 2-Column Split */}
         <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 my-auto items-center">
           
-          {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets + Schematic Illustrations */}
+          {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets + Figma Illustrations */}
           <div className="lg:col-span-7 space-y-6">
             
             {/* Simple Conclusion-Style Headline */}
@@ -124,55 +124,75 @@ export const Slide02Problem: React.FC = () => {
 
             </ul>
 
-            {/* Technical Vector Schematic Illustration Strip */}
+            {/* Figma-Styled Vector Illustrations Strip */}
             <div className="pt-2">
-              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5">
-                TACTICAL FAILURE SCHEMATICS
+              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5 flex items-center justify-between">
+                <span>TACTICAL FAILURE ILLUSTRATIONS</span>
+                <span className="text-[9px] text-slate-400 font-mono">FIGMA VECTOR SET</span>
               </div>
               
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-3.5">
                 
-                {/* Schematic 1: Mountain RF Blockage */}
-                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
-                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
-                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
-                    <polygon points="4,30 16,12 28,30" fill="#94A3B8" />
-                    <polygon points="18,30 26,18 34,30" fill="#CBD5E1" />
-                    <path d="M6 10 C10 8, 14 10, 16 14" stroke="#D71920" strokeWidth="1.8" strokeDasharray="2 2" />
-                    <circle cx="28" cy="14" r="2.5" fill="#0A1628" />
-                  </svg>
-                  <div className="space-y-0.5">
-                    <div className="text-[10px] font-bold text-slate-800 leading-tight">RF Ridge Shadow</div>
-                    <div className="text-[8.5px] text-slate-500 font-mono">Video Stream Drop</div>
+                {/* Illustration 1: Mountain RF Blockage */}
+                <div className="p-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-white transition-all space-y-2.5 shadow-sm">
+                  <div className="h-16 w-full rounded-xl bg-white border border-slate-100 flex items-center justify-center p-2">
+                    <svg viewBox="0 0 120 60" fill="none" className="w-full h-full">
+                      <path d="M10 52 L35 22 L55 42 L80 14 L110 52 Z" fill="#E2E8F0" opacity="0.8"/>
+                      <path d="M25 52 L50 26 L75 52 Z" fill="#CBD5E1"/>
+                      <path d="M20 18 C30 14, 40 18, 48 25" stroke="#D71920" strokeWidth="2.5" strokeDasharray="3 3"/>
+                      <circle cx="18" cy="18" r="3" fill="#0A1628"/>
+                      <path d="M88 12 L96 12 M92 8 L92 16 M85 10 L99 14" stroke="#0A1628" strokeWidth="1.8" strokeLinecap="round"/>
+                      <circle cx="92" cy="12" r="2.5" fill="#D71920"/>
+                      <circle cx="58" cy="22" r="7" fill="#FEE2E2"/>
+                      <path d="M55 19 L61 25 M61 19 L55 25" stroke="#DC2626" strokeWidth="1.8" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[11.5px] font-bold text-slate-900 leading-tight">RF Ridge Shadow</div>
+                    <div className="text-[9.5px] text-slate-500 font-mono mt-0.5">Video Stream Severance</div>
                   </div>
                 </div>
 
-                {/* Schematic 2: Forest Canopy GPS Shadow */}
-                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
-                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
-                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
-                    <rect x="6" y="6" width="6" height="4" rx="1" fill="#0A1628" />
-                    <line x1="9" y1="12" x2="16" y2="20" stroke="#D71920" strokeWidth="1.8" strokeDasharray="2 2" />
-                    <circle cx="20" cy="22" r="6" fill="#059669" opacity="0.8" />
-                    <circle cx="26" cy="24" r="5" fill="#10B981" opacity="0.8" />
-                  </svg>
-                  <div className="space-y-0.5">
-                    <div className="text-[10px] font-bold text-slate-800 leading-tight">Canopy Shadow</div>
-                    <div className="text-[8.5px] text-slate-500 font-mono">GNSS Multi-Path</div>
+                {/* Illustration 2: Forest Canopy GPS Shadow */}
+                <div className="p-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-white transition-all space-y-2.5 shadow-sm">
+                  <div className="h-16 w-full rounded-xl bg-white border border-slate-100 flex items-center justify-center p-2">
+                    <svg viewBox="0 0 120 60" fill="none" className="w-full h-full">
+                      <rect x="18" y="10" width="10" height="7" rx="1.5" fill="#0A1628"/>
+                      <line x1="12" y1="13.5" x2="18" y2="13.5" stroke="#0A1628" strokeWidth="2"/>
+                      <line x1="28" y1="13.5" x2="34" y2="13.5" stroke="#0A1628" strokeWidth="2"/>
+                      <path d="M23 18 L55 35" stroke="#059669" strokeWidth="2" strokeDasharray="3 2"/>
+                      <path d="M55 35 L80 48" stroke="#D71920" strokeWidth="2" strokeDasharray="2 2"/>
+                      <circle cx="60" cy="42" r="12" fill="#10B981" opacity="0.85"/>
+                      <circle cx="75" cy="45" r="10" fill="#059669" opacity="0.9"/>
+                      <circle cx="48" cy="46" r="9" fill="#047857" opacity="0.8"/>
+                      <circle cx="92" cy="40" r="7" fill="#FEF3C7"/>
+                      <text x="88.5" y="44" fill="#D97706" fontSize="10" fontWeight="bold" fontFamily="sans-serif">!</text>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[11.5px] font-bold text-slate-900 leading-tight">Canopy Shadow</div>
+                    <div className="text-[9.5px] text-slate-500 font-mono mt-0.5">GNSS Multi-Path Drift</div>
                   </div>
                 </div>
 
-                {/* Schematic 3: Single Point Comms Loss */}
-                <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
-                  <svg width="34" height="34" viewBox="0 0 36 36" fill="none" className="shrink-0">
-                    <rect width="36" height="36" rx="8" fill="#F1F5F9" />
-                    <polygon points="12,30 18,12 24,30" stroke="#0A1628" strokeWidth="1.5" />
-                    <line x1="18" y1="12" x2="28" y2="8" stroke="#D71920" strokeWidth="1.5" strokeDasharray="2 2" />
-                    <text x="22" y="18" fill="#D71920" fontSize="10" fontWeight="bold">✕</text>
-                  </svg>
-                  <div className="space-y-0.5">
-                    <div className="text-[10px] font-bold text-slate-800 leading-tight">Central Link Loss</div>
-                    <div className="text-[8.5px] text-slate-500 font-mono">Single Point Abort</div>
+                {/* Illustration 3: Single Point Comms Loss */}
+                <div className="p-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-white transition-all space-y-2.5 shadow-sm">
+                  <div className="h-16 w-full rounded-xl bg-white border border-slate-100 flex items-center justify-center p-2">
+                    <svg viewBox="0 0 120 60" fill="none" className="w-full h-full">
+                      <polygon points="18,52 26,18 34,52" stroke="#0A1628" strokeWidth="2" fill="#F1F5F9"/>
+                      <line x1="21" y1="36" x2="31" y2="36" stroke="#0A1628" strokeWidth="1.8"/>
+                      <line x1="26" y1="18" x2="26" y2="10" stroke="#0A1628" strokeWidth="2.5"/>
+                      <circle cx="26" cy="10" r="3" fill="#D71920"/>
+                      <path d="M32 14 L55 22" stroke="#D71920" strokeWidth="2" strokeDasharray="3 3"/>
+                      <line x1="60" y1="16" x2="70" y2="28" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round"/>
+                      <line x1="70" y1="16" x2="60" y2="28" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round"/>
+                      <circle cx="98" cy="22" r="10" fill="#F1F5F9" stroke="#94A3B8" strokeDasharray="2 2"/>
+                      <circle cx="98" cy="22" r="3" fill="#94A3B8"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-[11.5px] font-bold text-slate-900 leading-tight">Central Link Loss</div>
+                    <div className="text-[9.5px] text-slate-500 font-mono mt-0.5">Single Point Abort</div>
                   </div>
                 </div>
 
