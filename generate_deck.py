@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 generate_deck.py - Generates the SUTRA Title Slide (.pptx)
-Nothing Phone Light Theme (#191516, #FFFFFF, #D71920) with Bebas Neue typography.
+Nothing Phone Light Theme (#191516, #FFFFFF, #D71920) with Syncopate typography.
 """
 
 from pathlib import Path
@@ -20,7 +20,7 @@ COLOR_DIM = RGBColor(0xA0, 0x9A, 0x97)       # Faint Ash Muted
 COLOR_BORDER = RGBColor(0xE8, 0xE3, 0xDF)    # Light Border
 COLOR_DOT = RGBColor(0xDC, 0xD6, 0xD2)       # Subtle Light Dot Matrix
 
-FONT_HEADING = "Bebas Neue"
+FONT_HEADING = "Syncopate"
 FONT_BODY = "Space Grotesk"
 FONT_MONO = "JetBrains Mono"
 
@@ -82,7 +82,7 @@ def build_title_slide(prs):
     add_shape(slide, MSO_SHAPE.OVAL, Inches(0.8), Inches(0.65), Inches(0.12), Inches(0.12), COLOR_RED)
     
     add_text(slide, Inches(1.05), Inches(0.62), Inches(6.0), Inches(0.3),
-             "(TEAM OFFGRID)  /  DEFENSE & DISASTER ROBOTICS", FONT_MONO, 9.5, COLOR_MUTED, True)
+             "TEAM OFFGRID  /  DEFENSE & DISASTER ROBOTICS", FONT_HEADING, 8.5, COLOR_MUTED, True)
 
     add_text(slide, Inches(8.5), Inches(0.62), Inches(4.0), Inches(0.3),
              "AUG 2026  •  REV 1.0", FONT_MONO, 9.5, COLOR_MUTED, True, PP_ALIGN.RIGHT)
@@ -91,16 +91,16 @@ def build_title_slide(prs):
     # [Context / Tagline]
     add_text(slide, Inches(0.8), Inches(2.4), Inches(10.0), Inches(0.3),
              "[ AUTONOMOUS MULTI-UAV SWARM ARCHITECTURE ]",
-             FONT_MONO, 10.5, COLOR_MUTED, True)
+             FONT_HEADING, 9.5, COLOR_MUTED, True)
 
     # [Nothing Minimalist Accent Separator: Red bar + Dark dot]
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(2.78), Inches(0.8), Inches(0.025), COLOR_RED)
     add_shape(slide, MSO_SHAPE.OVAL, Inches(1.68), Inches(2.74), Inches(0.08), Inches(0.08), COLOR_DARK)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(1.84), Inches(2.78), Inches(0.4), Inches(0.025), COLOR_BORDER)
 
-    # [Main Title — Bebas Neue (#191516)]
-    add_text(slide, Inches(0.8), Inches(3.05), Inches(11.0), Inches(1.2),
-             "PROJECT SUTRA", FONT_HEADING, 64, COLOR_DARK, False)
+    # [Main Title — Syncopate (#191516)]
+    add_text(slide, Inches(0.8), Inches(3.05), Inches(11.5), Inches(1.2),
+             "PROJECT SUTRA", FONT_HEADING, 44, COLOR_DARK, True)
 
     # [Subtitle / Context description]
     add_text(slide, Inches(0.8), Inches(4.3), Inches(9.0), Inches(0.8),
@@ -112,7 +112,7 @@ def build_title_slide(prs):
               COLOR_BORDER)
 
     add_text(slide, Inches(0.8), Inches(6.0), Inches(8.0), Inches(0.25),
-             "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_MONO, 8.5, COLOR_RED, True)
+             "CORE ARCHITECTURE TEAM (OFFGRID)", FONT_HEADING, 8.0, COLOR_RED, True)
 
     members = [
         ("Nikhil", "Tech Lead · Subsys A & B", "GNC, FSD & Deep JSCC"),
@@ -135,10 +135,10 @@ def main():
     prs = Presentation()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
-    prs.core_properties.title = "PROJECT SUTRA — Title Slide (Bebas Neue)"
+    prs.core_properties.title = "PROJECT SUTRA — Title Slide (Syncopate)"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Nothing Light Theme Title Slide with Bebas Neue (#191516 & #FFFFFF)...")
+    print("Building Nothing Light Theme Title Slide with Syncopate (#191516 & #FFFFFF)...")
     build_title_slide(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")

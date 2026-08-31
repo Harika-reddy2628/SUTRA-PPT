@@ -21,8 +21,8 @@ export const Slide01Title: React.FC = () => {
         <header className="flex justify-between items-center">
           <div className="flex items-center gap-3.5">
             <div className="w-3 h-3 rounded-full bg-[#D71920] shadow-[0_0_8px_#D71920] animate-pulse"></div>
-            <div className="font-mono text-xs font-bold tracking-widest uppercase text-[#7A7576]">
-              (TEAM OFFGRID) <span className="mx-2 text-[#CCC6C2]">/</span> DEFENSE &amp; DISASTER ROBOTICS
+            <div className="font-syncopate text-[10px] font-bold tracking-[0.2em] uppercase text-[#7A7576]">
+              TEAM OFFGRID <span className="mx-2 text-[#CCC6C2]">/</span> DEFENSE &amp; DISASTER ROBOTICS
             </div>
           </div>
 
@@ -31,11 +31,11 @@ export const Slide01Title: React.FC = () => {
           </div>
         </header>
 
-        {/* Center Formula: [Context] -> [Accent Line] -> [Main Title in Bebas Neue] -> [Subtitle] */}
-        <main className="max-w-4xl space-y-5 my-auto">
+        {/* Center Formula: [Context in Syncopate] -> [Accent Line] -> [Main Title in Syncopate] -> [Subtitle] */}
+        <main className="max-w-5xl space-y-6 my-auto">
           
-          {/* 1. Context Tagline */}
-          <div className="font-mono text-xs lg:text-sm font-semibold tracking-widest uppercase text-[#7A7576]">
+          {/* 1. Context Tagline in Syncopate */}
+          <div className="font-syncopate text-xs font-bold tracking-[0.25em] uppercase text-[#7A7576]">
             [ AUTONOMOUS MULTI-UAV SWARM ARCHITECTURE ]
           </div>
 
@@ -46,13 +46,13 @@ export const Slide01Title: React.FC = () => {
             <div className="w-8 h-[2px] bg-[#D0CAC5]"></div>
           </div>
 
-          {/* 3. Main Title in Bebas Neue Font (#191516) */}
-          <h1 className="font-bebas text-8xl sm:text-9xl lg:text-[136px] tracking-wide text-[#191516] uppercase leading-[0.9]">
+          {/* 3. Main Title in Syncopate Font (#191516) */}
+          <h1 className="font-syncopate text-6xl sm:text-7xl lg:text-[76px] font-bold tracking-tight text-[#191516] uppercase leading-[1.05]">
             PROJECT SUTRA
           </h1>
 
           {/* 4. Subtitle in Space Grotesk */}
-          <p className="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed pt-2">
+          <p className="text-xl sm:text-2xl text-[#7A7576] font-normal max-w-3xl leading-relaxed">
             Swarm Unified Tactical Reconnaissance Architecture for GPS-Denied and Jammed Mountain Environments.
           </p>
 
@@ -60,7 +60,7 @@ export const Slide01Title: React.FC = () => {
 
         {/* Bottom Bar: Complete Team Offgrid Subsystem Roster */}
         <footer className="pt-6 border-t border-[#E8E3DF]">
-          <div className="font-mono text-[11px] font-bold text-[#D71920] uppercase tracking-widest mb-3">
+          <div className="font-syncopate text-[10px] font-bold text-[#D71920] uppercase tracking-[0.2em] mb-3">
             CORE ARCHITECTURE TEAM (OFFGRID)
           </div>
 
