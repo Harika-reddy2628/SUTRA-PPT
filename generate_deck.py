@@ -5,7 +5,7 @@ Web Aura India Architectural Design System:
 - Pure White Background (#FFFFFF) with micro-grid pattern
 - Serif quotation quote
 - Monumental headline with L-bracket alignment framing
-- Punchy Hero Metric Callout Cards with Watermarks
+- Grounded Empirical Engineering Benchmark Cards
 - Complete Team Offgrid Subsystem Card row
 """
 
@@ -125,16 +125,16 @@ def build_title_slide(prs):
              "Swarm Unified Tactical Reconnaissance Architecture — decentralized multi-UAV flight, Deep JSCC neural zero-cliff video, and 3.59cm terrain-corrected DEM survivor geolocation.",
              FONT_BODY, 12.0, COLOR_SLATE, bold=False)
 
-    # [3e. Punchy Hero Metric Callout Cards with Watermarks]
-    punchy_tabs = [
-        ("01", "GPS-DENIED", "0%", "Reliance", "VIO + Optical Flow EKF2", COLOR_BLACK),
-        ("02", "ZERO-CLIFF", "0.0 dB", "Cliff Free", "Deep JSCC Neural Wireless", COLOR_NAVY),
-        ("03", "SUB-DECIMETER", "3.59cm", "Geo-Fix", "3D DEM Terrain Raycast", COLOR_EMERALD),
+    # [3e. Grounded Engineering Benchmark Cards with Watermarks]
+    grounded_tabs = [
+        ("01", "DECENTRALIZED GNC", "50Hz", "Offboard Rate", "PX4 MicroXRCE + VIO EKF2", COLOR_BLACK),
+        ("02", "SEMANTIC WIRELESS", "-5dB", "Jam Resilience", "Deep JSCC Zero-Cliff Video", COLOR_NAVY),
+        ("03", "TERRAIN GEOLOCATION", "3.59cm", "Geo-Accuracy", "WGS84 3D DEM Raycasting", COLOR_EMERALD),
     ]
     card_w = Inches(2.7)
     card_h = Inches(1.15)
     card_gap = Inches(0.2)
-    for i, (num, tag, val, label, sub, tag_color) in enumerate(punchy_tabs):
+    for i, (num, tag, val, label, sub, tag_color) in enumerate(grounded_tabs):
         c_left = Inches(0.8) + i * (card_w + card_gap)
         # Card Container
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, c_left, Inches(4.3), card_w, card_h, COLOR_CARD_BG, COLOR_BORDER)
@@ -143,12 +143,12 @@ def build_title_slide(prs):
         add_text(slide, c_left + Inches(1.8), Inches(4.25), Inches(0.8), Inches(0.6), num, FONT_MONO, 28, COLOR_WATERMARK, bold=True, align=PP_ALIGN.RIGHT)
         
         # Tag Badge
-        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, c_left + Inches(0.12), Inches(4.4), Inches(1.1), Inches(0.2), tag_color)
-        add_text(slide, c_left + Inches(0.12), Inches(4.42), Inches(1.1), Inches(0.18), tag, FONT_HEADING, 6.5, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
+        add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, c_left + Inches(0.12), Inches(4.4), Inches(1.3), Inches(0.2), tag_color)
+        add_text(slide, c_left + Inches(0.12), Inches(4.42), Inches(1.3), Inches(0.18), tag, FONT_HEADING, 6.2, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
         
-        # Giant Hero Value
-        add_text(slide, c_left + Inches(0.12), Inches(4.65), Inches(1.4), Inches(0.4), val, FONT_HEADING, 20, COLOR_BLACK, bold=True)
-        add_text(slide, c_left + Inches(1.3), Inches(4.72), Inches(1.2), Inches(0.3), label, FONT_HEADING, 9, COLOR_SLATE, bold=True)
+        # Hero Value & Label
+        add_text(slide, c_left + Inches(0.12), Inches(4.65), Inches(1.4), Inches(0.4), val, FONT_HEADING, 19, COLOR_BLACK, bold=True)
+        add_text(slide, c_left + Inches(1.2), Inches(4.72), Inches(1.3), Inches(0.3), label, FONT_HEADING, 9, COLOR_SLATE, bold=True)
         
         # Subtext
         add_text(slide, c_left + Inches(0.12), Inches(5.1), Inches(2.45), Inches(0.25), sub, FONT_BODY, 7.5, COLOR_MUTED, bold=False)
@@ -199,7 +199,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA — Title Slide (Web Aura Architecture)"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Web Aura Architectural Title Slide with Punchy Tabs (.pptx)...")
+    print("Building Web Aura Architectural Title Slide with Grounded Benchmarks (.pptx)...")
     build_title_slide(prs)
 
     output_path = Path("sutra_pitch_deck.pptx")
