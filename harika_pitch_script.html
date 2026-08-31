@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Harika's Master Pitch Script</title>
+  <title>PROJECT SUTRA — Harika's Complete 3-Slide Pitch Script</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
   <style>
     @page {
       size: A4;
-      margin: 12mm 14mm 12mm 14mm;
+      margin: 8mm 10mm 8mm 10mm;
     }
 
     * { box-sizing: border-box; }
@@ -21,17 +21,17 @@
       font-family: 'Inter', -apple-system, sans-serif;
       color: #09090B;
       background: #FFFFFF;
-      line-height: 1.5;
-      font-size: 9.6pt;
+      line-height: 1.38;
+      font-size: 8.4pt;
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
     }
 
     .header-bar {
-      border-bottom: 2.5px solid #9333EA;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      border-bottom: 2px solid #9333EA;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -39,7 +39,7 @@
 
     .title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 18pt;
+      font-size: 15pt;
       font-weight: 800;
       color: #09090B;
       margin: 0;
@@ -49,42 +49,42 @@
 
     .subtitle {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5pt;
+      font-size: 7.5pt;
       font-weight: 700;
       color: #9333EA;
-      margin-top: 3px;
+      margin-top: 2px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
     .meta-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8pt;
+      font-size: 7.2pt;
       font-weight: 700;
       background: #9333EA;
       color: #FFFFFF;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 3.5px 8px;
+      border-radius: 4px;
       text-align: right;
     }
 
     .cue-box {
       background: #FAF5FF;
       border: 1px solid #E9D5FF;
-      border-left: 4px solid #9333EA;
-      border-radius: 6px;
-      padding: 6px 10px;
-      margin-bottom: 10px;
-      font-size: 8pt;
+      border-left: 3px solid #9333EA;
+      border-radius: 5px;
+      padding: 4px 8px;
+      margin-bottom: 7px;
+      font-size: 7.4pt;
       color: #581C87;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .slide-block {
-      border: 1.5px solid #E4E4E7;
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-bottom: 12px;
+      border: 1px solid #E4E4E7;
+      border-radius: 7px;
+      padding: 7px 11px;
+      margin-bottom: 7px;
       background: #FFFFFF;
     }
 
@@ -93,63 +93,63 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #F4F4F5;
-      padding-bottom: 6px;
-      margin-bottom: 10px;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
     }
 
     .slide-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8pt;
+      font-size: 7pt;
       font-weight: 800;
       color: #FFFFFF;
       background: #09090B;
-      padding: 2.5px 7px;
-      border-radius: 4px;
+      padding: 1.5px 5px;
+      border-radius: 3px;
     }
 
     .slide-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 11pt;
+      font-size: 9.2pt;
       font-weight: 700;
       color: #09090B;
     }
 
     .timer {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.8pt;
+      font-size: 6.8pt;
       font-weight: 700;
       color: #9333EA;
       background: #FAF5FF;
       border: 1px solid #E9D5FF;
-      padding: 2px 7px;
-      border-radius: 4px;
+      padding: 1px 5px;
+      border-radius: 3px;
     }
 
     .stage-direction {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.6pt;
+      font-size: 6.8pt;
       color: #64748B;
       font-style: italic;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       display: block;
     }
 
     .hook-text {
       background: #FDF4FF;
-      border-left: 3.5px solid #C026D3;
-      padding: 7px 11px;
-      margin-bottom: 8px;
-      font-size: 9.5pt;
+      border-left: 3px solid #C026D3;
+      padding: 4px 8px;
+      margin-bottom: 5px;
+      font-size: 8.2pt;
       font-weight: 600;
       color: #09090B;
-      border-radius: 0 6px 6px 0;
+      border-radius: 0 4px 4px 0;
     }
 
     .speech-body {
-      font-size: 9.6pt;
-      line-height: 1.55;
+      font-size: 8.2pt;
+      line-height: 1.42;
       color: #18181B;
-      margin: 0 0 8px 0;
+      margin: 0 0 5px 0;
     }
 
     .speech-body strong {
@@ -160,17 +160,17 @@
     .pillar-row {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 5px;
-      font-size: 9.2pt;
+      gap: 6px;
+      margin-bottom: 3px;
+      font-size: 8pt;
     }
 
     .pill-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7pt;
+      font-size: 6.5pt;
       font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 1.5px 5px;
+      border-radius: 3px;
       white-space: nowrap;
     }
 
@@ -179,32 +179,55 @@
 
     .slide-mirror {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.2pt;
+      font-size: 6.5pt;
       color: #6B7280;
       background: #F3F4F6;
-      padding: 1.5px 5px;
+      padding: 1px 4px;
       border-radius: 3px;
       margin-left: 4px;
     }
 
+    .proof-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 6.8pt;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 4px;
+    }
+
+    .proof-matrix th {
+      background: #F4F4F5;
+      color: #09090B;
+      padding: 2px 4px;
+      text-align: left;
+      border: 1px solid #E4E4E7;
+      font-weight: 700;
+    }
+
+    .proof-matrix td {
+      padding: 2px 4px;
+      border: 1px solid #E4E4E7;
+      color: #3F3F46;
+    }
+
     .handoff-box {
       background: #F0FDF4;
-      border: 1.5px solid #BBF7D0;
+      border: 1px solid #BBF7D0;
       color: #166534;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 5px 8px;
+      border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5pt;
+      font-size: 7.4pt;
       font-weight: 700;
-      margin-top: 8px;
+      margin-top: 5px;
     }
 
     .footer {
       border-top: 1px solid #E4E4E7;
-      padding-top: 5px;
-      margin-top: 10px;
+      padding-top: 3px;
+      margin-top: 6px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7.2pt;
+      font-size: 6.5pt;
       color: #71717A;
       display: flex;
       justify-content: space-between;
@@ -216,31 +239,31 @@
   <!-- Header -->
   <div class="header-bar">
     <div>
-      <h1 class="title">PROJECT SUTRA — HARIKA'S PITCH SCRIPT</h1>
-      <div class="subtitle">Speaker: Harika &bull; Operations Lead &bull; Slides 01 &amp; 02</div>
+      <h1 class="title">PROJECT SUTRA — HARIKA'S MASTER PITCH SCRIPT</h1>
+      <div class="subtitle">Speaker: Harika &bull; Operations Lead &bull; Slides 01, 02 &amp; 03</div>
     </div>
     <div class="meta-badge">
-      TOTAL TIME: ~65 SECONDS<br>
-      STAGE: CENTER STAGE
+      SLIDES 01 TO 03 (COMPLETE LEAD)<br>
+      TOTAL TIME: ~1 MIN 50 SEC
     </div>
   </div>
 
   <!-- Delivery Guidance -->
   <div class="cue-box">
-    💡 <strong>DELIVERY TIPS FOR HARIKA:</strong> Speak clearly, naturally, and with urgent conviction. Maintain confident eye contact with the jury. You set the entire high-stakes mood of the room before handing over to the engineering leads.
+    💡 <strong>HARIKA'S DELIVERY GUIDE:</strong> You own the entire first 3 slides. Speak with urgent, grounded energy. You hook the jury with real 2024 disaster realities, audit the 4 failures, explain the 4 solutions, and set up Nikhil for the technical defense.
   </div>
 
   <!-- SLIDE 01: INTRODUCTION & 3 PILLARS -->
   <div class="slide-block">
     <div class="slide-head">
-      <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 6px;">
         <span class="slide-tag">SLIDE 01</span>
         <span class="slide-title">Opening Hook &amp; Project SUTRA Introduction</span>
       </div>
       <span class="timer">00:00 – 00:30 (30s)</span>
     </div>
 
-    <span class="stage-direction">[Stand center stage &bull; Take a 1-second pause &bull; Deliver opening hook with serious, grounded tone]</span>
+    <span class="stage-direction">[Stand center stage &bull; Take a 1-second breath &bull; Deliver opening hook with serious, grounded tone]</span>
 
     <div class="hook-text">
       🔥 <strong>HOOK:</strong> "When over 300 lives were buried under mud in the <strong>July 2024 Wayanad landslides</strong>, and flash floods cut off entire mountain valleys across <strong>Kedarnath and Nepal</strong>, rescue teams had only 72 hours to save lives. But the moment standard drones entered thick forests and deep ravines, they lost signal and crashed."
@@ -248,12 +271,6 @@
 
     <p class="speech-body">
       "Respected jury, we are <strong>Team OFFGRID</strong>. I am Harika, and with me are Vedanth and Nikhil. We built <strong>Project SUTRA</strong> — an autonomous drone swarm engineered to find survivors even when <strong>GPS fails and normal communications collapse</strong>."
-    </p>
-
-    <span class="stage-direction">[Point smoothly toward the 3 cards on Slide 1]</span>
-
-    <p class="speech-body" style="margin-bottom: 5px;">
-      "SUTRA is powered by 3 core breakthroughs:"
     </p>
 
     <div class="pillar-row">
@@ -272,20 +289,20 @@
     </div>
   </div>
 
-  <!-- SLIDE 02: THE PROBLEM (4 BREAKDOWNS) -->
+  <!-- SLIDE 02: THE PROBLEM (4 REAL BREAKDOWNS) -->
   <div class="slide-block">
     <div class="slide-head">
-      <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 6px;">
         <span class="slide-tag" style="background: #E11D48;">SLIDE 02</span>
         <span class="slide-title">The Problem: 4 Real Disaster Breakdowns</span>
       </div>
       <span class="timer" style="color: #BE123C; background: #FFF1F2; border-color: #FECDD3;">00:30 – 01:05 (35s)</span>
     </div>
 
-    <span class="stage-direction">[Click to Slide 2 &bull; Transition tone to urgent, factual investigation]</span>
+    <span class="stage-direction">[Click to Slide 2 &bull; Switch tone to urgent, factual disaster audit]</span>
 
     <div class="hook-text" style="background: #FFF1F2; border-left-color: #E11D48;">
-      ⚠️ <strong>THE VOD:</strong> "When our team audited actual NDRF and Army rescue reports from recent disaster zones, we found 4 major breakdowns:"
+      ⚠️ <strong>THE AUDIT:</strong> "When our team audited actual NDRF and Army rescue reports from recent disaster zones, we found 4 major breakdowns:"
     </div>
 
     <div class="pillar-row">
@@ -307,17 +324,96 @@
       <span class="pill-badge pill-red">BREAKDOWN 4</span>
       <span><strong>Pilot Overload:</strong> Deploying 5 separate drones required <strong>15 to 25 crew members</strong> and 2 hours of setup, costing ₹12.5 Lakhs per flight.</span>
     </div>
+  </div>
 
-    <!-- Power Handoff -->
+  <!-- SLIDE 03: THE SOLUTION & 4 MOATS -->
+  <div class="slide-block">
+    <div class="slide-head">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <span class="slide-tag" style="background: #059669;">SLIDE 03</span>
+        <span class="slide-title">The Solution: 4 Hardened Moats &amp; Performance Delta</span>
+      </div>
+      <span class="timer" style="color: #047857; background: #ECFDF5; border-color: #A7F3D0;">01:05 – 01:50 (45s)</span>
+    </div>
+
+    <span class="stage-direction">[Click to Slide 3 &bull; Deliver solutions with high confidence &bull; Present ROI table clearly]</span>
+
+    <div class="hook-text" style="background: #ECFDF5; border-left-color: #059669;">
+      🛡️ <strong>THE SOLUTION:</strong> "SUTRA solves each breakdown through 4 hardened engineering moats:"
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">MOAT A</span>
+      <span><strong>Self-Flying Swarms:</strong> Drones calculate collision-free flight paths onboard at 50 times a second — zero ground towers, zero GPS reliance.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">MOAT B</span>
+      <span><strong>Smart AI Video Link:</strong> When signals drop behind mountain ridges, our neural link keeps the video running down to -5dB without blacking out.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">MOAT C</span>
+      <span><strong>Thermal &amp; 3D AI Vision:</strong> Combines body heat sensors with 3D elevation raycasting on Jetson Orin (<15ms), <strong>completely removing the 30-meter slope error</strong>.</span>
+    </div>
+
+    <div class="pillar-row">
+      <span class="pill-badge pill-green">MOAT D</span>
+      <span><strong>1-Person Command Tablet:</strong> An offline 3D tactical map allows <strong>just 1 operator to fly the entire swarm</strong>, cutting mission costs to <strong>₹95,000</strong>.</span>
+    </div>
+
+    <!-- Proof Table -->
+    <table class="proof-matrix">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Traditional SAR</th>
+          <th>Single Drone</th>
+          <th style="background: #ECFDF5; color: #047857;">SUTRA SWARM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Area Coverage / mi²</strong></td>
+          <td>2–3 hours</td>
+          <td>45–60 min</td>
+          <td style="font-weight: 700; color: #047857;">10–18 min (4x Faster)</td>
+        </tr>
+        <tr>
+          <td><strong>Detection Rate</strong></td>
+          <td>65–70%</td>
+          <td>55–65%</td>
+          <td style="font-weight: 700; color: #047857;">78–85% First Pass</td>
+        </tr>
+        <tr>
+          <td><strong>Personnel Required</strong></td>
+          <td>15–25 people</td>
+          <td>2–3 pilots</td>
+          <td style="font-weight: 700; color: #047857;">1–2 Operators</td>
+        </tr>
+        <tr>
+          <td><strong>Sortie Cost</strong></td>
+          <td>₹12.5 Lakhs</td>
+          <td>₹5.0 Lakhs</td>
+          <td style="font-weight: 700; color: #047857;">₹95,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="speech-body" style="margin-top: 4px; font-weight: 700; color: #09090B;">
+      "The bottom line: SUTRA searches a full square mile in just 10 minutes — 4 times faster than human rescue crews, saving lives when every second counts."
+    </p>
+
+    <!-- Power Handoff to Nikhil -->
     <div class="handoff-box">
-      🤝 <strong>POWER HANDOFF TO VEDANTH:</strong><br>
-      "Vedanth will now explain how our AI vision and tactical ground control solve these bottlenecks."
+      🤝 <strong>POWER HANDOFF TO NIKHIL:</strong><br>
+      "Now, our Tech Lead, Nikhil, will walk you through the deep engineering behind our flight autonomy, neural comms, and field deployment."
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    <span>PROJECT SUTRA — HARIKA'S SOLO OPENING SCRIPT</span>
+    <span>PROJECT SUTRA — HARIKA'S COMPLETE 3-SLIDE OPENING SCRIPT</span>
     <span>CONFIDENTIAL &bull; TEAM OFFGRID &bull; GRAND FINALS</span>
   </div>
 
