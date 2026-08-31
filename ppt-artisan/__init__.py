@@ -9,7 +9,8 @@ Modules:
     export_utils     - Export, compression, optimisation, and batch processing.
 
 Quick start:
-    from ppt_artisan import SlideBuilder
+    import sys; sys.path.insert(0, 'ppt-artisan')
+    from deck_builder import SlideBuilder
     builder = SlideBuilder()
     builder.create_deck("My Deck", "Author")
     builder.add_title_slide("Hello", "World")
@@ -22,6 +23,7 @@ from .chart_factory import ChartFactory
 from .template_engine import TemplateEngine
 from .export_utils import ExportManager
 
+__version__ = "1.0.0"
 __all__ = [
     "SlideBuilder",
     "DesignSystem",

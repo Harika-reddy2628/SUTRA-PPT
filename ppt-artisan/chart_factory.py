@@ -22,7 +22,6 @@ from pptx.enum.chart import (
     XL_CHART_TYPE,
     XL_LEGEND_POSITION,
     XL_LABEL_POSITION,
-    XL_MARK_STYLE,
 )
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt, Emu
