@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Stacked Parallax Dossier)
+- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Real Disaster Photos)
 """
 
 from pathlib import Path
@@ -216,9 +216,9 @@ def build_slide_02_problem(prs):
         add_text(slide, sx + Inches(0.12), Inches(5.38), sch_w - Inches(0.24), Inches(0.25), sch_title, FONT_HEADING, 8.5, COLOR_BLACK, bold=True)
         add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_sub, FONT_MONO, 7.0, COLOR_MUTED)
 
-    # 4. Right Column: 3D Stacked Dossier Evidence Cards
+    # 4. Right Column: 3D Stacked Dossier Evidence Cards with Real Image
     add_text(slide, Inches(8.2), Inches(1.35), Inches(4.3), Inches(0.25),
-             "OFFICIAL EVIDENCE & AUDITS", FONT_MONO, 8.5, COLOR_DIM, bold=True)
+             "OFFICIAL EVIDENCE & DISASTER CLIPPINGS", FONT_MONO, 8.5, COLOR_DIM, bold=True)
     add_text(slide, Inches(10.8), Inches(1.35), Inches(1.7), Inches(0.25),
              "SOURCE 01 / 03", FONT_MONO, 8.5, COLOR_MUTED, bold=True, align=PP_ALIGN.RIGHT)
 
@@ -233,22 +233,30 @@ def build_slide_02_problem(prs):
     add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.8), Inches(1.58), Inches(0.25), Inches(0.55), COLOR_SLATE)
     
     # Badge Pill
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(2.0), Inches(1.8), Inches(0.24), COLOR_NAVY)
-    add_text(slide, Inches(8.45), Inches(2.02), Inches(1.8), Inches(0.22), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
-    add_text(slide, Inches(10.4), Inches(2.02), Inches(1.9), Inches(0.22), "NDMA REPORT", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(1.95), Inches(1.8), Inches(0.24), COLOR_NAVY)
+    add_text(slide, Inches(8.45), Inches(1.97), Inches(1.8), Inches(0.22), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
+    add_text(slide, Inches(10.4), Inches(1.97), Inches(1.9), Inches(0.22), "NDMA REPORT", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
-    # Headline
-    add_text(slide, Inches(8.45), Inches(2.35), Inches(3.8), Inches(0.55),
-             "70% of single drones failed in mountain rescue operations.",
-             FONT_HEADING, 12.0, COLOR_BLACK, bold=True)
+    # Insert Real Disaster Photo if available
+    img_path = Path("assets/disaster/wayanad_rescue.jpg")
+    if img_path.exists():
+        slide.shapes.add_picture(str(img_path), Inches(8.45), Inches(2.3), Inches(1.3), Inches(0.85))
+        # Headline next to photo
+        add_text(slide, Inches(9.85), Inches(2.3), Inches(2.4), Inches(0.85),
+                 "70% of single drones failed in mountain rescue operations.",
+                 FONT_HEADING, 10.5, COLOR_BLACK, bold=True)
+    else:
+        add_text(slide, Inches(8.45), Inches(2.3), Inches(3.8), Inches(0.55),
+                 "70% of single drones failed in mountain rescue operations.",
+                 FONT_HEADING, 12.0, COLOR_BLACK, bold=True)
 
     # Quote Box
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.0), Inches(3.8), Inches(1.4), COLOR_CARD_BG, COLOR_BORDER)
-    add_text(slide, Inches(8.6), Inches(3.1), Inches(3.5), Inches(1.2),
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.25), Inches(3.8), Inches(1.3), COLOR_CARD_BG, COLOR_BORDER)
+    add_text(slide, Inches(8.6), Inches(3.32), Inches(3.5), Inches(1.15),
              "“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”",
-             FONT_BODY, 9.5, COLOR_GRAY, italic=True)
+             FONT_BODY, 9.0, COLOR_GRAY, italic=True)
 
-    # Citation Reference (Clean without badge)
+    # Citation Reference
     add_text(slide, Inches(8.45), Inches(4.7), Inches(3.8), Inches(0.3), "Ref: National Disaster Management Authority (NDMA)", FONT_MONO, 8.0, COLOR_MUTED)
 
     # Continuous Carousel Progress
@@ -272,7 +280,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem - Clean Continuous)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Real Disaster Photo)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 

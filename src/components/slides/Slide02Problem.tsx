@@ -7,6 +7,8 @@ interface AuditSource {
   quote: string;
   ref: string;
   badgeBg: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
 const AUDIT_SOURCES: AuditSource[] = [
@@ -17,6 +19,8 @@ const AUDIT_SOURCES: AuditSource[] = [
     quote: '“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”',
     ref: 'Ref: National Disaster Management Authority (NDMA)',
     badgeBg: 'bg-[#0A1628]',
+    imageSrc: '/assets/disaster/wayanad_rescue.jpg',
+    imageAlt: 'Wayanad Landslide Search 2024',
   },
   {
     badge: 'PEER-REVIEWED SCIENCE',
@@ -25,6 +29,8 @@ const AUDIT_SOURCES: AuditSource[] = [
     quote: '“Traditional digital video (H.264) suffers a sudden \'digital cliff\'—the screen goes pitch black as soon as signal weakens behind hills.”',
     ref: 'Ref: IEEE Trans. Cognitive Comms (Bourtsoulatze et al.)',
     badgeBg: 'bg-slate-900',
+    imageSrc: '/assets/disaster/disaster_rescue_1.jpg',
+    imageAlt: 'High-Altitude Mountain Search',
   },
   {
     badge: 'PUBLIC RTI PROCUREMENT',
@@ -33,6 +39,8 @@ const AUDIT_SOURCES: AuditSource[] = [
     quote: '“High airframe costs prevent deploying swarms, while single ground-station links cause entire missions to shut down if disconnected.”',
     ref: 'Ref: CAG Defense Audit & Public RTI Records',
     badgeBg: 'bg-emerald-700',
+    imageSrc: '/assets/disaster/disaster_rescue_2.jpg',
+    imageAlt: 'Disaster Response Airframe Fleet',
   },
 ];
 
@@ -173,13 +181,13 @@ export const Slide02Problem: React.FC = () => {
 
           </div>
 
-          {/* Right Column (5 Cols): Smooth Continuous Parallax Stacked Dossier Cards */}
+          {/* Right Column (5 Cols): Smooth Continuous Parallax Dossier Stack with Real Photos */}
           <div className="lg:col-span-5 relative">
             
             {/* Dossier Header */}
             <div className="flex items-center justify-between pb-2 font-mono">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
-                OFFICIAL EVIDENCE &amp; AUDITS
+                OFFICIAL EVIDENCE &amp; DISASTER CLIPPINGS
               </span>
               <span className="text-[10px] font-bold text-slate-500">
                 SOURCE 0{currentIndex + 1} / 0{AUDIT_SOURCES.length}
@@ -187,7 +195,7 @@ export const Slide02Problem: React.FC = () => {
             </div>
 
             {/* 3D Stacked Container */}
-            <div className="relative w-full h-[320px]">
+            <div className="relative w-full h-[360px]">
               
               {/* Metallic Paperclip (Anchored seamlessly on the top edge of active card) */}
               <div className="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
@@ -231,7 +239,7 @@ export const Slide02Problem: React.FC = () => {
                 return (
                   <div 
                     key={idx}
-                    className="absolute inset-0 rounded-2xl bg-white p-6 space-y-3 origin-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="absolute inset-0 rounded-2xl bg-white p-5 space-y-2.5 origin-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                       transform: transformStyle,
                       opacity: opacityStyle,
@@ -249,15 +257,22 @@ export const Slide02Problem: React.FC = () => {
                       </span>
                     </div>
 
-                    <div className="text-base font-bold text-black pt-1 leading-snug">
-                      {source.headline}
+                    <div className="flex gap-3 items-center">
+                      <img 
+                        src={source.imageSrc} 
+                        alt={source.imageAlt} 
+                        className="w-24 h-16 rounded-xl object-cover border border-slate-200 shadow-sm shrink-0" 
+                      />
+                      <div className="text-sm font-bold text-black leading-snug">
+                        {source.headline}
+                      </div>
                     </div>
 
-                    <p className="text-xs text-[#4B5563] leading-relaxed bg-slate-50/80 p-3.5 rounded-xl border border-slate-100 italic">
+                    <p className="text-[11.5px] text-[#4B5563] leading-relaxed bg-slate-50/80 p-2.5 rounded-xl border border-slate-100 italic">
                       {source.quote}
                     </p>
 
-                    <div className="pt-1 text-[11px] font-mono text-slate-500">
+                    <div className="pt-1 text-[10.5px] font-mono text-slate-500">
                       {source.ref}
                     </div>
                   </div>
@@ -267,7 +282,7 @@ export const Slide02Problem: React.FC = () => {
             </div>
 
             {/* Continuous Indicator Dots */}
-            <div className="flex items-center justify-between mt-8 font-mono">
+            <div className="flex items-center justify-between mt-6 font-mono">
               <div className="flex items-center gap-2">
                 {AUDIT_SOURCES.map((_, idx) => (
                   <button
