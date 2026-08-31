@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
+- Slide 02: The Problem (Increased Headline Size, Prominent Slide Title, Left Accent Bar, 6x6 Bullets, 3D Isometric Failure Illustrations & Big Full-Bleed Photo Card)
 """
 
 from pathlib import Path
@@ -180,10 +180,10 @@ def build_slide_02_problem(prs):
     add_text(slide, Inches(9.95), Inches(0.66), Inches(2.5), Inches(0.25),
              "RESCUE DRONE FAILURE MODES", FONT_MONO, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.CENTER)
 
-    # 3. Left Column: Simple Conclusion Headline + 6x6 Simple Bullets
-    add_text(slide, Inches(0.8), Inches(1.35), Inches(7.0), Inches(1.1),
+    # 3. Left Column: Increased Size Headline + 6x6 Simple Bullets
+    add_text(slide, Inches(0.8), Inches(1.30), Inches(7.0), Inches(1.2),
              "GPS Loss and Radio Blackouts Cripple Disaster Rescue",
-             FONT_HEADING, 28, COLOR_BLACK, bold=True)
+             FONT_HEADING, 32, COLOR_BLACK, bold=True)
 
     bullets = [
         "Mountain valleys cut drone video feeds",
@@ -193,7 +193,7 @@ def build_slide_02_problem(prs):
         "Military drones cost over $50,000 each",
     ]
 
-    bullet_start_y = Inches(2.55)
+    bullet_start_y = Inches(2.60)
     bullet_gap = Inches(0.48)
     for i, b_text in enumerate(bullets):
         curr_y = bullet_start_y + i * bullet_gap
@@ -279,7 +279,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with 3D Isometric Illustrations)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Larger Headline & 3D Isometric Schematics)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 

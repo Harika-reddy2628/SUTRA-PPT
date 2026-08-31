@@ -68,7 +68,7 @@ export const Slide02Problem: React.FC = () => {
 
       <div className="relative z-10 h-full flex flex-col justify-between">
         
-        {/* Top Header: Left Accent Bar + Increased Size Slide Title */}
+        {/* Top Header: Left Accent Bar + Slide Title */}
         <header className="flex justify-between items-center">
           <div className="flex items-center gap-3.5">
             <div className="w-2 h-7 bg-[#0A1628] rounded-full"></div>
@@ -86,11 +86,11 @@ export const Slide02Problem: React.FC = () => {
         {/* Main Body: 2-Column Split */}
         <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 my-auto items-center">
           
-          {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets + 3D Isometric Illustrations */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column (7 Cols): Increased Size Conclusion Headline + 6x6 Bullets + 3D Isometric Illustrations */}
+          <div className="lg:col-span-7 space-y-5">
             
-            {/* Simple Conclusion-Style Headline */}
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-black tracking-tight leading-[1.12]">
+            {/* Slightly Increased Size Headline */}
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[50px] font-extrabold text-black tracking-tight leading-[1.08]">
               GPS Loss and Radio Blackouts Cripple Disaster Rescue
             </h2>
 
@@ -125,8 +125,8 @@ export const Slide02Problem: React.FC = () => {
             </ul>
 
             {/* 3D Isometric Failure Schematics Strip */}
-            <div className="pt-2">
-              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5 flex items-center justify-between">
+            <div className="pt-1.5">
+              <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2 flex items-center justify-between">
                 <span>TACTICAL FAILURE SCHEMATICS</span>
                 <span className="text-[9px] text-slate-400 font-mono">ISOMETRIC 3D DIAGRAMS</span>
               </div>
