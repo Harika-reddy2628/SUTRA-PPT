@@ -138,11 +138,11 @@ def build_slide_01_title(prs):
     add_text(slide, Inches(7.5), Inches(5.75), Inches(5.033), Inches(0.2), "RESEARCH-BACKED & EMPIRICALLY VALIDATED", FONT_HEADING, 8.0, COLOR_SLATE, bold=True, align=PP_ALIGN.RIGHT)
 
     members = [
-        ("Nikhil", "Tech Lead · Subsys A & B", "GNC & JSCC", True),
+        ("Nikhil", "Tech Lead · Subsys A & B", "GNC & COMMS", True),
         ("Vedanth Sai Ram", "Lead · Subsystem C", "AI PERCEPTION", False),
         ("Siva Kesava", "Lead · Subsystem D", "3D GIS GCS", False),
-        ("Harika", "Lead · Subsystem E", "VERIFICATION QA", False),
-        ("Rohith Kumar", "Lead · Subsystem F", "NDMA CONOPS", False),
+        ("Harika", "Operations Lead · Subsys E", "AUDIT & OPS", True),
+        ("Rohith Kumar", "Lead · Subsystem F", "FIELD CONOPS", False),
     ]
     col_w = Inches(2.2)
     gap = Inches(0.18)
@@ -208,11 +208,11 @@ def build_slide_02_problem(prs):
          "Conventional H.264 digital video completely cuts out below 5dB SNR, causing total blindness.",
          "<5dB SNR", "Video Blackout", "0 Relay", "Single-Drone Link", "TARGET: DEEP JSCC MESH", "LEAD: NIKHIL", COLOR_RED),
 
-        ("SUBSYSTEM C // VISION", "Flat-Earth Elevation Drift", "35% FALSE ALARM",
+        ("SUBSYSTEM C // VISION", "Single-Sensor & Slope Drift", "35% FALSE ALARM",
          "assets/disaster/disaster_rescue_2.jpg", "Sikkim Slope Geo Error",
-         "2D raycasts assume flat zero-elevation ground",
-         "Sloping terrains produce 15–30m coordinate errors, routing ground teams to empty ravines.",
-         "15–30m", "Location Drift", "35%", "False Alarm Rate", "TARGET: 3D DEM RAYCAST", "LEAD: VEDANTH", COLOR_RED),
+         "2D cameras assume flat ground; blind to smoke",
+         "Smoke/darkness blind single RGB sensors; steep slopes produce 15–30m GPS coordinate errors.",
+         "15–30m", "Slope Geo Drift", "35%", "False Alarm Rate", "TARGET: TRI-MODAL & 3D DEM", "LEAD: VEDANTH", COLOR_RED),
 
         ("SUBSYSTEM D // C2 GCS", "Central Pilot Bottleneck", "15-25 CREW LOAD",
          "assets/illustrations/single_link_loss.jpg", "Central Link Abort",
@@ -344,10 +344,10 @@ def build_slide_03_4subsystems(prs):
          "Differentiable joint source-channel coding yielding zero digital cliff and graceful video degradation down to -5dB.",
          "-5dB", "SNR Thresh", "0 Cliff", "Degradation", "SEMANTIC COMMS", "EDGE TPU", COLOR_BLACK),
 
-        ("SUBSYSTEM C // VISION", "3D DEM AI Geolocation", "3.59cm ACCURACY",
-         "35% False Alarms & Flat GPS Drift",
-         "Jetson Orin YOLOv8-Pose with real-time WGS84 elevation raycasting, eliminating 15-30m calculation errors.",
-         "<15ms", "Inference", "3.59cm", "Geo Error", "ELEVATION CORRECTED", "JETSON ORIN", COLOR_EMERALD),
+        ("SUBSYSTEM C // VISION", "Tri-Modal AI & 3D Geolocation", "3.59cm ACCURACY",
+         "Smoke Blindspots & 15-30m Slope Drift",
+         "Cross-attention fusion (RGB + FLIR Thermal + Radar) + 3D DEM elevation raycasting on Jetson Orin for 3.59cm GPS accuracy.",
+         "<15ms", "Inference", "3.59cm", "Geo Error", "TRI-MODAL FUSED", "JETSON ORIN", COLOR_EMERALD),
 
         ("SUBSYSTEM D // C2 GCS", "Pegasus 3D WebGPU GCS", "1-2 OPERATORS",
          "15-25 Ground Crew Cognitive Overload",

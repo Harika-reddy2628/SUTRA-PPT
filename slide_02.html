@@ -321,21 +321,21 @@
             <div>
               <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest">SUBSYSTEM C // VISION</span>
               <h3 class="text-base font-bold text-ink font-heading leading-snug mt-0.5">
-                Flat-Earth Elevation Drift
+                Single-Sensor &amp; Slope Drift
               </h3>
             </div>
 
             <!-- Problem Mechanism Box -->
             <div class="p-1.5 rounded-lg bg-red-50 border border-red-200">
               <div class="text-[8px] font-mono font-bold text-crimson-700 uppercase">CORE FAILURE MECHANISM:</div>
-              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">2D raycasts assume flat zero-elevation ground</div>
+              <div class="text-[10px] font-semibold text-slate-900 leading-tight mt-0.5">2D cameras assume flat ground; blind to smoke</div>
             </div>
 
             <!-- Failure Impact -->
             <div class="p-2 rounded-lg bg-subtle border border-hairline space-y-0.5">
               <div class="text-[8.5px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
               <p class="text-[11px] text-slate-600 font-mono leading-relaxed">
-                Sloping terrains produce 15–30m coordinate errors, routing ground teams to empty ravines.
+                Smoke/darkness blind single RGB sensors; steep slopes produce 15–30m GPS coordinate errors.
               </p>
             </div>
 
@@ -343,7 +343,7 @@
             <div class="grid grid-cols-2 gap-1.5 text-center font-mono">
               <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-crimson-700">15–30m</div>
-                <div class="text-[7.5px] text-slate-500">Location Drift</div>
+                <div class="text-[7.5px] text-slate-500">Slope Geo Drift</div>
               </div>
               <div class="p-1 rounded bg-subtle border border-hairline">
                 <div class="text-[11px] font-bold text-slate-900">35%</div>
@@ -353,7 +353,7 @@
           </div>
 
           <div class="pt-2 border-t border-hairline flex items-center justify-between text-[9px] font-mono text-slate-400">
-            <span>TARGET: 3D DEM RAYCAST</span>
+            <span>TARGET: TRI-MODAL &amp; 3D DEM</span>
             <span class="text-crimson-700 font-bold">LEAD: VEDANTH</span>
           </div>
           <div class="h-1 w-full bg-crimson-500 absolute bottom-0 left-0"></div>
