@@ -1,759 +1,189 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT SUTRA — Slide 01: Master Title & Mission Architecture</title>
+  <title>PROJECT SUTRA — Master Defense & Disaster Robotics Architecture</title>
   
-  <!-- Google Fonts: Plus Jakarta Sans, Lora, JetBrains Mono -->
+  <!-- Fonts: Plus Jakarta Sans, Lora, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <style>
-    /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
-    /* Theme: Sandstone & Sovereign Forest (Vitt Light Elegant) */
-    :root {
-      --bg-canvas: #FAF7F2;
-      --bg-raised: #F4ECE1;
-      --card-bg: #FFFFFF;
-      --card-border: #EDE4D6;
-      --card-border-subtle: #E6DED2;
-      
-      --forest: #183A2B;
-      --forest-soft: rgba(24, 58, 43, 0.08);
-      --terracotta: #9E4D34;
-      --terracotta-soft: rgba(158, 77, 52, 0.10);
-      --sage: #4A7A58;
-      --sage-soft: rgba(74, 122, 88, 0.12);
-      --ochre: #B68637;
-      --sky: #2B6CB0;
-      
-      --text-main: #183A2B;
-      --text-muted: #4A5B53;
-      --text-faint: #7A8C83;
-      
-      --font-heading: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-      --font-serif: 'Lora', Georgia, serif;
-      --font-mono: 'JetBrains Mono', monospace;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['Lora', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            earth: {
+              forest: '#183A2B',
+              forestSoft: 'rgba(24, 58, 43, 0.06)',
+              terracotta: '#9E4D34',
+              terracottaSoft: 'rgba(158, 77, 52, 0.08)',
+              sage: '#4A7A58',
+              sageSoft: 'rgba(74, 122, 88, 0.10)',
+              ochre: '#B68637',
+              ochreSoft: 'rgba(182, 134, 55, 0.10)',
+            },
+            elemental: {
+              sky: '#2B6CB0',
+              skySoft: 'rgba(43, 108, 176, 0.08)',
+            },
+            sandstone: {
+              muted: '#4A5B53',
+              faint: '#7A8C83',
+              border: '#EDE4D6',
+            },
+            canvas: {
+              DEFAULT: '#FAF7F2',
+              raised: '#F4ECE1',
+              card: '#FFFFFF',
+            }
+          },
+          boxShadow: {
+            'card-light': '0 8px 24px rgba(24, 58, 43, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)',
+            'card-hover': '0 16px 36px rgba(24, 58, 43, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
     }
+  </script>
 
-    * {
-      box-sizing: border-box;
+  <style>
+    body {
       margin: 0;
       padding: 0;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
       background-color: #EFE8DE;
-      color: var(--text-main);
-      font-family: var(--font-body);
-      overflow: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* 16:9 Presentation Canvas Container */
-    .slide-canvas {
-      width: 1920px;
-      height: 1080px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at 85% 15%, rgba(74, 122, 88, 0.06) 0%, transparent 45%),
-                  radial-gradient(circle at 15% 85%, rgba(158, 77, 52, 0.05) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 50%, #FAF7F2 0%, #F5EDE1 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 48px 64px;
-      border: 1px solid rgba(230, 222, 210, 0.8);
-      box-shadow: 0 25px 60px -15px rgba(24, 58, 43, 0.12);
-    }
-
-    /* Subtle Tactical Grid Overlay */
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(24, 58, 43, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(24, 58, 43, 0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .ambient-glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #183A2B, #4A7A58, #9E4D34, transparent);
-      opacity: 0.85;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .slide-content {
-      position: relative;
-      z-index: 5;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    /* --- TOP TELEMETRY BAR --- */
-    .top-telemetry-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .telemetry-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      box-shadow: 0 1px 3px rgba(24, 58, 43, 0.05);
-    }
-
-    .badge-defense {
-      background: var(--terracotta-soft);
-      border: 1px solid rgba(158, 77, 52, 0.25);
-      color: var(--terracotta);
-    }
-
-    .badge-status {
-      background: var(--sage-soft);
-      border: 1px solid rgba(74, 122, 88, 0.30);
-      color: var(--forest);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #059669;
-      box-shadow: 0 0 8px #059669;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .telemetry-meta {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-muted);
-      display: flex;
-      gap: 20px;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .meta-item span.highlight {
-      color: var(--forest);
-      font-weight: 700;
-    }
-
-    /* --- HERO BODY (DIPTYCH) --- */
-    .hero-diptych {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-      margin: auto 0;
-    }
-
-    /* Left Column: Typography & Mission Thesis */
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .classification-tag {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .classification-tag::before {
-      content: "";
-      display: inline-block;
-      width: 24px;
-      height: 2px;
-      background: var(--terracotta);
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      color: var(--forest);
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--sage);
-      letter-spacing: -0.01em;
-      line-height: 1.35;
-    }
-
-    .hero-description {
-      font-size: 17px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 92%;
-    }
-
-    .hero-description strong {
-      color: var(--forest);
-      font-weight: 700;
-    }
-
-    /* Subsystem Pills Row */
-    .subsystem-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    .subsystem-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 4px 12px rgba(24, 58, 43, 0.04);
-      transition: all 0.2s;
-    }
-
-    .subsystem-code {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: var(--forest);
-      color: #ffffff;
-      white-space: nowrap;
-    }
-
-    .subsystem-card:nth-child(2) .subsystem-code { background: var(--terracotta); }
-    .subsystem-card:nth-child(3) .subsystem-code { background: var(--sage); }
-    .subsystem-card:nth-child(4) .subsystem-code { background: var(--sky); }
-
-    .subsystem-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--forest);
-      line-height: 1.25;
-    }
-
-    /* Right Column: Tactical Live Telemetry HUD */
-    .hero-right {
-      position: relative;
-    }
-
-    .hud-box {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(24, 58, 43, 0.08);
-      position: relative;
-    }
-
-    .hud-box::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 30px;
-      right: 30px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--forest), var(--sage), var(--terracotta));
-      border-radius: 3px;
-    }
-
-    .hud-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--card-border);
-      margin-bottom: 16px;
-    }
-
-    .hud-title {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: var(--forest);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hud-status-badge {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--forest);
-      background: var(--sage-soft);
-      padding: 3px 10px;
-      border-radius: 9999px;
-      border: 1px solid rgba(74, 122, 88, 0.3);
-    }
-
-    .hud-stream {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-    }
-
-    .stream-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 9px 12px;
-      background: var(--bg-raised);
-      border-radius: 8px;
-      border: 1px solid var(--card-border-subtle);
-    }
-
-    .stream-tag {
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .stream-value {
-      font-weight: 700;
-      color: var(--forest);
-    }
-
-    .hud-radar-visual {
-      margin-top: 16px;
-      padding: 14px;
-      background: var(--bg-raised);
-      border: 1px dashed rgba(74, 122, 88, 0.4);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .radar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .radar-icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--sage-soft);
-      border: 1px solid rgba(74, 122, 88, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--forest);
-      font-size: 16px;
+      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .radar-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .radar-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--text-faint);
-      text-transform: uppercase;
-    }
-
-    .radar-data {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--forest);
-    }
-
-    .radar-action {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      background: var(--terracotta-soft);
-      border: 1px solid rgba(158, 77, 52, 0.3);
-      color: var(--terracotta);
-      font-weight: 700;
-    }
-
-    /* --- BOTTOM BENCHMARK RIBBON --- */
-    .metrics-ribbon {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      padding-top: 24px;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .metric-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .slide-canvas {
+      width: 1920px;
+      height: 1080px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(24, 58, 43, 0.04);
-    }
-
-    .metric-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--forest);
-    }
-
-    .metric-card:nth-child(2)::after { background: var(--terracotta); }
-    .metric-card:nth-child(3)::after { background: var(--sage); }
-    .metric-card:nth-child(4)::after { background: var(--sky); }
-
-    .metric-number-row {
+      background: #FAF7F2;
       display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .metric-number {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--forest);
-      line-height: 1;
-    }
-
-    .metric-card:nth-child(2) .metric-number { color: var(--terracotta); }
-    .metric-card:nth-child(3) .metric-number { color: var(--sage); }
-    .metric-card:nth-child(4) .metric-number { color: var(--sky); }
-
-    .metric-unit {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .metric-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--forest);
-      margin-top: 4px;
-    }
-
-    .metric-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.3;
-    }
-
-    /* --- FOOTER ATTR BAR --- */
-    .footer-bar {
-      display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      padding-top: 18px;
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
+      box-sizing: border-box;
+      padding: 80px 96px;
+      box-shadow: 0 30px 70px rgba(24, 58, 43, 0.10), 0 0 0 1px #E6DED2;
     }
 
-    .team-line {
-      display: flex;
-      gap: 16px;
-    }
-
-    .team-lead strong {
-      color: var(--forest);
-      font-weight: 700;
-    }
-
-    .footer-classification {
-      color: var(--forest);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-dot {
-      width: 6px;
-      height: 6px;
-      background-color: var(--terracotta);
-      border-radius: 50%;
-    }
-
-    @media print {
-      body {
-        background-color: #FAF7F2;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      .slide-canvas {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-        box-shadow: none;
-        page-break-inside: avoid;
-        break-inside: avoid-page;
-      }
+    .subtle-border {
+      border: 1px solid #EDE4D6;
     }
   </style>
 </head>
 <body>
 
-  <div class="slide-canvas">
-    <div class="grid-overlay"></div>
-    <div class="ambient-glow"></div>
+  <div class="slide-canvas text-earth-forest">
+    
+    <!-- Top Header Bar -->
+    <header class="flex justify-between items-center pb-8 border-b border-sandstone-border">
+      <div class="flex items-center gap-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-earth-terracottaSoft border border-earth-terracotta/20 text-earth-terracotta">
+          <span class="w-1.5 h-1.5 rounded-full bg-earth-terracotta"></span>
+          <span>DEFENSE &amp; DISASTER ROBOTICS</span>
+        </div>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-earth-sageSoft border border-earth-sage/25 text-earth-forest">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          <span>SWARM STATE: 5/5 ACTIVE</span>
+        </div>
+      </div>
 
-    <div class="slide-content">
+      <div class="font-mono text-xs text-sandstone-muted font-medium tracking-wide">
+        SECTOR: KEDARNATH VALLEY (30.73° N, 79.06° E)
+      </div>
+    </header>
+
+    <!-- Main Content: Simple & Spacious Hero -->
+    <main class="my-auto max-w-6xl space-y-8">
       
-      <!-- TOP TELEMETRY BAR -->
-      <header class="top-telemetry-bar">
-        <div class="telemetry-left">
-          <div class="badge-pill badge-defense">
-            <span>DEFENSE & DISASTER ROBOTICS</span>
-          </div>
-          <div class="badge-pill badge-status">
-            <span class="status-dot"></span>
-            <span>SWARM STATE: 5/5 ACTIVE</span>
-          </div>
-        </div>
+      <div class="font-mono text-xs font-bold tracking-widest uppercase text-earth-terracotta flex items-center gap-2.5">
+        <span class="w-8 h-[2px] bg-earth-terracotta"></span>
+        <span>AUTONOMOUS MULTI-AGENT SWARM ARCHITECTURE</span>
+      </div>
 
-        <div class="telemetry-meta">
-          <div class="meta-item">SECTOR: <span class="highlight">KEDARNATH VALLEY (30.73° N, 79.06° E)</span></div>
-          <div class="meta-item">MISSION: <span class="highlight">RECON-SURVIVOR-GEO</span></div>
-          <div class="meta-item">CLOCK: <span>2026-08-31 11:22 UTC+05:30</span></div>
-        </div>
-      </header>
+      <h1 class="font-heading text-8xl font-black tracking-tight uppercase leading-none text-earth-forest">
+        PROJECT SUTRA
+      </h1>
 
-      <!-- HERO BODY (DIPTYCH) -->
-      <main class="hero-diptych">
+      <h2 class="font-serif italic text-3xl text-earth-sage font-semibold tracking-tight">
+        Swarm Unified Tactical Reconnaissance Architecture
+      </h2>
+
+      <p class="text-sandstone-muted text-xl leading-relaxed max-w-4xl font-normal">
+        A decentralized, fault-tolerant multi-UAV swarm engineered from first principles for <strong class="text-earth-forest font-semibold">GPS-denied deep mountain valleys</strong>, <strong class="text-earth-forest font-semibold">-5 dB RF jamming resilience</strong>, and sub-meter survivor geolocation under dense forest canopies.
+      </p>
+
+      <!-- 4 Architectural Pillars -->
+      <div class="grid grid-cols-4 gap-6 pt-4">
         
-        <!-- Left: Mission Thesis -->
-        <div class="hero-left">
-          <div class="classification-tag">Autonomous Multi-Agent Aerial Swarm Architecture</div>
-          
-          <h1 class="hero-title">PROJECT SUTRA</h1>
-          
-          <h2 class="hero-subtitle">Swarm Unified Tactical Reconnaissance Architecture</h2>
-          
-          <p class="hero-description">
-            A decentralized, fault-tolerant multi-UAV swarm engineered from first principles for 
-            <strong>GPS-denied deep mountain valleys, heavy RF jamming (-5 dB SNR)</strong>, and 
-            sub-meter survivor geolocation under dense forest canopies.
+        <div class="p-6 rounded-2xl bg-white subtle-border shadow-card-light space-y-2">
+          <div class="font-mono text-xs font-bold text-earth-forest uppercase">
+            01. Autopilot &amp; GNC
+          </div>
+          <p class="text-xs text-sandstone-muted leading-relaxed">
+            PX4 50Hz Offboard, 3D Voxel Cost-Volume &amp; ORCA 3D Collision Shield.
           </p>
+        </div>
 
-          <!-- 4 Core Subsystems Ribbon -->
-          <div class="subsystem-grid">
-            <div class="subsystem-card">
-              <span class="subsystem-code">SUBSYS A</span>
-              <span class="subsystem-label">PX4 50Hz Offboard + SUTRA-FSD 3D Occupancy & ORCA 3D</span>
-            </div>
-            <div class="subsystem-card">
-              <span class="subsystem-code">SUBSYS B</span>
-              <span class="subsystem-label">Deep JSCC Neural Transceiver (96.9% Video Compression)</span>
-            </div>
-            <div class="subsystem-card">
-              <span class="subsystem-code">SUBSYS C</span>
-              <span class="subsystem-label">Tri-Modal RGB/Thermal Edge AI + 3.59cm WGS84 Raycaster</span>
-            </div>
-            <div class="subsystem-card">
-              <span class="subsystem-code">SUBSYS D</span>
-              <span class="subsystem-label">Pegasus 3D GIS GCS + WebGPU 60 FPS Multi-Stream & ATAK CoT</span>
-            </div>
+        <div class="p-6 rounded-2xl bg-white subtle-border shadow-card-light space-y-2">
+          <div class="font-mono text-xs font-bold text-earth-terracotta uppercase">
+            02. Neural Comms
           </div>
+          <p class="text-xs text-sandstone-muted leading-relaxed">
+            Deep JSCC Autoencoder with 96.9% compression &amp; -5 dB jamming survival.
+          </p>
         </div>
 
-        <!-- Right: Tactical Telemetry HUD -->
-        <div class="hero-right">
-          <div class="hud-box">
-            
-            <div class="hud-header">
-              <div class="hud-title">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-                TACTICAL MESH TELEMETRY (GAZEBO SIM 8)
-              </div>
-              <div class="hud-status-badge">SWARM-RAFT LOCKED</div>
-            </div>
-
-            <div class="hud-stream">
-              <div class="stream-row">
-                <span class="stream-tag">LEADER (UAV-01)</span>
-                <span class="stream-value">ORCA 3D ACTIVE | Z = 4.60m | V = 3.20 m/s</span>
-              </div>
-              <div class="stream-row">
-                <span class="stream-tag">ECHELON FOLLOWER (UAV 02-05)</span>
-                <span class="stream-value">CBF BARRIER: 4.12m &gt; 2.80m SAFE</span>
-              </div>
-              <div class="stream-row">
-                <span class="stream-tag">NEURAL LINK (DEEP JSCC)</span>
-                <span class="stream-value">-5.0 dB SNR JAMMING | 41.8 dB PSNR</span>
-              </div>
-              <div class="stream-row">
-                <span class="stream-tag">EDGE NEUROFLIGHT INVERSION</span>
-                <span class="stream-value">0.04 ms INFERENCE | 18.0 m/s GUST REJECTION</span>
-              </div>
-              <div class="stream-row">
-                <span class="stream-tag">CONSENSUS STATE</span>
-                <span class="stream-value">QUORUM 5/5 | TERM 14 | ZERO SPLIT-BRAIN</span>
-              </div>
-            </div>
-
-            <div class="hud-radar-visual">
-              <div class="radar-left">
-                <div class="radar-icon-box">🎯</div>
-                <div class="radar-info">
-                  <span class="radar-label">SURVIVOR TARGET ACQUIRED</span>
-                  <span class="radar-data">WGS84: 30.73462° N, 79.06691° E</span>
-                </div>
-              </div>
-              <div class="radar-action">
-                ERR: 0.0359m
-              </div>
-            </div>
-
+        <div class="p-6 rounded-2xl bg-white subtle-border shadow-card-light space-y-2">
+          <div class="font-mono text-xs font-bold text-earth-sage uppercase">
+            03. AI Perception
           </div>
+          <p class="text-xs text-sandstone-muted leading-relaxed">
+            Tri-Modal RGB/FLIR/mmWave with 3.59cm terrain-corrected DEM raycasting.
+          </p>
         </div>
 
-      </main>
-
-      <!-- BOTTOM BENCHMARK RIBBON -->
-      <section class="metrics-ribbon">
-        
-        <div class="metric-card">
-          <div class="metric-number-row">
-            <span class="metric-number">232/232</span>
-            <span class="metric-unit">TESTS</span>
+        <div class="p-6 rounded-2xl bg-white subtle-border shadow-card-light space-y-2">
+          <div class="font-mono text-xs font-bold text-elemental-sky uppercase">
+            04. Tactical GCS
           </div>
-          <div class="metric-title">Zero-Mock Verification</div>
-          <div class="metric-subtitle">100% automated pytest suite passing with live telemetry stdout</div>
+          <p class="text-xs text-sandstone-muted leading-relaxed">
+            Pegasus 3D GIS with 60 FPS WebGPU pipeline &amp; MIL-STD-2525 ATAK CoT XML.
+          </p>
         </div>
 
-        <div class="metric-card">
-          <div class="metric-number-row">
-            <span class="metric-number">96.9%</span>
-            <span class="metric-unit">BW SAVED</span>
-          </div>
-          <div class="metric-title">Deep JSCC Compression</div>
-          <div class="metric-subtitle">512 KB → 16 KB frames surviving extreme -5 dB jamming without cliff</div>
-        </div>
+      </div>
 
-        <div class="metric-card">
-          <div class="metric-number-row">
-            <span class="metric-number">3.59</span>
-            <span class="metric-unit">CM</span>
-          </div>
-          <div class="metric-title">WGS84 DEM Geolocation</div>
-          <div class="metric-subtitle">Terrain-corrected raycaster error from 30m altitude over mountain slopes</div>
-        </div>
+    </main>
 
-        <div class="metric-card">
-          <div class="metric-number-row">
-            <span class="metric-number">60.0</span>
-            <span class="metric-unit">FPS</span>
-          </div>
-          <div class="metric-title">WebGPU Multi-Stream</div>
-          <div class="metric-subtitle">Locked 60 FPS zero frame-drop tactical 3D GIS Ground Control Station</div>
-        </div>
+    <!-- Footer Attribution -->
+    <footer class="pt-8 border-t border-sandstone-border flex justify-between items-center font-mono text-xs text-sandstone-muted">
+      <div>
+        Nikhil (Tech Lead) • Vedanth Sai Ram • Siva Kesava • Harika • Rohith Kumar
+      </div>
+      <div class="flex items-center gap-2 text-earth-forest font-bold">
+        <span>● NDMA / DARPA-TIER OPEN ARCHITECTURE · GRAND FINALS 2026</span>
+      </div>
+    </footer>
 
-      </section>
-
-      <!-- FOOTER ATTRIBUTION BAR -->
-      <footer class="footer-bar">
-        <div class="team-line">
-          <span class="team-lead"><strong>Nikhil</strong> (Tech Lead · Subsystems A & B)</span>
-          <span>•</span>
-          <span class="team-lead"><strong>Vedanth Sai Ram</strong> (Subsystem C Perception)</span>
-          <span>•</span>
-          <span class="team-lead"><strong>Siva Kesava</strong> (Subsystem D 3D GIS)</span>
-          <span>•</span>
-          <span class="team-lead"><strong>Harika</strong> (Subsystem E QA & Pitch)</span>
-          <span>•</span>
-          <span class="team-lead"><strong>Rohith Kumar</strong> (Subsystem F Compute)</span>
-        </div>
-
-        <div class="footer-classification">
-          <span class="footer-dot"></span>
-          <span>NDMA / DARPA-TIER OPEN ARCHITECTURE · GRAND FINALS 2026</span>
-        </div>
-      </footer>
-
-    </div>
   </div>
 
 </body>
