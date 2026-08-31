@@ -111,8 +111,8 @@ export const Slide02Problem: React.FC = () => {
                 <span>Manual searching delays finding trapped victims</span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
-                <span>Military drones cost over $50,000 each</span>
+                <span className="w-2 h-2 rounded-full bg-[#0A1628] shrink-0" />
+                <span>Military drones cost over ₹40 Lakhs each</span>
               </li>
             </ul>
 

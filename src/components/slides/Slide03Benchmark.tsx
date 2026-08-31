@@ -45,7 +45,7 @@ export const Slide03Benchmark: React.FC = () => {
             <span className="px-2.5 py-1 rounded-md bg-[#F9FAFB] border border-[#E4E4E7]">10-18 MIN/MI²</span>
             <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">78-85% DETECTION</span>
             <span className="px-2.5 py-1 rounded-md bg-[#F9FAFB] border border-[#E4E4E7]">12% FALSE ALARMS</span>
-            <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">$12K SORTIE</span>
+            <span className="px-2.5 py-1 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">₹95,000 SORTIE</span>
           </div>
         </div>
 
@@ -271,7 +271,7 @@ export const Slide03Benchmark: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono">
             <div className="p-2 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
               <span className="text-[9px] text-slate-500 uppercase">TAM PROJECTION</span>
-              <span className="text-xs font-bold text-[#09090B]">$8.94B Market 2033</span>
+              <span className="text-xs font-bold text-[#09090B]">₹74,500 Cr Market</span>
             </div>
             <div className="p-2 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
               <span className="text-[9px] text-slate-500 uppercase">DEMAND DELTA</span>
@@ -282,8 +282,8 @@ export const Slide03Benchmark: React.FC = () => {
               <span className="text-xs font-bold text-[#09090B]">37 Nations Mandate</span>
             </div>
             <div className="p-2 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
-              <span className="text-[9px] text-slate-500 uppercase">FEMA ALLOCATION</span>
-              <span className="text-xs font-bold text-emerald-700">$180M in 2025</span>
+              <span className="text-[9px] text-slate-500 uppercase">NDMA / SDRF GRANTS</span>
+              <span className="text-xs font-bold text-emerald-700">₹1,500 Cr Allocation</span>
             </div>
           </div>
 

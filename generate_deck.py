@@ -191,7 +191,7 @@ def build_slide_02_problem(prs):
         "Dense trees block satellite GPS signals",
         "Single control towers cause mission failure",
         "Manual searching delays finding trapped victims",
-        "Military drones cost over $50,000 each",
+        "Military drones cost over ₹40 Lakhs each",
     ]
 
     bullet_start_y = Inches(2.55)
@@ -302,10 +302,10 @@ def build_slide_03_4subsystems(prs):
              "AI Swarm Drones Find Survivors 3-4x Faster Than Traditional SAR",
              FONT_HEADING, 21, COLOR_BLACK, bold=True)
 
-    quick_badges = ["10-18 MIN/MI²", "78-85% DETECTION", "12% FALSE POSITIVES", "$12K SORTIE"]
+    quick_badges = ["10-18 MIN/MI²", "78-85% DETECTION", "12% FALSE ALARMS", "₹95,000 SORTIE"]
     for i, b_text in enumerate(quick_badges):
         bx = Inches(8.3) + i * Inches(1.1)
-        is_em = "DETECTION" in b_text or "$12K" in b_text
+        is_em = "DETECTION" in b_text or "₹95,000" in b_text
         bg_col = RGBColor(0xEC, 0xFD, 0xF5) if is_em else COLOR_CARD_BG
         txt_col = COLOR_EMERALD if is_em else COLOR_SLATE
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, bx, Inches(1.05), Inches(1.05), Inches(0.3), bg_col, COLOR_BORDER)
@@ -380,10 +380,10 @@ def build_slide_03_4subsystems(prs):
 
     # 5. Market Validation Banner (Bottom Row)
     market_stats = [
-        ("TAM PROJECTION", "$8.94B Market 2033", COLOR_BLACK),
+        ("TAM PROJECTION", "₹74,500 Cr Market", COLOR_BLACK),
         ("DEMAND DELTA", "+412% Surge", COLOR_EMERALD),
         ("REGULATORY", "37 Nations Mandate", COLOR_BLACK),
-        ("FEMA ALLOCATION", "$180M in 2025", COLOR_EMERALD),
+        ("NDMA / SDRF GRANTS", "₹1,500 Cr Allocation", COLOR_EMERALD),
     ]
     banner_w = Inches(2.78)
     banner_gap = Inches(0.2)
