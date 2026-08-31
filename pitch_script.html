@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT SUTRA — Grand Finals Oral Pitch Script (Slides 1 to 3)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #0F172A;
+      background: #FFFFFF;
+      line-height: 1.6;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header-bar {
+      border-bottom: 2px solid #09090B;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20pt;
+      font-weight: 800;
+      color: #09090B;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .meta-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      font-weight: 700;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-align: right;
+    }
+
+    .slide-section {
+      break-inside: avoid-page;
+      margin-bottom: 22px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #FFFFFF;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      break-after: avoid;
+    }
+
+    .slide-num-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 800;
+      color: #FFFFFF;
+      background: #09090B;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-title-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #09090B;
+    }
+
+    .timing-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      font-weight: 700;
+      color: #047857;
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .speaker-cue {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #1E293B;
+      background: #F8FAFC;
+      border-left: 3px solid #2563EB;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dialogue {
+      font-size: 9.8pt;
+      line-height: 1.65;
+      color: #1E293B;
+      margin-bottom: 12px;
+    }
+
+    .dialogue strong {
+      color: #09090B;
+    }
+
+    .cue-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      color: #92400E;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-top: 8px;
+      margin-bottom: 6px;
+    }
+
+    .proof-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8pt;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 10px;
+    }
+
+    .proof-matrix th {
+      background: #F1F5F9;
+      color: #09090B;
+      padding: 6px 8px;
+      text-align: left;
+      border: 1px solid #CBD5E1;
+      font-weight: 700;
+    }
+
+    .proof-matrix td {
+      padding: 5px 8px;
+      border: 1px solid #E2E8F0;
+      color: #334155;
+    }
+
+    .proof-matrix tr:nth-child(even) td {
+      background: #F8FAFC;
+    }
+
+    .footer {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 8px;
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.5pt;
+      color: #64748B;
+      display: flex;
+      justify-content: space-between;
+      break-inside: avoid-page;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header-bar">
+    <div>
+      <h1 class="title">PROJECT SUTRA — GRAND FINALS ORAL SCRIPT</h1>
+      <div class="subtitle">Word-for-Word Defense &amp; Disaster Robotics Jury Presentation (Slides 1 to 3)</div>
+    </div>
+    <div class="meta-badge">
+      TOTAL TIME: 3 MIN 00 SEC<br>
+      TARGET AUDIENCE: JURY / NDMA / DRDO
+    </div>
+  </div>
+
+  <!-- SLIDE 1: TITLE & CORE TEAM -->
+  <div class="slide-section">
+    <div class="slide-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="slide-num-tag">SLIDE 01</span>
+        <span class="slide-title-text">Title &amp; Vision: Decentralized Swarm Reconnaissance</span>
+      </div>
+      <span class="timing-tag">00:00 – 00:45 (45s)</span>
+    </div>
+
+    <div class="speaker-cue">
+      <span>SPEAKER: NIKHIL (TECH LEAD)</span>
+      <span>TONE: AUTHORITATIVE, GROUNDED, TACTICAL</span>
+    </div>
+
+    <div class="dialogue">
+      "Respected jury members, disaster response leaders, and fellow engineers.<br><br>
+      When a mountain slope collapses in Wayanad or flash floods rip through Sikkim, traditional disaster management hits a complete wall. Satellite GPS signals are blocked by thick tree canopies, cellular base towers are washed away, and high-bandwidth video links crash behind mountain ridgelines.<br><br>
+      We are <strong>Team OFFGRID</strong>, and we have engineered <strong>PROJECT SUTRA</strong> — the <em>Swarm Unified Tactical Reconnaissance Architecture</em>.<br><br>
+      SUTRA is an autonomous, decentralized multi-UAV swarm system built to find survivors where conventional robotics fail. By integrating <strong>50Hz PX4 MicroXRCE decentralized offboard flight</strong>, <strong>Deep JSCC neural semantic video</strong> that operates down to -5dB SNR without digital cliff dropouts, and <strong>3.59cm real-time WGS84 3D DEM terrain raycasting</strong>, SUTRA transforms disaster search from a chaotic 3-hour manual operation into an autonomous 10-minute sweep."
+    </div>
+
+    <div class="cue-box">
+      <strong>[VISUAL CUE]:</strong> Point to the 3 grounded telemetry tabs (50Hz GNC, -5dB Deep JSCC, 3.59cm Elevation Accuracy) and introduce the 5-member engineering team leads (Nikhil, Vedanth, Siva, Harika, Rohith).
+    </div>
+  </div>
+
+  <!-- SLIDE 2: THE PROBLEM (4 SUBSYSTEM FAILURE VOIDS) -->
+  <div class="slide-section">
+    <div class="slide-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="slide-num-tag" style="background: #E11D48;">SLIDE 02</span>
+        <span class="slide-title-text">The Problem: 4 Critical Subsystem Failure Voids in Traditional SAR</span>
+      </div>
+      <span class="timing-tag" style="color: #BE123C; background: #FFF1F2; border-color: #FECDD3;">00:45 – 01:50 (65s)</span>
+    </div>
+
+    <div class="speaker-cue" style="border-left-color: #E11D48;">
+      <span>SPEAKER: NIKHIL &rarr; TRANSITION TO VEDANTH &amp; SIVA</span>
+      <span>TONE: URGENT, EMPIRICALLY RIGOROUS, FACT-DRIVEN</span>
+    </div>
+
+    <div class="dialogue">
+      "To understand why search-and-rescue fails today, our team audited actual NDRF and SDRF disaster after-action reports across 4 foundational engineering voids:<br><br>
+      <strong>1. Subsystem A Void (Navigation &amp; GNC):</strong> Under dense forest canopies, GNSS satellite multi-path causes commercial flight controllers to drift and crash. In Wayanad, over <strong>70% of standard canopy sorties resulted in airframe rotor losses</strong>.<br><br>
+      <strong>2. Subsystem B Void (Comms &amp; Video):</strong> Standard H.264 digital video suffers from the brutal <em>'Digital Cliff'</em>. The moment a drone dips behind a mountain ridge and RF signal-to-noise ratio drops below 5dB, video packets completely corrupt, leaving rescue commanders blind.<br><br>
+      <strong>3. Subsystem C Void (AI Vision &amp; Geolocation):</strong> Current drone AI runs 2D bounding boxes that assume flat, zero-elevation ground. On 45-degree Himalayan mountain slopes, flat raycasting produces <strong>15 to 30 meters of calculation error</strong>, routing rescue squads to empty cliffs.<br><br>
+      <strong>4. Subsystem D Void (Tactical C2):</strong> Traditional setups require 1 pilot per drone and a massive <strong>15 to 25 person ground crew</strong>. If the single pilot link drops, the entire sortie aborts — costing up to <strong>₹12.5 Lakhs per deployment</strong> while burning the golden 72-hour survivor window."
+    </div>
+
+    <div class="cue-box">
+      <strong>[VISUAL CUE]:</strong> Emphasize the 4 embedded carousel disaster evidence photos (Wayanad Canopy Crash, Chamoli Gorge RF Cut, Sikkim Slope Geo Error, and Central Link Abort).
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE SOLUTION & BENCHMARKS -->
+  <div class="slide-section">
+    <div class="slide-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="slide-num-tag" style="background: #047857;">SLIDE 03</span>
+        <span class="slide-title-text">The Solution: 4 Architectural Moats &amp; 3-4x Performance Delta</span>
+      </div>
+      <span class="timing-tag">01:50 – 03:00 (70s)</span>
+    </div>
+
+    <div class="speaker-cue" style="border-left-color: #047857;">
+      <span>SPEAKER: NIKHIL (CLOSING WITH BENCHMARKS &amp; MARKET DEFENSE)</span>
+      <span>TONE: TRIUMPHANT, DEFENSIBLE, COMMERCIAL READINESS</span>
+    </div>
+
+    <div class="dialogue">
+      "Project SUTRA directly answers all 4 problem voids through 4 hardened technological moats:<br><br>
+      <strong>• Moat A — SUTRA-FSD &amp; 3D ORCA:</strong> Decentralized 3D velocity obstacle avoidance running at 50Hz offboard over MicroXRCE-DDS with zero reliance on ground control towers or external GNSS locks.<br><br>
+      <strong>• Moat B — Deep JSCC Neural Video:</strong> Differentiable joint source-channel coding mapped directly to analog channel symbols. When RF SNR drops down to -5dB in deep ravines, video degrades gracefully into clean silhouettes with zero blackouts.<br><br>
+      <strong>• Moat C — 3D DEM Real-Time Geolocation:</strong> Edge-accelerated YOLOv8-Pose on NVIDIA Jetson Orin coupled with real-time WGS84 Digital Elevation Model raycasting, delivering pinpoint <strong>3.59cm survivor geolocation</strong> in under 15ms.<br><br>
+      <strong>• Moat D — Pegasus 3D WebGPU GCS:</strong> An offline tactical digital twin and ATAK plug-in that enables <strong>1 to 2 operators to manage a 6-drone swarm</strong> at a total sortie cost of just <strong>₹95,000</strong> — an 85% cost reduction.<br><br>
+      With a global disaster robotics market expanding to <strong>₹74,500 Crores</strong> and <strong>₹1,500 Crores allocated under NDMA/SDRF</strong> in 2025, SUTRA is engineered, benchmarked, and mission-ready to save lives."
+    </div>
+
+    <!-- Benchmark Comparison Table -->
+    <table class="proof-matrix">
+      <thead>
+        <tr>
+          <th>Metric Benchmark</th>
+          <th>Traditional SAR</th>
+          <th>Single Drone</th>
+          <th style="background: #ECFDF5; color: #047857;">PROJECT SUTRA SWARM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Deployment Speed</strong></td>
+          <td>45–90 min setup</td>
+          <td>15–30 min</td>
+          <td style="font-weight: 700; color: #047857;">8–15 min (Autonomous Launch)</td>
+        </tr>
+        <tr>
+          <td><strong>Area Coverage / mi²</strong></td>
+          <td>2–3 hours</td>
+          <td>45–60 min</td>
+          <td style="font-weight: 700; color: #047857;">10–18 min (3-4x Faster)</td>
+        </tr>
+        <tr>
+          <td><strong>Survivor Detection Rate</strong></td>
+          <td>65–70%</td>
+          <td>55–65%</td>
+          <td style="font-weight: 700; color: #047857;">78–85% First-Pass Detection</td>
+        </tr>
+        <tr>
+          <td><strong>Crew Personnel Required</strong></td>
+          <td>15–25 specialists</td>
+          <td>2–3 pilots</td>
+          <td style="font-weight: 700; color: #047857;">1–2 Tactical Operators</td>
+        </tr>
+        <tr>
+          <td><strong>Cost per Deployment</strong></td>
+          <td>₹12.5 Lakhs ($15K)</td>
+          <td>₹5.0 Lakhs</td>
+          <td style="font-weight: 700; color: #047857;">₹95,000 ($1.1K) Sortie</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>PROJECT SUTRA — GRAND FINALS DEFENSE PITCH SCRIPT</span>
+    <span>CONFIDENTIAL &bull; TEAM OFFGRID &bull; DEFENSE &amp; DISASTER ROBOTICS</span>
+  </div>
+
+</body>
+</html>
