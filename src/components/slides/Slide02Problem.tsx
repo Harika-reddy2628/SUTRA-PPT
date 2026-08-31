@@ -1,44 +1,44 @@
 import React, { useState, useEffect } from 'react';
 
-interface AuditSource {
+interface AuditCard {
   badge: string;
   category: string;
-  headline: string;
-  quote: string;
-  ref: string;
-  badgeBg: string;
+  title: string;
+  subtitle: string;
+  label: string;
+  text: string;
   imageSrc: string;
   imageAlt: string;
 }
 
-const AUDIT_SOURCES: AuditSource[] = [
+const AUDIT_CARDS: AuditCard[] = [
   {
     badge: 'GOVT DISASTER AUDIT',
     category: 'NDMA REPORT',
-    headline: '70% of single drones failed in mountain rescue operations.',
-    quote: '“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”',
-    ref: 'Ref: National Disaster Management Authority (NDMA)',
-    badgeBg: 'bg-[#0A1628]',
+    title: 'Wayanad Landslide Search',
+    subtitle: 'Western Ghats • NDMA Official Disaster Review',
+    label: 'FIELD BOTTLENECK',
+    text: '“70% of commercial drones lost connection behind mountain ridges and crashed under thick tree canopy.”',
     imageSrc: '/assets/disaster/wayanad_rescue.jpg',
     imageAlt: 'Wayanad Landslide Search 2024',
   },
   {
     badge: 'PEER-REVIEWED SCIENCE',
     category: 'IEEE TCCN JOURNAL',
-    headline: 'Standard drone video feeds drop completely in weak signals.',
-    quote: '“Traditional digital video (H.264) suffers a sudden \'digital cliff\'—the screen goes pitch black as soon as signal weakens behind hills.”',
-    ref: 'Ref: IEEE Trans. Cognitive Comms (Bourtsoulatze et al.)',
-    badgeBg: 'bg-slate-900',
+    title: 'Himalayan Gorge RF Blackout',
+    subtitle: 'High-Altitude Search • IEEE TCCN Journal',
+    label: 'DIGITAL CLIFF EFFECT',
+    text: '“Standard drone video feeds drop to complete black the moment radio signal weakens behind mountain walls.”',
     imageSrc: '/assets/disaster/disaster_rescue_1.jpg',
     imageAlt: 'High-Altitude Mountain Search',
   },
   {
     badge: 'PUBLIC RTI PROCUREMENT',
     category: 'CAG AUDIT',
-    headline: 'Military-grade drones cost $50,000 to $250,000 each.',
-    quote: '“High airframe costs prevent deploying swarms, while single ground-station links cause entire missions to shut down if disconnected.”',
-    ref: 'Ref: CAG Defense Audit & Public RTI Records',
-    badgeBg: 'bg-emerald-700',
+    title: 'Tactical Airframe Constraints',
+    subtitle: 'CAG Defense Audit • Centralized Ground Station',
+    label: 'COST & SINGLE POINT FAILURE',
+    text: '“Military drones cost $50,000–$250,000 each and abort missions if the single pilot control link drops.”',
     imageSrc: '/assets/disaster/disaster_rescue_2.jpg',
     imageAlt: 'Disaster Response Airframe Fleet',
   },
@@ -49,7 +49,7 @@ export const Slide02Problem: React.FC = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % AUDIT_SOURCES.length);
+      setCurrentIndex((prev) => (prev + 1) % AUDIT_CARDS.length);
     }, 3000);
     return () => clearInterval(timer);
   }, []);
@@ -87,15 +87,15 @@ export const Slide02Problem: React.FC = () => {
         <main className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 my-auto items-center">
           
           {/* Left Column (7 Cols): Simple Conclusion Headline + 6x6 Bullets + Schematic Illustrations */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 space-y-6">
             
             {/* Simple Conclusion-Style Headline */}
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-black tracking-tight leading-[1.12]">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-black tracking-tight leading-[1.12]">
               GPS Loss and Radio Blackouts Cripple Disaster Rescue
             </h2>
 
             {/* 6x6 Rule Bullets: Simple Words, <=6 words each, left-aligned, #374151 */}
-            <ul className="space-y-2.5 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
+            <ul className="space-y-3 text-base sm:text-lg font-normal text-[#374151] leading-relaxed">
               
               <li className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#0A1628] shrink-0"></span>
@@ -126,11 +126,11 @@ export const Slide02Problem: React.FC = () => {
 
             {/* Technical Vector Schematic Illustration Strip */}
             <div className="pt-2">
-              <div className="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">
+              <div className="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-[0.2em] mb-2.5">
                 TACTICAL FAILURE SCHEMATICS
               </div>
               
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-3">
                 
                 {/* Schematic 1: Mountain RF Blockage */}
                 <div className="p-2.5 rounded-xl border border-slate-200/80 bg-slate-50/70 flex items-center gap-2.5">
@@ -181,65 +181,46 @@ export const Slide02Problem: React.FC = () => {
 
           </div>
 
-          {/* Right Column (5 Cols): Smooth Continuous Parallax Dossier Stack with Real Photos */}
+          {/* Right Column (5 Cols): Big Full-Bleed Image Card Carousel */}
           <div className="lg:col-span-5 relative">
             
             {/* Dossier Header */}
-            <div className="flex items-center justify-between pb-2 font-mono">
+            <div className="flex items-center justify-between pb-2.5 font-mono">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
-                OFFICIAL EVIDENCE &amp; DISASTER CLIPPINGS
+                REAL DISASTER FIELD EVIDENCE
               </span>
               <span className="text-[10px] font-bold text-slate-500">
-                SOURCE 0{currentIndex + 1} / 0{AUDIT_SOURCES.length}
+                SOURCE 0{currentIndex + 1} / 0{AUDIT_CARDS.length}
               </span>
             </div>
 
-            {/* 3D Stacked Container */}
-            <div className="relative w-full h-[360px]">
+            {/* 3D Stacked Container (450px High Full Bleed) */}
+            <div className="relative w-full h-[450px]">
               
-              {/* Metallic Paperclip (Anchored seamlessly on the top edge of active card) */}
-              <div className="absolute -top-3.5 right-8 z-30 pointer-events-none drop-shadow-md">
-                <svg width="28" height="44" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path 
-                    d="M7 13V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                    stroke="#1E293B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.2"
-                  />
-                  <path 
-                    d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                    stroke="#475569" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
-                  />
-                  <path 
-                    d="M7 12V6a5 5 0 0 1 10 0v20a7 7 0 0 1-14 0V9a3.5 3.5 0 0 1 7 0v16a1 1 0 0 0 2 0V11" 
-                    stroke="#CBD5E1" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-
-              {/* Stacked Parallax Cards */}
-              {AUDIT_SOURCES.map((source, idx) => {
-                const offset = (idx - currentIndex + AUDIT_SOURCES.length) % AUDIT_SOURCES.length;
+              {AUDIT_CARDS.map((card, idx) => {
+                const offset = (idx - currentIndex + AUDIT_CARDS.length) % AUDIT_CARDS.length;
                 
                 let transformStyle = 'translateY(0px) scale(1)';
                 let opacityStyle = 1;
                 let zIndex = 20;
-                let shadowStyle = '0 20px 40px -12px rgba(10, 22, 40, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9)';
+                let shadowStyle = '0 24px 48px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2)';
 
                 if (offset === 1) {
                   transformStyle = 'translateY(16px) scale(0.95)';
-                  opacityStyle = 0.45;
+                  opacityStyle = 0.5;
                   zIndex = 10;
-                  shadowStyle = '0 12px 24px -8px rgba(10, 22, 40, 0.06), 0 0 0 1px rgba(226, 232, 240, 0.6)';
+                  shadowStyle = '0 16px 32px -8px rgba(0, 0, 0, 0.25)';
                 } else if (offset === 2) {
                   transformStyle = 'translateY(30px) scale(0.90)';
-                  opacityStyle = 0.18;
+                  opacityStyle = 0.22;
                   zIndex = 5;
-                  shadowStyle = '0 6px 16px -4px rgba(10, 22, 40, 0.04), 0 0 0 1px rgba(226, 232, 240, 0.4)';
+                  shadowStyle = '0 8px 20px -4px rgba(0, 0, 0, 0.15)';
                 }
 
                 return (
                   <div 
                     key={idx}
-                    className="absolute inset-0 rounded-2xl bg-white p-5 space-y-2.5 origin-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="absolute top-0 left-0 w-full h-full rounded-3xl overflow-hidden origin-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                       transform: transformStyle,
                       opacity: opacityStyle,
@@ -248,32 +229,46 @@ export const Slide02Problem: React.FC = () => {
                       pointerEvents: offset === 0 ? 'auto' : 'none',
                     }}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className={`inline-block px-2.5 py-0.5 rounded-full ${source.badgeBg} text-white text-[8.5px] font-black uppercase tracking-wider font-mono`}>
-                        {source.badge}
-                      </span>
-                      <span className="text-[10px] text-slate-400 font-mono font-semibold">
-                        {source.category}
-                      </span>
-                    </div>
+                    <img 
+                      src={card.imageSrc} 
+                      alt={card.imageAlt} 
+                      className="w-full h-full object-cover" 
+                    />
+                    
+                    {/* Cinematic Dark Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent"></div>
 
-                    <div className="flex gap-3 items-center">
-                      <img 
-                        src={source.imageSrc} 
-                        alt={source.imageAlt} 
-                        className="w-24 h-16 rounded-xl object-cover border border-slate-200 shadow-sm shrink-0" 
-                      />
-                      <div className="text-sm font-bold text-black leading-snug">
-                        {source.headline}
+                    {/* Top Floating Glassmorphism Badge */}
+                    <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                      <div className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-lg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                          <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                          <polyline points="2 17 12 22 22 17" />
+                          <polyline points="2 12 12 17 22 12" />
+                        </svg>
                       </div>
+                      <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-wider font-mono">
+                        {card.badge}
+                      </span>
                     </div>
 
-                    <p className="text-[11.5px] text-[#4B5563] leading-relaxed bg-slate-50/80 p-2.5 rounded-xl border border-slate-100 italic">
-                      {source.quote}
-                    </p>
-
-                    <div className="pt-1 text-[10.5px] font-mono text-slate-500">
-                      {source.ref}
+                    {/* Bottom Content Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10 space-y-2 text-white">
+                      <h3 className="text-2xl font-extrabold tracking-tight leading-tight">
+                        {card.title}
+                      </h3>
+                      <div className="text-xs font-mono text-slate-300">
+                        {card.subtitle}
+                      </div>
+                      
+                      <div className="pt-2">
+                        <div className="text-[10px] font-mono font-bold tracking-widest text-emerald-400 uppercase">
+                          {card.label}
+                        </div>
+                        <p className="text-xs text-slate-200 leading-relaxed font-normal mt-0.5">
+                          {card.text}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -282,9 +277,9 @@ export const Slide02Problem: React.FC = () => {
             </div>
 
             {/* Continuous Indicator Dots */}
-            <div className="flex items-center justify-between mt-6 font-mono">
+            <div className="flex items-center justify-between mt-5 font-mono">
               <div className="flex items-center gap-2">
-                {AUDIT_SOURCES.map((_, idx) => (
+                {AUDIT_CARDS.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
@@ -305,7 +300,7 @@ export const Slide02Problem: React.FC = () => {
         </main>
 
         {/* Bottom Standard Slide Footer */}
-        <footer className="pt-3.5 border-t border-[#E5E7EB] flex justify-between items-center font-mono text-xs text-[#6B7280]">
+        <footer className="pt-3 border-t border-[#E5E7EB] flex justify-between items-center font-mono text-xs text-[#6B7280]">
           <div>PAGE 02</div>
           <div className="font-semibold uppercase tracking-wider text-[#0A1628]">TEAM OFFGRID — PROJECT SUTRA</div>
         </footer>

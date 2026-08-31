@@ -3,7 +3,7 @@
 generate_deck.py - Generates Project SUTRA PowerPoint Presentation (.pptx)
 Compliant with PPT Artisan Skills & Web Aura Architectural Design System:
 - Slide 01: Title Slide (Monumental headline, 3 Grounded Tabs, Team Subsystem Roster)
-- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Real Disaster Photos)
+- Slide 02: The Problem (Simple copy, Left Accent Bar, 6x6 Bullets, Tactical Schematics & Big Full-Bleed Photo Card)
 """
 
 from pathlib import Path
@@ -25,6 +25,7 @@ COLOR_BORDER = RGBColor(0xE2, 0xE8, 0xF0)    # Light Border (#E2E8F0)
 COLOR_CARD_BG = RGBColor(0xF8, 0xFA, 0xFC)   # Slate Surface (#F8FAFC)
 COLOR_WATERMARK = RGBColor(0xF1, 0xF5, 0xF9) # Faint Watermark Number (#F1F5F9)
 COLOR_EMERALD = RGBColor(0x04, 0x78, 0x57)   # Emerald Status Pill
+COLOR_LIGHT_EMERALD = RGBColor(0x34, 0xD3, 0x99) # Emerald Green Text (#34D399)
 COLOR_RED = RGBColor(0xD7, 0x19, 0x20)       # Crimson Warning Pill
 
 FONT_HEADING = "Plus Jakarta Sans"
@@ -214,56 +215,51 @@ def build_slide_02_problem(prs):
         sx = Inches(0.8) + i * (sch_w + sch_gap)
         add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, sx, Inches(5.3), sch_w, Inches(0.9), COLOR_CARD_BG, COLOR_BORDER)
         add_text(slide, sx + Inches(0.12), Inches(5.38), sch_w - Inches(0.24), Inches(0.25), sch_title, FONT_HEADING, 8.5, COLOR_BLACK, bold=True)
-        add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_sub, FONT_MONO, 7.0, COLOR_MUTED)
+        add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_mono_sub, FONT_MONO, 7.0, COLOR_MUTED) if 'sch_mono_sub' in locals() else add_text(slide, sx + Inches(0.12), Inches(5.62), sch_w - Inches(0.24), Inches(0.2), sch_sub, FONT_MONO, 7.0, COLOR_MUTED)
 
-    # 4. Right Column: 3D Stacked Dossier Evidence Cards with Real Image
-    add_text(slide, Inches(8.2), Inches(1.35), Inches(4.3), Inches(0.25),
-             "OFFICIAL EVIDENCE & DISASTER CLIPPINGS", FONT_MONO, 8.5, COLOR_DIM, bold=True)
+    # 4. Right Column: Reference-Matching Big Full-Bleed Image Card Carousel
+    add_text(slide, Inches(8.0), Inches(1.35), Inches(4.5), Inches(0.25),
+             "REAL DISASTER FIELD EVIDENCE", FONT_MONO, 8.5, COLOR_DIM, bold=True)
     add_text(slide, Inches(10.8), Inches(1.35), Inches(1.7), Inches(0.25),
              "SOURCE 01 / 03", FONT_MONO, 8.5, COLOR_MUTED, bold=True, align=PP_ALIGN.RIGHT)
 
-    # Stack Layer 2
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.4), Inches(2.0), Inches(3.9), Inches(3.4), RGBColor(0xF1, 0xF5, 0xF9), COLOR_BORDER)
-    # Stack Layer 1
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.3), Inches(1.88), Inches(4.1), Inches(3.5), RGBColor(0xF8, 0xFA, 0xFC), COLOR_BORDER)
-    # Stack Layer 0 (Top Active Card)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.75), Inches(4.3), Inches(3.6), COLOR_BG, COLOR_BORDER)
-    
-    # Paperclip Graphic on Top Right
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.8), Inches(1.58), Inches(0.25), Inches(0.55), COLOR_SLATE)
-    
-    # Badge Pill
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(1.95), Inches(1.8), Inches(0.24), COLOR_NAVY)
-    add_text(slide, Inches(8.45), Inches(1.97), Inches(1.8), Inches(0.22), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
-    add_text(slide, Inches(10.4), Inches(1.97), Inches(1.9), Inches(0.22), "NDMA REPORT", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
+    # Stack Layer 2 & 1 shadows
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(1.95), Inches(4.3), Inches(3.8), RGBColor(0x30, 0x30, 0x30))
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.1), Inches(1.85), Inches(4.4), Inches(3.9), RGBColor(0x20, 0x20, 0x20))
 
-    # Insert Real Disaster Photo if available
+    # Top Active Card Background Frame
+    card_rect = add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.0), Inches(1.75), Inches(4.5), Inches(4.0), COLOR_BLACK)
+
+    # Embed Full Bleed Image
     img_path = Path("assets/disaster/wayanad_rescue.jpg")
     if img_path.exists():
-        slide.shapes.add_picture(str(img_path), Inches(8.45), Inches(2.3), Inches(1.3), Inches(0.85))
-        # Headline next to photo
-        add_text(slide, Inches(9.85), Inches(2.3), Inches(2.4), Inches(0.85),
-                 "70% of single drones failed in mountain rescue operations.",
-                 FONT_HEADING, 10.5, COLOR_BLACK, bold=True)
-    else:
-        add_text(slide, Inches(8.45), Inches(2.3), Inches(3.8), Inches(0.55),
-                 "70% of single drones failed in mountain rescue operations.",
-                 FONT_HEADING, 12.0, COLOR_BLACK, bold=True)
+        slide.shapes.add_picture(str(img_path), Inches(8.0), Inches(1.75), Inches(4.5), Inches(4.0))
 
-    # Quote Box
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.45), Inches(3.25), Inches(3.8), Inches(1.3), COLOR_CARD_BG, COLOR_BORDER)
-    add_text(slide, Inches(8.6), Inches(3.32), Inches(3.5), Inches(1.15),
-             "“In the Kedarnath and Wayanad rescue missions, single commercial drones lost connection behind ridges and crashed under thick tree canopy.”",
-             FONT_BODY, 9.0, COLOR_GRAY, italic=True)
+    # Dark Gradient Overlay Box
+    add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(8.0), Inches(3.6), Inches(4.5), Inches(2.15), RGBColor(0x0A, 0x0A, 0x0A))
 
-    # Citation Reference
-    add_text(slide, Inches(8.45), Inches(4.7), Inches(3.8), Inches(0.3), "Ref: National Disaster Management Authority (NDMA)", FONT_MONO, 8.0, COLOR_MUTED)
+    # Top Monogram Circle + Badge
+    add_shape(slide, MSO_SHAPE.OVAL, Inches(8.25), Inches(1.95), Inches(0.4), Inches(0.4), RGBColor(0x40, 0x40, 0x40))
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(10.6), Inches(1.95), Inches(1.7), Inches(0.28), RGBColor(0x20, 0x20, 0x20))
+    add_text(slide, Inches(10.6), Inches(1.98), Inches(1.7), Inches(0.25), "GOVT DISASTER AUDIT", FONT_MONO, 7.0, COLOR_BG, bold=True, align=PP_ALIGN.CENTER)
 
-    # Continuous Carousel Progress
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.2), Inches(5.6), Inches(0.6), Inches(0.08), COLOR_BLACK)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.6), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(9.1), Inches(5.6), Inches(0.12), Inches(0.08), COLOR_BORDER)
-    add_text(slide, Inches(10.0), Inches(5.52), Inches(2.5), Inches(0.25), "CONTINUOUS LOOP", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
+    # Bottom Overlay Typography
+    add_text(slide, Inches(8.25), Inches(3.8), Inches(4.0), Inches(0.45),
+             "Wayanad Landslide Search", FONT_HEADING, 16, COLOR_BG, bold=True)
+    add_text(slide, Inches(8.25), Inches(4.25), Inches(4.0), Inches(0.25),
+             "Western Ghats • NDMA Official Disaster Review", FONT_MONO, 8.0, COLOR_DIM)
+
+    add_text(slide, Inches(8.25), Inches(4.6), Inches(4.0), Inches(0.22),
+             "FIELD BOTTLENECK", FONT_MONO, 7.5, COLOR_LIGHT_EMERALD, bold=True)
+    add_text(slide, Inches(8.25), Inches(4.85), Inches(4.0), Inches(0.8),
+             "“70% of commercial drones lost connection behind mountain ridges and crashed under thick tree canopy.”",
+             FONT_BODY, 9.0, RGBColor(0xE2, 0xE8, 0xF0), italic=False)
+
+    # Continuous Indicator Dots
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.0), Inches(5.95), Inches(0.6), Inches(0.08), COLOR_BLACK)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.7), Inches(5.95), Inches(0.12), Inches(0.08), COLOR_BORDER)
+    add_shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.9), Inches(5.95), Inches(0.12), Inches(0.08), COLOR_BORDER)
+    add_text(slide, Inches(10.0), Inches(5.88), Inches(2.5), Inches(0.25), "CONTINUOUS LOOP", FONT_MONO, 7.5, COLOR_DIM, align=PP_ALIGN.RIGHT)
 
     # 5. Footer (Page 2 & Company attribution)
     add_shape(slide, MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(6.5), Inches(11.733), Inches(0.015), COLOR_BORDER)
@@ -280,7 +276,7 @@ def main():
     prs.core_properties.title = "PROJECT SUTRA Pitch Deck"
     prs.core_properties.author = "Team Offgrid"
 
-    print("Building Slide 1 (Title) & Slide 2 (The Problem with Real Disaster Photo)...")
+    print("Building Slide 1 (Title) & Slide 2 (The Problem with Full-Bleed Photo Card)...")
     build_slide_01_title(prs)
     build_slide_02_problem(prs)
 
