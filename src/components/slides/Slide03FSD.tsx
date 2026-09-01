@@ -12,8 +12,9 @@ import {
   ChevronUp,
   ChevronDown,
   Layers,
-  Video,
-  Plus
+  Film,
+  UploadCloud,
+  FileVideo
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -73,7 +74,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Maintains an unbreachable safety bubble around each drone that overrides any risky flight command.'
       }
     ],
-    placeholderTitle: '5-UAV Ring-Crossing Gazebo 8 Simulation Video',
+    placeholderTitle: '5-Drone Crossing SITL Simulation Clip',
     telemetry: [
       { label: 'Simulator', value: 'Gazebo 8' },
       { label: 'Swarm Fleet', value: '5 Drones' },
@@ -114,7 +115,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Smooth curve mathematics that prevent sharp drone jerks and keep motors cool.'
       }
     ],
-    placeholderTitle: 'Dense Forest 3D Obstacle & OctoMap Voxel Video',
+    placeholderTitle: 'Forest Canopy 3D OctoMap Voxel Clip',
     telemetry: [
       { label: 'Map Volume', value: '32×32×16m' },
       { label: 'Dust Fade', value: 'Auto-Clean' },
@@ -155,7 +156,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Mathematically guarantees the AI flight adjustments never destabilize the drone.'
       }
     ],
-    placeholderTitle: '18.0 m/s Wind Shear & Turbulence Flight Video',
+    placeholderTitle: '18.0 m/s Mountain Wind Shear SITL Clip',
     telemetry: [
       { label: 'AI Reaction', value: '0.040 ms' },
       { label: 'Wind Speed', value: '18.0 m/s' },
@@ -196,7 +197,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Guarantees sub-millisecond command execution and automatic emergency landings.'
       }
     ],
-    placeholderTitle: 'PX4 50Hz MicroXRCE Hardware Bridge Video',
+    placeholderTitle: 'PX4 50Hz Offboard MicroXRCE SITL Clip',
     telemetry: [
       { label: 'Command Stream', value: '50.0 Hz' },
       { label: 'Command Delay', value: '< 1.0 ms' },
@@ -444,87 +445,65 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                   </div>
                 </div>
 
-                {/* Main Card Content Grid (50% Video Container + 50% High-Legibility Text Breakdown) */}
+                {/* Main Card Content Grid (50% Pure Empty State Container + 50% High-Legibility Text Breakdown) */}
                 <div className="w-full flex-1 my-2.5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch overflow-hidden">
                   
-                  {/* LEFT (6 Cols / 50%): High-Contrast Video Container Placeholder */}
-                  <div className="lg:col-span-6 rounded-[24px] bg-[#0A100D] border border-[#1E2E25] p-4 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+                  {/* LEFT (6 Cols / 50%): Pure Empty State Video Container */}
+                  <div className="lg:col-span-6 rounded-[24px] bg-[#F8FAFC] border-2 border-dashed border-[#CBD5E1] p-5 sm:p-6 flex flex-col justify-between shadow-2xs relative overflow-hidden group hover:border-[#006C4C]/60 transition-colors">
                     
-                    {/* Video Top Bar */}
-                    <div className="flex justify-between items-center pb-2.5 border-b border-white/10 z-10">
+                    {/* Empty State Top Bar */}
+                    <div className="flex justify-between items-center pb-2 border-b border-[#E2E8F0] font-mono text-xs text-[#64748B]">
+                      <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-[#006C4C]">
+                        <Film className="w-3.5 h-3.5 text-[#006C4C]" />
+                        <span>VIDEO VIEWPORT // EMPTY STATE</span>
+                      </div>
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#80E4B7] animate-pulse shadow-[0_0_8px_#80E4B7]" />
-                        <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-[#A7F3D0]">
-                          GAZEBO 8 SITL · SIMULATION PROOF
+                        <span className="bg-white px-2.5 py-0.5 rounded-full border border-[#E2E8F0] font-bold text-[#334155]">
+                          16:9 RATIO
                         </span>
-                      </div>
-                      <div className="flex items-center gap-2 font-mono text-xs">
-                        <span className="bg-black/60 px-3 py-1 rounded-full border border-white/15 font-black text-[#80E4B7]">
-                          1080p · 60 FPS
-                        </span>
-                        <span className="text-slate-400 hidden sm:inline">16:9 VIEWPORT</span>
+                        <span className="text-[#94A3B8] hidden sm:inline">1080p / 60 FPS</span>
                       </div>
                     </div>
 
-                    {/* Clean Empty Placeholder Container */}
-                    <div className="relative my-auto w-full h-[240px] sm:h-[270px] lg:h-[300px] bg-[#050806] rounded-[20px] border-2 border-dashed border-[#1E3A2B] overflow-hidden flex flex-col items-center justify-center p-6 text-center group transition-colors hover:border-[#006C4C]/80">
-                      
-                      {/* Corner Tactical Reticle Crosshairs */}
-                      <div className="absolute top-3.5 left-3.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#006C4C]/70" />
-                      <div className="absolute top-3.5 right-3.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#006C4C]/70" />
-                      <div className="absolute bottom-3.5 left-3.5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#006C4C]/70" />
-                      <div className="absolute bottom-3.5 right-3.5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#006C4C]/70" />
-
-                      {/* Tactical Grid Background Overlay */}
-                      <div 
-                        className="absolute inset-0 pointer-events-none opacity-25"
-                        style={{
-                          backgroundImage: 'linear-gradient(to right, rgba(0, 255, 128, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 128, 0.08) 1px, transparent 1px)',
-                          backgroundSize: '24px 24px',
-                        }}
-                      />
-
-                      {/* Center Placeholder Badge & Large Info */}
-                      <div className="relative z-10 flex flex-col items-center gap-3.5 max-w-md">
-                        <div className="w-16 h-16 rounded-2xl bg-[#003824]/90 border border-[#006C4C] flex items-center justify-center text-[#80E4B7] shadow-[0_0_24px_rgba(0,108,76,0.35)]">
-                          <Video className="w-8 h-8" />
-                        </div>
-
-                        <div>
-                          <div className="font-mono text-base sm:text-lg font-black text-white uppercase tracking-wider">
-                            {piece.placeholderTitle}
-                          </div>
-                          <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                            Simulation Video Container · 16:9 Widescreen Viewport
-                          </p>
-                        </div>
-
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 font-mono text-xs font-bold text-slate-200">
-                          <Plus className="w-3.5 h-3.5 text-[#80E4B7]" />
-                          <span>Ready for SITL Recording Upload</span>
-                        </div>
+                    {/* Pure Empty State Body */}
+                    <div className="my-auto py-6 flex flex-col items-center justify-center text-center space-y-3.5">
+                      <div className="w-16 h-16 rounded-2xl bg-white border border-[#CBD5E1] flex items-center justify-center text-[#64748B] shadow-sm group-hover:scale-105 group-hover:text-[#006C4C] group-hover:border-[#006C4C] transition-all">
+                        <FileVideo className="w-8 h-8 stroke-[1.5]" />
                       </div>
 
+                      <div className="space-y-1 max-w-sm">
+                        <h4 className="text-base sm:text-lg font-black text-[#1E293B] font-sans tracking-tight">
+                          {piece.placeholderTitle}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-[#64748B] font-sans">
+                          Empty simulation video container. Ready for high-definition Gazebo 8 SITL video footage.
+                        </p>
+                      </div>
+
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#CBD5E1] text-[#475569] font-mono text-xs font-bold shadow-2xs">
+                        <UploadCloud className="w-3.5 h-3.5 text-[#006C4C]" />
+                        <span>Awaiting Video Asset Attachment</span>
+                      </div>
                     </div>
 
-                    {/* Bottom Large Telemetry Strip */}
-                    <div className="space-y-2 pt-2 border-t border-white/10 font-mono">
+                    {/* Bottom Telemetry Spec Row */}
+                    <div className="space-y-2 pt-2.5 border-t border-[#E2E8F0] font-mono">
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                         {piece.telemetry.map((t, tIdx) => (
-                          <div key={tIdx} className="p-2.5 rounded-[14px] bg-white/[0.06] border border-white/10 flex flex-col justify-between">
-                            <span className="text-slate-400 text-[11px] uppercase font-bold">{t.label}</span>
-                            <span className="font-black text-[#80E4B7] text-sm sm:text-base mt-0.5">{t.value}</span>
+                          <div key={tIdx} className="p-2 rounded-[12px] bg-white border border-[#E2E8F0] flex flex-col justify-between shadow-2xs">
+                            <span className="text-[#64748B] text-[10.5px] uppercase font-bold">{t.label}</span>
+                            <span className="font-black text-[#006C4C] text-sm sm:text-base mt-0.5">{t.value}</span>
                           </div>
                         ))}
                       </div>
 
-                      {/* Verification Seal */}
-                      <div className="p-2.5 rounded-[14px] bg-[#004D33]/60 border border-[#006C4C]/60 flex items-center justify-between text-xs sm:text-sm text-[#A7F3D0]">
-                        <span className="flex items-center gap-2 font-bold">
-                          <CheckCircle2 className="w-4 h-4 text-[#80E4B7]" />
+                      {/* Verification Gate Seal */}
+                      <div className="p-2 rounded-[12px] bg-[#E8F5E9] border border-[#C8E6C9] flex items-center justify-between text-xs text-[#006C4C]">
+                        <span className="flex items-center gap-1.5 font-bold">
+                          <CheckCircle2 className="w-4 h-4 text-[#006C4C]" />
                           GATE G5 VERIFIED: 0 COLLISIONS ACROSS 120 FLIGHT VECTORS
                         </span>
-                        <span className="text-xs text-slate-300 font-mono font-bold">PyTest: 3.10s (100%)</span>
+                        <span className="text-xs text-[#2E7D32] font-mono font-bold">PyTest: 3.10s (100%)</span>
                       </div>
                     </div>
 
