@@ -177,22 +177,30 @@ export const Slide03Benchmark: React.FC<Slide03BenchmarkProps> = ({
         </header>
 
         {/* Main Headline & Minimal Text-Only Telemetry */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-2 pb-1 gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-1.5 pb-1 gap-2">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-black text-[#09090B] tracking-tight leading-none font-sans">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[11px] font-mono font-black uppercase text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                THE SUTRA TRANSFORMATION
+              </span>
+              <span className="text-xs font-mono text-slate-500 font-bold hidden sm:inline">
+                From single-drone blindspots to 100% autonomous swarm coverage in the Golden Hour.
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black text-[#09090B] tracking-tight leading-none font-sans">
               AI Drone Swarms Find Survivors <span className="text-emerald-700 underline decoration-emerald-300 decoration-4 underline-offset-4">3–4x Faster</span> with Zero Blind Spots
             </h2>
           </div>
           
-          {/* Minimalist Text-Only Metrics */}
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm font-bold text-slate-700 shrink-0">
-            <span>10–18 MIN / SQ MILE</span>
+          {/* High-Contrast Solution Moat Metrics */}
+          <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-slate-700 shrink-0">
+            <span className="text-emerald-700 font-black">10–18 MIN / SQ MILE</span>
             <span className="text-slate-300">•</span>
-            <span className="text-emerald-700">85% DETECTION RATE</span>
+            <span className="text-emerald-700 font-black">85% DETECTION RATE</span>
             <span className="text-slate-300">•</span>
-            <span>90% FEWER CREW</span>
+            <span className="text-slate-900 font-black">90% FEWER CREW</span>
             <span className="text-slate-300">•</span>
-            <span className="text-emerald-700">₹95,000 / SORTIE</span>
+            <span className="text-emerald-700 font-black">₹95k / SORTIE</span>
           </div>
         </div>
 

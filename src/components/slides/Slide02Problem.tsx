@@ -182,22 +182,30 @@ export const Slide02Problem: React.FC<Slide02ProblemProps> = ({
         </header>
 
         {/* Main Headline & Minimal Text-Only Telemetry */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-2 pb-1 gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-1.5 pb-1 gap-2">
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-black text-[#09090B] tracking-tight leading-none font-sans">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[11px] font-mono font-black uppercase text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full">
+                THE HUMAN COST OF INACTION
+              </span>
+              <span className="text-xs font-mono text-slate-500 font-bold hidden sm:inline">
+                Every minute of drone downtime leaves survivors trapped beyond the Golden Hour.
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black text-[#09090B] tracking-tight leading-none font-sans">
               Traditional Search &amp; Rescue Collapses Across <span className="text-red-600 underline decoration-red-300 decoration-4 underline-offset-4">4 Critical Voids</span>
             </h2>
           </div>
           
-          {/* Minimalist Text-Only Metrics (No chunky chips) */}
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm font-bold text-slate-700 shrink-0">
-            <span className="text-red-600">70% CANOPY CRASHES</span>
+          {/* High-Contrast Loss Aversion Metrics */}
+          <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs sm:text-sm font-bold text-slate-700 shrink-0">
+            <span className="text-red-600 font-black">70% CANOPY CRASHES</span>
             <span className="text-slate-300">•</span>
-            <span>15–30m GEO ERROR</span>
+            <span className="text-slate-900 font-black">15–30m GEO ERROR</span>
             <span className="text-slate-300">•</span>
-            <span>2–3H DELAY</span>
+            <span className="text-slate-900 font-black">2–3H DELAY</span>
             <span className="text-slate-300">•</span>
-            <span className="text-red-600">₹40L+ AIRFRAMES</span>
+            <span className="text-red-600 font-black">₹40L+ AIRFRAMES</span>
           </div>
         </div>
 
