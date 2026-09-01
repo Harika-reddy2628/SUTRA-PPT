@@ -14,9 +14,11 @@ import {
   Activity, 
   ExternalLink,
   Sparkles,
-  Zap
+  Zap,
+  Radar
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { RadarChartCard, RadarDataPoint } from '../ui/RadarChartCard';
 
 export interface SubsystemPiece {
   id: string;
@@ -28,6 +30,7 @@ export interface SubsystemPiece {
   problemSolved: string;
   howItWorks: string;
   specs: { label: string; value: string; unit: string }[];
+  radarData: RadarDataPoint[];
   researchPapers: {
     authors: string;
     year: string;
@@ -57,6 +60,14 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Minimum Gap', value: '3.80 – 7.44', unit: 'meters apart' },
       { label: 'Flight Layers', value: '3.5 – 4.6', unit: 'm (stacked heights)' },
       { label: 'Safety Bubble', value: '2.80', unit: 'm auto-push radius' },
+    ],
+    radarData: [
+      { label: 'Collision Shield', value: 100, baseline: 30 },
+      { label: 'Wind Rejection', value: 92, baseline: 50 },
+      { label: 'Smoothness', value: 95, baseline: 45 },
+      { label: '50Hz Locked', value: 100, baseline: 60 },
+      { label: 'Canopy Map', value: 90, baseline: 40 },
+      { label: 'AI Reaction', value: 96, baseline: 35 }
     ],
     researchPapers: [
       {
@@ -101,6 +112,14 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Flight Smoothness', value: '< 4.20', unit: 'm/s³ (zero jerk)' },
       { label: 'Dust Dissolves In', value: '3 – 5', unit: 'frames (instant)' },
     ],
+    radarData: [
+      { label: 'Collision Shield', value: 95, baseline: 30 },
+      { label: 'Wind Rejection', value: 90, baseline: 50 },
+      { label: 'Smoothness', value: 99, baseline: 45 },
+      { label: '50Hz Locked', value: 100, baseline: 60 },
+      { label: 'Canopy Map', value: 100, baseline: 40 },
+      { label: 'AI Reaction', value: 92, baseline: 35 }
+    ],
     researchPapers: [
       {
         authors: 'Hornung et al.',
@@ -143,6 +162,14 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'AI Reaction Time', value: '0.040', unit: 'milliseconds' },
       { label: 'Max Wind Handled', value: '18.0', unit: 'm/s gale gusts' },
       { label: 'Position Drift', value: '< 0.35', unit: 'meters in heavy wind' },
+    ],
+    radarData: [
+      { label: 'Collision Shield', value: 94, baseline: 30 },
+      { label: 'Wind Rejection', value: 100, baseline: 50 },
+      { label: 'Smoothness', value: 93, baseline: 45 },
+      { label: '50Hz Locked', value: 100, baseline: 60 },
+      { label: 'Canopy Map', value: 91, baseline: 40 },
+      { label: 'AI Reaction', value: 100, baseline: 35 }
     ],
     researchPapers: [
       {
@@ -187,6 +214,14 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Startup Safety', value: '10-Beat', unit: 'warmup check' },
       { label: 'Failsafe Auto-Land', value: '500', unit: 'ms quick trigger' },
     ],
+    radarData: [
+      { label: 'Collision Shield', value: 98, baseline: 30 },
+      { label: 'Wind Rejection', value: 95, baseline: 50 },
+      { label: 'Smoothness', value: 97, baseline: 45 },
+      { label: '50Hz Locked', value: 100, baseline: 60 },
+      { label: 'Canopy Map', value: 94, baseline: 40 },
+      { label: 'AI Reaction', value: 95, baseline: 35 }
+    ],
     researchPapers: [
       {
         authors: 'OMG Consortium',
@@ -228,6 +263,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
   onActiveChange,
 }) => {
   const [internalIndex, setInternalIndex] = useState(activeIndex);
+  const [activeTab, setActiveTab] = useState<'radar' | 'research'>('radar');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -361,10 +397,10 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
           })}
         </div>
 
-        {/* Main Workspace with Snappy Transitions */}
+        {/* Main Workspace: Left Media Card (7 Cols / 58%) + Right Interactive Card (5 Cols / 42%) */}
         <main className="w-full flex-1 my-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch overflow-hidden">
           
-          {/* LEFT: M3 Elevated Dark Media Card (7 Cols / 58% Viewport) */}
+          {/* LEFT: M3 Elevated Dark Media Card */}
           <div className="lg:col-span-7 rounded-[26px] bg-[#0A100D] border border-[#1E2E25] p-4 lg:p-5 text-white flex flex-col justify-between shadow-[0_8px_24px_rgba(0,0,0,0.12),0_2px_6px_rgba(0,0,0,0.08)] relative overflow-hidden">
             
             {/* Top Media Bar */}
@@ -496,8 +532,8 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
 
           </div>
 
-          {/* RIGHT: M3 Surface Card Container with Snappy Fade Transition (5 Cols / 42% Viewport) */}
-          <div className="lg:col-span-5 rounded-[26px] bg-[#FFFFFF] border border-[#E1E3E8] shadow-[0_4px_20px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] p-5 lg:p-6 flex flex-col justify-between overflow-hidden">
+          {/* RIGHT: M3 Surface Card Container with Radar Card Component (5 Cols / 42% Viewport) */}
+          <div className="lg:col-span-5 rounded-[26px] bg-[#FFFFFF] border border-[#E1E3E8] shadow-[0_4px_20px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] p-4 sm:p-5 flex flex-col justify-between overflow-hidden">
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -506,92 +542,133 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="space-y-3.5 h-full flex flex-col justify-between"
+                className="space-y-3 h-full flex flex-col justify-between"
               >
                 
-                {/* Top Section */}
-                <div className="space-y-3">
-                  {/* M3 Eyebrow & Status Chip */}
+                {/* Header & Subsystem Information */}
+                <div className="space-y-2.5">
+                  
+                  {/* Top Bar: Eyebrow + Mode Toggle Pill */}
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-bold text-[#006C4C] tracking-wider uppercase">
                       {currentPiece.tag}
                     </span>
-                    <span className="px-3 py-0.5 rounded-full bg-[#E8F5E9] border border-[#C8E6C9] text-[#006C4C] font-mono text-[11px] font-black">
-                      {currentPiece.badge}
-                    </span>
+                    
+                    {/* View Switcher: Radar vs Research */}
+                    <div className="flex items-center bg-[#F2F3F8] p-0.5 rounded-full border border-[#E1E3E8] text-[10px] font-mono font-bold">
+                      <button
+                        onClick={() => setActiveTab('radar')}
+                        className={cn(
+                          "px-2.5 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer",
+                          activeTab === 'radar' 
+                            ? "bg-[#006C4C] text-white shadow-xs" 
+                            : "text-[#74777F] hover:text-[#191C1E]"
+                        )}
+                      >
+                        <Radar className="w-3 h-3" />
+                        <span>RADAR</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('research')}
+                        className={cn(
+                          "px-2.5 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer",
+                          activeTab === 'research' 
+                            ? "bg-[#006C4C] text-white shadow-xs" 
+                            : "text-[#74777F] hover:text-[#191C1E]"
+                        )}
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        <span>RESEARCH</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* M3 Headline Large */}
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#191C1E] tracking-tight leading-tight font-sans">
+                  <h3 className="text-xl sm:text-2xl font-black text-[#191C1E] tracking-tight leading-tight font-sans">
                     {currentPiece.title}
                   </h3>
 
-                  {/* M3 Alert / Problem Solved Tonal Box */}
-                  <div className="p-3 rounded-[16px] bg-[#FFDAD6]/40 border border-[#FFDAD6] text-[#93000A] text-xs font-mono font-bold leading-relaxed flex items-start gap-2 shadow-2xs">
+                  {/* Problem Solved 1-Liner */}
+                  <div className="p-2.5 rounded-[14px] bg-[#FFDAD6]/40 border border-[#FFDAD6] text-[#93000A] text-xs font-mono font-bold leading-snug flex items-start gap-2 shadow-2xs">
                     <div className="w-2 h-2 rounded-full bg-[#BA1A1A] mt-1 shrink-0" />
                     <span>{currentPiece.problemSolved}</span>
                   </div>
 
-                  {/* Plain-English "How It Works" Card */}
-                  <div className="p-3.5 rounded-[18px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-1 shadow-2xs">
-                    <div className="text-[10.5px] font-mono font-bold text-[#006C4C] uppercase tracking-wider flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-[#006C4C]" />
+                  {/* Plain-English Field Breakthrough */}
+                  <div className="p-2.5 rounded-[14px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-0.5 shadow-2xs">
+                    <div className="text-[10px] font-mono font-bold text-[#006C4C] uppercase tracking-wider flex items-center gap-1">
+                      <Zap className="w-3 h-3 text-[#006C4C]" />
                       <span>HOW SUTRA SOLVES IT IN THE FIELD:</span>
                     </div>
-                    <p className="text-xs sm:text-[13px] text-[#191C1E] font-sans font-medium leading-relaxed">
+                    <p className="text-xs text-[#191C1E] font-sans font-medium leading-relaxed">
                       {currentPiece.howItWorks}
                     </p>
                   </div>
+
                 </div>
 
-                {/* Bottom Section: Metrics & Research */}
-                <div className="space-y-3">
-                  {/* 3 M3 Tonal Metric Cards */}
-                  <div className="grid grid-cols-3 gap-2 font-mono">
-                    {currentPiece.specs.map((s, sIdx) => (
-                      <div 
-                        key={sIdx} 
-                        className="p-2.5 rounded-[16px] bg-[#F8FAFD] border border-[#E1E3E8] shadow-2xs"
-                      >
-                        <div className="text-base sm:text-lg font-black text-[#191C1E] leading-tight">{s.value}</div>
-                        <div className="text-[9.5px] font-bold text-[#006C4C] uppercase leading-tight mt-0.5">{s.label}</div>
-                        <div className="text-[8.5px] text-[#74777F]">{s.unit}</div>
-                      </div>
-                    ))}
+                {/* Conditional View: Exact Radar Card Component (Default) OR Research Papers */}
+                {activeTab === 'radar' ? (
+                  <div className="space-y-1">
+                    {/* Exact Radar Chart Component matching user reference */}
+                    <RadarChartCard
+                      title="By Capability"
+                      subtitle="Flight performance by category (Gazebo 8 SITL)"
+                      data={currentPiece.radarData}
+                      accentColor="#006C4C"
+                      fillColor="rgba(0, 108, 76, 0.22)"
+                      className="border-none shadow-none p-2 bg-[#F8FAFD] rounded-[20px]"
+                    />
                   </div>
-
-                  {/* M3 Research Papers Container */}
-                  <div className="p-3 rounded-[18px] bg-[#E8F5E9]/50 border border-[#C8E6C9] space-y-1.5 shadow-2xs">
-                    <div className="text-[10px] font-mono font-bold text-[#006C4C] uppercase tracking-widest flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-[#006C4C]" />
-                      <span>GROUNDING RESEARCH PAPERS &amp; PROVEN BENEFIT:</span>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      {currentPiece.researchPapers.map((paper, pIdx) => (
+                ) : (
+                  <div className="space-y-2">
+                    {/* 3 M3 Tonal Metric Cards */}
+                    <div className="grid grid-cols-3 gap-2 font-mono">
+                      {currentPiece.specs.map((s, sIdx) => (
                         <div 
-                          key={pIdx} 
-                          className="p-2.5 rounded-[12px] bg-white border border-[#C8E6C9]/60 text-xs space-y-0.5 shadow-2xs"
+                          key={sIdx} 
+                          className="p-2.5 rounded-[16px] bg-[#F8FAFD] border border-[#E1E3E8] shadow-2xs"
                         >
-                          <div className="font-sans font-bold text-[#191C1E] leading-tight flex items-center justify-between">
-                            <span>{pIdx + 1}. {paper.title}</span>
-                            <span className="font-mono text-[9px] font-bold text-[#006C4C] bg-[#E8F5E9] px-2 py-0.5 rounded-full border border-[#C8E6C9] shrink-0 ml-1">
-                              {paper.year}
-                            </span>
-                          </div>
-                          <div className="text-[10.5px] text-[#44474E] font-sans">
-                            {paper.authors} — <span className="italic font-medium">{paper.venue}</span>
-                          </div>
-                          <div className="text-[9.5px] font-mono text-[#006C4C] font-semibold flex items-center gap-1.5 pt-0.5">
-                            <ExternalLink className="w-2.5 h-2.5 shrink-0" />
-                            <span className="text-[#006C4C] font-bold">Proven benefit:</span>
-                            <span className="text-[#191C1E] font-sans font-normal">{paper.provenBenefit}</span>
-                          </div>
+                          <div className="text-base sm:text-lg font-black text-[#191C1E] leading-tight">{s.value}</div>
+                          <div className="text-[9.5px] font-bold text-[#006C4C] uppercase leading-tight mt-0.5">{s.label}</div>
+                          <div className="text-[8.5px] text-[#74777F]">{s.unit}</div>
                         </div>
                       ))}
                     </div>
+
+                    {/* Research Papers Container */}
+                    <div className="p-3 rounded-[18px] bg-[#E8F5E9]/50 border border-[#C8E6C9] space-y-1.5 shadow-2xs">
+                      <div className="text-[10px] font-mono font-bold text-[#006C4C] uppercase tracking-widest flex items-center gap-1.5">
+                        <BookOpen className="w-3.5 h-3.5 text-[#006C4C]" />
+                        <span>GROUNDING RESEARCH PAPERS &amp; PROVEN BENEFIT:</span>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        {currentPiece.researchPapers.map((paper, pIdx) => (
+                          <div 
+                            key={pIdx} 
+                            className="p-2.5 rounded-[12px] bg-white border border-[#C8E6C9]/60 text-xs space-y-0.5 shadow-2xs"
+                          >
+                            <div className="font-sans font-bold text-[#191C1E] leading-tight flex items-center justify-between">
+                              <span>{pIdx + 1}. {paper.title}</span>
+                              <span className="font-mono text-[9px] font-bold text-[#006C4C] bg-[#E8F5E9] px-2 py-0.5 rounded-full border border-[#C8E6C9] shrink-0 ml-1">
+                                {paper.year}
+                              </span>
+                            </div>
+                            <div className="text-[10.5px] text-[#44474E] font-sans">
+                              {paper.authors} — <span className="italic font-medium">{paper.venue}</span>
+                            </div>
+                            <div className="text-[9.5px] font-mono text-[#006C4C] font-semibold flex items-center gap-1.5 pt-0.5">
+                              <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                              <span className="text-[#006C4C] font-bold">Proven benefit:</span>
+                              <span className="text-[#191C1E] font-sans font-normal">{paper.provenBenefit}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
 
               </motion.div>
             </AnimatePresence>
