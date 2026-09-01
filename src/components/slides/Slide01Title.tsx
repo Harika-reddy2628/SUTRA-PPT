@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layers } from 'lucide-react';
+import { SplitFlapText } from '../ui/SplitFlapText';
 
 export const Slide01Title: React.FC = () => {
   return (
@@ -38,11 +39,24 @@ export const Slide01Title: React.FC = () => {
 
           {/* Center / Right Pill Tag */}
           <div className="flex items-center gap-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700">
+            <SplitFlapText
+              words={["LAUNCH READY", "SYNC ONLINE", "SIGNAL LIVE", "50HZ LOCKED"]}
+              flipDuration={0.12}
+              stagger={0.06}
+              cycleDelay={2400}
+              tileColor="#111827"
+              textColor="#F8FAFC"
+              tileRadius={5}
+              gap={3}
+              fontSize={13}
+              loop
+              padTo={12}
+            />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-[10px] font-black uppercase tracking-[0.2em] text-slate-700 hidden sm:inline-flex">
               <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
               <span>AUTONOMOUS SWARM</span>
             </div>
-            <div className="font-mono text-xs font-semibold tracking-wider text-slate-500">
+            <div className="font-mono text-xs font-semibold tracking-wider text-slate-500 hidden md:block">
               AUG 2026 <span className="mx-1 text-slate-300">•</span> REV 1.0
             </div>
           </div>

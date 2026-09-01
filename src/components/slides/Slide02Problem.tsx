@@ -1,6 +1,7 @@
 import React from 'react';
 import { Compass, Radio, Mountain, Users, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SplitFlapText } from '../ui/SplitFlapText';
 
 export interface SubsystemVoidData {
   id: string;
@@ -159,9 +160,24 @@ export const Slide02Problem: React.FC<Slide02ProblemProps> = ({
             </div>
           </div>
 
-          <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-red-600 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-            <span>FIELD DISASTER AUDIT</span>
+          <div className="flex items-center gap-3">
+            <SplitFlapText
+              words={["THE PROBLEM", "CRITICAL VOIDS", "DISASTER AUDIT", "SYSTEM FAILURE"]}
+              flipDuration={0.12}
+              stagger={0.06}
+              cycleDelay={2400}
+              tileColor="#18181B"
+              textColor="#FB7185"
+              tileRadius={5}
+              gap={3}
+              fontSize={13}
+              loop
+              padTo={14}
+            />
+            <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-red-600 hidden md:flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              <span>FIELD DISASTER AUDIT</span>
+            </div>
           </div>
         </header>
 

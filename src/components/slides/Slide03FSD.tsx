@@ -17,6 +17,7 @@ import {
   FileVideo
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SplitFlapText } from '../ui/SplitFlapText';
 
 export interface SubsystemPiece {
   id: string;
@@ -291,13 +292,26 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
 
           {/* Interactive Stack Counter + Status Badge */}
           <div className="flex items-center gap-3">
+            <SplitFlapText
+              words={["LAUNCH READY", "SYNC ONLINE", "SIGNAL LIVE", "50HZ LOCKED"]}
+              flipDuration={0.12}
+              stagger={0.06}
+              cycleDelay={2400}
+              tileColor="#003824"
+              textColor="#80E4B7"
+              tileRadius={5}
+              gap={3}
+              fontSize={13}
+              loop
+              padTo={12}
+            />
             <div className="flex items-center gap-2 font-mono text-xs sm:text-sm font-black text-[#006C4C] bg-[#E8F5E9] px-3.5 py-1.5 rounded-full border border-[#C8E6C9] shadow-2xs">
               <Layers className="w-4 h-4" />
-              <span>STACK DECK: 0{internalIndex + 1} / 04</span>
+              <span>STACK: 0{internalIndex + 1} / 04</span>
             </div>
             <div className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-[#006C4C] bg-[#E8F5E9] px-3.5 py-1.5 rounded-full border border-[#C8E6C9] hidden sm:flex items-center gap-2 shadow-2xs">
               <span className="w-2.5 h-2.5 rounded-full bg-[#006C4C] animate-pulse"></span>
-              <span>120 / 120 GNC TESTS PASSED</span>
+              <span>120 / 120 GNC TESTS OK</span>
             </div>
           </div>
         </header>

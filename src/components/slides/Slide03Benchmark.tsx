@@ -1,6 +1,7 @@
 import React from 'react';
 import { Plane, Radio, Mountain, Terminal, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SplitFlapText } from '../ui/SplitFlapText';
 
 export interface SubsystemSolutionData {
   id: string;
@@ -154,9 +155,24 @@ export const Slide03Benchmark: React.FC<Slide03BenchmarkProps> = ({
             </div>
           </div>
 
-          <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-700 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-            <span>PROVEN SYSTEM ARCHITECTURE</span>
+          <div className="flex items-center gap-3">
+            <SplitFlapText
+              words={["THE SOLUTION", "MISSION MOATS", "SWARM READY", "ZERO COLLISION"]}
+              flipDuration={0.12}
+              stagger={0.06}
+              cycleDelay={2400}
+              tileColor="#003824"
+              textColor="#80E4B7"
+              tileRadius={5}
+              gap={3}
+              fontSize={13}
+              loop
+              padTo={14}
+            />
+            <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-emerald-700 hidden md:flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              <span>PROVEN SYSTEM ARCHITECTURE</span>
+            </div>
           </div>
         </header>
 
