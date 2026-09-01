@@ -29,6 +29,9 @@ export const PresentationDeck: React.FC = () => {
   const [slide2Index, setSlide2Index] = useState(0);
   const [slide3Index, setSlide3Index] = useState(0);
   const [slide4Index, setSlide4Index] = useState(0);
+  const [slide5Index, setSlide5Index] = useState(0);
+  const [slide6Index, setSlide6Index] = useState(0);
+  const [slide7Index, setSlide7Index] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
 
@@ -53,14 +56,35 @@ export const PresentationDeck: React.FC = () => {
       return;
     }
 
+    // If on Slide 5 (Subsystem B Comms) and not at last card (index 3), step gallery first
+    if (currentSlide === 4 && slide5Index < 3) {
+      setSlide5Index((prev) => prev + 1);
+      return;
+    }
+
+    // If on Slide 6 (Subsystem C Perception) and not at last card (index 3), step gallery first
+    if (currentSlide === 5 && slide6Index < 3) {
+      setSlide6Index((prev) => prev + 1);
+      return;
+    }
+
+    // If on Slide 7 (Subsystem D GCS) and not at last card (index 3), step gallery first
+    if (currentSlide === 6 && slide7Index < 3) {
+      setSlide7Index((prev) => prev + 1);
+      return;
+    }
+
     setCurrentSlide((prev) => {
       const next = prev < totalSlides - 1 ? prev + 1 : prev;
       if (next === 1) setSlide2Index(0); // Reset Slide 2 gallery when entering
       if (next === 2) setSlide3Index(0); // Reset Slide 3 gallery when entering
       if (next === 3) setSlide4Index(0); // Reset Slide 4 gallery when entering
+      if (next === 4) setSlide5Index(0); // Reset Slide 5 gallery when entering
+      if (next === 5) setSlide6Index(0); // Reset Slide 6 gallery when entering
+      if (next === 6) setSlide7Index(0); // Reset Slide 7 gallery when entering
       return next;
     });
-  }, [currentSlide, slide2Index, slide3Index, slide4Index, totalSlides]);
+  }, [currentSlide, slide2Index, slide3Index, slide4Index, slide5Index, slide6Index, slide7Index, totalSlides]);
 
   const prevSlide = useCallback(() => {
     // If on Slide 2 (Problem Statement) and not at first card (index 0), step gallery back
@@ -81,14 +105,35 @@ export const PresentationDeck: React.FC = () => {
       return;
     }
 
+    // If on Slide 5 (Subsystem B Comms) and not at first card (index 0), step gallery back
+    if (currentSlide === 4 && slide5Index > 0) {
+      setSlide5Index((prev) => prev - 1);
+      return;
+    }
+
+    // If on Slide 6 (Subsystem C Perception) and not at first card (index 0), step gallery back
+    if (currentSlide === 5 && slide6Index > 0) {
+      setSlide6Index((prev) => prev - 1);
+      return;
+    }
+
+    // If on Slide 7 (Subsystem D GCS) and not at first card (index 0), step gallery back
+    if (currentSlide === 6 && slide7Index > 0) {
+      setSlide7Index((prev) => prev - 1);
+      return;
+    }
+
     setCurrentSlide((prev) => {
       const prevIdx = prev > 0 ? prev - 1 : prev;
       if (prevIdx === 1) setSlide2Index(3); // Set to end of gallery when going backwards into slide 2
       if (prevIdx === 2) setSlide3Index(3); // Set to end of gallery when going backwards into slide 3
       if (prevIdx === 3) setSlide4Index(3); // Set to end of gallery when going backwards into slide 4
+      if (prevIdx === 4) setSlide5Index(3); // Set to end of gallery when going backwards into slide 5
+      if (prevIdx === 5) setSlide6Index(3); // Set to end of gallery when going backwards into slide 6
+      if (prevIdx === 6) setSlide7Index(3); // Set to end of gallery when going backwards into slide 7
       return prevIdx;
     });
-  }, [currentSlide, slide2Index, slide3Index, slide4Index]);
+  }, [currentSlide, slide2Index, slide3Index, slide4Index, slide5Index, slide6Index, slide7Index]);
 
   const slides: SlideConfig[] = [
     {
@@ -119,19 +164,19 @@ export const PresentationDeck: React.FC = () => {
       id: 'deep-jscc',
       title: '05. Deep JSCC Neural Video Comms',
       category: 'Subsystem B (Comms)',
-      component: <Slide04DeepJSCC />,
+      component: <Slide04DeepJSCC activeIndex={slide5Index} onActiveChange={setSlide5Index} />,
     },
     {
       id: 'perception',
       title: '06. Tri-Modal Edge AI & DEM Raycast',
       category: 'Subsystem C (Perception)',
-      component: <Slide05Perception />,
+      component: <Slide05Perception activeIndex={slide6Index} onActiveChange={setSlide6Index} />,
     },
     {
       id: 'gcs',
       title: '07. Pegasus 3D WebGPU GCS & ATAK',
       category: 'Subsystem D (GCS)',
-      component: <Slide06GCS />,
+      component: <Slide06GCS activeIndex={slide7Index} onActiveChange={setSlide7Index} />,
     },
     {
       id: 'scorecard',
@@ -267,6 +312,57 @@ export const PresentationDeck: React.FC = () => {
                     key={i}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       slide4Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Slide 5 Step Indicator */}
+          {currentSlide === 4 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-emerald-600 font-bold tracking-wider">COMMS:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide5Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Slide 6 Step Indicator */}
+          {currentSlide === 5 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-emerald-600 font-bold tracking-wider">PERCEPTION:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide6Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Slide 7 Step Indicator */}
+          {currentSlide === 6 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-emerald-600 font-bold tracking-wider">GCS:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide7Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
                     }`}
                   />
                 ))}
