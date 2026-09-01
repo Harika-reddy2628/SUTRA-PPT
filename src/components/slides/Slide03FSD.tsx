@@ -281,8 +281,8 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
 
       <div className="relative z-10 h-full flex flex-col justify-between">
         
-        {/* Top Header */}
-        <header className="flex justify-between items-center pb-2 border-b border-[#E1E3E8]">
+        {/* Top Header: Material Design 3 Elevated App Bar */}
+        <header className="flex justify-between items-center pb-2.5 border-b border-[#E1E3E8]">
           <div className="flex items-center gap-3">
             <div className="w-3 h-7 bg-[#006C4C] rounded-full shadow-xs"></div>
             <div className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] text-[#191C1E]">
@@ -290,7 +290,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
             </div>
           </div>
 
-          {/* Interactive Stack Counter + Status Badge */}
+          {/* Interactive Mechanical Split-Flap Ticker + Status Chips */}
           <div className="flex items-center gap-3">
             <SplitFlapText
               words={["LAUNCH READY", "SYNC ONLINE", "SIGNAL LIVE", "50HZ LOCKED"]}
@@ -316,7 +316,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
           </div>
         </header>
 
-        {/* Big Headline Row */}
+        {/* Headline Row with Segmented M3 Pill Navigation */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-1 pb-1.5 gap-2">
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-black text-[#191C1E] tracking-tight leading-none font-sans">
@@ -324,7 +324,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
             </h2>
           </div>
           
-          {/* Stack Navigation Pill Buttons */}
+          {/* M3 Segmented Pill Stepper */}
           <div className="flex items-center gap-2 shrink-0">
             <div className="flex items-center bg-white p-1 rounded-full border border-[#E1E3E8] shadow-xs">
               {SUBSYSTEM_A_PIECES.map((p, idx) => (
@@ -420,7 +420,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                   if (!isCurrent) handleSelect(idx);
                 }}
                 className={cn(
-                  "absolute inset-0 w-full h-full rounded-[26px] bg-white border border-[#E1E3E8] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.07),0_2px_6px_rgba(0,0,0,0.04)] flex flex-col justify-between transition-shadow",
+                  "absolute inset-0 w-full h-full rounded-[28px] bg-white border border-[#E1E3E8] p-5 sm:p-6 shadow-[0_12px_36px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.04)] flex flex-col justify-between transition-shadow",
                   !isCurrent && "cursor-pointer hover:border-[#006C4C]"
                 )}
                 style={{
@@ -429,7 +429,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                 }}
               >
                 
-                {/* Individual Card Top HUD */}
+                {/* Individual Card Top HUD: M3 Elevated Header */}
                 <div className="flex justify-between items-center pb-2.5 border-b border-[#F1F5F9]">
                   <div className="flex items-center gap-3">
                     <span className="w-7 h-7 rounded-full bg-[#003824] text-[#80E4B7] flex items-center justify-center font-mono text-sm font-black shadow-xs">
@@ -444,7 +444,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                     <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] border border-[#C8E6C9] text-[#006C4C] font-mono text-xs sm:text-sm font-black shadow-2xs">
                       {piece.badge}
                     </span>
-                    {/* Stack Dots Indicator */}
+                    {/* M3 Active Progress Indicator Dots */}
                     <div className="flex items-center gap-1.5 ml-2">
                       {SUBSYSTEM_A_PIECES.map((_, dotIdx) => (
                         <span
@@ -459,52 +459,52 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                   </div>
                 </div>
 
-                {/* Main Card Content Grid (50% Pure Empty State Container + 50% High-Legibility Text Breakdown) */}
+                {/* Main Card Content Grid (50% M3 Empty State Video Holder + 50% M3 Structured Intelligence) */}
                 <div className="w-full flex-1 my-2.5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch overflow-hidden">
                   
-                  {/* LEFT (6 Cols / 50%): Pure Empty State Video Container */}
+                  {/* LEFT (6 Cols / 50%): Material UI Clean Empty State Container */}
                   <div className="lg:col-span-6 rounded-[24px] bg-[#F8FAFC] border-2 border-dashed border-[#CBD5E1] p-5 sm:p-6 flex flex-col justify-between shadow-2xs relative overflow-hidden group hover:border-[#006C4C]/60 transition-colors">
                     
                     {/* Empty State Top Bar */}
-                    <div className="flex justify-between items-center pb-2 border-b border-[#E2E8F0] font-mono text-xs text-[#64748B]">
+                    <div className="flex justify-between items-center pb-2.5 border-b border-[#E2E8F0] font-mono text-xs text-[#64748B]">
                       <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-[#006C4C]">
-                        <Film className="w-3.5 h-3.5 text-[#006C4C]" />
-                        <span>VIDEO VIEWPORT // EMPTY STATE</span>
+                        <Film className="w-4 h-4 text-[#006C4C]" />
+                        <span>SIMULATION VIEWPORT // EMPTY STATE</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="bg-white px-2.5 py-0.5 rounded-full border border-[#E2E8F0] font-bold text-[#334155]">
+                      <div className="flex items-center gap-2 font-bold">
+                        <span className="bg-white px-3 py-1 rounded-full border border-[#E2E8F0] text-[#334155] shadow-2xs">
                           16:9 RATIO
                         </span>
-                        <span className="text-[#94A3B8] hidden sm:inline">1080p / 60 FPS</span>
+                        <span className="text-[#94A3B8] hidden sm:inline">1080p · 60 FPS</span>
                       </div>
                     </div>
 
-                    {/* Pure Empty State Body */}
+                    {/* M3 Empty State Hero Block */}
                     <div className="my-auto py-6 flex flex-col items-center justify-center text-center space-y-3.5">
-                      <div className="w-16 h-16 rounded-2xl bg-white border border-[#CBD5E1] flex items-center justify-center text-[#64748B] shadow-sm group-hover:scale-105 group-hover:text-[#006C4C] group-hover:border-[#006C4C] transition-all">
-                        <FileVideo className="w-8 h-8 stroke-[1.5]" />
+                      <div className="w-18 h-18 rounded-3xl bg-white border border-[#CBD5E1] flex items-center justify-center text-[#64748B] shadow-sm group-hover:scale-105 group-hover:text-[#006C4C] group-hover:border-[#006C4C] transition-all">
+                        <FileVideo className="w-9 h-9 stroke-[1.5]" />
                       </div>
 
-                      <div className="space-y-1 max-w-sm">
-                        <h4 className="text-base sm:text-lg font-black text-[#1E293B] font-sans tracking-tight">
+                      <div className="space-y-1.5 max-w-md">
+                        <h4 className="text-lg sm:text-xl font-black text-[#1E293B] font-sans tracking-tight">
                           {piece.placeholderTitle}
                         </h4>
-                        <p className="text-xs sm:text-sm text-[#64748B] font-sans">
-                          Empty simulation video container. Ready for high-definition Gazebo 8 SITL video footage.
+                        <p className="text-xs sm:text-sm text-[#64748B] font-sans leading-relaxed">
+                          Clean empty state viewport. Ready for high-definition Gazebo 8 SITL video footage attachment.
                         </p>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#CBD5E1] text-[#475569] font-mono text-xs font-bold shadow-2xs">
-                        <UploadCloud className="w-3.5 h-3.5 text-[#006C4C]" />
-                        <span>Awaiting Video Asset Attachment</span>
+                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBD5E1] text-[#475569] font-mono text-xs font-bold shadow-2xs">
+                        <UploadCloud className="w-4 h-4 text-[#006C4C]" />
+                        <span>Awaiting SITL Video Asset Attachment</span>
                       </div>
                     </div>
 
-                    {/* Bottom Telemetry Spec Row */}
+                    {/* Bottom Telemetry Spec Row (Elevated M3 Tiles) */}
                     <div className="space-y-2 pt-2.5 border-t border-[#E2E8F0] font-mono">
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                         {piece.telemetry.map((t, tIdx) => (
-                          <div key={tIdx} className="p-2 rounded-[12px] bg-white border border-[#E2E8F0] flex flex-col justify-between shadow-2xs">
+                          <div key={tIdx} className="p-2.5 rounded-[14px] bg-white border border-[#E2E8F0] flex flex-col justify-between shadow-2xs">
                             <span className="text-[#64748B] text-[10.5px] uppercase font-bold">{t.label}</span>
                             <span className="font-black text-[#006C4C] text-sm sm:text-base mt-0.5">{t.value}</span>
                           </div>
@@ -512,8 +512,8 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                       </div>
 
                       {/* Verification Gate Seal */}
-                      <div className="p-2 rounded-[12px] bg-[#E8F5E9] border border-[#C8E6C9] flex items-center justify-between text-xs text-[#006C4C]">
-                        <span className="flex items-center gap-1.5 font-bold">
+                      <div className="p-2.5 rounded-[14px] bg-[#E8F5E9] border border-[#C8E6C9] flex items-center justify-between text-xs text-[#006C4C] shadow-2xs">
+                        <span className="flex items-center gap-2 font-bold">
                           <CheckCircle2 className="w-4 h-4 text-[#006C4C]" />
                           GATE G5 VERIFIED: 0 COLLISIONS ACROSS 120 FLIGHT VECTORS
                         </span>
@@ -523,8 +523,8 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
 
                   </div>
 
-                  {/* RIGHT (6 Cols / 50%): High-Legibility Text & Research Breakdown */}
-                  <div className="lg:col-span-6 rounded-[24px] bg-[#FFFFFF] border border-[#E1E3E8] p-5 sm:p-6 flex flex-col justify-between overflow-hidden shadow-sm">
+                  {/* RIGHT (6 Cols / 50%): High-Legibility Material UI Intelligence & Research */}
+                  <div className="lg:col-span-6 rounded-[24px] bg-[#FFFFFF] border border-[#E1E3E8] p-5 sm:p-6 flex flex-col justify-between overflow-hidden shadow-2xs">
                     
                     <div className="space-y-3.5">
                       {/* Monumental Title */}
@@ -532,14 +532,14 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                         {piece.title}
                       </h3>
 
-                      {/* Problem Solved Callout */}
-                      <div className="p-3.5 rounded-[16px] bg-[#FFDAD6]/50 border border-[#FFDAD6] text-[#93000A] text-sm sm:text-[15.5px] font-mono font-bold leading-relaxed flex items-start gap-2.5 shadow-2xs">
+                      {/* M3 Error Container: Problem Solved Callout */}
+                      <div className="p-4 rounded-[18px] bg-[#FFDAD6]/50 border border-[#FFDAD6] text-[#93000A] text-sm sm:text-[15.5px] font-mono font-bold leading-relaxed flex items-start gap-2.5 shadow-2xs">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#BA1A1A] mt-1.5 shrink-0" />
                         <span>{piece.problemSolved}</span>
                       </div>
 
-                      {/* How SUTRA Solves It */}
-                      <div className="p-4 rounded-[18px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-1.5 shadow-2xs">
+                      {/* M3 Tonal Surface: How SUTRA Solves It */}
+                      <div className="p-4 rounded-[20px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-1.5 shadow-2xs">
                         <div className="text-xs sm:text-[13px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-2">
                           <Zap className="w-4 h-4 text-[#006C4C]" />
                           <span>HOW SUTRA SOLVES IT IN THE FIELD:</span>
@@ -550,7 +550,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                       </div>
                     </div>
 
-                    {/* 3 Large Spec Tiles */}
+                    {/* 3 Large Spec Tiles (M3 Elevated Surface) */}
                     <div className="grid grid-cols-3 gap-3 font-mono my-2.5">
                       {piece.specs.map((s, sIdx) => (
                         <div 
@@ -564,8 +564,8 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                       ))}
                     </div>
 
-                    {/* Grounding Academic Research Papers */}
-                    <div className="p-4 rounded-[20px] bg-[#E8F5E9]/50 border border-[#C8E6C9] space-y-2 shadow-2xs">
+                    {/* Grounding Academic Research Papers (M3 Secondary Container) */}
+                    <div className="p-4 rounded-[20px] bg-[#E8F5E9]/60 border border-[#C8E6C9] space-y-2 shadow-2xs">
                       <div className="text-xs sm:text-[13px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-2">
                         <BookOpen className="w-4 h-4 text-[#006C4C]" />
                         <span>GROUNDING RESEARCH PAPERS &amp; PROVEN BENEFIT:</span>
@@ -602,7 +602,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
           })}
         </div>
 
-        {/* Bottom Verification & Audit Footer */}
+        {/* Bottom Verification & Audit Footer: M3 Status Bar */}
         <footer className="pt-2 border-t border-[#E1E3E8] flex flex-col gap-1">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 font-mono">
             <div className="p-2 rounded-[14px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
