@@ -2,22 +2,18 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  Maximize, 
   BookOpen, 
   ShieldCheck, 
   Box, 
   Wind, 
   Activity, 
   ExternalLink,
-  Sparkles,
   Zap,
   ChevronUp,
   ChevronDown,
-  Layers
+  Layers,
+  Video,
+  Plus
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -39,9 +35,7 @@ export interface SubsystemPiece {
     doi: string;
     provenBenefit: string;
   }[];
-  videoSrc: string;
-  posterSrc: string;
-  videoTitle: string;
+  placeholderTitle: string;
   telemetry: { label: string; value: string }[];
   icon: React.ReactNode;
 }
@@ -79,9 +73,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Maintains an unbreachable safety bubble around each drone that overrides any risky flight command.'
       }
     ],
-    videoSrc: 'assets/videos/simulation_ring_crossing.mp4',
-    posterSrc: 'assets/illustrations/subsys_a_orca_3d.jpg',
-    videoTitle: '5-Drone Crossing Simulation (Gazebo 8)',
+    placeholderTitle: '5-UAV Ring-Crossing Gazebo 8 Simulation Video',
     telemetry: [
       { label: 'Simulator', value: 'Gazebo 8' },
       { label: 'Swarm Fleet', value: '5 Drones' },
@@ -122,9 +114,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Smooth curve mathematics that prevent sharp drone jerks and keep motors cool.'
       }
     ],
-    videoSrc: 'assets/videos/simulation_fsd_voxels.mp4',
-    posterSrc: 'assets/illustrations/subsys_a_fsd_occupancy.jpg',
-    videoTitle: 'Dense Forest 3D Obstacle Planner',
+    placeholderTitle: 'Dense Forest 3D Obstacle & OctoMap Voxel Video',
     telemetry: [
       { label: 'Map Volume', value: '32×32×16m' },
       { label: 'Dust Fade', value: 'Auto-Clean' },
@@ -165,9 +155,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Mathematically guarantees the AI flight adjustments never destabilize the drone.'
       }
     ],
-    videoSrc: 'assets/videos/simulation_neuroflight_wind.mp4',
-    posterSrc: 'assets/illustrations/subsys_a_neuroflight.jpg',
-    videoTitle: '18.0 m/s Wind Shear Test in Gazebo',
+    placeholderTitle: '18.0 m/s Wind Shear & Turbulence Flight Video',
     telemetry: [
       { label: 'AI Reaction', value: '0.040 ms' },
       { label: 'Wind Speed', value: '18.0 m/s' },
@@ -208,9 +196,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
         provenBenefit: 'Guarantees sub-millisecond command execution and automatic emergency landings.'
       }
     ],
-    videoSrc: 'assets/videos/simulation_px4_offboard.mp4',
-    posterSrc: 'assets/illustrations/subsys_a_px4_bridge.jpg',
-    videoTitle: 'PX4 50Hz Hardware Control Bridge',
+    placeholderTitle: 'PX4 50Hz MicroXRCE Hardware Bridge Video',
     telemetry: [
       { label: 'Command Stream', value: '50.0 Hz' },
       { label: 'Command Delay', value: '< 1.0 ms' },
@@ -231,9 +217,6 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
   onActiveChange,
 }) => {
   const [internalIndex, setInternalIndex] = useState(activeIndex);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const stackContainerRef = useRef<HTMLDivElement | null>(null);
   const lastScrollTime = useRef<number>(0);
 
@@ -244,7 +227,6 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
   const handleSelect = useCallback((idx: number) => {
     const bounded = Math.max(0, Math.min(SUBSYSTEM_A_PIECES.length - 1, idx));
     setInternalIndex(bounded);
-    setIsPlaying(false);
     onActiveChange?.(bounded);
   }, [onActiveChange]);
 
@@ -282,22 +264,6 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
     container.addEventListener('wheel', handleWheel, { passive: false });
     return () => container.removeEventListener('wheel', handleWheel);
   }, [nextPiece, prevPiece]);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-    }
-  };
-
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
 
   return (
     <div className="relative w-full h-full bg-[#FAFBFD] text-[#191C1E] font-sans flex flex-col justify-between p-4 sm:p-5 lg:p-6 select-none overflow-hidden">
@@ -478,10 +444,10 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                   </div>
                 </div>
 
-                {/* Main Card Content Grid (55% Video Stage + 45% Text & Research Breakdown) */}
+                {/* Main Card Content Grid (55% Empty Video Container Placeholder + 45% Text & Research Breakdown) */}
                 <div className="w-full flex-1 my-3 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch overflow-hidden">
                   
-                  {/* LEFT (7 Cols / 55%): Cinematic Widescreen Video Stage */}
+                  {/* LEFT (7 Cols / 55%): Clean Empty Video Holder Container */}
                   <div className="lg:col-span-7 rounded-[24px] bg-[#0A100D] border border-[#1E2E25] p-4 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
                     
                     {/* Video Top Bar */}
@@ -494,73 +460,51 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                       </div>
                       <div className="flex items-center gap-2 font-mono text-[11px]">
                         <span className="bg-black/60 px-2.5 py-0.5 rounded-full border border-white/15 font-bold text-[#80E4B7]">
-                          60.0 FPS · 1080p
+                          1080p · 60 FPS
                         </span>
-                        <span className="text-slate-400 hidden sm:inline">REC: ACTIVE</span>
+                        <span className="text-slate-400 hidden sm:inline">16:9 VIEWPORT</span>
                       </div>
                     </div>
 
-                    {/* Widescreen Video Frame */}
-                    <div className="relative my-auto w-full h-[250px] sm:h-[280px] lg:h-[310px] bg-black rounded-[20px] border border-[#1E3A2B] overflow-hidden group shadow-2xl flex items-center justify-center">
-                      <video
-                        ref={isCurrent ? videoRef : undefined}
-                        src={piece.videoSrc}
-                        poster={piece.posterSrc}
-                        className="w-full h-full object-cover"
-                        loop
-                        muted={isMuted}
-                        playsInline
-                        onPlay={() => setIsPlaying(true)}
-                        onPause={() => setIsPlaying(false)}
+                    {/* Clean Empty Placeholder Container */}
+                    <div className="relative my-auto w-full h-[250px] sm:h-[280px] lg:h-[310px] bg-[#050806] rounded-[20px] border-2 border-dashed border-[#1E3A2B] overflow-hidden flex flex-col items-center justify-center p-6 text-center group transition-colors hover:border-[#006C4C]/80">
+                      
+                      {/* Corner Tactical Reticle Crosshairs */}
+                      <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-[#006C4C]/60" />
+                      <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#006C4C]/60" />
+                      <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-[#006C4C]/60" />
+                      <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-[#006C4C]/60" />
+
+                      {/* Tactical Grid Background Overlay */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none opacity-25"
+                        style={{
+                          backgroundImage: 'linear-gradient(to right, rgba(0, 255, 128, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 128, 0.08) 1px, transparent 1px)',
+                          backgroundSize: '24px 24px',
+                        }}
                       />
 
-                      {/* Cinematic Vignette */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/50 pointer-events-none" />
+                      {/* Center Placeholder Badge & Info */}
+                      <div className="relative z-10 flex flex-col items-center gap-3 max-w-md">
+                        <div className="w-14 h-14 rounded-2xl bg-[#003824]/80 border border-[#006C4C] flex items-center justify-center text-[#80E4B7] shadow-[0_0_20px_rgba(0,108,76,0.3)]">
+                          <Video className="w-7 h-7" />
+                        </div>
 
-                      {/* Video HUD Badge */}
-                      <div className="absolute top-3 left-3 z-10 font-mono text-[10.5px] text-[#A7F3D0] bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-[#006C4C]/40 flex items-center gap-2 pointer-events-none shadow-md">
-                        <span className="w-2 h-2 rounded-full bg-[#80E4B7] animate-pulse" />
-                        <span className="font-black uppercase tracking-wider">{piece.videoTitle}</span>
+                        <div>
+                          <div className="font-mono text-xs sm:text-sm font-black text-white uppercase tracking-wider flex items-center justify-center gap-2">
+                            <span>{piece.placeholderTitle}</span>
+                          </div>
+                          <p className="font-mono text-[11px] text-slate-400 mt-1">
+                            Simulation Video Container · 16:9 Widescreen Viewport
+                          </p>
+                        </div>
+
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10.5px] text-slate-300">
+                          <Plus className="w-3 h-3 text-[#80E4B7]" />
+                          <span>Ready for SITL Recording Upload</span>
+                        </div>
                       </div>
 
-                      {/* Large FAB Play Overlay */}
-                      {!isPlaying && isCurrent && (
-                        <div 
-                          onClick={togglePlay}
-                          className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer bg-black/35 hover:bg-black/25 transition-all z-20"
-                        >
-                          <div className="w-16 h-16 rounded-full bg-[#006C4C] hover:bg-[#00875F] text-white flex items-center justify-center shadow-[0_8px_20px_rgba(0,108,76,0.5)] transition-transform hover:scale-110 active:scale-95">
-                            <Play className="w-7 h-7 ml-1 fill-white" />
-                          </div>
-                          <div className="mt-3 flex items-center gap-2 text-xs font-mono font-bold text-white tracking-wider bg-black/85 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-lg">
-                            <Sparkles className="w-3.5 h-3.5 text-[#80E4B7]" />
-                            <span>PLAY SIMULATION VIDEO</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Bottom Control Bar */}
-                      <div className="absolute bottom-2.5 left-3 right-3 z-20 flex justify-between items-center bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/20 text-white font-mono text-xs">
-                        <div className="flex items-center gap-2.5">
-                          <button onClick={togglePlay} className="hover:text-[#80E4B7] cursor-pointer">
-                            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-white" />}
-                          </button>
-                          <button onClick={toggleMute} className="hover:text-[#80E4B7] cursor-pointer">
-                            {isMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-[#80E4B7]" />}
-                          </button>
-                          <span className="text-[10px] text-slate-300 font-semibold ml-1">00:42.18 / 01:30.00</span>
-                        </div>
-
-                        <div className="flex items-center gap-2.5">
-                          <span className="text-[9.5px] text-[#80E4B7] font-bold uppercase">GAZEBO 8 SITL</span>
-                          <button 
-                            onClick={() => videoRef.current?.requestFullscreen?.()} 
-                            className="text-slate-300 hover:text-white cursor-pointer"
-                          >
-                            <Maximize className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
                     </div>
 
                     {/* Bottom Telemetry Strip */}
