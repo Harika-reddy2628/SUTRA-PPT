@@ -26,8 +26,69 @@ interface SlideConfig {
 
 export const PresentationDeck: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slide2Index, setSlide2Index] = useState(0);
+  const [slide3Index, setSlide3Index] = useState(0);
+  const [slide4Index, setSlide4Index] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+
+  const totalSlides = 8;
+
+  const nextSlide = useCallback(() => {
+    // If on Slide 2 (Problem Statement) and not at last card (index 3), step gallery first
+    if (currentSlide === 1 && slide2Index < 3) {
+      setSlide2Index((prev) => prev + 1);
+      return;
+    }
+
+    // If on Slide 3 (The Solution Moats) and not at last card (index 3), step gallery first
+    if (currentSlide === 2 && slide3Index < 3) {
+      setSlide3Index((prev) => prev + 1);
+      return;
+    }
+
+    // If on Slide 4 (Subsystem A GNC) and not at last card (index 3), step gallery first
+    if (currentSlide === 3 && slide4Index < 3) {
+      setSlide4Index((prev) => prev + 1);
+      return;
+    }
+
+    setCurrentSlide((prev) => {
+      const next = prev < totalSlides - 1 ? prev + 1 : prev;
+      if (next === 1) setSlide2Index(0); // Reset Slide 2 gallery when entering
+      if (next === 2) setSlide3Index(0); // Reset Slide 3 gallery when entering
+      if (next === 3) setSlide4Index(0); // Reset Slide 4 gallery when entering
+      return next;
+    });
+  }, [currentSlide, slide2Index, slide3Index, slide4Index, totalSlides]);
+
+  const prevSlide = useCallback(() => {
+    // If on Slide 2 (Problem Statement) and not at first card (index 0), step gallery back
+    if (currentSlide === 1 && slide2Index > 0) {
+      setSlide2Index((prev) => prev - 1);
+      return;
+    }
+
+    // If on Slide 3 (The Solution Moats) and not at first card (index 0), step gallery back
+    if (currentSlide === 2 && slide3Index > 0) {
+      setSlide3Index((prev) => prev - 1);
+      return;
+    }
+
+    // If on Slide 4 (Subsystem A GNC) and not at first card (index 0), step gallery back
+    if (currentSlide === 3 && slide4Index > 0) {
+      setSlide4Index((prev) => prev - 1);
+      return;
+    }
+
+    setCurrentSlide((prev) => {
+      const prevIdx = prev > 0 ? prev - 1 : prev;
+      if (prevIdx === 1) setSlide2Index(3); // Set to end of gallery when going backwards into slide 2
+      if (prevIdx === 2) setSlide3Index(3); // Set to end of gallery when going backwards into slide 3
+      if (prevIdx === 3) setSlide4Index(3); // Set to end of gallery when going backwards into slide 4
+      return prevIdx;
+    });
+  }, [currentSlide, slide2Index, slide3Index, slide4Index]);
 
   const slides: SlideConfig[] = [
     {
@@ -40,19 +101,19 @@ export const PresentationDeck: React.FC = () => {
       id: 'problem',
       title: '02. Disaster Search Bottlenecks',
       category: 'Problem Statement',
-      component: <Slide02Problem />,
+      component: <Slide02Problem activeIndex={slide2Index} onActiveChange={setSlide2Index} />,
     },
     {
       id: 'benchmark',
       title: '03. Swarm Search Benchmark',
       category: 'The Solution',
-      component: <Slide03Benchmark />,
+      component: <Slide03Benchmark activeIndex={slide3Index} onActiveChange={setSlide3Index} />,
     },
     {
       id: 'fsd',
       title: '04. SUTRA-FSD & ORCA 3D Autopilot',
       category: 'Subsystem A (GNC)',
-      component: <Slide03FSD />,
+      component: <Slide03FSD activeIndex={slide4Index} onActiveChange={setSlide4Index} />,
     },
     {
       id: 'deep-jscc',
@@ -79,16 +140,6 @@ export const PresentationDeck: React.FC = () => {
       component: <Slide07Scorecard />,
     },
   ];
-
-  const totalSlides = slides.length;
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : prev));
-  }, [totalSlides]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
-  }, []);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -154,9 +205,9 @@ export const PresentationDeck: React.FC = () => {
         </div>
       </div>
 
-      {/* Main 16:9 Presentation Stage */}
-      <div className="flex-1 flex items-center justify-center p-4 lg:p-6 relative">
-        <div className="w-full max-w-[1600px] aspect-[16/9] max-h-[88vh] bg-[#FFFFFF] rounded-2xl border border-[#E6E0DA] shadow-xl overflow-hidden relative flex flex-col">
+      {/* Main Full-Viewport Presentation Stage */}
+      <div className="flex-1 w-full h-full p-2 sm:p-3 lg:p-4 flex items-stretch justify-center relative overflow-hidden">
+        <div className="w-full h-full bg-[#FFFFFF] rounded-2xl border border-[#E6E0DA] shadow-2xl overflow-hidden relative flex flex-col">
           {slides[currentSlide].component}
         </div>
       </div>
@@ -164,13 +215,64 @@ export const PresentationDeck: React.FC = () => {
       {/* Bottom Minimal Navigation Bar */}
       <div className="h-14 border-t border-[#E6E0DA] bg-[#FFFFFF] px-6 flex items-center justify-between z-30 font-mono text-xs">
         
-        {/* Slide Counter */}
+        {/* Slide Counter & Dynamic Gallery Step Indicators */}
         <div className="flex items-center gap-3">
           <span className="text-[#7A7576]">SLIDE</span>
           <span className="font-bold text-[#191516] tracking-widest">
             0{currentSlide + 1} <span className="text-[#CCC6C2]">/</span> 0{totalSlides}
           </span>
           <span className="hidden sm:inline text-[#7A7576]">({slides[currentSlide].category})</span>
+          
+          {/* Slide 2 Step Indicator */}
+          {currentSlide === 1 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-red-600 font-bold tracking-wider">GALLERY:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide2Index === i ? 'bg-red-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Slide 3 Step Indicator */}
+          {currentSlide === 2 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-emerald-600 font-bold tracking-wider">MOATS:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide3Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Slide 4 Step Indicator */}
+          {currentSlide === 3 && (
+            <div className="hidden lg:flex items-center gap-1.5 ml-2 pl-3 border-l border-[#E6E0DA]">
+              <span className="text-[10px] text-emerald-600 font-bold tracking-wider">GNC:</span>
+              <div className="flex items-center gap-1">
+                {[0, 1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      slide4Index === i ? 'bg-emerald-600 w-4' : 'bg-slate-300 w-1.5'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Navigation Arrows */}

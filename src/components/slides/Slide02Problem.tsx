@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Compass, Radio, Mountain, Users } from 'lucide-react';
+import React from 'react';
+import { Compass, Radio, Mountain, Users, ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-interface SubsystemVoidData {
+export interface SubsystemVoidData {
+  id: string;
   subsysTag: string;
   title: string;
   badge: string;
-  evidenceTag: string;
-  fieldCase: string;
-  fieldSource: string;
-  images: string[];
+  problemTag: string;
+  incidentLocation: string;
+  illustration: string;
+  realLife: string;
+  storyNarrative: string;
   mechanism: string;
   impact: string;
   spec1Val: string;
@@ -20,244 +23,394 @@ interface SubsystemVoidData {
   icon: React.ReactNode;
 }
 
-const SUBSYSTEM_VOIDS: SubsystemVoidData[] = [
+export const SUBSYSTEM_VOIDS: SubsystemVoidData[] = [
   {
+    id: '01',
     subsysTag: 'SUBSYSTEM A // GNC',
-    title: 'Canopy GPS Drift & Crashes',
+    title: 'Wayanad Canopy Crash',
     badge: 'GPS MULTI-PATH',
-    evidenceTag: 'EVIDENCE 01',
-    fieldCase: 'Wayanad Canopy Crash',
-    fieldSource: 'NDMA Official Review',
-    images: ['assets/illustrations/gps_canopy_shadow.jpg', 'assets/disaster/wayanad_rescue.jpg'],
-    mechanism: 'Dense foliage blocks satellite GNSS signals',
-    impact: 'Commercial drones lose position lock, drifting into tree canopies and causing rotor loss.',
+    problemTag: 'PROBLEM 01',
+    incidentLocation: 'Wayanad 2024 Landslide Audit',
+    illustration: 'assets/illustrations/portrait_canopy_shadow.jpg',
+    realLife: 'assets/disaster/portrait_wayanad_rescue.jpg',
+    storyNarrative: 'Dense monsoon rainforest canopies blinded satellite GNSS signals, causing commercial drones to lose position hold, drift helplessly into trees, and shatter rotors.',
+    mechanism: 'Foliage multipath blocks satellite GNSS positioning',
+    impact: 'Commercial drones lose position lock, drifting into tree canopies and causing catastrophic rotor loss.',
     spec1Val: '70% Loss',
     spec1Lbl: 'Canopy Sorties',
     spec2Val: '0 Hold',
     spec2Lbl: 'Non-GPS Stability',
-    target: 'TARGET: PX4 & 3D ORCA',
+    target: 'Target: PX4 & 3D ORCA GNC',
     lead: 'LEAD: NIKHIL',
-    icon: <Compass className="w-3.5 h-3.5" />,
+    icon: <Compass className="w-4 h-4" />,
   },
   {
+    id: '02',
     subsysTag: 'SUBSYSTEM B // COMMS',
-    title: 'Mountain Ravine RF Blackout',
+    title: 'Chamoli Gorge RF Cut',
     badge: 'DIGITAL CLIFF',
-    evidenceTag: 'EVIDENCE 02',
-    fieldCase: 'Chamoli Gorge RF Cut',
-    fieldSource: 'NDRF Field Incident Report',
-    images: ['assets/illustrations/rf_mountain_shadow.jpg', 'assets/disaster/disaster_rescue_1.jpg'],
-    mechanism: 'Ridgelines sever direct line-of-sight RF',
-    impact: 'Conventional H.264 digital video completely cuts out below 5dB SNR, causing total blindness.',
+    problemTag: 'PROBLEM 02',
+    incidentLocation: 'Chamoli Himalayan Ravine Search',
+    illustration: 'assets/illustrations/portrait_rf_mountain.jpg',
+    realLife: 'assets/disaster/portrait_disaster_rescue_1.jpg',
+    storyNarrative: 'Steep mountain ridges severed direct line-of-sight RF waves, causing standard H.264 digital video to instantly blackout below 5dB SNR, blinding tactical squads.',
+    mechanism: 'Mountain ridgelines sever line-of-sight RF communications',
+    impact: 'Conventional H.264 digital video completely cuts out below 5dB SNR, causing total tactical blindness.',
     spec1Val: '<5dB SNR',
     spec1Lbl: 'Video Blackout',
     spec2Val: '0 Relay',
     spec2Lbl: 'Single-Drone Link',
-    target: 'TARGET: DEEP JSCC MESH',
+    target: 'Target: Deep JSCC Neural Mesh',
     lead: 'LEAD: NIKHIL',
-    icon: <Radio className="w-3.5 h-3.5" />,
+    icon: <Radio className="w-4 h-4" />,
   },
   {
+    id: '03',
     subsysTag: 'SUBSYSTEM C // VISION',
-    title: 'Flat-Earth Elevation Drift',
+    title: 'Sikkim Slope Geo Error',
     badge: '35% FALSE ALARM',
-    evidenceTag: 'EVIDENCE 03',
-    fieldCase: 'Sikkim Slope Geo Error',
-    fieldSource: 'CAG Disaster Audit',
-    images: ['assets/disaster/disaster_rescue_2.jpg', 'assets/disaster/disaster_rescue_3.jpg'],
-    mechanism: '2D raycasts assume flat zero-elevation ground',
-    impact: 'Sloping terrains produce 15–30m coordinate errors, routing ground teams to empty ravines.',
+    problemTag: 'PROBLEM 03',
+    incidentLocation: 'Sikkim Flash Flood Slopes',
+    illustration: 'assets/illustrations/portrait_elevation_raycast.jpg',
+    realLife: 'assets/disaster/portrait_disaster_rescue_2.jpg',
+    storyNarrative: 'Standard 2D flat-earth raycasts miscalculated survivor positions by 15–30m on steep gradients, mistakenly dispatching ground NDRF squads to empty ravines.',
+    mechanism: '2D flat-plane raycasts ignore real 3D mountain elevation',
+    impact: 'Sloping terrains produce 15–30m coordinate errors, routing ground rescue teams to empty ravines.',
     spec1Val: '15–30m',
     spec1Lbl: 'Location Drift',
     spec2Val: '35%',
     spec2Lbl: 'False Alarm Rate',
-    target: 'TARGET: 3D DEM RAYCAST',
+    target: 'Target: 3D DEM Elevation Raycast',
     lead: 'LEAD: VEDANTH',
-    icon: <Mountain className="w-3.5 h-3.5" />,
+    icon: <Mountain className="w-4 h-4" />,
   },
   {
+    id: '04',
     subsysTag: 'SUBSYSTEM D // C2 GCS',
-    title: 'Central Pilot Bottleneck',
+    title: 'Central Link Abort',
     badge: '15-25 CREW LOAD',
-    evidenceTag: 'EVIDENCE 04',
-    fieldCase: 'Central Link Abort',
-    fieldSource: 'Field Bottleneck Report',
-    images: ['assets/illustrations/single_link_loss.jpg', 'assets/disaster/disaster_rescue_5.jpg'],
-    mechanism: '1-pilot-per-drone manual radio control',
-    impact: 'Requires 15–25 personnel and 45–90 min setup; sortie aborts if the single pilot link drops.',
+    problemTag: 'PROBLEM 04',
+    incidentLocation: 'NDMA Field Swarm Operations',
+    illustration: 'assets/illustrations/portrait_single_link_loss.jpg',
+    realLife: 'assets/disaster/portrait_disaster_rescue_5.jpg',
+    storyNarrative: 'Multi-drone deployments required 15–25 crew members; when a single manual pilot link dropped in torrential conditions, the entire search operation aborted.',
+    mechanism: '1-pilot-per-drone manual radio link single-point-of-failure',
+    impact: 'Requires 15–25 personnel & 45–90 min setup; sortie completely aborts if single pilot link drops.',
     spec1Val: '2–3 Hrs',
     spec1Lbl: 'Search Time / mi²',
     spec2Val: '₹12.5L',
-    spec2Lbl: 'Cost / Deployment',
-    target: 'TARGET: WEBGPU ATAK GCS',
+    spec2Lbl: 'Cost / Sortie',
+    target: 'Target: WebGPU ATAK Digital Twin',
     lead: 'LEAD: SIVA',
-    icon: <Users className="w-3.5 h-3.5" />,
+    icon: <Users className="w-4 h-4" />,
   },
 ];
 
-export const Slide02Problem: React.FC = () => {
-  const [imageIndex, setImageIndex] = useState(0);
+interface Slide02ProblemProps {
+  activeIndex?: number;
+  onActiveChange?: (index: number) => void;
+}
 
-  useEffect(() => {
+export const Slide02Problem: React.FC<Slide02ProblemProps> = ({
+  activeIndex = 0,
+  onActiveChange,
+}) => {
+  const [internalIndex, setInternalIndex] = React.useState(activeIndex);
+  const [subCarouselMode, setSubCarouselMode] = React.useState<'illustration' | 'real_life'>('illustration');
+
+  React.useEffect(() => {
+    setInternalIndex(activeIndex);
+  }, [activeIndex]);
+
+  React.useEffect(() => {
     const timer = setInterval(() => {
-      setImageIndex((prev) => (prev + 1) % 2);
-    }, 3500);
+      setSubCarouselMode((prev) => (prev === 'illustration' ? 'real_life' : 'illustration'));
+    }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [internalIndex]);
+
+  const handleSelect = (idx: number) => {
+    setInternalIndex(idx);
+    onActiveChange?.(idx);
+  };
+
+  const currentIndex = internalIndex;
 
   return (
-    <div className="relative w-full h-full bg-[#FFFFFF] text-[#09090B] font-sans flex flex-col justify-between p-6 lg:p-10 select-none overflow-hidden border border-[#E4E4E7]">
+    <div className="relative w-full h-full bg-[#FFFFFF] text-[#09090B] font-sans flex flex-col justify-between p-6 sm:p-8 lg:p-10 select-none overflow-hidden border border-[#E4E4E7]">
       
       {/* Hallmark Tactical Grid */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
         style={{
           backgroundImage: 'linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
+          backgroundSize: '36px 36px',
         }}
       />
 
       <div className="relative z-10 h-full flex flex-col justify-between">
         
         {/* Top Header */}
-        <header className="flex justify-between items-center pb-2.5 border-b border-[#E4E4E7]">
-          <div className="flex items-center gap-3.5">
-            <div className="w-1.5 h-6 bg-red-600 rounded-sm"></div>
-            <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#09090B]">
-              THE PROBLEM — 4 SUBSYSTEM FAILURE VOIDS
+        <header className="flex justify-between items-center pb-2 border-b border-[#E4E4E7]">
+          <div className="flex items-center gap-3">
+            <div className="w-2.5 h-6 bg-red-600 rounded-xs"></div>
+            <div className="font-mono text-sm sm:text-base font-bold uppercase tracking-[0.25em] text-[#09090B]">
+              THE PROBLEM // 4 CRITICAL FAILURE VOIDS
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-red-200 bg-red-50 text-[10.5px] font-bold uppercase tracking-[0.18em] text-red-800 font-mono">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span>FIELD DISASTER AUDIT</span>
-            </div>
+          <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-red-600 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span>FIELD DISASTER AUDIT</span>
           </div>
         </header>
 
-        {/* Main Headline & Quick Failure Metrics */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pt-1 gap-2">
-          <div className="max-w-4xl">
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#09090B] tracking-tight leading-tight">
-              Traditional Search &amp; Rescue Collapses Across <span className="text-red-600">4 Critical Voids</span>
+        {/* Main Headline & Minimal Text-Only Telemetry */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-2 pb-1 gap-3">
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-black text-[#09090B] tracking-tight leading-none font-sans">
+              Traditional Search &amp; Rescue Collapses Across <span className="text-red-600 underline decoration-red-300 decoration-4 underline-offset-4">4 Critical Voids</span>
             </h2>
           </div>
           
-          <div className="flex flex-wrap items-center gap-2 font-mono text-[10.5px] text-slate-700">
-            <span className="px-2.5 py-1 rounded-md bg-red-50 border border-red-200 text-red-800 font-bold">70% CANOPY CRASHES</span>
-            <span className="px-2.5 py-1 rounded-md bg-[#F9FAFB] border border-[#E4E4E7]">15-30m GEO ERROR</span>
-            <span className="px-2.5 py-1 rounded-md bg-[#F9FAFB] border border-[#E4E4E7]">2-3 HOURS DELAY</span>
-            <span className="px-2.5 py-1 rounded-md bg-red-50 border border-red-200 text-red-800 font-bold">₹40L+ AIRFRAMES</span>
+          {/* Minimalist Text-Only Metrics (No chunky chips) */}
+          <div className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm font-bold text-slate-700 shrink-0">
+            <span className="text-red-600">70% CANOPY CRASHES</span>
+            <span className="text-slate-300">•</span>
+            <span>15–30m GEO ERROR</span>
+            <span className="text-slate-300">•</span>
+            <span>2–3H DELAY</span>
+            <span className="text-slate-300">•</span>
+            <span className="text-red-600">₹40L+ AIRFRAMES</span>
           </div>
         </div>
 
-        {/* 4-Column Subsystem Problem Void Grid with Respective Image Carousels */}
-        <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 items-stretch my-auto">
-          {SUBSYSTEM_VOIDS.map((subsys, idx) => (
-            <div 
-              key={idx}
-              className="flex flex-col justify-between p-3.5 lg:p-4 rounded-2xl border border-[#E4E4E7] bg-white hover:border-red-400 hover:shadow-md transition-all group relative overflow-hidden space-y-2.5 shadow-sm"
-            >
-              <div className="space-y-2">
-                
-                {/* Image Carousel Frame */}
-                <div className="relative h-24 lg:h-28 w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group/img">
-                  <img 
-                    src={subsys.images[imageIndex]} 
-                    alt={subsys.title} 
-                    className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                  
-                  <div className="absolute top-2 left-2 right-2 flex justify-between items-center z-10">
-                    <span className="text-[7.5px] font-mono font-bold text-white bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
-                      {subsys.evidenceTag}
-                    </span>
-                    <span className="text-[7.5px] font-mono font-bold text-red-300 bg-black/60 px-1.5 py-0.5 rounded">
-                      {subsys.badge}
-                    </span>
-                  </div>
+        {/* Full-Screen Elastic Expanding Gallery */}
+        <main className="w-full flex-1 my-2 flex items-center">
+          <div className="flex h-full min-h-[480px] lg:min-h-[540px] xl:min-h-[600px] w-full flex-col gap-2 md:flex-row md:gap-3.5">
+            {SUBSYSTEM_VOIDS.map((subsys, idx) => {
+              const isActive = currentIndex === idx;
 
-                  <div className="absolute bottom-1.5 left-2 right-2 z-10 text-white flex justify-between items-end">
-                    <div>
-                      <div className="text-[9.5px] font-bold font-heading leading-tight">{subsys.fieldCase}</div>
-                      <div className="text-[7px] font-mono text-slate-300">{subsys.fieldSource}</div>
+              return (
+                <div
+                  key={subsys.id}
+                  onMouseEnter={() => handleSelect(idx)}
+                  onClick={() => handleSelect(idx)}
+                  className={cn(
+                    "relative cursor-pointer overflow-hidden rounded-[24px] border border-neutral-800 bg-[#090C10]",
+                    // Elastic Flex Transition
+                    "transition-[flex,filter,transform] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]",
+                    isActive
+                      ? "flex-[4.6] shadow-2xl ring-2 ring-red-500/40 brightness-100"
+                      : "flex-[1] brightness-65 hover:brightness-85"
+                  )}
+                >
+                  {isActive ? (
+                    /* EXPANDED ACTIVE CARD: Clean Uncropped Frame + Big Narrative Panel */
+                    <div className="flex h-full w-full flex-col md:flex-row p-4 lg:p-5 gap-5 lg:gap-6 items-stretch">
+                      
+                      {/* Left Side: Uncropped Image Stage */}
+                      <div className="relative h-full w-full md:w-[42%] lg:w-[40%] rounded-2xl overflow-hidden bg-black border border-white/20 flex items-center justify-center shadow-inner group/img">
+                        
+                        {/* Ambient subtle blur backing */}
+                        <img
+                          src={subCarouselMode === 'illustration' ? subsys.illustration : subsys.realLife}
+                          alt={subsys.title}
+                          className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 pointer-events-none"
+                        />
+
+                        {/* Uncropped 3D Illustration */}
+                        <img
+                          src={subsys.illustration}
+                          alt={`${subsys.title} - 3D Simulation`}
+                          className={cn(
+                            "relative z-10 w-full h-full object-contain p-2 transition-all duration-700",
+                            subCarouselMode === 'illustration'
+                              ? "opacity-100 scale-100"
+                              : "opacity-0 scale-95 pointer-events-none absolute"
+                          )}
+                        />
+
+                        {/* Uncropped Real Life Field Photo */}
+                        <img
+                          src={subsys.realLife}
+                          alt={`${subsys.title} - Real Field Disaster`}
+                          className={cn(
+                            "relative z-10 w-full h-full object-contain p-2 transition-all duration-700",
+                            subCarouselMode === 'real_life'
+                              ? "opacity-100 scale-100"
+                              : "opacity-0 scale-95 pointer-events-none absolute"
+                          )}
+                        />
+
+                        {/* Minimalist Top Bar: Problem Tag & Text-Only Toggle */}
+                        <div className="absolute top-3 left-3 right-3 z-20 flex justify-between items-center pointer-events-auto">
+                          <div className="font-mono text-xs sm:text-sm font-black tracking-widest text-white drop-shadow-md flex items-center gap-1.5">
+                            {subsys.icon}
+                            <span>{subsys.problemTag}</span>
+                          </div>
+
+                          {/* Minimal Text Toggle */}
+                          <div className="flex items-center gap-2 font-mono text-xs font-bold drop-shadow-md bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSubCarouselMode('illustration');
+                              }}
+                              className={cn(
+                                "transition-all",
+                                subCarouselMode === 'illustration'
+                                  ? "text-white font-black underline underline-offset-4 decoration-red-500 decoration-2"
+                                  : "text-white/60 hover:text-white"
+                              )}
+                            >
+                              3D SIM
+                            </button>
+                            <span className="text-white/30">/</span>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSubCarouselMode('real_life');
+                              }}
+                              className={cn(
+                                "transition-all",
+                                subCarouselMode === 'real_life'
+                                  ? "text-red-400 font-black underline underline-offset-4 decoration-red-500 decoration-2"
+                                  : "text-white/60 hover:text-white"
+                              )}
+                            >
+                              REAL FIELD
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Minimalist Bottom Caption */}
+                        <div className="absolute bottom-3 left-3 right-3 z-20 flex justify-between items-center bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/20 text-white font-mono text-xs shadow-md">
+                          <span className="text-slate-200 font-semibold truncate mr-2">{subsys.incidentLocation}</span>
+                          <span className="text-red-400 font-bold uppercase shrink-0">{subCarouselMode === 'illustration' ? '3D SIM' : 'FIELD AUDIT'}</span>
+                        </div>
+                      </div>
+
+                      {/* Right Side: Much Bigger Story & Intelligence Panel */}
+                      <div className="flex-1 h-full flex flex-col justify-between py-1 pr-1 text-white z-10">
+                        <div className="space-y-4">
+                          
+                          {/* Minimalist Subsystem Label & Failure Keyword */}
+                          <div className="flex items-center justify-between font-mono text-xs sm:text-sm font-bold tracking-wider">
+                            <span className="text-red-400 uppercase">
+                              {subsys.subsysTag}
+                            </span>
+                            <span className="text-slate-300 uppercase">
+                              {subsys.badge}
+                            </span>
+                          </div>
+
+                          {/* Monumental Title (Much Bigger) */}
+                          <h3 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black text-white leading-none font-sans tracking-tight">
+                            {subsys.title}
+                          </h3>
+
+                          {/* Story Narrative Box (Much Bigger) */}
+                          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/20 space-y-1.5 shadow-inner">
+                            <div className="text-xs font-mono font-bold text-red-400 uppercase tracking-widest">
+                              FIELD FAILURE CASE:
+                            </div>
+                            <p className="text-base sm:text-lg lg:text-[18px] xl:text-[20px] font-sans text-slate-100 font-normal leading-relaxed">
+                              “{subsys.storyNarrative}”
+                            </p>
+                          </div>
+
+                          {/* Empirical Failure Specs (Much Bigger) */}
+                          <div className="grid grid-cols-2 gap-4 font-mono">
+                            <div className="p-4 rounded-2xl bg-black/60 border border-white/20 shadow-md">
+                              <div className="text-3xl sm:text-4xl lg:text-[44px] font-black text-red-400 leading-none">{subsys.spec1Val}</div>
+                              <div className="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-wider mt-1.5">{subsys.spec1Lbl}</div>
+                            </div>
+                            <div className="p-4 rounded-2xl bg-black/60 border border-white/20 shadow-md">
+                              <div className="text-3xl sm:text-4xl lg:text-[44px] font-black text-white leading-none">{subsys.spec2Val}</div>
+                              <div className="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-wider mt-1.5">{subsys.spec2Lbl}</div>
+                            </div>
+                          </div>
+
+                          {/* Core Failure Mechanism */}
+                          <div className="px-4 py-2.5 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm font-mono text-slate-200">
+                            <span className="text-red-400 font-black uppercase mr-2">CORE VOID:</span>
+                            {subsys.mechanism}
+                          </div>
+                        </div>
+
+                        {/* Action Button */}
+                        <div className="mt-3 w-full bg-white/20 hover:bg-white/30 active:scale-[0.98] backdrop-blur-md border border-white/30 rounded-xl px-5 py-3.5 text-white flex items-center justify-between text-sm sm:text-base font-bold tracking-wider uppercase transition-all shadow-xl group/btn cursor-pointer">
+                          <span className="font-sans text-white">
+                            {subsys.target}
+                          </span>
+                          <ArrowRight className="w-5 h-5 text-white transition-transform group-hover/btn:translate-x-1.5" />
+                        </div>
+                      </div>
+
                     </div>
-                    <div className="flex gap-1">
-                      <span className={`w-3.5 h-1 rounded-full transition-all ${imageIndex === 0 ? 'bg-red-500' : 'bg-white/40'}`} />
-                      <span className={`w-1.5 h-1 rounded-full transition-all ${imageIndex === 1 ? 'bg-red-500' : 'bg-white/40'}`} />
+                  ) : (
+                    /* INACTIVE CARD: Minimalist Vertical Peek with Problem Tag & Title */
+                    <div className="relative h-full w-full flex flex-col justify-between p-4 lg:p-5 items-center">
+                      <img
+                        src={subsys.illustration}
+                        alt={subsys.title}
+                        className="absolute inset-0 w-full h-full object-cover opacity-35"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/50" />
+                      
+                      {/* Top Minimal Problem ID */}
+                      <div className="relative z-10 font-mono text-xs font-black text-white tracking-widest">
+                        {subsys.problemTag.replace('PROBLEM ', 'P')}
+                      </div>
+
+                      {/* Monumental Vertical Title */}
+                      <div className="relative z-10 flex flex-col items-center">
+                        <span className="whitespace-nowrap text-base sm:text-lg font-black uppercase tracking-[0.25em] text-white [writing-mode:vertical-rl] rotate-180 drop-shadow-md">
+                          {subsys.title}
+                        </span>
+                      </div>
+
+                      {/* Bottom Minimal Keyword Text */}
+                      <div className="relative z-10 text-xs font-mono font-bold text-red-400 uppercase tracking-wider text-center">
+                        {subsys.badge}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-
-                <div>
-                  <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest">{subsys.subsysTag}</span>
-                  <h3 className="text-sm lg:text-base font-bold text-[#09090B] font-heading leading-snug mt-0.5">
-                    {subsys.title}
-                  </h3>
-                </div>
-
-                {/* Problem Mechanism Box */}
-                <div className="p-1.5 rounded-lg bg-red-50 border border-red-200">
-                  <div className="text-[7.5px] font-mono font-bold text-red-700 uppercase">CORE FAILURE MECHANISM:</div>
-                  <div className="text-[9.5px] font-semibold text-slate-900 leading-tight mt-0.5">{subsys.mechanism}</div>
-                </div>
-
-                {/* Failure Impact */}
-                <div className="p-1.5 rounded-lg bg-[#F9FAFB] border border-[#E4E4E7] space-y-0.5">
-                  <div className="text-[8px] font-mono font-bold text-slate-800 uppercase">OPERATIONAL IMPACT:</div>
-                  <p className="text-[10.5px] text-slate-600 font-mono leading-relaxed">
-                    {subsys.impact}
-                  </p>
-                </div>
-
-                {/* Empirical Failure Spec */}
-                <div className="grid grid-cols-2 gap-1 text-center font-mono">
-                  <div className="p-1 rounded bg-[#F9FAFB] border border-[#E4E4E7]">
-                    <div className="text-[10.5px] font-bold text-red-700">{subsys.spec1Val}</div>
-                    <div className="text-[7px] text-slate-500">{subsys.spec1Lbl}</div>
-                  </div>
-                  <div className="p-1 rounded bg-[#F9FAFB] border border-[#E4E4E7]">
-                    <div className="text-[10.5px] font-bold text-[#09090B]">{subsys.spec2Val}</div>
-                    <div className="text-[7px] text-slate-500">{subsys.spec2Lbl}</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-[#E4E4E7] flex items-center justify-between text-[8.5px] font-mono text-slate-400">
-                <span>{subsys.target}</span>
-                <span className="text-red-700 font-bold">{subsys.lead}</span>
-              </div>
-              <div className="h-1 w-full bg-red-500 absolute bottom-0 left-0"></div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </main>
 
-        {/* Disaster Field Audit & Verification Citations (Bottom Row) */}
-        <footer className="pt-2 border-t border-[#E4E4E7] flex flex-col gap-1.5">
+        {/* Disaster Field Audit (Bottom Row) */}
+        <footer className="pt-3 border-t border-[#E4E4E7] flex flex-col gap-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono">
-            <div className="p-1.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
-              <span className="text-[8.5px] text-slate-500 uppercase">FIELD EVIDENCE</span>
-              <span className="text-[11px] font-bold text-[#09090B]">Wayanad Landslide Audit</span>
+            <div className="p-2.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">FIELD EVIDENCE</span>
+              <span className="text-sm sm:text-base font-bold text-[#09090B] font-sans">Wayanad Landslide Audit</span>
             </div>
-            <div className="p-1.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
-              <span className="text-[8.5px] text-slate-500 uppercase">AUDIT FINDING</span>
-              <span className="text-[11px] font-bold text-red-700">70% RF/GPS Disconnect</span>
+            <div className="p-2.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">AUDIT FINDING</span>
+              <span className="text-sm sm:text-base font-bold text-red-700 font-sans">70% RF/GPS Disconnect</span>
             </div>
-            <div className="p-1.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
-              <span className="text-[8.5px] text-slate-500 uppercase">COST PENALTY</span>
-              <span className="text-[11px] font-bold text-[#09090B]">₹40L Military Airframes</span>
+            <div className="p-2.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">COST PENALTY</span>
+              <span className="text-sm sm:text-base font-bold text-[#09090B] font-sans">₹40L Military Airframes</span>
             </div>
-            <div className="p-1.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
-              <span className="text-[8.5px] text-slate-500 uppercase">SURVIVOR RISK</span>
-              <span className="text-[11px] font-bold text-red-700">412% Disaster Surge</span>
+            <div className="p-2.5 rounded-xl bg-[#F9FAFB] border border-[#E4E4E7] flex justify-between items-center">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">SURVIVOR RISK</span>
+              <span className="text-sm sm:text-base font-bold text-red-700 font-sans">412% Disaster Surge</span>
             </div>
           </div>
 
-          <div className="flex justify-between items-center font-mono text-[11px] text-slate-500">
-            <div>PAGE 02</div>
-            <div className="font-semibold uppercase tracking-wider text-[#09090B]">TEAM OFFGRID — PROJECT SUTRA</div>
+          <div className="flex justify-between items-center font-mono text-xs sm:text-sm text-slate-500">
+            <div className="flex items-center gap-2">
+              <span className="font-bold">PAGE 02</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-xs sm:text-sm text-red-700 font-bold">PROBLEM 0{currentIndex + 1}/04</span>
+            </div>
+            <div className="font-bold uppercase tracking-widest text-[#09090B]">TEAM OFFGRID — PROJECT SUTRA</div>
           </div>
         </footer>
 
@@ -266,3 +419,5 @@ export const Slide02Problem: React.FC = () => {
     </div>
   );
 };
+
+export default Slide02Problem;
