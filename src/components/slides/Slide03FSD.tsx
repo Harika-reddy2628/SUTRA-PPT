@@ -80,7 +80,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Distance Kept', value: '3.80 m OK' },
       { label: 'Safety Status', value: '100% Shielded' }
     ],
-    icon: <ShieldCheck className="w-4 h-4" />
+    icon: <ShieldCheck className="w-5 h-5" />
   },
   {
     id: 'fsd',
@@ -121,7 +121,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Motor Health', value: 'Normal (Cool)' },
       { label: 'Flight Path', value: 'Smooth Curve' }
     ],
-    icon: <Box className="w-4 h-4" />
+    icon: <Box className="w-5 h-5" />
   },
   {
     id: 'neuroflight',
@@ -162,7 +162,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Tracking Hold', value: '< 0.35 m Drift' },
       { label: 'Camera Gimbal', value: 'Rock Solid' }
     ],
-    icon: <Wind className="w-4 h-4" />
+    icon: <Wind className="w-5 h-5" />
   },
   {
     id: 'px4',
@@ -203,7 +203,7 @@ export const SUBSYSTEM_A_PIECES: SubsystemPiece[] = [
       { label: 'Failsafe Timer', value: '500 ms' },
       { label: 'Test Suite', value: '120/120 OK' }
     ],
-    icon: <Activity className="w-4 h-4" />
+    icon: <Activity className="w-5 h-5" />
   }
 ];
 
@@ -242,7 +242,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
     }
   }, [internalIndex, handleSelect]);
 
-  // Debounced Wheel Scroll Navigation for smooth card stacking
+  // Debounced Wheel Scroll Navigation
   useEffect(() => {
     const container = stackContainerRef.current;
     if (!container) return;
@@ -282,49 +282,49 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
         {/* Top Header */}
         <header className="flex justify-between items-center pb-2 border-b border-[#E1E3E8]">
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-6 bg-[#006C4C] rounded-full shadow-xs"></div>
-            <div className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#191C1E]">
+            <div className="w-3 h-7 bg-[#006C4C] rounded-full shadow-xs"></div>
+            <div className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] text-[#191C1E]">
               SUBSYSTEM A DEEP DIVE // GNC &amp; AUTONOMOUS FLIGHT
             </div>
           </div>
 
           {/* Interactive Stack Counter + Status Badge */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#006C4C] bg-[#E8F5E9] px-3 py-1 rounded-full border border-[#C8E6C9]">
-              <Layers className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 font-mono text-xs sm:text-sm font-black text-[#006C4C] bg-[#E8F5E9] px-3.5 py-1.5 rounded-full border border-[#C8E6C9] shadow-2xs">
+              <Layers className="w-4 h-4" />
               <span>STACK DECK: 0{internalIndex + 1} / 04</span>
             </div>
-            <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#006C4C] bg-[#E8F5E9] px-3 py-1 rounded-full border border-[#C8E6C9] hidden sm:flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#006C4C] animate-pulse"></span>
-              <span>120/120 GNC TESTS OK</span>
+            <div className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-[#006C4C] bg-[#E8F5E9] px-3.5 py-1.5 rounded-full border border-[#C8E6C9] hidden sm:flex items-center gap-2 shadow-2xs">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#006C4C] animate-pulse"></span>
+              <span>120 / 120 GNC TESTS PASSED</span>
             </div>
           </div>
         </header>
 
-        {/* Headline Row with Navigation Stack Stepper */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-1 pb-1 gap-2">
+        {/* Big Headline Row */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between pt-1 pb-1.5 gap-2">
           <div>
-            <h2 className="text-xl sm:text-2xl lg:text-[32px] font-black text-[#191C1E] tracking-tight leading-none font-sans">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-black text-[#191C1E] tracking-tight leading-none font-sans">
               Decentralized 3D Flight Autonomy <span className="text-[#006C4C] underline decoration-[#81C784] decoration-4 underline-offset-4">Guarantees Zero Collisions</span> at 50Hz
             </h2>
           </div>
           
           {/* Stack Navigation Pill Buttons */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center bg-white p-1 rounded-full border border-[#E1E3E8] shadow-2xs">
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center bg-white p-1 rounded-full border border-[#E1E3E8] shadow-xs">
               {SUBSYSTEM_A_PIECES.map((p, idx) => (
                 <button
                   key={p.id}
                   onClick={() => handleSelect(idx)}
                   className={cn(
-                    "px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5",
+                    "px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono font-black transition-all cursor-pointer flex items-center gap-1.5",
                     internalIndex === idx
                       ? "bg-[#003824] text-[#80E4B7] shadow-xs"
                       : "text-[#74777F] hover:text-[#191C1E] hover:bg-[#F2F3F8]"
                   )}
                 >
                   <span>0{idx + 1}</span>
-                  <span className="hidden md:inline text-[10px]">{p.title.split(' ')[0]}</span>
+                  <span className="hidden md:inline text-xs">{p.title.split(' ')[0]}</span>
                 </button>
               ))}
             </div>
@@ -333,7 +333,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
               <button
                 onClick={prevPiece}
                 disabled={internalIndex === 0}
-                className="w-7 h-7 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-2xs transition-all"
+                className="w-8 h-8 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-xs transition-all"
                 title="Previous Card in Stack"
               >
                 <ChevronUp className="w-4 h-4" />
@@ -341,7 +341,7 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
               <button
                 onClick={nextPiece}
                 disabled={internalIndex === SUBSYSTEM_A_PIECES.length - 1}
-                className="w-7 h-7 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-2xs transition-all"
+                className="w-8 h-8 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-xs transition-all"
                 title="Next Card in Stack"
               >
                 <ChevronDown className="w-4 h-4" />
@@ -416,27 +416,27 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                 
                 {/* Individual Card Top HUD */}
                 <div className="flex justify-between items-center pb-2.5 border-b border-[#F1F5F9]">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-6 h-6 rounded-full bg-[#003824] text-[#80E4B7] flex items-center justify-center font-mono text-xs font-black">
+                  <div className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-full bg-[#003824] text-[#80E4B7] flex items-center justify-center font-mono text-sm font-black shadow-xs">
                       {piece.pieceNumber}
                     </span>
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#006C4C] tracking-wider uppercase">
+                    <span className="font-mono text-sm sm:text-base font-black text-[#006C4C] tracking-wider uppercase">
                       {piece.tag}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="px-3.5 py-1 rounded-full bg-[#E8F5E9] border border-[#C8E6C9] text-[#006C4C] font-mono text-xs font-black">
+                    <span className="px-4 py-1.5 rounded-full bg-[#E8F5E9] border border-[#C8E6C9] text-[#006C4C] font-mono text-xs sm:text-sm font-black shadow-2xs">
                       {piece.badge}
                     </span>
                     {/* Stack Dots Indicator */}
-                    <div className="flex items-center gap-1 ml-2">
+                    <div className="flex items-center gap-1.5 ml-2">
                       {SUBSYSTEM_A_PIECES.map((_, dotIdx) => (
                         <span
                           key={dotIdx}
                           className={cn(
-                            "w-2 h-2 rounded-full transition-all duration-300",
-                            dotIdx === internalIndex ? "bg-[#006C4C] w-4" : "bg-[#CBD5E1]"
+                            "w-2.5 h-2.5 rounded-full transition-all duration-300",
+                            dotIdx === internalIndex ? "bg-[#006C4C] w-5" : "bg-[#CBD5E1]"
                           )}
                         />
                       ))}
@@ -444,22 +444,22 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                   </div>
                 </div>
 
-                {/* Main Card Content Grid (55% Empty Video Container Placeholder + 45% Text & Research Breakdown) */}
-                <div className="w-full flex-1 my-3 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch overflow-hidden">
+                {/* Main Card Content Grid (50% Video Container + 50% High-Legibility Text Breakdown) */}
+                <div className="w-full flex-1 my-2.5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch overflow-hidden">
                   
-                  {/* LEFT (7 Cols / 55%): Clean Empty Video Holder Container */}
-                  <div className="lg:col-span-7 rounded-[24px] bg-[#0A100D] border border-[#1E2E25] p-4 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
+                  {/* LEFT (6 Cols / 50%): High-Contrast Video Container Placeholder */}
+                  <div className="lg:col-span-6 rounded-[24px] bg-[#0A100D] border border-[#1E2E25] p-4 text-white flex flex-col justify-between shadow-xl relative overflow-hidden">
                     
                     {/* Video Top Bar */}
                     <div className="flex justify-between items-center pb-2.5 border-b border-white/10 z-10">
                       <div className="flex items-center gap-2">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#80E4B7] animate-pulse shadow-[0_0_8px_#80E4B7]" />
-                        <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[#A7F3D0]">
-                          GAZEBO 8 SITL · SIMULATION VERIFICATION
+                        <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-[#A7F3D0]">
+                          GAZEBO 8 SITL · SIMULATION PROOF
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 font-mono text-[11px]">
-                        <span className="bg-black/60 px-2.5 py-0.5 rounded-full border border-white/15 font-bold text-[#80E4B7]">
+                      <div className="flex items-center gap-2 font-mono text-xs">
+                        <span className="bg-black/60 px-3 py-1 rounded-full border border-white/15 font-black text-[#80E4B7]">
                           1080p · 60 FPS
                         </span>
                         <span className="text-slate-400 hidden sm:inline">16:9 VIEWPORT</span>
@@ -467,13 +467,13 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                     </div>
 
                     {/* Clean Empty Placeholder Container */}
-                    <div className="relative my-auto w-full h-[250px] sm:h-[280px] lg:h-[310px] bg-[#050806] rounded-[20px] border-2 border-dashed border-[#1E3A2B] overflow-hidden flex flex-col items-center justify-center p-6 text-center group transition-colors hover:border-[#006C4C]/80">
+                    <div className="relative my-auto w-full h-[240px] sm:h-[270px] lg:h-[300px] bg-[#050806] rounded-[20px] border-2 border-dashed border-[#1E3A2B] overflow-hidden flex flex-col items-center justify-center p-6 text-center group transition-colors hover:border-[#006C4C]/80">
                       
                       {/* Corner Tactical Reticle Crosshairs */}
-                      <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-[#006C4C]/60" />
-                      <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-[#006C4C]/60" />
-                      <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-[#006C4C]/60" />
-                      <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-[#006C4C]/60" />
+                      <div className="absolute top-3.5 left-3.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#006C4C]/70" />
+                      <div className="absolute top-3.5 right-3.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#006C4C]/70" />
+                      <div className="absolute bottom-3.5 left-3.5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#006C4C]/70" />
+                      <div className="absolute bottom-3.5 right-3.5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#006C4C]/70" />
 
                       {/* Tactical Grid Background Overlay */}
                       <div 
@@ -484,115 +484,115 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
                         }}
                       />
 
-                      {/* Center Placeholder Badge & Info */}
-                      <div className="relative z-10 flex flex-col items-center gap-3 max-w-md">
-                        <div className="w-14 h-14 rounded-2xl bg-[#003824]/80 border border-[#006C4C] flex items-center justify-center text-[#80E4B7] shadow-[0_0_20px_rgba(0,108,76,0.3)]">
-                          <Video className="w-7 h-7" />
+                      {/* Center Placeholder Badge & Large Info */}
+                      <div className="relative z-10 flex flex-col items-center gap-3.5 max-w-md">
+                        <div className="w-16 h-16 rounded-2xl bg-[#003824]/90 border border-[#006C4C] flex items-center justify-center text-[#80E4B7] shadow-[0_0_24px_rgba(0,108,76,0.35)]">
+                          <Video className="w-8 h-8" />
                         </div>
 
                         <div>
-                          <div className="font-mono text-xs sm:text-sm font-black text-white uppercase tracking-wider flex items-center justify-center gap-2">
-                            <span>{piece.placeholderTitle}</span>
+                          <div className="font-mono text-base sm:text-lg font-black text-white uppercase tracking-wider">
+                            {piece.placeholderTitle}
                           </div>
-                          <p className="font-mono text-[11px] text-slate-400 mt-1">
+                          <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
                             Simulation Video Container · 16:9 Widescreen Viewport
                           </p>
                         </div>
 
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[10.5px] text-slate-300">
-                          <Plus className="w-3 h-3 text-[#80E4B7]" />
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 font-mono text-xs font-bold text-slate-200">
+                          <Plus className="w-3.5 h-3.5 text-[#80E4B7]" />
                           <span>Ready for SITL Recording Upload</span>
                         </div>
                       </div>
 
                     </div>
 
-                    {/* Bottom Telemetry Strip */}
-                    <div className="space-y-2 pt-2 border-t border-white/10 font-mono text-xs">
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
+                    {/* Bottom Large Telemetry Strip */}
+                    <div className="space-y-2 pt-2 border-t border-white/10 font-mono">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                         {piece.telemetry.map((t, tIdx) => (
-                          <div key={tIdx} className="p-2 rounded-[14px] bg-white/[0.06] border border-white/10 flex flex-col justify-between">
-                            <span className="text-slate-400 text-[9.5px] uppercase font-semibold">{t.label}</span>
-                            <span className="font-bold text-[#80E4B7] text-sm mt-0.5">{t.value}</span>
+                          <div key={tIdx} className="p-2.5 rounded-[14px] bg-white/[0.06] border border-white/10 flex flex-col justify-between">
+                            <span className="text-slate-400 text-[11px] uppercase font-bold">{t.label}</span>
+                            <span className="font-black text-[#80E4B7] text-sm sm:text-base mt-0.5">{t.value}</span>
                           </div>
                         ))}
                       </div>
 
                       {/* Verification Seal */}
-                      <div className="p-2 rounded-[14px] bg-[#004D33]/60 border border-[#006C4C]/60 flex items-center justify-between text-xs text-[#A7F3D0]">
+                      <div className="p-2.5 rounded-[14px] bg-[#004D33]/60 border border-[#006C4C]/60 flex items-center justify-between text-xs sm:text-sm text-[#A7F3D0]">
                         <span className="flex items-center gap-2 font-bold">
                           <CheckCircle2 className="w-4 h-4 text-[#80E4B7]" />
                           GATE G5 VERIFIED: 0 COLLISIONS ACROSS 120 FLIGHT VECTORS
                         </span>
-                        <span className="text-[10.5px] text-slate-300 font-mono">PyTest: 3.10s (100%)</span>
+                        <span className="text-xs text-slate-300 font-mono font-bold">PyTest: 3.10s (100%)</span>
                       </div>
                     </div>
 
                   </div>
 
-                  {/* RIGHT (5 Cols / 45%): Title + Solution + 3 Spec Tiles + Grounding Research Papers */}
-                  <div className="lg:col-span-5 rounded-[24px] bg-[#FFFFFF] border border-[#E1E3E8] p-5 flex flex-col justify-between overflow-hidden shadow-sm">
+                  {/* RIGHT (6 Cols / 50%): High-Legibility Text & Research Breakdown */}
+                  <div className="lg:col-span-6 rounded-[24px] bg-[#FFFFFF] border border-[#E1E3E8] p-5 sm:p-6 flex flex-col justify-between overflow-hidden shadow-sm">
                     
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       {/* Monumental Title */}
-                      <h3 className="text-2xl sm:text-3xl font-black text-[#191C1E] tracking-tight leading-tight font-sans">
+                      <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-[#191C1E] tracking-tight leading-tight font-sans">
                         {piece.title}
                       </h3>
 
-                      {/* Problem Solved 1-Liner */}
-                      <div className="p-3 rounded-[16px] bg-[#FFDAD6]/40 border border-[#FFDAD6] text-[#93000A] text-xs font-mono font-bold leading-relaxed flex items-start gap-2 shadow-2xs">
-                        <div className="w-2 h-2 rounded-full bg-[#BA1A1A] mt-1 shrink-0" />
+                      {/* Problem Solved Callout */}
+                      <div className="p-3.5 rounded-[16px] bg-[#FFDAD6]/50 border border-[#FFDAD6] text-[#93000A] text-sm sm:text-[15.5px] font-mono font-bold leading-relaxed flex items-start gap-2.5 shadow-2xs">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#BA1A1A] mt-1.5 shrink-0" />
                         <span>{piece.problemSolved}</span>
                       </div>
 
                       {/* How SUTRA Solves It */}
-                      <div className="p-3.5 rounded-[18px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-1 shadow-2xs">
-                        <div className="text-[10px] font-mono font-bold text-[#006C4C] uppercase tracking-wider flex items-center gap-1.5">
-                          <Zap className="w-3.5 h-3.5 text-[#006C4C]" />
+                      <div className="p-4 rounded-[18px] bg-[#F2F4F8] border border-[#E1E3E8] space-y-1.5 shadow-2xs">
+                        <div className="text-xs sm:text-[13px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-2">
+                          <Zap className="w-4 h-4 text-[#006C4C]" />
                           <span>HOW SUTRA SOLVES IT IN THE FIELD:</span>
                         </div>
-                        <p className="text-xs sm:text-[13px] text-[#191C1E] font-sans font-medium leading-relaxed">
+                        <p className="text-sm sm:text-base lg:text-[16.5px] text-[#191C1E] font-sans font-medium leading-relaxed">
                           {piece.howItWorks}
                         </p>
                       </div>
                     </div>
 
                     {/* 3 Large Spec Tiles */}
-                    <div className="grid grid-cols-3 gap-2 font-mono my-2">
+                    <div className="grid grid-cols-3 gap-3 font-mono my-2.5">
                       {piece.specs.map((s, sIdx) => (
                         <div 
                           key={sIdx} 
-                          className="p-2.5 rounded-[16px] bg-[#F8FAFD] border border-[#E1E3E8] shadow-2xs"
+                          className="p-3.5 rounded-[18px] bg-[#F8FAFD] border border-[#E1E3E8] shadow-2xs"
                         >
-                          <div className="text-base sm:text-lg font-black text-[#191C1E] leading-tight">{s.value}</div>
-                          <div className="text-[9.5px] font-bold text-[#006C4C] uppercase leading-tight mt-0.5">{s.label}</div>
-                          <div className="text-[8.5px] text-[#74777F]">{s.unit}</div>
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#191C1E] leading-tight">{s.value}</div>
+                          <div className="text-xs sm:text-[13px] font-black text-[#006C4C] uppercase leading-tight mt-1">{s.label}</div>
+                          <div className="text-xs text-[#74777F] mt-0.5">{s.unit}</div>
                         </div>
                       ))}
                     </div>
 
                     {/* Grounding Academic Research Papers */}
-                    <div className="p-3 rounded-[18px] bg-[#E8F5E9]/50 border border-[#C8E6C9] space-y-1.5 shadow-2xs">
-                      <div className="text-[10px] font-mono font-bold text-[#006C4C] uppercase tracking-widest flex items-center gap-1.5">
-                        <BookOpen className="w-3.5 h-3.5 text-[#006C4C]" />
+                    <div className="p-4 rounded-[20px] bg-[#E8F5E9]/50 border border-[#C8E6C9] space-y-2 shadow-2xs">
+                      <div className="text-xs sm:text-[13px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-2">
+                        <BookOpen className="w-4 h-4 text-[#006C4C]" />
                         <span>GROUNDING RESEARCH PAPERS &amp; PROVEN BENEFIT:</span>
                       </div>
 
-                      <div className="space-y-1.5">
+                      <div className="space-y-2">
                         {piece.researchPapers.map((paper, pIdx) => (
-                          <div key={pIdx} className="p-2.5 rounded-[12px] bg-white border border-[#C8E6C9]/60 text-xs space-y-0.5 shadow-2xs">
-                            <div className="font-sans font-bold text-[#191C1E] leading-tight flex items-center justify-between">
+                          <div key={pIdx} className="p-3 rounded-[14px] bg-white border border-[#C8E6C9]/60 text-xs sm:text-sm space-y-1 shadow-2xs">
+                            <div className="font-sans font-black text-[#191C1E] leading-tight flex items-center justify-between text-sm sm:text-[15.5px]">
                               <span>{pIdx + 1}. {paper.title}</span>
-                              <span className="font-mono text-[9px] font-bold text-[#006C4C] bg-[#E8F5E9] px-2 py-0.5 rounded-full border border-[#C8E6C9] shrink-0 ml-1">
+                              <span className="font-mono text-[11px] font-black text-[#006C4C] bg-[#E8F5E9] px-2.5 py-0.5 rounded-full border border-[#C8E6C9] shrink-0 ml-1">
                                 {paper.year}
                               </span>
                             </div>
-                            <div className="text-[10.5px] text-[#44474E] font-sans">
-                              {paper.authors} — <span className="italic font-medium">{paper.venue}</span>
+                            <div className="text-xs sm:text-[13px] text-[#44474E] font-sans">
+                              {paper.authors} — <span className="italic font-semibold">{paper.venue}</span>
                             </div>
-                            <div className="text-[9.5px] font-mono text-[#006C4C] font-semibold flex items-center gap-1.5 pt-0.5">
-                              <ExternalLink className="w-2.5 h-2.5 shrink-0" />
-                              <span className="text-[#006C4C] font-bold">Proven benefit:</span>
+                            <div className="text-xs sm:text-[13.5px] font-mono text-[#006C4C] font-semibold flex items-center gap-1.5 pt-0.5">
+                              <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                              <span className="text-[#006C4C] font-black">Proven benefit:</span>
                               <span className="text-[#191C1E] font-sans font-normal">{paper.provenBenefit}</span>
                             </div>
                           </div>
@@ -612,31 +612,31 @@ export const Slide03FSD: React.FC<Slide03FSDProps> = ({
         {/* Bottom Verification & Audit Footer */}
         <footer className="pt-2 border-t border-[#E1E3E8] flex flex-col gap-1">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 font-mono">
-            <div className="p-1.5 rounded-[12px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
-              <span className="text-[11px] font-bold text-[#74777F] uppercase tracking-wider">CODEBASE SUITE</span>
-              <span className="text-xs font-bold text-[#191C1E] font-sans">sutra_ws/src/sutra_gnc</span>
+            <div className="p-2 rounded-[14px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
+              <span className="text-xs font-bold text-[#74777F] uppercase tracking-wider">CODEBASE SUITE</span>
+              <span className="text-sm font-black text-[#191C1E] font-sans">sutra_ws/src/sutra_gnc</span>
             </div>
-            <div className="p-1.5 rounded-[12px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
-              <span className="text-[11px] font-bold text-[#74777F] uppercase tracking-wider">UNIT TEST COVERAGE</span>
-              <span className="text-xs font-bold text-[#006C4C] font-sans">120 / 120 Passing (100%)</span>
+            <div className="p-2 rounded-[14px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
+              <span className="text-xs font-bold text-[#74777F] uppercase tracking-wider">UNIT TEST COVERAGE</span>
+              <span className="text-sm font-black text-[#006C4C] font-sans">120 / 120 Passing (100%)</span>
             </div>
-            <div className="p-1.5 rounded-[12px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
-              <span className="text-[11px] font-bold text-[#74777F] uppercase tracking-wider">SITL SIMULATOR</span>
-              <span className="text-xs font-bold text-[#191C1E] font-sans">PX4 Autopilot + Gazebo 8</span>
+            <div className="p-2 rounded-[14px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
+              <span className="text-xs font-bold text-[#74777F] uppercase tracking-wider">SITL SIMULATOR</span>
+              <span className="text-sm font-black text-[#191C1E] font-sans">PX4 Autopilot + Gazebo 8</span>
             </div>
-            <div className="p-1.5 rounded-[12px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
-              <span className="text-[11px] font-bold text-[#74777F] uppercase tracking-wider">LEAD ARCHITECT</span>
-              <span className="text-xs font-bold text-[#006C4C] font-sans">Nikhil (Tech Lead)</span>
+            <div className="p-2 rounded-[14px] bg-[#FFFFFF] border border-[#E1E3E8] flex justify-between items-center shadow-2xs">
+              <span className="text-xs font-bold text-[#74777F] uppercase tracking-wider">LEAD ARCHITECT</span>
+              <span className="text-sm font-black text-[#006C4C] font-sans">Nikhil (Tech Lead)</span>
             </div>
           </div>
 
-          <div className="flex justify-between items-center font-mono text-[11px] text-[#74777F]">
+          <div className="flex justify-between items-center font-mono text-xs text-[#74777F]">
             <div className="flex items-center gap-2">
-              <span className="font-bold">PAGE 04</span>
+              <span className="font-black">PAGE 04</span>
               <span className="text-slate-300">•</span>
-              <span className="text-xs text-[#006C4C] font-bold">CARD STACK: PIECE 0{internalIndex + 1}/04 — {SUBSYSTEM_A_PIECES[internalIndex].title.split('&')[0]}</span>
+              <span className="text-xs text-[#006C4C] font-black">CARD STACK: PIECE 0{internalIndex + 1}/04 — {SUBSYSTEM_A_PIECES[internalIndex].title.split('&')[0]}</span>
             </div>
-            <div className="font-bold uppercase tracking-widest text-[#191C1E]">TEAM OFFGRID — PROJECT SUTRA</div>
+            <div className="font-black uppercase tracking-widest text-[#191C1E]">TEAM OFFGRID — PROJECT SUTRA</div>
           </div>
         </footer>
 
