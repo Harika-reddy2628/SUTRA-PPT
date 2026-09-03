@@ -16,6 +16,7 @@ import { Slide04DeepJSCC } from './slides/Slide04DeepJSCC';
 import { Slide05Perception } from './slides/Slide05Perception';
 import { Slide06GCS } from './slides/Slide06GCS';
 import { Slide07Scorecard } from './slides/Slide07Scorecard';
+import { Slide09MasterExecutiveSummary } from './slides/Slide09MasterExecutiveSummary';
 
 interface SlideConfig {
   id: string;
@@ -35,7 +36,7 @@ export const PresentationDeck: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
 
-  const totalSlides = 8;
+  const totalSlides = 9;
 
   const nextSlide = useCallback(() => {
     // If on Slide 2 (Problem Statement) and not at last card (index 3), step gallery first
@@ -184,6 +185,12 @@ export const PresentationDeck: React.FC = () => {
       category: 'Verification & Economics',
       component: <Slide07Scorecard />,
     },
+    {
+      id: 'master-summary',
+      title: '09. All-in-One Executive Summary',
+      category: 'Master Architecture',
+      component: <Slide09MasterExecutiveSummary />,
+    },
   ];
 
   const toggleFullscreen = () => {
@@ -230,6 +237,19 @@ export const PresentationDeck: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Quick Single-Slide All-in-One Master Jump Button */}
+          <button
+            onClick={() => setCurrentSlide(8)}
+            className={`px-2.5 py-1 rounded-lg font-mono text-[10px] font-bold border transition-all flex items-center gap-1.5 ${
+              currentSlide === 8
+                ? 'bg-[#006C4C] text-white border-[#004D36] shadow-sm'
+                : 'bg-[#E8F5E9] hover:bg-[#C8E6C9] text-[#006C4C] border-[#A5D6A7]'
+            }`}
+            title="Jump to Single-Slide Complete Project Architecture"
+          >
+            <span>⚡ ALL-IN-ONE SLIDE</span>
+          </button>
+
           {/* Slide List Drawer Toggle */}
           <button
             onClick={() => setShowDrawer((prev) => !prev)}

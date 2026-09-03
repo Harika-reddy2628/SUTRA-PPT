@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT SUTRA — Master Complete Architecture (Single-Slide Executive Summary)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Lora:ital,wght@1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Lora"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            sutra: {
+              bg: '#FAFBFD',
+              forest: '#006C4C',
+              darkforest: '#003824',
+              mint: '#E8F5E9',
+              border: '#E1E3E8',
+              card: '#FFFFFF',
+              dark: '#191C1E',
+              subtext: '#5B6066',
+              amber: '#D97706',
+              red: '#DC2626',
+              blue: '#0284C7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide-canvas {
+      width: 1920px;
+      height: 1080px;
+      background-color: #FAFBFD;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 64px 40px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dot-grid {
+      background-image: radial-gradient(#CBD5E1 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-canvas shadow-2xl">
+    <div class="absolute inset-0 dot-grid opacity-50 pointer-events-none"></div>
+
+    <!-- 1. TOP HEADER -->
+    <header class="relative z-10 flex justify-between items-center pb-4 border-b border-sutra-border">
+      <div class="flex items-center gap-4">
+        <div class="w-3.5 h-10 bg-sutra-forest rounded-full shadow-sm"></div>
+        <div>
+          <div class="font-mono text-xl font-black uppercase tracking-[0.2em] text-sutra-dark flex items-center gap-3">
+            <span>PROJECT SUTRA // MASTER SYSTEM ARCHITECTURE</span>
+            <span className="px-3 py-1 rounded-full bg-sutra-mint text-sutra-forest border border-[#C8E6C9] text-xs font-bold font-mono">
+              ALL-IN-ONE EXECUTIVE SUMMARY
+            </span>
+          </div>
+          <div class="text-sm text-sutra-subtext font-medium pt-0.5">
+            Autonomous Multi-UAV Swarm Platform for GPS-Denied, RF-Jammed Disaster Search & Rescue • Problem Statement: <strong>SH-DST-05</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Badges -->
+      <div class="flex items-center gap-3 font-mono">
+        <div class="px-4 py-2 rounded-xl bg-sutra-darkforest text-[#80E4B7] border border-sutra-forest text-xs font-black tracking-wider shadow-sm">
+          181 / 181 TESTS (100% OK)
+        </div>
+        <div class="px-4 py-2 rounded-xl bg-sutra-mint text-sutra-forest border border-[#C8E6C9] text-xs font-black tracking-wider shadow-sm">
+          TEAM ID: SHIH26-TID-361
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CORE 3-COLUMN ARCHITECTURAL MATRIX -->
+    <main class="relative z-10 grid grid-cols-3 gap-6 my-4 flex-1">
+      
+      <!-- COLUMN 1: DISASTER INTELLIGENCE & PREDICTIVE RISK -->
+      <div class="bg-sutra-card rounded-2xl border border-sutra-border p-5 flex flex-col justify-between shadow-sm">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-[#F0F2F5]">
+            <div class="font-mono text-sm font-bold text-sutra-forest flex items-center gap-2">
+              <span>📡 1. INTEL & PREDICTIVE RISK</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#E0F2FE] text-sutra-blue font-mono text-[11px] font-bold">
+              SUBSYSTEM B / D
+            </span>
+          </div>
+
+          <!-- 10-Factor Formula -->
+          <div class="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] space-y-1.5">
+            <div class="text-xs font-bold text-[#0F172A] flex items-center justify-between">
+              <span>10-VARIABLE RISK ENGINE</span>
+              <span class="text-sutra-forest font-mono">R = &Sigma; (W_i &times; F_i) &plusmn; &sigma;</span>
+            </div>
+            <p class="text-[11px] text-[#64748B] leading-relaxed">
+              Ingests Rainfall (15%), Flood Inundation (15%), Slope/Terrain (10%), Structure Instability (10%), Wind (8%), Mesh RF (8%), Battery Transit (10%), Airspace (6%), Population (10%), Road Cut-Off (8%).
+            </p>
+            <div class="flex items-center justify-between text-[11px] font-mono pt-1 text-sutra-blue font-bold">
+              <span>DATA CONFIDENCE: 94%</span>
+              <span>UNCERTAINTY: &plusmn;4.2 PTS</span>
+            </div>
+          </div>
+
+          <!-- Risk to Mission Conversion -->
+          <div class="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] space-y-1.5">
+            <div class="text-xs font-bold text-[#0F172A] flex items-center gap-2">
+              <span>✨ AUTONOMOUS MISSION SYNTHESIS</span>
+            </div>
+            <div class="text-[11px] text-[#334155] font-mono">
+              Alert &rarr; Risk (84.5) &rarr; Search Area &rarr; Fleet Sizing (N) &rarr; Energy Budget &rarr; Staging LZ
+            </div>
+            <p class="text-[11px] text-[#64748B] leading-tight">
+              Calculates spatial search envelopes and enforces a strict <strong>+25% safe Return-to-Launch battery margin</strong> under dynamic wind shear.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#F1F5F9] rounded-xl border border-[#CBD5E1] flex items-center justify-between text-[11px] font-mono">
+          <span class="text-[#334155] font-bold">OFFLINE DISASTER MESH:</span>
+          <span class="text-sutra-forest font-bold">802.11s + ONBOARD DEM MAPS</span>
+        </div>
+      </div>
+
+      <!-- COLUMN 2: AIRBORNE SWARM GNC, EDGE AI & COMMS -->
+      <div class="bg-sutra-card rounded-2xl border border-sutra-border p-5 flex flex-col justify-between shadow-sm">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-[#F0F2F5]">
+            <div class="font-mono text-sm font-bold text-sutra-forest flex items-center gap-2">
+              <span>🚁 2. SWARM GNC & EDGE AI</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#FEF3C7] text-sutra-amber font-mono text-[11px] font-bold">
+              SUBSYSTEM A / C
+            </span>
+          </div>
+
+          <!-- 4-Tier Safety Envelope -->
+          <div class="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] space-y-1.5">
+            <div class="text-xs font-bold text-[#0F172A] flex items-center justify-between">
+              <span>4-TIER COLLISION AVOIDANCE</span>
+              <span class="text-sutra-forest font-mono">&ge; 3.8m BUFFER</span>
+            </div>
+            <div class="text-[11px] text-[#64748B] font-mono leading-tight">
+              Global Topological &rarr; ORCA 3D Local &rarr; 3.8m Ellipsoid Envelope &rarr; PX4 50Hz Failsafe
+            </div>
+            <p class="text-[11px] text-[#475569]">
+              Absorbs aerodynamic downwash, EKF2 covariance drift, and 10 m/s dynamic mountain wind shear.
+            </p>
+          </div>
+
+          <!-- Edge AI & Geolocation -->
+          <div class="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] space-y-1.5">
+            <div class="text-xs font-bold text-[#0F172A] flex items-center justify-between">
+              <span>TRI-MODAL AI & DEM RAYCAST</span>
+              <span class="text-sutra-forest font-mono">&lt; 0.32m DEM ERROR*</span>
+            </div>
+            <p class="text-[11px] text-[#64748B] leading-tight">
+              YOLOv8-Nano TensorRT (5.0ms) + Visual/Thermal/Radar cross-attention + SRTM 30m DEM Raycast target geolocation.
+            </p>
+            <div class="text-[10px] text-[#94A3B8] italic">
+              *Median error under simulated DEM test conditions; field deployment requires RTK-GNSS rover validation.
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#F1F5F9] rounded-xl border border-[#CBD5E1] flex items-center justify-between text-[11px] font-mono">
+          <span class="text-[#334155] font-bold">DEEP JSCC (-5 dB SNR):</span>
+          <span class="text-sutra-forest font-bold">PSNR &gt; 38.0 dB (0 BLACKOUT)</span>
+        </div>
+      </div>
+
+      <!-- COLUMN 3: 3D GIS GCS, ENERGY HUB & HUMAN SAFETY -->
+      <div class="bg-sutra-card rounded-2xl border border-sutra-border p-5 flex flex-col justify-between shadow-sm">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-[#F0F2F5]">
+            <div class="font-mono text-sm font-bold text-sutra-forest flex items-center gap-2">
+              <span>🔋 3. GCS & CONTINUOUS ENERGY</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#EDE9FE] text-[#6D28D9] font-mono text-[11px] font-bold">
+              SUBSYSTEM D / E / F
+            </span>
+          </div>
+
+          <!-- Continuous Energy Management -->
+          <div class="bg-[#F8FAFC] p-3.5 rounded-xl border border-[#E2E8F0] space-y-1.5">
+            <div class="text-xs font-bold text-[#0F172A] flex items-center justify-between">
+              <span>CONTINUOUS ENERGY ROTATION</span>
+              <span class="text-sutra-forest font-mono">ZERO SAR GAP</span>
+            </div>
+            <p class="text-[11px] text-[#64748B] leading-relaxed">
+              UAV-02 battery &le; 22% &rarr; Auto-reserves bay on 48V Solar Hybrid Station &rarr; Standby UAV-03 dispatched to assume search sector seamlessly.
+            </p>
+            <div class="text-[10px] text-sutra-amber font-mono font-bold">
+              CONTINGENCY: 4/4 Bays Full &rarr; Safe Range Check &rarr; Alt Staging / Safe Landing
+            </div>
+          </div>
+
+          <!-- Human Emergency Abort -->
+          <div class="bg-[#FEF2F2] p-3.5 rounded-xl border border-[#FECACA] space-y-1.5">
+            <div class="text-xs font-bold text-[#991B1B] flex items-center gap-2">
+              <span>🛑 HUMAN SAFETY & EMERGENCY ABORT</span>
+            </div>
+            <p class="text-[11px] text-[#7F1D1D] leading-tight">
+              Commander 1-click override &rarr; Evaluates local 3D obstacle escape corridor &rarr; Transition to safe altitude &rarr; Precautionary Auto-RTL.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#F1F5F9] rounded-xl border border-[#CBD5E1] flex items-center justify-between text-[11px] font-mono">
+          <span class="text-[#334155] font-bold">PEGASUS 3D GCS:</span>
+          <span class="text-sutra-forest font-bold">WebGPU 60 FPS + ATAK CoT XML</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 3. BOTTOM QUANTITATIVE SCORECARD & UNIT ECONOMICS -->
+    <footer class="relative z-10 grid grid-cols-6 gap-3 bg-[#F1F5F9] p-3 rounded-2xl border border-[#CBD5E1] text-center font-mono">
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">TEST MATRIX</div>
+        <div class="text-sm font-black text-sutra-forest">181 / 181 OK</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">PX4 OFFBOARD</div>
+        <div class="text-sm font-black text-sutra-dark">50 Hz Rate</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">RF RESILIENCE</div>
+        <div class="text-sm font-black text-sutra-dark">-5 dB SNR Deep JSCC</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">LEADER FAILOVER</div>
+        <div class="text-sm font-black text-sutra-dark">&lt; 50 ms SwarmRAFT</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">TARGET ACCURACY</div>
+        <div class="text-sm font-black text-sutra-dark">&lt; 0.32m DEM Raycast</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-[#E2E8F0] shadow-xs">
+        <div class="text-[10px] text-[#64748B] uppercase tracking-wider">UNIT ECONOMICS</div>
+        <div class="text-sm font-black text-sutra-forest">₹42,850 / Drone</div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
