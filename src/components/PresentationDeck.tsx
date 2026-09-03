@@ -25,7 +25,11 @@ interface SlideConfig {
   component: React.ReactNode;
 }
 
-export const PresentationDeck: React.FC = () => {
+interface PresentationDeckProps {
+  onExitPresentation?: () => void;
+}
+
+export const PresentationDeck: React.FC<PresentationDeckProps> = ({ onExitPresentation }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slide2Index, setSlide2Index] = useState(0);
   const [slide3Index, setSlide3Index] = useState(0);
@@ -237,6 +241,17 @@ export const PresentationDeck: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Return to Website Landing Page Button */}
+          {onExitPresentation && (
+            <button
+              onClick={onExitPresentation}
+              className="px-2.5 py-1 rounded-lg font-mono text-[10px] font-bold border border-[#E6E0DA] bg-[#FAF8F5] hover:bg-[#EAE5DF] text-[#191516] transition-all flex items-center gap-1.5"
+              title="Return to Website Landing Page"
+            >
+              <span>🌐 WEBSITE VIEW</span>
+            </button>
+          )}
+
           {/* Quick Single-Slide All-in-One Master Jump Button */}
           <button
             onClick={() => setCurrentSlide(8)}
