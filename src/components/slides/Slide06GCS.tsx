@@ -15,9 +15,9 @@ import {
   OctagonAlert, 
   Copy, 
   Check, 
-  Gauge,
-  Sliders,
-  Images
+  Gauge, 
+  Sliders, 
+  Images 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SplitFlapText } from '../ui/SplitFlapText';
@@ -324,41 +324,41 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
   const currentPiece = SUBSYSTEM_D_PIECES[internalIndex];
 
   return (
-    <div className="relative w-full h-full bg-[#FAFBFD] text-[#191C1E] font-sans flex flex-col justify-between p-4 sm:p-5 lg:p-6 select-none overflow-hidden">
+    <div className="relative w-full h-full bg-[#FAF7F2] text-[#183A2B] font-sans flex flex-col justify-between p-4 sm:p-5 lg:p-6 select-none overflow-hidden">
       
-      {/* Subtle Tactical Dot Grid Background */}
+      {/* Subtle Warm Tactical Sandstone Dot Grid */}
       <div 
-        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        className="absolute inset-0 pointer-events-none z-0 opacity-45"
         style={{
-          backgroundImage: 'radial-gradient(#CBD5E1 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(#D6CEC2 1.2px, transparent 1.2px)',
           backgroundSize: '24px 24px',
         }}
       />
 
       <div className="relative z-10 h-full flex flex-col justify-between space-y-2">
         
-        {/* Top Header: Material Design 3 Elevated App Bar */}
-        <header className="flex justify-between items-center pb-2 border-b border-[#E1E3E8]">
+        {/* Top Header: Sovereign Forest & Sandstone Elevation */}
+        <header className="flex justify-between items-center pb-2 border-b border-[#E6E0DA]">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-7 bg-[#006C4C] rounded-full shadow-xs"></div>
+            <div className="w-3 h-7 bg-[#006C4C] rounded-full shadow-sm"></div>
             <div>
-              <div className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] text-[#191C1E]">
+              <div className="font-mono text-sm sm:text-base font-black uppercase tracking-[0.25em] text-[#183A2B]">
                 SUBSYSTEM D DEEP DIVE // 3D GIS GCS &amp; DISASTER INTELLIGENCE
               </div>
-              <div className="text-[10.5px] text-[#5B6066] font-medium">
+              <div className="text-[10.5px] text-[#556059] font-medium">
                 Lead: Siva Kesava • Real-Time WebGPU Telemetry HUD, ATAK Integration &amp; Predictive Autonomy
               </div>
             </div>
           </div>
 
-          {/* Interactive Mechanical Split-Flap Ticker + View Mode Toggle */}
+          {/* Mechanical Split-Flap Ticker + View Mode Toggle */}
           <div className="flex items-center gap-3">
             <SplitFlapText
               words={["60 FPS WEBGPU", "10-FACTOR RISK", "ZERO GAP ROTATION", "ATAK COT LIVE"]}
               flipDuration={0.12}
               stagger={0.06}
               cycleDelay={2400}
-              tileColor="#003824"
+              tileColor="#082216"
               textColor="#80E4B7"
               tileRadius={5}
               gap={3}
@@ -367,15 +367,15 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
               padTo={17}
             />
 
-            {/* View Mode Toggle: Live Telemetry Sim vs 3D Coverflow */}
-            <div className="flex items-center bg-white p-0.5 rounded-full border border-[#CBD5E1] shadow-2xs font-mono text-[10px]">
+            {/* View Mode Toggle */}
+            <div className="flex items-center bg-white p-0.5 rounded-full border border-[#D8D1C7] shadow-2xs font-mono text-[10px]">
               <button
                 onClick={() => setViewMode('sim')}
                 className={cn(
                   "px-2.5 py-1 rounded-full font-bold transition-all flex items-center gap-1 cursor-pointer",
                   viewMode === 'sim'
-                    ? "bg-[#003824] text-[#80E4B7] shadow-xs"
-                    : "text-[#64748B] hover:text-[#0F172A]"
+                    ? "bg-[#082216] text-[#80E4B7] shadow-xs"
+                    : "text-[#556059] hover:text-[#183A2B]"
                 )}
                 title="Interactive Live HUD Simulator"
               >
@@ -387,8 +387,8 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                 className={cn(
                   "px-2.5 py-1 rounded-full font-bold transition-all flex items-center gap-1 cursor-pointer",
                   viewMode === 'coverflow'
-                    ? "bg-[#003824] text-[#80E4B7] shadow-xs"
-                    : "text-[#64748B] hover:text-[#0F172A]"
+                    ? "bg-[#082216] text-[#80E4B7] shadow-xs"
+                    : "text-[#556059] hover:text-[#183A2B]"
                 )}
                 title="3D Coverflow Carousel Inspector"
               >
@@ -404,26 +404,26 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
           </div>
         </header>
 
-        {/* Headline Row with Segmented M3 Pill Navigation */}
+        {/* Headline Row with Segmented Pill Stepper */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2">
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-black text-[#191C1E] tracking-tight leading-none font-sans">
-              Pegasus 3D GIS &amp; Disaster Intel <span className="text-[#006C4C] underline decoration-[#81C784] decoration-4 underline-offset-4">Delivers 60 FPS &amp; Closed-Loop Autonomy</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-black text-[#183A2B] tracking-tight leading-none font-sans">
+              Pegasus 3D GIS &amp; Disaster Intel <span className="text-[#006C4C] underline decoration-[#80E4B7] decoration-4 underline-offset-4">Delivers 60 FPS &amp; Closed-Loop Autonomy</span>
             </h2>
           </div>
           
-          {/* M3 Segmented Pill Stepper */}
+          {/* Stepper Buttons */}
           <div className="flex items-center gap-2 shrink-0">
-            <div className="flex items-center bg-white p-1 rounded-full border border-[#E1E3E8] shadow-xs">
+            <div className="flex items-center bg-white p-1 rounded-full border border-[#E6E0DA] shadow-xs">
               {SUBSYSTEM_D_PIECES.map((p, idx) => (
                 <button
                   key={p.id}
                   onClick={() => handleSelect(idx)}
                   className={cn(
-                    "px-3 py-1 rounded-full text-xs font-mono font-black transition-all cursor-pointer flex items-center gap-1.5",
+                    "px-3.5 py-1 rounded-full text-xs font-mono font-black transition-all cursor-pointer flex items-center gap-1.5",
                     internalIndex === idx
-                      ? "bg-[#003824] text-[#80E4B7] shadow-xs"
-                      : "text-[#74777F] hover:text-[#191C1E] hover:bg-[#F2F3F8]"
+                      ? "bg-[#082216] text-[#80E4B7] shadow-xs"
+                      : "text-[#556059] hover:text-[#183A2B] hover:bg-[#F4F1EA]"
                   )}
                 >
                   <span>0{idx + 1}</span>
@@ -436,7 +436,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
               <button
                 onClick={prevPiece}
                 disabled={internalIndex === 0}
-                className="w-7 h-7 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-xs transition-all"
+                className="w-7 h-7 rounded-full bg-white border border-[#E6E0DA] flex items-center justify-center text-[#183A2B] disabled:opacity-30 hover:bg-[#F4F1EA] cursor-pointer shadow-xs transition-all"
                 title="Previous Card (Up Arrow)"
               >
                 <ChevronUp className="w-3.5 h-3.5" />
@@ -444,7 +444,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
               <button
                 onClick={nextPiece}
                 disabled={internalIndex === SUBSYSTEM_D_PIECES.length - 1}
-                className="w-7 h-7 rounded-full bg-white border border-[#E1E3E8] flex items-center justify-center text-[#191C1E] disabled:opacity-30 hover:bg-[#F2F3F8] cursor-pointer shadow-xs transition-all"
+                className="w-7 h-7 rounded-full bg-white border border-[#E6E0DA] flex items-center justify-center text-[#183A2B] disabled:opacity-30 hover:bg-[#F4F1EA] cursor-pointer shadow-xs transition-all"
                 title="Next Card (Down Arrow)"
               >
                 <ChevronDown className="w-3.5 h-3.5" />
@@ -465,11 +465,11 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 0.98 }}
               transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="w-full h-full bg-white rounded-2xl border border-[#E1E3E8] p-4 sm:p-5 flex flex-col justify-between shadow-xl overflow-hidden"
+              className="w-full h-full bg-[#FFFFFF] rounded-2xl border border-[#E6E0DA] p-4 sm:p-5 flex flex-col justify-between shadow-xl overflow-hidden"
             >
               
               {/* Card Header */}
-              <div className="flex justify-between items-center pb-2 border-b border-[#F0F2F5]">
+              <div className="flex justify-between items-center pb-2 border-b border-[#F0ECE6]">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg bg-[#E8F5E9] text-[#006C4C] flex items-center justify-center border border-[#C8E6C9] shadow-xs">
                     {currentPiece.icon}
@@ -478,7 +478,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                     <span className="font-mono text-[10px] font-black text-[#006C4C] tracking-wider uppercase">
                       {currentPiece.tag}
                     </span>
-                    <span className="text-[#64748B] text-xs font-mono ml-2">
+                    <span className="text-[#556059] text-xs font-mono ml-2">
                       {currentPiece.summary}
                     </span>
                   </div>
@@ -491,27 +491,27 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                 </div>
               </div>
 
-              {/* Main Content Grid (50% Interactive Live GCS Telemetry Sim / 3D Coverflow + 50% Technical Architecture) */}
+              {/* Main Content Grid */}
               <div className="w-full flex-1 my-2 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch overflow-hidden">
                 
-                {/* LEFT (6 Cols / 50%): LIVE INTERACTIVE TACTICAL GCS SIMULATION OR 3D COVERFLOW VIEWPORT */}
-                <div className="lg:col-span-6 rounded-2xl bg-[#090D16] border border-[#1E293B] p-4 flex flex-col justify-between text-slate-100 font-mono text-xs relative overflow-hidden shadow-md">
+                {/* LEFT (6 Cols / 50%): TACTICAL DEEP FOREST BLACK VIEWPORT */}
+                <div className="lg:col-span-6 rounded-2xl bg-[#06110D] border border-[#163625] p-4 flex flex-col justify-between text-slate-100 font-mono text-xs relative overflow-hidden shadow-md">
                   
-                  {/* Viewport Top HUD Bar */}
-                  <div className="flex justify-between items-center pb-2 border-b border-slate-800 text-[10px]">
-                    <div className="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-wider">
-                      <Gauge className="w-3.5 h-3.5 text-cyan-400" />
+                  {/* Top Status Bar */}
+                  <div className="flex justify-between items-center pb-2 border-b border-[#122E22] text-[10px]">
+                    <div className="flex items-center gap-2 text-[#80E4B7] font-bold uppercase tracking-wider">
+                      <Gauge className="w-3.5 h-3.5 text-[#80E4B7]" />
                       <span>PEGASUS GCS // {viewMode === 'coverflow' ? '3D COVERFLOW CAROUSEL' : currentPiece.id.toUpperCase()}</span>
                     </div>
                     <div className="flex items-center gap-2 text-[9px]">
-                      <span className="bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800 font-bold">
+                      <span className="bg-[#0B2E1D] text-[#80E4B7] px-2 py-0.5 rounded border border-[#165A3B] font-bold">
                         WEBGPU DIRECT
                       </span>
-                      <span className="text-slate-400">LATENCY: 1.18ms</span>
+                      <span className="text-[#899A8E]">LATENCY: 1.18ms</span>
                     </div>
                   </div>
 
-                  {/* DYNAMIC BODY: 3D COVERFLOW CAROUSEL OR PIECE SIMULATION */}
+                  {/* Body: 3D Coverflow or Live Simulation */}
                   <div className="my-auto py-1">
                     {viewMode === 'coverflow' ? (
                       <div className="py-2">
@@ -522,7 +522,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                           showPagination={true}
                           cardWidth="clamp(120px, 14vw, 180px)"
                           className="text-slate-200"
-                          cardClassName="border border-slate-700 shadow-2xl"
+                          cardClassName="border border-[#1E4D35] shadow-2xl"
                         />
                       </div>
                     ) : (
@@ -532,24 +532,24 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                           <div className="space-y-2">
                             <div className="grid grid-cols-2 gap-2">
                               {['UAV-01 (ALPHA)', 'UAV-02 (BRAVO)', 'UAV-03 (CHARLIE)', 'UAV-04 (DELTA)'].map((drone, dIdx) => (
-                                <div key={dIdx} className="bg-slate-900/90 p-2 rounded-lg border border-slate-800 space-y-1">
-                                  <div className="flex justify-between text-[9px] font-bold text-cyan-300">
+                                <div key={dIdx} className="bg-[#0A1A13] p-2 rounded-lg border border-[#163826] space-y-1">
+                                  <div className="flex justify-between text-[9px] font-bold text-[#80E4B7]">
                                     <span>{drone}</span>
-                                    <span className="text-emerald-400">60.0 FPS</span>
+                                    <span className="text-[#38BDF8]">60.0 FPS</span>
                                   </div>
-                                  <div className="h-12 bg-slate-950 rounded border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-500 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/40 to-transparent"></div>
+                                  <div className="h-12 bg-[#040C08] rounded border border-[#122A1E] flex items-center justify-center text-[9px] text-slate-400 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#092E1B]/40 to-transparent"></div>
                                     <div className="text-center z-10">
-                                      <div className="text-cyan-400 font-bold">1080p TRT EDGE</div>
-                                      <div className="text-[8px] text-slate-400">ALT: 25.0m • HD CAM</div>
+                                      <div className="text-[#80E4B7] font-bold">1080p TRT EDGE</div>
+                                      <div className="text-[8px] text-[#899A8E]">ALT: 25.0m • HD CAM</div>
                                     </div>
                                   </div>
                                 </div>
                               ))}
                             </div>
-                            <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[10px] text-slate-300 flex items-center justify-between">
-                              <span>TOTAL GPU TEXTURE ALLOC: <strong className="text-emerald-400">192 MB</strong></span>
-                              <span>FRAME JITTER: <strong className="text-cyan-300">0.02 ms</strong></span>
+                            <div className="p-2 bg-[#0A1A13] rounded-lg border border-[#163826] text-[10px] text-[#A5B5AA] flex items-center justify-between">
+                              <span>GPU TEXTURE BUFFER: <strong className="text-[#80E4B7]">192 MB</strong></span>
+                              <span>FRAME JITTER: <strong className="text-[#38BDF8]">0.02 ms</strong></span>
                             </div>
                           </div>
                         )}
@@ -557,28 +557,28 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                         {/* PIECE 02: 10-Factor SUTRA Risk Engine & Mission Synthesis */}
                         {internalIndex === 1 && (
                           <div className="space-y-2">
-                            <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
+                            <div className="bg-[#0A1A13] p-2.5 rounded-lg border border-[#163826] space-y-1.5">
                               <div className="flex justify-between text-[10px] font-bold">
-                                <span className="text-amber-400">10-FACTOR RISK SCORE:</span>
-                                <span className="text-red-400 font-black text-sm">84.5 ± 4.2 / 100</span>
+                                <span className="text-[#FBBF24]">10-FACTOR RISK SCORE:</span>
+                                <span className="text-[#F87171] font-black text-sm">84.5 ± 4.2 / 100</span>
                               </div>
-                              <div className="text-[9px] text-slate-400">
-                                IMD NOWCAST: <strong className="text-cyan-300">72.4 mm/h</strong> • NDRF: <strong className="text-amber-300">10th Bn (Bellandur)</strong>
+                              <div className="text-[9px] text-[#899A8E]">
+                                IMD NOWCAST: <strong className="text-[#38BDF8]">72.4 mm/h</strong> • NDRF: <strong className="text-[#FCD34D]">10th Bn (Bellandur)</strong>
                               </div>
-                              <div className="grid grid-cols-3 gap-1 text-[9px] pt-1 border-t border-slate-800">
-                                <div>FLOOD: <strong className="text-red-400">+14.2</strong></div>
-                                <div>RAIN: <strong className="text-cyan-400">+12.8</strong></div>
-                                <div>STRUCT: <strong className="text-amber-400">+9.5</strong></div>
+                              <div className="grid grid-cols-3 gap-1 text-[9px] pt-1 border-t border-[#163826]">
+                                <div>FLOOD: <strong className="text-[#F87171]">+14.2</strong></div>
+                                <div>RAIN: <strong className="text-[#38BDF8]">+12.8</strong></div>
+                                <div>STRUCT: <strong className="text-[#FBBF24]">+9.5</strong></div>
                               </div>
                             </div>
 
-                            <div className="p-2 bg-cyan-950/60 rounded-lg border border-cyan-800 text-[9.5px] space-y-1">
-                              <div className="font-bold text-cyan-300 flex items-center gap-1">
-                                <Sparkles className="w-3 h-3 text-cyan-400" />
+                            <div className="p-2 bg-[#0A2216] rounded-lg border border-[#165A3B] text-[9.5px] space-y-1">
+                              <div className="font-bold text-[#80E4B7] flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-[#FBBF24]" />
                                 <span>AUTONOMOUS RISK-TO-MISSION BUDGET:</span>
                               </div>
-                              <div className="text-slate-300 text-[9px]">
-                                Area: <strong>0.045 km²</strong> &rarr; <strong>3 UAVs</strong> &rarr; Battery: <strong>46.5%</strong> &rarr; Margin: <strong className="text-emerald-400">+53.5%</strong>
+                              <div className="text-[#CBD5E1] text-[9px]">
+                                Area: <strong>0.045 km²</strong> &rarr; <strong>3 UAVs</strong> &rarr; Battery: <strong>46.5%</strong> &rarr; Margin: <strong className="text-[#80E4B7]">+53.5%</strong>
                               </div>
                             </div>
                           </div>
@@ -587,26 +587,26 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                         {/* PIECE 03: Continuous Coverage Energy Management Hub */}
                         {internalIndex === 2 && (
                           <div className="space-y-2">
-                            <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
+                            <div className="bg-[#0A1A13] p-2.5 rounded-lg border border-[#163826] space-y-1.5">
                               <div className="flex justify-between text-[10px] font-bold">
-                                <span className="text-emerald-400">STATION ALPHA (48V SOLAR HYBRID):</span>
-                                <span className="text-emerald-300">92% SOC</span>
+                                <span className="text-[#80E4B7]">STATION ALPHA (48V SOLAR HYBRID):</span>
+                                <span className="text-[#34D399]">92% SOC</span>
                               </div>
                               <div className="grid grid-cols-4 gap-1.5 pt-1">
                                 {['BAY 1: CHARGING', 'BAY 2: RESERVED', 'BAY 3: READY', 'BAY 4: READY'].map((bay, bIdx) => (
-                                  <div key={bIdx} className={`p-1.5 rounded text-center text-[8px] font-bold border ${bIdx === 1 ? 'bg-amber-950 text-amber-300 border-amber-600 animate-pulse' : 'bg-slate-950 text-slate-400 border-slate-800'}`}>
+                                  <div key={bIdx} className={`p-1.5 rounded text-center text-[8px] font-bold border ${bIdx === 1 ? 'bg-[#37240E] text-[#FBBF24] border-[#B45309] animate-pulse' : 'bg-[#040C08] text-[#899A8E] border-[#122A1E]'}`}>
                                     {bay}
                                   </div>
                                 ))}
                               </div>
                             </div>
 
-                            <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[9px] space-y-1 text-slate-300">
-                              <div className="font-bold text-amber-300 flex items-center justify-between">
+                            <div className="p-2 bg-[#0A1A13] rounded-lg border border-[#163826] text-[9px] space-y-1 text-[#CBD5E1]">
+                              <div className="font-bold text-[#FBBF24] flex items-center justify-between">
                                 <span>ROTATIONAL SWAP SEQUENCE:</span>
-                                <span className="text-emerald-400 font-bold">ZERO SAR GAP</span>
+                                <span className="text-[#80E4B7] font-bold">ZERO SAR GAP</span>
                               </div>
-                              <div className="text-slate-400">
+                              <div className="text-[#899A8E]">
                                 UAV-02 (22%) Diverting to Bay 2 &bull; Standby UAV-03 dispatched to sector.
                               </div>
                             </div>
@@ -616,21 +616,21 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                         {/* PIECE 04: ATAK Cursor-on-Target XML & Emergency Abort */}
                         {internalIndex === 3 && (
                           <div className="space-y-2">
-                            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800 space-y-1">
-                              <div className="flex justify-between items-center text-[9px] text-slate-400">
-                                <span className="text-cyan-300 font-bold">MIL-STD-2525 COT XML (UDP 4242):</span>
+                            <div className="bg-[#040C08] p-2 rounded-lg border border-[#163826] space-y-1">
+                              <div className="flex justify-between items-center text-[9px] text-[#899A8E]">
+                                <span className="text-[#80E4B7] font-bold">MIL-STD-2525 COT XML (UDP 4242):</span>
                                 <button
                                   onClick={() => {
                                     setCopiedCot(true);
                                     setTimeout(() => setCopiedCot(false), 2000);
                                   }}
-                                  className="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[8px] flex items-center gap-1 cursor-pointer"
+                                  className="px-1.5 py-0.5 bg-[#0D2418] hover:bg-[#163A28] text-[#80E4B7] rounded text-[8px] flex items-center gap-1 cursor-pointer border border-[#1E4D35]"
                                 >
-                                  {copiedCot ? <Check className="w-2.5 h-2.5 text-emerald-400" /> : <Copy className="w-2.5 h-2.5" />}
+                                  {copiedCot ? <Check className="w-2.5 h-2.5 text-[#34D399]" /> : <Copy className="w-2.5 h-2.5" />}
                                   <span>{copiedCot ? 'COPIED' : 'COPY'}</span>
                                 </button>
                               </div>
-                              <pre className="text-[7.5px] text-emerald-400 overflow-x-auto p-1 bg-slate-900 rounded">
+                              <pre className="text-[7.5px] text-[#80E4B7] overflow-x-auto p-1 bg-[#0A1A13] rounded border border-[#122A1E]">
 {`<event version="2.0" uid="SUTRA-SURVIVOR-01" type="a-f-G-U-C" time="2026-09-03T14:30:00Z" how="m-g">
   <point lat="12.934521" lon="77.691234" hae="905.0" ce="0.32" le="0.20"/>
   <detail><contact callsign="SUTRA_UAV_03"/></detail>
@@ -645,11 +645,11 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                               }}
                               className={`w-full py-1.5 rounded text-[9.5px] font-bold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                                 simulatingAbort
-                                  ? 'bg-red-600 text-white border-red-400 shadow-md'
-                                  : 'bg-red-950/80 hover:bg-red-900 text-red-200 border-red-700'
+                                  ? 'bg-[#DC2626] text-white border-[#F87171] shadow-md'
+                                  : 'bg-[#3B1214] hover:bg-[#4C181A] text-[#FCA5A5] border-[#7F1D1D]'
                               }`}
                             >
-                              <OctagonAlert className="w-3.5 h-3.5 text-red-400" />
+                              <OctagonAlert className="w-3.5 h-3.5 text-[#F87171]" />
                               <span>{simulatingAbort ? '🛑 3D ESCAPE CORRIDOR EVALUATED -> SAFE AUTO-RTL' : 'SIMULATE EMERGENCY ABORT OVERRIDE'}</span>
                             </button>
                           </div>
@@ -660,38 +660,38 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                   </div>
 
                   {/* Bottom Telemetry Tiles */}
-                  <div className="grid grid-cols-4 gap-1.5 pt-2 border-t border-slate-800 text-[9px]">
+                  <div className="grid grid-cols-4 gap-1.5 pt-2 border-t border-[#122E22] text-[9px]">
                     {currentPiece.telemetry.map((t, tIdx) => (
-                      <div key={tIdx} className="p-1.5 rounded bg-slate-900 border border-slate-800 flex flex-col justify-between">
-                        <span className="text-slate-400 text-[8px] uppercase">{t.label}</span>
-                        <span className="font-bold text-emerald-400 text-[10px] truncate">{t.value}</span>
+                      <div key={tIdx} className="p-1.5 rounded bg-[#0A1A13] border border-[#163826] flex flex-col justify-between">
+                        <span className="text-[#899A8E] text-[8px] uppercase">{t.label}</span>
+                        <span className="font-bold text-[#80E4B7] text-[10px] truncate">{t.value}</span>
                       </div>
                     ))}
                   </div>
 
                 </div>
 
-                {/* RIGHT (6 Cols / 50%): TECHNICAL ARCHITECTURE & RESEARCH CITATIONS */}
-                <div className="lg:col-span-6 rounded-2xl bg-white border border-[#E1E3E8] p-4 flex flex-col justify-between overflow-hidden shadow-xs">
+                {/* RIGHT (6 Cols / 50%): WARM SANDSTONE & SOVEREIGN FOREST ARCHITECTURE */}
+                <div className="lg:col-span-6 rounded-2xl bg-[#FFFFFF] border border-[#E6E0DA] p-4 flex flex-col justify-between overflow-hidden shadow-xs">
                   
                   <div className="space-y-2.5">
-                    <h3 className="text-xl sm:text-2xl font-black text-[#191C1E] tracking-tight leading-tight font-sans">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#183A2B] tracking-tight leading-tight font-sans">
                       {currentPiece.title}
                     </h3>
 
                     {/* Problem Solved Callout */}
-                    <div className="p-2.5 rounded-xl bg-[#FFDAD6]/50 border border-[#FFDAD6] text-[#93000A] text-xs font-mono font-bold leading-relaxed flex items-start gap-2 shadow-2xs">
-                      <div className="w-2 h-2 rounded-full bg-[#BA1A1A] mt-1 shrink-0" />
+                    <div className="p-2.5 rounded-xl bg-[#FEF3F2] border border-[#FECDCA] text-[#B42318] text-xs font-mono font-bold leading-relaxed flex items-start gap-2 shadow-2xs">
+                      <div className="w-2 h-2 rounded-full bg-[#D92D20] mt-1 shrink-0" />
                       <span>{currentPiece.problemSolved}</span>
                     </div>
 
                     {/* How SUTRA Solves It */}
-                    <div className="p-3 rounded-xl bg-[#F2F4F8] border border-[#E1E3E8] space-y-1 shadow-2xs">
-                      <div className="text-[11px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-1.5">
-                        <Zap className="w-3.5 h-3.5 text-[#006C4C]" />
+                    <div className="p-3 rounded-xl bg-[#F0FDF4] border border-[#DCFCE7] space-y-1 shadow-2xs">
+                      <div className="text-[11px] font-mono font-black text-[#166534] uppercase tracking-wider flex items-center gap-1.5">
+                        <Zap className="w-3.5 h-3.5 text-[#166534]" />
                         <span>HOW SUTRA SOLVES IT IN THE FIELD:</span>
                       </div>
-                      <p className="text-xs sm:text-[13px] text-[#191C1E] font-sans font-medium leading-relaxed">
+                      <p className="text-xs sm:text-[13px] text-[#183A2B] font-sans font-medium leading-relaxed">
                         {currentPiece.howItWorks}
                       </p>
                     </div>
@@ -700,31 +700,31 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                   {/* 3 Large Spec Tiles */}
                   <div className="grid grid-cols-3 gap-2 font-mono my-1.5">
                     {currentPiece.specs.map((s, sIdx) => (
-                      <div key={sIdx} className="p-2 rounded-xl bg-[#F8FAFD] border border-[#E1E3E8] shadow-2xs text-center">
-                        <div className="text-lg font-black text-[#191C1E]">{s.value}</div>
+                      <div key={sIdx} className="p-2 rounded-xl bg-[#FAF8F5] border border-[#E6E0DA] shadow-2xs text-center">
+                        <div className="text-lg font-black text-[#183A2B]">{s.value}</div>
                         <div className="text-[10px] font-black text-[#006C4C] uppercase">{s.label}</div>
-                        <div className="text-[9px] text-[#74777F]">{s.unit}</div>
+                        <div className="text-[9px] text-[#717E76]">{s.unit}</div>
                       </div>
                     ))}
                   </div>
 
                   {/* Grounding Academic Research Papers */}
-                  <div className="p-2.5 rounded-xl bg-[#E8F5E9]/60 border border-[#C8E6C9] space-y-1.5 shadow-2xs">
-                    <div className="text-[10px] font-mono font-black text-[#006C4C] uppercase tracking-wider flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-[#006C4C]" />
+                  <div className="p-2.5 rounded-xl bg-[#F4F9F6] border border-[#D1E6D8] space-y-1.5 shadow-2xs">
+                    <div className="text-[10px] font-mono font-black text-[#14532D] uppercase tracking-wider flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 text-[#14532D]" />
                       <span>GROUNDING RESEARCH PAPERS &amp; PROVEN BENEFIT:</span>
                     </div>
 
                     <div className="space-y-1">
                       {currentPiece.researchPapers.map((paper, pIdx) => (
-                        <div key={pIdx} className="p-2 rounded-lg bg-white border border-[#C8E6C9]/60 text-xs space-y-0.5 shadow-2xs">
-                          <div className="font-sans font-black text-[#191C1E] flex items-center justify-between text-xs">
+                        <div key={pIdx} className="p-2 rounded-lg bg-white border border-[#D1E6D8] text-xs space-y-0.5 shadow-2xs">
+                          <div className="font-sans font-black text-[#183A2B] flex items-center justify-between text-xs">
                             <span className="truncate max-w-[320px]">{pIdx + 1}. {paper.title}</span>
-                            <span className="font-mono text-[9px] font-black text-[#006C4C] bg-[#E8F5E9] px-2 py-0.5 rounded-full border border-[#C8E6C9]">
+                            <span className="font-mono text-[9px] font-black text-[#166534] bg-[#E8F5E9] px-2 py-0.5 rounded-full border border-[#C8E6C9]">
                               {paper.year}
                             </span>
                           </div>
-                          <div className="text-[9px] text-[#558B2F] font-bold font-mono">
+                          <div className="text-[9px] text-[#15803D] font-bold font-mono">
                             PROVEN BENEFIT: {paper.provenBenefit}
                           </div>
                         </div>
@@ -736,13 +736,13 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
 
               </div>
 
-              {/* Bottom Card Footer: Verification Gate Status */}
-              <div className="pt-2 border-t border-[#F0F2F5] flex items-center justify-between text-xs font-mono">
+              {/* Bottom Card Footer */}
+              <div className="pt-2 border-t border-[#F0ECE6] flex items-center justify-between text-xs font-mono">
                 <span className="flex items-center gap-1.5 text-[#006C4C] font-bold text-[11px]">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#006C4C]" />
                   <span>GATE G6/G8 VERIFIED: WEBGPU 60 FPS, PREDICTIVE RISK &amp; 48V SOLAR ROTATION OK</span>
                 </span>
-                <span className="text-[10px] text-[#64748B]">
+                <span className="text-[10px] text-[#717E76]">
                   Validated across 181 automated tests (100% pass rate)
                 </span>
               </div>
