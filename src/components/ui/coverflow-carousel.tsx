@@ -269,7 +269,7 @@ export function CoverflowCarousel({
             }
           }}
           // Vertical padding keeps the drop shadows clear of the overflow clip.
-          className="cursor-grab overflow-hidden py-4 outline-none ring-ring focus-visible:ring-2 active:cursor-grabbing"
+          className="cursor-grab overflow-hidden py-10 outline-none ring-ring focus-visible:ring-2 active:cursor-grabbing"
           style={{
             perspective: `calc(var(--cf-card) * ${perspective})`,
             // Horizontal drag is ours; the page keeps vertical scrolling.
@@ -316,7 +316,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Previous slide"
               onClick={() => nudge(-1)}
-              className="absolute left-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background cursor-pointer"
+              className="absolute left-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background"
             >
               <ChevronLeft className="size-5" />
             </button>
@@ -324,7 +324,7 @@ export function CoverflowCarousel({
               type="button"
               aria-label="Next slide"
               onClick={() => nudge(1)}
-              className="absolute right-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background cursor-pointer"
+              className="absolute right-3 top-1/2 z-[200] -translate-y-1/2 rounded-full bg-background/70 p-2 text-foreground backdrop-blur transition hover:bg-background"
             >
               <ChevronRight className="size-5" />
             </button>
@@ -335,22 +335,22 @@ export function CoverflowCarousel({
       {showCaption && active?.title && (
         <div
           key={selected}
-          className="mt-2 flex flex-col items-center px-4 duration-300 animate-in fade-in"
+          className="mt-2 flex flex-col items-center px-6 duration-300 animate-in fade-in"
         >
-          <p className="text-[14px] font-semibold tracking-tight text-foreground">
+          <p className="text-[15px] font-semibold tracking-tight text-foreground">
             {active.title}
           </p>
           {active.subtitle && (
-            <p className="mt-0.5 text-[12px] text-muted-foreground">
+            <p className="mt-1 text-[13px] text-muted-foreground">
               {active.subtitle}
             </p>
           )}
           {active.meta && active.meta.length > 0 && (
-            <dl className="mt-2 w-full max-w-[260px] text-[11px] font-mono">
+            <dl className="mt-10 w-full max-w-[230px] text-[12px]">
               {active.meta.map((row) => (
-                <div key={row.label} className="flex justify-between py-0.5">
+                <div key={row.label} className="flex justify-between py-[5px]">
                   <dt className="text-muted-foreground">{row.label}</dt>
-                  <dd className="font-bold text-foreground">{row.value}</dd>
+                  <dd className="font-medium text-foreground">{row.value}</dd>
                 </div>
               ))}
             </dl>
@@ -359,7 +359,7 @@ export function CoverflowCarousel({
       )}
 
       {showPagination && (
-        <div className="mt-3 flex items-center justify-center gap-1.5">
+        <div className="mt-6 flex items-center justify-center gap-2">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -368,7 +368,7 @@ export function CoverflowCarousel({
               aria-current={index === selected}
               onClick={() => goTo(index)}
               className={cn(
-                "size-2 rounded-full bg-foreground transition-opacity cursor-pointer",
+                "size-2 rounded-full bg-foreground transition-opacity",
                 index === selected ? "opacity-100" : "opacity-30",
               )}
             />
