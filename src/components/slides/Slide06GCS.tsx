@@ -15,10 +15,13 @@ import {
   OctagonAlert, 
   Copy, 
   Check, 
-  Gauge
+  Gauge,
+  Sliders,
+  Images
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SplitFlapText } from '../ui/SplitFlapText';
+import { CoverflowCarousel, CoverflowSlide } from '../ui/coverflow-carousel';
 
 export interface SubsystemPiece {
   id: string;
@@ -210,6 +213,53 @@ export const SUBSYSTEM_D_PIECES: SubsystemPiece[] = [
   }
 ];
 
+const GCS_COVERFLOW_SLIDES: CoverflowSlide[] = [
+  {
+    src: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=640&h=640&fit=crop&q=70&auto=format",
+    alt: "Pegasus WebGPU 60 FPS Multi-Feed HUD",
+    title: "Pegasus WebGPU 60 FPS Multi-Feed HUD",
+    subtitle: "Direct GPU Texture Buffer Pipeline",
+    meta: [
+      { label: "Frame Rate", value: "60.0 FPS Locked" },
+      { label: "Active Feeds", value: "5x 1080p TRT" },
+      { label: "VRAM Load", value: "< 240 MB" },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=640&h=640&fit=crop&q=70&auto=format",
+    alt: "10-Factor SUTRA Predictive Risk Engine",
+    title: "10-Factor SUTRA Risk Engine",
+    subtitle: "IMD Nowcast (72.4 mm/h) + Uncertainty Bounds",
+    meta: [
+      { label: "Risk Score", value: "84.5 ± 4.2 / 100" },
+      { label: "Data Confidence", value: "94% IMD/NDRF" },
+      { label: "Battery Margin", value: "+53.5% Return" },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=640&h=640&fit=crop&q=70&auto=format",
+    alt: "48V Solar Hybrid Station & Rotation",
+    title: "48V Solar Hybrid Hub & Rotation",
+    subtitle: "Zero SAR Gap Battery Swap Sequence",
+    meta: [
+      { label: "Hub Battery", value: "92% SOC (48V)" },
+      { label: "Reserved Bay", value: "Bay #2 Locked" },
+      { label: "Standby Drone", value: "Dispatched (Zero Gap)" },
+    ],
+  },
+  {
+    src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=640&h=640&fit=crop&q=70&auto=format",
+    alt: "MIL-STD-2525 ATAK CoT XML Bridge",
+    title: "MIL-STD-2525 ATAK CoT XML Bridge",
+    subtitle: "UDP 4242 Broadcast & Safe 3D Escape RTL",
+    meta: [
+      { label: "Broadcast Delay", value: "< 1.20 ms" },
+      { label: "Symbology", value: "MIL-STD-2525D" },
+      { label: "Abort Corridor", value: "3D Obstacle Free" },
+    ],
+  },
+];
+
 interface Slide06GCSProps {
   activeIndex?: number;
   onActiveChange?: (index: number) => void;
@@ -222,6 +272,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
   const [internalIndex, setInternalIndex] = useState(activeIndex);
   const [copiedCot, setCopiedCot] = useState(false);
   const [simulatingAbort, setSimulatingAbort] = useState(false);
+  const [viewMode, setViewMode] = useState<'sim' | 'coverflow'>('sim');
   const stackContainerRef = useRef<HTMLDivElement | null>(null);
   const lastScrollTime = useRef<number>(0);
 
@@ -300,7 +351,7 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
             </div>
           </div>
 
-          {/* Interactive Mechanical Split-Flap Ticker + Status Chips */}
+          {/* Interactive Mechanical Split-Flap Ticker + View Mode Toggle */}
           <div className="flex items-center gap-3">
             <SplitFlapText
               words={["60 FPS WEBGPU", "10-FACTOR RISK", "ZERO GAP ROTATION", "ATAK COT LIVE"]}
@@ -315,6 +366,37 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
               loop
               padTo={17}
             />
+
+            {/* View Mode Toggle: Live Telemetry Sim vs 3D Coverflow */}
+            <div className="flex items-center bg-white p-0.5 rounded-full border border-[#CBD5E1] shadow-2xs font-mono text-[10px]">
+              <button
+                onClick={() => setViewMode('sim')}
+                className={cn(
+                  "px-2.5 py-1 rounded-full font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  viewMode === 'sim'
+                    ? "bg-[#003824] text-[#80E4B7] shadow-xs"
+                    : "text-[#64748B] hover:text-[#0F172A]"
+                )}
+                title="Interactive Live HUD Simulator"
+              >
+                <Sliders className="w-3 h-3" />
+                <span>LIVE SIM</span>
+              </button>
+              <button
+                onClick={() => setViewMode('coverflow')}
+                className={cn(
+                  "px-2.5 py-1 rounded-full font-bold transition-all flex items-center gap-1 cursor-pointer",
+                  viewMode === 'coverflow'
+                    ? "bg-[#003824] text-[#80E4B7] shadow-xs"
+                    : "text-[#64748B] hover:text-[#0F172A]"
+                )}
+                title="3D Coverflow Carousel Inspector"
+              >
+                <Images className="w-3 h-3" />
+                <span>3D COVERFLOW</span>
+              </button>
+            </div>
+
             <div className="flex items-center gap-2 font-mono text-xs font-black text-[#006C4C] bg-[#E8F5E9] px-3 py-1 rounded-full border border-[#C8E6C9] shadow-2xs">
               <Layers className="w-3.5 h-3.5" />
               <span>STACK: 0{internalIndex + 1} / 04</span>
@@ -409,17 +491,17 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                 </div>
               </div>
 
-              {/* Main Content Grid (50% Interactive Live GCS Telemetry Sim + 50% Technical Architecture) */}
+              {/* Main Content Grid (50% Interactive Live GCS Telemetry Sim / 3D Coverflow + 50% Technical Architecture) */}
               <div className="w-full flex-1 my-2 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch overflow-hidden">
                 
-                {/* LEFT (6 Cols / 50%): LIVE INTERACTIVE TACTICAL GCS SIMULATION VIEWPORT */}
+                {/* LEFT (6 Cols / 50%): LIVE INTERACTIVE TACTICAL GCS SIMULATION OR 3D COVERFLOW VIEWPORT */}
                 <div className="lg:col-span-6 rounded-2xl bg-[#090D16] border border-[#1E293B] p-4 flex flex-col justify-between text-slate-100 font-mono text-xs relative overflow-hidden shadow-md">
                   
                   {/* Viewport Top HUD Bar */}
                   <div className="flex justify-between items-center pb-2 border-b border-slate-800 text-[10px]">
                     <div className="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-wider">
                       <Gauge className="w-3.5 h-3.5 text-cyan-400" />
-                      <span>PEGASUS GCS // {currentPiece.id.toUpperCase()}</span>
+                      <span>PEGASUS GCS // {viewMode === 'coverflow' ? '3D COVERFLOW CAROUSEL' : currentPiece.id.toUpperCase()}</span>
                     </div>
                     <div className="flex items-center gap-2 text-[9px]">
                       <span className="bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800 font-bold">
@@ -429,135 +511,150 @@ export const Slide06GCS: React.FC<Slide06GCSProps> = ({
                     </div>
                   </div>
 
-                  {/* DYNAMIC INTERACTIVE SIMULATION BODY ACCORDING TO CURRENT PIECE */}
-                  <div className="my-auto py-2">
-                    
-                    {/* PIECE 01: WebGPU 60 FPS Multi-Feed Video Simulation */}
-                    {internalIndex === 0 && (
-                      <div className="space-y-2">
-                        <div className="grid grid-cols-2 gap-2">
-                          {['UAV-01 (ALPHA)', 'UAV-02 (BRAVO)', 'UAV-03 (CHARLIE)', 'UAV-04 (DELTA)'].map((drone, dIdx) => (
-                            <div key={dIdx} className="bg-slate-900/90 p-2 rounded-lg border border-slate-800 space-y-1">
-                              <div className="flex justify-between text-[9px] font-bold text-cyan-300">
-                                <span>{drone}</span>
-                                <span className="text-emerald-400">60.0 FPS</span>
-                              </div>
-                              <div className="h-12 bg-slate-950 rounded border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-500 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/40 to-transparent"></div>
-                                <div className="text-center z-10">
-                                  <div className="text-cyan-400 font-bold">1080p TRT EDGE</div>
-                                  <div className="text-[8px] text-slate-400">ALT: 25.0m • HD CAM</div>
+                  {/* DYNAMIC BODY: 3D COVERFLOW CAROUSEL OR PIECE SIMULATION */}
+                  <div className="my-auto py-1">
+                    {viewMode === 'coverflow' ? (
+                      <div className="py-2">
+                        <CoverflowCarousel 
+                          slides={GCS_COVERFLOW_SLIDES} 
+                          showCaption={true}
+                          showNavigation={true}
+                          showPagination={true}
+                          cardWidth="clamp(120px, 14vw, 180px)"
+                          className="text-slate-200"
+                          cardClassName="border border-slate-700 shadow-2xl"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        {/* PIECE 01: WebGPU 60 FPS Multi-Feed Video Simulation */}
+                        {internalIndex === 0 && (
+                          <div className="space-y-2">
+                            <div className="grid grid-cols-2 gap-2">
+                              {['UAV-01 (ALPHA)', 'UAV-02 (BRAVO)', 'UAV-03 (CHARLIE)', 'UAV-04 (DELTA)'].map((drone, dIdx) => (
+                                <div key={dIdx} className="bg-slate-900/90 p-2 rounded-lg border border-slate-800 space-y-1">
+                                  <div className="flex justify-between text-[9px] font-bold text-cyan-300">
+                                    <span>{drone}</span>
+                                    <span className="text-emerald-400">60.0 FPS</span>
+                                  </div>
+                                  <div className="h-12 bg-slate-950 rounded border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-500 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/40 to-transparent"></div>
+                                    <div className="text-center z-10">
+                                      <div className="text-cyan-400 font-bold">1080p TRT EDGE</div>
+                                      <div className="text-[8px] text-slate-400">ALT: 25.0m • HD CAM</div>
+                                    </div>
+                                  </div>
                                 </div>
+                              ))}
+                            </div>
+                            <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[10px] text-slate-300 flex items-center justify-between">
+                              <span>TOTAL GPU TEXTURE ALLOC: <strong className="text-emerald-400">192 MB</strong></span>
+                              <span>FRAME JITTER: <strong className="text-cyan-300">0.02 ms</strong></span>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* PIECE 02: 10-Factor SUTRA Risk Engine & Mission Synthesis */}
+                        {internalIndex === 1 && (
+                          <div className="space-y-2">
+                            <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
+                              <div className="flex justify-between text-[10px] font-bold">
+                                <span className="text-amber-400">10-FACTOR RISK SCORE:</span>
+                                <span className="text-red-400 font-black text-sm">84.5 ± 4.2 / 100</span>
+                              </div>
+                              <div className="text-[9px] text-slate-400">
+                                IMD NOWCAST: <strong className="text-cyan-300">72.4 mm/h</strong> • NDRF: <strong className="text-amber-300">10th Bn (Bellandur)</strong>
+                              </div>
+                              <div className="grid grid-cols-3 gap-1 text-[9px] pt-1 border-t border-slate-800">
+                                <div>FLOOD: <strong className="text-red-400">+14.2</strong></div>
+                                <div>RAIN: <strong className="text-cyan-400">+12.8</strong></div>
+                                <div>STRUCT: <strong className="text-amber-400">+9.5</strong></div>
                               </div>
                             </div>
-                          ))}
-                        </div>
-                        <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[10px] text-slate-300 flex items-center justify-between">
-                          <span>TOTAL GPU TEXTURE ALLOC: <strong className="text-emerald-400">192 MB</strong></span>
-                          <span>FRAME JITTER: <strong className="text-cyan-300">0.02 ms</strong></span>
-                        </div>
-                      </div>
-                    )}
 
-                    {/* PIECE 02: 10-Factor SUTRA Risk Engine & Mission Synthesis */}
-                    {internalIndex === 1 && (
-                      <div className="space-y-2">
-                        <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
-                          <div className="flex justify-between text-[10px] font-bold">
-                            <span className="text-amber-400">10-FACTOR RISK SCORE:</span>
-                            <span className="text-red-400 font-black text-sm">84.5 ± 4.2 / 100</span>
-                          </div>
-                          <div className="text-[9px] text-slate-400">
-                            IMD NOWCAST: <strong className="text-cyan-300">72.4 mm/h</strong> • NDRF: <strong className="text-amber-300">10th Bn (Bellandur)</strong>
-                          </div>
-                          <div className="grid grid-cols-3 gap-1 text-[9px] pt-1 border-t border-slate-800">
-                            <div>FLOOD: <strong className="text-red-400">+14.2</strong></div>
-                            <div>RAIN: <strong className="text-cyan-400">+12.8</strong></div>
-                            <div>STRUCT: <strong className="text-amber-400">+9.5</strong></div>
-                          </div>
-                        </div>
-
-                        <div className="p-2 bg-cyan-950/60 rounded-lg border border-cyan-800 text-[9.5px] space-y-1">
-                          <div className="font-bold text-cyan-300 flex items-center gap-1">
-                            <Sparkles className="w-3 h-3 text-cyan-400" />
-                            <span>AUTONOMOUS RISK-TO-MISSION BUDGET:</span>
-                          </div>
-                          <div className="text-slate-300 text-[9px]">
-                            Area: <strong>0.045 km²</strong> &rarr; <strong>3 UAVs</strong> &rarr; Battery: <strong>46.5%</strong> &rarr; Margin: <strong className="text-emerald-400">+53.5%</strong>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* PIECE 03: Continuous Coverage Energy Management Hub */}
-                    {internalIndex === 2 && (
-                      <div className="space-y-2">
-                        <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
-                          <div className="flex justify-between text-[10px] font-bold">
-                            <span className="text-emerald-400">STATION ALPHA (48V SOLAR HYBRID):</span>
-                            <span className="text-emerald-300">92% SOC</span>
-                          </div>
-                          <div className="grid grid-cols-4 gap-1.5 pt-1">
-                            {['BAY 1: CHARGING', 'BAY 2: RESERVED', 'BAY 3: READY', 'BAY 4: READY'].map((bay, bIdx) => (
-                              <div key={bIdx} className={`p-1.5 rounded text-center text-[8px] font-bold border ${bIdx === 1 ? 'bg-amber-950 text-amber-300 border-amber-600 animate-pulse' : 'bg-slate-950 text-slate-400 border-slate-800'}`}>
-                                {bay}
+                            <div className="p-2 bg-cyan-950/60 rounded-lg border border-cyan-800 text-[9.5px] space-y-1">
+                              <div className="font-bold text-cyan-300 flex items-center gap-1">
+                                <Sparkles className="w-3 h-3 text-cyan-400" />
+                                <span>AUTONOMOUS RISK-TO-MISSION BUDGET:</span>
                               </div>
-                            ))}
+                              <div className="text-slate-300 text-[9px]">
+                                Area: <strong>0.045 km²</strong> &rarr; <strong>3 UAVs</strong> &rarr; Battery: <strong>46.5%</strong> &rarr; Margin: <strong className="text-emerald-400">+53.5%</strong>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        )}
 
-                        <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[9px] space-y-1 text-slate-300">
-                          <div className="font-bold text-amber-300 flex items-center justify-between">
-                            <span>ROTATIONAL SWAP SEQUENCE:</span>
-                            <span className="text-emerald-400 font-bold">ZERO SAR GAP</span>
-                          </div>
-                          <div className="text-slate-400">
-                            UAV-02 (22%) Diverting to Bay 2 &bull; Standby UAV-03 dispatched to sector.
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                        {/* PIECE 03: Continuous Coverage Energy Management Hub */}
+                        {internalIndex === 2 && (
+                          <div className="space-y-2">
+                            <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 space-y-1.5">
+                              <div className="flex justify-between text-[10px] font-bold">
+                                <span className="text-emerald-400">STATION ALPHA (48V SOLAR HYBRID):</span>
+                                <span className="text-emerald-300">92% SOC</span>
+                              </div>
+                              <div className="grid grid-cols-4 gap-1.5 pt-1">
+                                {['BAY 1: CHARGING', 'BAY 2: RESERVED', 'BAY 3: READY', 'BAY 4: READY'].map((bay, bIdx) => (
+                                  <div key={bIdx} className={`p-1.5 rounded text-center text-[8px] font-bold border ${bIdx === 1 ? 'bg-amber-950 text-amber-300 border-amber-600 animate-pulse' : 'bg-slate-950 text-slate-400 border-slate-800'}`}>
+                                    {bay}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
 
-                    {/* PIECE 04: ATAK Cursor-on-Target XML & Emergency Abort */}
-                    {internalIndex === 3 && (
-                      <div className="space-y-2">
-                        <div className="bg-slate-950 p-2 rounded-lg border border-slate-800 space-y-1">
-                          <div className="flex justify-between items-center text-[9px] text-slate-400">
-                            <span className="text-cyan-300 font-bold">MIL-STD-2525 COT XML (UDP 4242):</span>
-                            <button
-                              onClick={() => {
-                                setCopiedCot(true);
-                                setTimeout(() => setCopiedCot(false), 2000);
-                              }}
-                              className="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[8px] flex items-center gap-1"
-                            >
-                              {copiedCot ? <Check className="w-2.5 h-2.5 text-emerald-400" /> : <Copy className="w-2.5 h-2.5" />}
-                              <span>{copiedCot ? 'COPIED' : 'COPY'}</span>
-                            </button>
+                            <div className="p-2 bg-slate-900 rounded-lg border border-slate-800 text-[9px] space-y-1 text-slate-300">
+                              <div className="font-bold text-amber-300 flex items-center justify-between">
+                                <span>ROTATIONAL SWAP SEQUENCE:</span>
+                                <span className="text-emerald-400 font-bold">ZERO SAR GAP</span>
+                              </div>
+                              <div className="text-slate-400">
+                                UAV-02 (22%) Diverting to Bay 2 &bull; Standby UAV-03 dispatched to sector.
+                              </div>
+                            </div>
                           </div>
-                          <pre className="text-[7.5px] text-emerald-400 overflow-x-auto p-1 bg-slate-900 rounded">
+                        )}
+
+                        {/* PIECE 04: ATAK Cursor-on-Target XML & Emergency Abort */}
+                        {internalIndex === 3 && (
+                          <div className="space-y-2">
+                            <div className="bg-slate-950 p-2 rounded-lg border border-slate-800 space-y-1">
+                              <div className="flex justify-between items-center text-[9px] text-slate-400">
+                                <span className="text-cyan-300 font-bold">MIL-STD-2525 COT XML (UDP 4242):</span>
+                                <button
+                                  onClick={() => {
+                                    setCopiedCot(true);
+                                    setTimeout(() => setCopiedCot(false), 2000);
+                                  }}
+                                  className="px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[8px] flex items-center gap-1 cursor-pointer"
+                                >
+                                  {copiedCot ? <Check className="w-2.5 h-2.5 text-emerald-400" /> : <Copy className="w-2.5 h-2.5" />}
+                                  <span>{copiedCot ? 'COPIED' : 'COPY'}</span>
+                                </button>
+                              </div>
+                              <pre className="text-[7.5px] text-emerald-400 overflow-x-auto p-1 bg-slate-900 rounded">
 {`<event version="2.0" uid="SUTRA-SURVIVOR-01" type="a-f-G-U-C" time="2026-09-03T14:30:00Z" how="m-g">
   <point lat="12.934521" lon="77.691234" hae="905.0" ce="0.32" le="0.20"/>
   <detail><contact callsign="SUTRA_UAV_03"/></detail>
 </event>`}
-                          </pre>
-                        </div>
+                              </pre>
+                            </div>
 
-                        <button
-                          onClick={() => {
-                            setSimulatingAbort(true);
-                            setTimeout(() => setSimulatingAbort(false), 3000);
-                          }}
-                          className={`w-full py-1.5 rounded text-[9.5px] font-bold border transition-all flex items-center justify-center gap-1.5 ${
-                            simulatingAbort
-                              ? 'bg-red-600 text-white border-red-400 shadow-md'
-                              : 'bg-red-950/80 hover:bg-red-900 text-red-200 border-red-700'
-                          }`}
-                        >
-                          <OctagonAlert className="w-3.5 h-3.5 text-red-400" />
-                          <span>{simulatingAbort ? '🛑 3D ESCAPE CORRIDOR EVALUATED -> SAFE AUTO-RTL' : 'SIMULATE EMERGENCY ABORT OVERRIDE'}</span>
-                        </button>
-                      </div>
+                            <button
+                              onClick={() => {
+                                setSimulatingAbort(true);
+                                setTimeout(() => setSimulatingAbort(false), 3000);
+                              }}
+                              className={`w-full py-1.5 rounded text-[9.5px] font-bold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                                simulatingAbort
+                                  ? 'bg-red-600 text-white border-red-400 shadow-md'
+                                  : 'bg-red-950/80 hover:bg-red-900 text-red-200 border-red-700'
+                              }`}
+                            >
+                              <OctagonAlert className="w-3.5 h-3.5 text-red-400" />
+                              <span>{simulatingAbort ? '🛑 3D ESCAPE CORRIDOR EVALUATED -> SAFE AUTO-RTL' : 'SIMULATE EMERGENCY ABORT OVERRIDE'}</span>
+                            </button>
+                          </div>
+                        )}
+                      </>
                     )}
 
                   </div>
